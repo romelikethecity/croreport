@@ -26,16 +26,22 @@ print(f"\n📂 Loading: {latest_file}")
 df = pd.read_csv(latest_file)
 print(f"📊 Loaded {len(df)} jobs")
 
-# Convert DataFrame to properly escaped CSV string for embedding
-# Use csv module to ensure proper escaping
-from io import StringIO
-output = StringIO()
-df.to_csv(output, index=False, quoting=csv.QUOTE_ALL)
-csv_data = output.getvalue()
+# Convert DataFrame to JSON for reliable JavaScript parsing
+# Only include columns needed for display (excludes problematic company_addresses with newlines)
+display_cols = ['job_url_direct', 'title', 'company', 'location', 'date_posted', 
+                'min_amount', 'max_amount', 'is_remote', 'seniority', 'is_tech', 'company_industry']
+df_display = df[[c for c in display_cols if c in df.columns]].copy()
 
+# Convert to JSON and clean NaN values
+jobs_list = df_display.to_dict('records')
+for job in jobs_list:
+    for key in list(job.keys()):
+        if pd.isna(job[key]):
+            job[key] = ''
+
+json_data = json.dumps(jobs_list)
 # Escape for JavaScript template literal
-# Only escape backticks and ${} - newlines should stay as literal newlines
-csv_data_escaped = csv_data.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
+csv_data_escaped = json_data.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
 
 # Get update date
 update_date = datetime.now().strftime('%B %d, %Y')
@@ -455,87 +461,9 @@ html_content = f'''<!DOCTYPE html>
         let allJobs = [];
         let filteredJobs = [];
 
-        // Robust CSV parser that handles quotes, commas, and newlines
-        function parseCSV(csvText) {{
-            const lines = [];
-            let currentLine = [];
-            let currentField = '';
-            let inQuotes = false;
-            
-            // Parse character by character
-            for (let i = 0; i < csvText.length; i++) {{
-                const char = csvText[i];
-                const nextChar = csvText[i + 1];
-                
-                if (inQuotes) {{
-                    if (char === '"' && nextChar === '"') {{
-                        // Escaped quote inside quoted field
-                        currentField += '"';
-                        i++; // Skip next quote
-                    }} else if (char === '"') {{
-                        // End of quoted field
-                        inQuotes = false;
-                    }} else {{
-                        // Regular character inside quotes (including newlines and commas)
-                        currentField += char;
-                    }}
-                }} else {{
-                    if (char === '"') {{
-                        // Start of quoted field
-                        inQuotes = true;
-                    }} else if (char === ',') {{
-                        // Field separator
-                        currentLine.push(currentField);
-                        currentField = '';
-                    }} else if (char === '\\n') {{
-                        // Line separator (only if not in quotes)
-                        if (currentField || currentLine.length > 0) {{
-                            currentLine.push(currentField);
-                            lines.push(currentLine);
-                            currentLine = [];
-                            currentField = '';
-                        }}
-                    }} else if (char === '\\r') {{
-                        // Skip carriage return
-                        continue;
-                    }} else {{
-                        currentField += char;
-                    }}
-                }}
-            }}
-            
-            // Don't forget last field and line
-            if (currentField || currentLine.length > 0) {{
-                currentLine.push(currentField);
-                lines.push(currentLine);
-            }}
-            
-            // First line is headers
-            const headers = lines[0];
-            
-            // Convert remaining lines to objects
-            const data = [];
-            for (let i = 1; i < lines.length; i++) {{
-                const line = lines[i];
-                if (line.length < headers.length) continue; // Skip malformed lines
-                
-                const obj = {{}};
-                headers.forEach((header, index) => {{
-                    obj[header] = line[index] || '';
-                }});
-                
-                // Only include if has title and company
-                if (obj.title && obj.company) {{
-                    data.push(obj);
-                }}
-            }}
-            
-            return data;
-        }}
-
         // Initialize
         function init() {{
-            allJobs = parseCSV(jobsData);
+            allJobs = JSON.parse(jobsData);
             filteredJobs = [...allJobs];
             
             populateFilters();
