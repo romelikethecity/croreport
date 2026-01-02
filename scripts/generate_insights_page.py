@@ -14,6 +14,13 @@ from collections import Counter
 from datetime import datetime, timedelta
 import glob
 import os
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
 
 DATA_DIR = 'data'
 SITE_DIR = 'site'
@@ -197,7 +204,7 @@ red_flag_vague_comp = red_flags_analysis.get('"Competitive compensation" (vague)
 html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VP Sales & CRO Job Market Intelligence | The CRO Report</title>
     <meta name="description" content="What skills, tools, and experience are companies looking for in VP Sales and CRO roles? Analysis of {total_jobs} executive sales job postings.">

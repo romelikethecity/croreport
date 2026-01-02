@@ -7,6 +7,13 @@ Includes Market Pulse, Who's Moving teasers, and newsletter signup
 import json
 import os
 from datetime import datetime
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
 
 DATA_DIR = 'data'
 SITE_DIR = 'site'
@@ -76,7 +83,7 @@ wow_arrow = '↑' if stats['wow_change'] >= 0 else '↓'
 html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The CRO Report | Intelligence for Revenue Leaders</title>
     <meta name="description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders. {stats['total_roles']} open roles tracked.">

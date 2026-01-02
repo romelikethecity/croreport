@@ -3,6 +3,13 @@ from datetime import datetime
 import glob
 import json
 import csv
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
 
 # ============================================================
 # LOAD ENRICHED DATA
@@ -71,7 +78,7 @@ else:
 html_content = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Roles for Sales Executives | The CRO Report</title>
     <meta name="description" content="Curated VP+ sales executive jobs - CRO, SVP Sales, VP Sales positions updated weekly">

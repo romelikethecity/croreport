@@ -9,6 +9,13 @@ from datetime import datetime
 import glob
 import os
 import json
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
 
 DATA_DIR = 'data'
 SITE_DIR = 'site'
@@ -56,7 +63,7 @@ def create_salary_page(title, slug, df_subset, description):
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} Salary | The CRO Report</title>
     <meta name="description" content="{description} Based on {count} current job postings. Updated {update_date}.">
@@ -307,7 +314,7 @@ for sen, slug in seniorities:
 index_html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
     <meta name="description" content="VP Sales and CRO salary data by location and seniority. Based on {len(df_salary)} current job postings with disclosed compensation.">
