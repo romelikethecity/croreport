@@ -32,6 +32,10 @@ print(f"📂 Loading: {latest_file}")
 df = pd.read_csv(latest_file)
 print(f"📊 Loaded {len(df)} jobs")
 
+# Clean descriptions - replace newlines with spaces to prevent CSV parsing issues
+if 'description' in df.columns:
+    df['description'] = df['description'].fillna('').str.replace('\n', ' ').str.replace('\r', ' ')
+
 # Convert to CSV string for embedding
 output = StringIO()
 df.to_csv(output, index=False, quoting=csv.QUOTE_ALL)
@@ -47,7 +51,8 @@ html_content = f'''<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Sales Jobs | VP Sales, CRO Roles | The CRO Report</title>
     <meta name="description" content="Browse {len(df)}+ VP Sales, CRO, and executive sales leadership positions. Salary data included. Updated weekly.">
-    <link rel="canonical" href="https://romelikethecity.github.io/croreport/jobs/">
+    <link rel="canonical" href="https://thecroreport.com/jobs/">
+    <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -256,9 +261,62 @@ html_content = f'''<!DOCTYPE html>
             margin-top: 60px;
         }}
         .footer a {{ color: #d97706; }}
+        
+        /* Site Navigation */
+        .site-nav {{
+            background: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+        }}
+        .site-nav .logo {{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #1e3a5f;
+            text-decoration: none;
+        }}
+        .site-nav .logo img {{ height: 32px; }}
+        .site-nav .nav-links {{
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }}
+        .site-nav .nav-links a {{
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }}
+        .site-nav .nav-links a:hover {{ color: #1e3a5f; }}
+        .site-nav .subscribe-btn {{
+            background: #1e3a5f;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }}
+        .site-nav .subscribe-btn:hover {{ background: #2d4a6f; }}
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <a href="/" class="logo">
+            <img src="/assets/logo.jpg" alt="The CRO Report">
+            The CRO Report
+        </a>
+        <div class="nav-links">
+            <a href="/jobs/">Jobs</a>
+            <a href="/salaries/">Salaries</a>
+            <a href="/insights/">Market Intel</a>
+            <a href="https://croreport.substack.com/subscribe" class="subscribe-btn">Subscribe</a>
+        </div>
+    </nav>
+    
     <header class="header">
         <h1>Executive Sales Jobs</h1>
         <p>VP Sales, CRO, and sales leadership positions</p>
