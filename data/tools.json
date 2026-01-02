@@ -1,0 +1,250 @@
+{
+  "categories": [
+    {
+      "name": "Sales Engagement",
+      "slug": "sales-engagement",
+      "description": "Platforms for automating outreach, sequences, and prospect engagement"
+    },
+    {
+      "name": "Revenue Intelligence",
+      "slug": "revenue-intelligence",
+      "description": "Conversation intelligence and deal analytics platforms"
+    },
+    {
+      "name": "Sales Intelligence",
+      "slug": "sales-intelligence",
+      "description": "Contact data, intent signals, and prospecting tools"
+    },
+    {
+      "name": "CRM",
+      "slug": "crm",
+      "description": "Customer relationship management platforms"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Outreach",
+      "slug": "outreach",
+      "category": "Sales Engagement",
+      "description": "Enterprise sales engagement platform for multi-channel sequences",
+      "pricing": "Custom pricing, typically $100-150/user/month",
+      "best_for": "Enterprise sales teams with complex workflows",
+      "website": "https://www.outreach.io",
+      "pros": ["Robust automation", "Enterprise integrations", "Advanced analytics"],
+      "cons": ["Expensive", "Complex setup", "Steep learning curve"]
+    },
+    {
+      "name": "Salesloft",
+      "slug": "salesloft",
+      "category": "Sales Engagement",
+      "description": "Sales engagement platform acquired by Vista Equity",
+      "pricing": "Custom pricing, typically $75-125/user/month",
+      "best_for": "Mid-market to enterprise B2B sales teams",
+      "website": "https://www.salesloft.com",
+      "pros": ["User-friendly interface", "Strong cadence builder", "Good support"],
+      "cons": ["Limited customization", "Reporting could be better"]
+    },
+    {
+      "name": "Apollo.io",
+      "slug": "apollo",
+      "category": "Sales Engagement",
+      "description": "All-in-one sales intelligence and engagement platform",
+      "pricing": "Free tier available, paid from $49/user/month",
+      "best_for": "SMB and mid-market teams wanting data + engagement",
+      "website": "https://www.apollo.io",
+      "pros": ["Built-in data", "Affordable", "Easy to use"],
+      "cons": ["Data quality varies", "Less enterprise features"]
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "category": "Revenue Intelligence",
+      "description": "Conversation intelligence platform for sales calls",
+      "pricing": "Custom pricing, typically $100-150/user/month",
+      "best_for": "Sales teams wanting call coaching and deal insights",
+      "website": "https://www.gong.io",
+      "pros": ["Best-in-class transcription", "Deal intelligence", "Coaching tools"],
+      "cons": ["Expensive", "Requires volume for insights"]
+    },
+    {
+      "name": "Chorus.ai",
+      "slug": "chorus",
+      "category": "Revenue Intelligence",
+      "description": "Conversation intelligence platform (acquired by ZoomInfo)",
+      "pricing": "Bundled with ZoomInfo or standalone",
+      "best_for": "Teams already using ZoomInfo",
+      "website": "https://www.chorus.ai",
+      "pros": ["ZoomInfo integration", "Good transcription"],
+      "cons": ["Less standalone value post-acquisition"]
+    },
+    {
+      "name": "Clari",
+      "slug": "clari",
+      "category": "Revenue Intelligence",
+      "description": "Revenue operations platform for forecasting and pipeline",
+      "pricing": "Custom enterprise pricing",
+      "best_for": "Revenue leaders wanting forecast accuracy",
+      "website": "https://www.clari.com",
+      "pros": ["Forecasting accuracy", "Pipeline visibility", "CRO dashboards"],
+      "cons": ["Complex implementation", "Expensive"]
+    },
+    {
+      "name": "ZoomInfo",
+      "slug": "zoominfo",
+      "category": "Sales Intelligence",
+      "description": "B2B contact and company data platform",
+      "pricing": "Custom pricing, typically $15K-50K+/year",
+      "best_for": "Enterprise teams needing comprehensive B2B data",
+      "website": "https://www.zoominfo.com",
+      "pros": ["Largest database", "Intent data", "Integrations"],
+      "cons": ["Expensive", "Data decay", "Aggressive sales tactics"]
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "slug": "linkedin-sales-navigator",
+      "category": "Sales Intelligence",
+      "description": "LinkedIn's premium sales prospecting tool",
+      "pricing": "$79.99-$159.99/user/month",
+      "best_for": "Individual reps and small teams",
+      "website": "https://business.linkedin.com/sales-solutions",
+      "pros": ["Direct LinkedIn integration", "InMail credits", "Lead recommendations"],
+      "cons": ["Limited export", "No email data"]
+    },
+    {
+      "name": "Cognism",
+      "slug": "cognism",
+      "category": "Sales Intelligence",
+      "description": "GDPR-compliant B2B data provider, strong in EMEA",
+      "pricing": "Custom pricing",
+      "best_for": "Teams selling into Europe",
+      "website": "https://www.cognism.com",
+      "pros": ["GDPR compliant", "Phone-verified mobiles", "EMEA strength"],
+      "cons": ["Weaker US coverage", "Smaller database"]
+    },
+    {
+      "name": "Salesforce",
+      "slug": "salesforce",
+      "category": "CRM",
+      "description": "The dominant enterprise CRM platform",
+      "pricing": "$25-300/user/month depending on edition",
+      "best_for": "Mid-market to enterprise with complex needs",
+      "website": "https://www.salesforce.com",
+      "pros": ["Ecosystem", "Customization", "Enterprise features"],
+      "cons": ["Complexity", "Cost", "Admin overhead"]
+    },
+    {
+      "name": "HubSpot CRM",
+      "slug": "hubspot",
+      "category": "CRM",
+      "description": "All-in-one CRM with marketing automation",
+      "pricing": "Free tier, paid from $45/month",
+      "best_for": "SMB and mid-market with marketing alignment",
+      "website": "https://www.hubspot.com",
+      "pros": ["Free tier", "Easy to use", "Marketing integration"],
+      "cons": ["Gets expensive at scale", "Less customizable"]
+    }
+  ],
+  "alternatives": [
+    {
+      "main_tool": "Outreach",
+      "slug": "outreach-alternatives",
+      "title": "Outreach Alternatives",
+      "description": "Looking for Outreach alternatives? Compare the top sales engagement platforms for 2025.",
+      "alternatives": ["Salesloft", "Apollo.io", "HubSpot"],
+      "comparison_points": [
+        "Salesloft offers similar features at slightly lower cost with better UX",
+        "Apollo.io bundles data + engagement at a fraction of the price",
+        "HubSpot sequences work well if you're already in their ecosystem"
+      ]
+    },
+    {
+      "main_tool": "Gong",
+      "slug": "gong-alternatives",
+      "title": "Gong Alternatives",
+      "description": "Exploring Gong alternatives? Compare conversation intelligence platforms for sales teams.",
+      "alternatives": ["Chorus.ai", "Clari", "Salesforce Einstein"],
+      "comparison_points": [
+        "Chorus offers similar transcription, now bundled with ZoomInfo",
+        "Clari focuses more on forecasting than call coaching",
+        "Native CRM tools are catching up but lack depth"
+      ]
+    },
+    {
+      "main_tool": "ZoomInfo",
+      "slug": "zoominfo-alternatives",
+      "title": "ZoomInfo Alternatives",
+      "description": "Looking for ZoomInfo alternatives? Compare B2B data providers for prospecting.",
+      "alternatives": ["Apollo.io", "Cognism", "LinkedIn Sales Navigator"],
+      "comparison_points": [
+        "Apollo bundles data + engagement at much lower cost",
+        "Cognism is stronger for EMEA and GDPR compliance",
+        "LinkedIn Sales Nav has direct platform access but limited export"
+      ]
+    },
+    {
+      "main_tool": "Salesloft",
+      "slug": "salesloft-alternatives",
+      "title": "Salesloft Alternatives",
+      "description": "Comparing Salesloft alternatives? Find the right sales engagement platform for your team.",
+      "alternatives": ["Outreach", "Apollo.io", "HubSpot"],
+      "comparison_points": [
+        "Outreach has more enterprise features but higher complexity",
+        "Apollo.io offers data + engagement at lower cost",
+        "HubSpot works well for marketing-aligned teams"
+      ]
+    },
+    {
+      "main_tool": "Salesforce",
+      "slug": "salesforce-alternatives",
+      "title": "Salesforce Alternatives",
+      "description": "Exploring Salesforce alternatives? Compare CRM platforms for sales teams.",
+      "alternatives": ["HubSpot", "Pipedrive", "Close"],
+      "comparison_points": [
+        "HubSpot offers better UX and marketing integration",
+        "Pipedrive is built for salespeople, not admins",
+        "Close excels for inside sales teams"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "tool_a": "Outreach",
+      "tool_b": "Salesloft",
+      "slug": "outreach-vs-salesloft",
+      "title": "Outreach vs Salesloft",
+      "description": "The definitive comparison of Outreach and Salesloft for sales engagement.",
+      "winner_for": {
+        "enterprise": "Outreach",
+        "mid_market": "Salesloft",
+        "ease_of_use": "Salesloft",
+        "features": "Outreach"
+      }
+    },
+    {
+      "tool_a": "Gong",
+      "tool_b": "Chorus",
+      "slug": "gong-vs-chorus",
+      "title": "Gong vs Chorus",
+      "description": "Comparing Gong and Chorus for conversation intelligence.",
+      "winner_for": {
+        "standalone": "Gong",
+        "zoominfo_users": "Chorus",
+        "transcription": "Gong",
+        "value": "Chorus"
+      }
+    },
+    {
+      "tool_a": "ZoomInfo",
+      "tool_b": "Apollo",
+      "slug": "zoominfo-vs-apollo",
+      "title": "ZoomInfo vs Apollo",
+      "description": "Comparing ZoomInfo and Apollo.io for sales intelligence and data.",
+      "winner_for": {
+        "data_quality": "ZoomInfo",
+        "value": "Apollo",
+        "smb": "Apollo",
+        "enterprise": "ZoomInfo"
+      }
+    }
+  ]
+}

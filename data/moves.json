@@ -1,0 +1,33 @@
+{
+  "moves": [
+    {
+      "name": "Derek Phillips",
+      "new_role": "Chief Revenue Officer",
+      "new_company": "Vectra AI",
+      "previous": "CRO at Claroty; Deputy CEO/CRO at Kudelski Security",
+      "date": "2025-12-27"
+    },
+    {
+      "name": "Denise Dresser",
+      "new_role": "Chief Revenue Officer", 
+      "new_company": "OpenAI",
+      "previous": "CEO at Slack (2023-2025); President at Salesforce",
+      "date": "2025-12-11"
+    },
+    {
+      "name": "Tim Strickland",
+      "new_role": "Chief Revenue Officer",
+      "new_company": "Keeper Security",
+      "previous": "CRO at ZoomInfo; Senior Revenue Leadership at Marketo",
+      "date": "2025-12-05"
+    },
+    {
+      "name": "Matt West",
+      "new_role": "Chief Revenue Officer",
+      "new_company": "MX Technologies",
+      "previous": "VP Strategic Accounts at MX Technologies (15 years)",
+      "date": "2025-12-18"
+    }
+  ],
+  "last_updated": "2025-12-27"
+}

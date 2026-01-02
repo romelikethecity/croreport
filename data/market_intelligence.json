@@ -1,0 +1,67 @@
+{
+  "date": "January 02, 2026",
+  "total_jobs": 152,
+  "tools": {
+    "Salesforce": 62,
+    "HubSpot": 4,
+    "Outreach": 3,
+    "Tableau": 3,
+    "ZoomInfo": 2,
+    "Clari": 2,
+    "Gong": 1,
+    "LinkedIn Sales Nav": 1
+  },
+  "methodologies": {
+    "Enterprise Sales": 44,
+    "Consultative Selling": 33,
+    "Channel/Partner": 22,
+    "Value Selling": 20,
+    "MEDDIC/MEDDPICC": 14,
+    "PLG/Product-Led": 12,
+    "Challenger": 5,
+    "Account-Based (ABM)": 1
+  },
+  "trends": {
+    "Scale / Scalable": 338,
+    "Go-to-Market / GTM": 148,
+    "AI / Machine Learning": 144,
+    "SaaS": 50,
+    "Data-Driven": 34,
+    "Cloud": 34,
+    "Series A-D (Startup)": 30,
+    "Customer Success": 22,
+    "Recurring Revenue/ARR": 16,
+    "GenAI": 12
+  },
+  "industries": {
+    "Technology/Software": 285,
+    "Healthcare": 152,
+    "Financial Services": 136,
+    "Education": 119,
+    "Cybersecurity": 77,
+    "Government": 76,
+    "Retail/E-commerce": 75,
+    "Real Estate": 39,
+    "Energy": 32,
+    "Manufacturing": 18
+  },
+  "red_flags": {
+    "\"Competitive compensation\" (vague)": 40,
+    "\"Fast-paced environment\"": 20,
+    "Travel 50%+": 11,
+    "\"Self-starter\" required": 3,
+    "\"Wear many hats\"": 3
+  },
+  "experience_requirements": {
+    "10": 41,
+    "5": 18,
+    "7": 13,
+    "8": 10,
+    "15": 10,
+    "4": 10,
+    "12": 6,
+    "3": 6,
+    "6": 4,
+    "2": 2
+  }
+}
