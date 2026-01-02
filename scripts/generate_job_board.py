@@ -84,17 +84,16 @@ html_content = f'''<!DOCTYPE html>
 
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            background: #f8fafc;
             min-height: 100vh;
-            padding: 20px;
         }}
 
         .container {{
             max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
         }}
 
@@ -388,9 +387,67 @@ html_content = f'''<!DOCTYPE html>
                 font-size: 1.2em;
             }}
         }}
+
+        /* Site Navigation */
+        .site-nav {{
+            background: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }}
+        .nav-logo {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #1e3a5f;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }}
+        .nav-logo img {{
+            height: 36px;
+        }}
+        .nav-links {{
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }}
+        .nav-links a {{
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }}
+        .nav-links a:hover {{
+            color: #1e3a5f;
+        }}
+        .nav-links .subscribe-btn {{
+            background: #1e3a5f;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }}
+        .nav-links .subscribe-btn:hover {{
+            background: #2c5282;
+        }}
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <a href="/" class="nav-logo">
+            <img src="/assets/logo.jpg" alt="The CRO Report">
+            The CRO Report
+        </a>
+        <div class="nav-links">
+            <a href="/jobs/">Jobs</a>
+            <a href="/salaries/">Salaries</a>
+            <a href="/insights/">Market Intel</a>
+            <a href="https://croreport.substack.com/subscribe" class="subscribe-btn">Subscribe</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="header">
             <img src="data:image/jpeg;base64,{logo_base64}" alt="The CRO Report Logo" class="logo" style="width: 200px; height: auto; background: white; padding: 20px; border-radius: 12px;">
