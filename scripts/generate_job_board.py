@@ -1,48 +1,66 @@
-#!/usr/bin/env python3
-"""
-Generate the free job board for GitHub Pages
-This is the lead magnet - job listings are free, analysis is paid
-"""
-
 import pandas as pd
 from datetime import datetime
 import glob
-import os
+import json
 import csv
-from io import StringIO
 
-DATA_DIR = 'data'
-SITE_DIR = 'site'
+# ============================================================
+# LOAD ENRICHED DATA
+# ============================================================
 
 print("="*70)
 print("🌐 GENERATING JOB BOARD")
 print("="*70)
 
-os.makedirs(f'{SITE_DIR}/jobs', exist_ok=True)
-
-# Find most recent enriched data
-files = glob.glob(f"{DATA_DIR}/executive_sales_jobs_*.csv")
+# Find most recent enriched data file
+files = glob.glob("data/executive_sales_jobs_*.csv")
 if not files:
-    print("❌ No enriched data found")
+    print("\n❌ ERROR: No enriched data files found.")
+    print("👉 Please run enrich_and_analyze.py first.")
     exit(1)
 
 latest_file = max(files)
-print(f"📂 Loading: {latest_file}")
+print(f"\n📂 Loading: {latest_file}")
 
+# Load enriched data using pandas (handles CSV properly)
 df = pd.read_csv(latest_file)
 print(f"📊 Loaded {len(df)} jobs")
 
-# Clean descriptions - replace newlines with spaces to prevent CSV parsing issues
-if 'description' in df.columns:
-    df['description'] = df['description'].fillna('').str.replace('\n', ' ').str.replace('\r', ' ')
-
-# Convert to CSV string for embedding
+# Convert DataFrame to properly escaped CSV string for embedding
+# Use csv module to ensure proper escaping
+from io import StringIO
 output = StringIO()
 df.to_csv(output, index=False, quoting=csv.QUOTE_ALL)
 csv_data = output.getvalue()
+
+# Escape for JavaScript template literal
+# Only escape backticks and ${} - newlines should stay as literal newlines
 csv_data_escaped = csv_data.replace('\\', '\\\\').replace('`', '\\`').replace('${', '\\${')
 
+# Get update date
 update_date = datetime.now().strftime('%B %d, %Y')
+
+# Load and embed the CRO Report logo
+import os
+import base64
+
+# Try to load logo from same directory as script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+logo_path = 'site/assets/logo.jpg'
+
+if os.path.exists(logo_path):
+    with open(logo_path, 'rb') as f:
+        logo_base64 = base64.b64encode(f.read()).decode('utf-8')
+    print(f"✅ Loaded logo: {logo_path}")
+else:
+    # Fallback: simple SVG placeholder
+    logo_base64 = ""
+    print("⚠️  Warning: cro_minimal_zoomed.jpg not found in script directory")
+    print(f"   Looking for: {logo_path}")
+
+# ============================================================
+# GENERATE HTML
+# ============================================================
 
 html_content = f'''<!DOCTYPE html>
 <html lang="en">
@@ -50,218 +68,31 @@ html_content = f'''<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Sales Jobs | VP Sales, CRO Roles | The CRO Report</title>
-    <meta name="description" content="Browse {len(df)}+ VP Sales, CRO, and executive sales leadership positions. Salary data included. Updated weekly.">
-    <link rel="canonical" href="https://thecroreport.com/jobs/">
+    <meta name="description" content="Browse VP Sales, CRO, and executive sales leadership positions. Salary data included. Updated weekly.">
     <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+
         body {{
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
             min-height: 100vh;
+            padding: 20px;
         }}
-        
-        .header {{
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }}
-        .header h1 {{ font-size: 2rem; margin-bottom: 8px; }}
-        .header p {{ opacity: 0.9; font-size: 1.1rem; }}
-        .update-badge {{
-            display: inline-block;
-            background: #d97706;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 12px;
-            font-weight: 600;
-        }}
-        
-        .container {{ max-width: 1200px; margin: 0 auto; padding: 0 20px; }}
-        
-        .filters {{
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            margin: -30px auto 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-        }}
-        .filter-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }}
-        .filter-group label {{
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 0.85rem;
-            color: #475569;
-        }}
-        .filter-group input, .filter-group select {{
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }}
-        .filter-group input:focus, .filter-group select:focus {{
-            outline: none;
-            border-color: #1e3a5f;
-        }}
-        
-        .stats {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #e2e8f0;
-        }}
-        .stats-left {{ font-size: 1rem; color: #475569; }}
-        .stats-left strong {{ color: #d97706; font-size: 1.2rem; }}
-        
-        .clear-btn {{
-            background: #1e3a5f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }}
-        .clear-btn:hover {{ background: #2d4a6f; }}
-        
-        .jobs-grid {{
-            display: grid;
-            gap: 16px;
-        }}
-        
-        .job-card {{
+
+        .container {{
+            max-width: 1400px;
+            margin: 0 auto;
             background: white;
             border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s;
-            cursor: pointer;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
         }}
-        .job-card:hover {{
-            border-color: #1e3a5f;
-            box-shadow: 0 4px 16px rgba(30,58,95,0.12);
-            transform: translateY(-2px);
-        }}
-        
-        .job-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 12px;
-        }}
-        .job-title {{
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 4px;
-        }}
-        .job-company {{
-            color: #1e3a5f;
-            font-weight: 500;
-        }}
-        .job-salary {{
-            background: #f0fdf4;
-            color: #166534;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            white-space: nowrap;
-        }}
-        
-        .job-meta {{
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            color: #64748b;
-        }}
-        .job-meta span {{ display: flex; align-items: center; gap: 4px; }}
-        
-        .job-tags {{
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }}
-        .tag {{
-            background: #f1f5f9;
-            color: #475569;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }}
-        .tag.remote {{ background: #dbeafe; color: #1d4ed8; }}
-        .tag.seniority {{ background: #fef3c7; color: #92400e; }}
-        
-        .apply-btn {{
-            display: inline-block;
-            background: #d97706;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 16px;
-            transition: background 0.2s;
-        }}
-        .apply-btn:hover {{ background: #b45309; }}
-        
-        .cta-banner {{
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin: 40px 0;
-        }}
-        .cta-banner h2 {{ margin-bottom: 12px; }}
-        .cta-banner p {{ opacity: 0.9; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }}
-        .cta-btn {{
-            display: inline-block;
-            background: #d97706;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-        }}
-        .cta-btn:hover {{ background: #b45309; }}
-        
-        .no-results {{
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-        }}
-        .no-results h2 {{ color: #0f172a; margin-bottom: 8px; }}
-        
-        .footer {{
-            background: #1e3a5f;
-            color: #94a3b8;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
-        }}
-        .footer a {{ color: #d97706; }}
-        
+
         /* Site Navigation */
         .site-nav {{
             background: white;
@@ -270,18 +101,16 @@ html_content = f'''<!DOCTYPE html>
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 100%;
         }}
-        .site-nav .logo {{
+        .site-nav .nav-logo {{
             display: flex;
             align-items: center;
             gap: 8px;
-            font-family: 'Inter', sans-serif;
             font-weight: 600;
             color: #1e3a5f;
             text-decoration: none;
         }}
-        .site-nav .logo img {{ height: 32px; }}
+        .site-nav .nav-logo img {{ height: 32px; }}
         .site-nav .nav-links {{
             display: flex;
             gap: 24px;
@@ -300,176 +129,556 @@ html_content = f'''<!DOCTYPE html>
             padding: 8px 16px;
             border-radius: 6px;
         }}
-        .site-nav .subscribe-btn:hover {{ background: #2d4a6f; }}
+        .site-nav .subscribe-btn:hover {{ background: #2c5282; }}
+        
+        .header {{
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }}
+
+        .logo {{
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }}
+
+        .header h1 {{
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }}
+
+        .header p {{
+            font-size: 1.1em;
+            opacity: 0.95;
+        }}
+
+        .update-badge {{
+            display: inline-block;
+            background: #f5a623;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-weight: 600;
+        }}
+
+        .filters {{
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }}
+
+        .filter-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }}
+
+        .filter-group {{
+            display: flex;
+            flex-direction: column;
+        }}
+
+        .filter-group label {{
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 0.9em;
+        }}
+
+        .filter-group input,
+        .filter-group select {{
+            padding: 10px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.2s;
+        }}
+
+        .filter-group input:focus,
+        .filter-group select:focus {{
+            outline: none;
+            border-color: #f5a623;
+        }}
+
+        .checkbox-filter {{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }}
+
+        .checkbox-filter input[type="checkbox"] {{
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }}
+
+        .checkbox-filter label {{
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }}
+
+        .stats {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            flex-wrap: wrap;
+            gap: 16px;
+        }}
+
+        .stats-left {{
+            font-size: 1.1em;
+            color: #495057;
+        }}
+
+        .stats-left strong {{
+            color: #f5a623;
+            font-size: 1.3em;
+        }}
+
+        .clear-filters {{
+            background: #f5a623;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }}
+
+        .clear-filters:hover {{
+            background: #e09517;
+        }}
+
+        .jobs-list {{
+            padding: 20px 40px 40px;
+        }}
+
+        .job-card {{
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }}
+
+        .job-card:hover {{
+            border-color: #f5a623;
+            box-shadow: 0 4px 12px rgba(245, 166, 35, 0.15);
+            transform: translateY(-2px);
+        }}
+
+        .job-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }}
+
+        .job-title {{
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 4px;
+        }}
+
+        .job-company {{
+            font-size: 1.1em;
+            color: #f5a623;
+            font-weight: 600;
+        }}
+
+        .job-salary {{
+            background: #1e3a5f;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }}
+
+        .job-details {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 12px;
+            color: #6c757d;
+        }}
+
+        .job-detail {{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+
+        .job-detail svg {{
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }}
+
+        .job-tags {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }}
+
+        .job-tag {{
+            background: #f8f9fa;
+            color: #495057;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }}
+
+        .job-tag.remote {{
+            background: #d4edda;
+            color: #155724;
+        }}
+
+        .job-tag.seniority {{
+            background: #d1ecf1;
+            color: #0c5460;
+        }}
+
+        .apply-btn {{
+            display: inline-block;
+            background: #f5a623;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }}
+
+        .apply-btn:hover {{
+            background: #e09517;
+        }}
+
+        .no-results {{
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }}
+
+        .no-results h2 {{
+            font-size: 2em;
+            margin-bottom: 12px;
+        }}
+
+        .footer {{
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            color: #6c757d;
+            border-top: 2px solid #e9ecef;
+        }}
+
+        .footer a {{
+            color: #f5a623;
+            text-decoration: none;
+            font-weight: 600;
+        }}
+
+        .footer a:hover {{
+            text-decoration: underline;
+        }}
+
+        @media (max-width: 768px) {{
+            .header h1 {{
+                font-size: 1.8em;
+            }}
+
+            .filter-grid {{
+                grid-template-columns: 1fr;
+            }}
+
+            .stats {{
+                flex-direction: column;
+                align-items: flex-start;
+            }}
+
+            .job-title {{
+                font-size: 1.2em;
+            }}
+        }}
     </style>
 </head>
 <body>
-    <nav class="site-nav">
-        <a href="/" class="logo">
-            <img src="/assets/logo.jpg" alt="The CRO Report">
-            The CRO Report
-        </a>
-        <div class="nav-links">
-            <a href="/jobs/">Jobs</a>
-            <a href="/salaries/">Salaries</a>
-            <a href="/insights/">Market Intel</a>
-            <a href="https://croreport.substack.com/subscribe" class="subscribe-btn">Subscribe</a>
-        </div>
-    </nav>
-    
-    <header class="header">
-        <h1>Executive Sales Jobs</h1>
-        <p>VP Sales, CRO, and sales leadership positions</p>
-        <span class="update-badge">Updated {update_date}</span>
-    </header>
-    
     <div class="container">
+        <div class="header">
+            <img src="data:image/jpeg;base64,{logo_base64}" alt="The CRO Report Logo" class="logo" style="width: 200px; height: auto; background: white; padding: 20px; border-radius: 12px;">
+            <h1>The CRO Report</h1>
+            <p>Executive Sales Opportunities</p>
+            <span class="update-badge">Updated {update_date}</span>
+        </div>
+
         <div class="filters">
             <div class="filter-grid">
                 <div class="filter-group">
-                    <label>Search</label>
-                    <input type="text" id="searchInput" placeholder="Title or company...">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Job title or company...">
                 </div>
+
                 <div class="filter-group">
-                    <label>Seniority</label>
+                    <label for="seniorityFilter">Seniority Level</label>
                     <select id="seniorityFilter">
                         <option value="">All Levels</option>
                     </select>
                 </div>
+
                 <div class="filter-group">
-                    <label>Location</label>
-                    <select id="metroFilter">
+                    <label for="locationFilter">Location</label>
+                    <select id="locationFilter">
                         <option value="">All Locations</option>
                     </select>
                 </div>
+
                 <div class="filter-group">
-                    <label>Min Salary</label>
-                    <input type="number" id="minSalary" placeholder="e.g. 200000">
+                    <label for="minSalary">Min Salary</label>
+                    <input type="number" id="minSalary" placeholder="e.g., 150000">
+                </div>
+
+                <div class="filter-group">
+                    <label for="maxSalary">Max Salary</label>
+                    <input type="number" id="maxSalary" placeholder="e.g., 300000">
                 </div>
             </div>
+
+            <div class="checkbox-filter">
+                <input type="checkbox" id="remoteOnly">
+                <label for="remoteOnly">Remote positions only</label>
+            </div>
         </div>
-        
+
         <div class="stats">
             <div class="stats-left">
-                Showing <strong id="jobCount">{len(df)}</strong> roles
+                Showing <strong id="jobCount">0</strong> executive sales roles
             </div>
-            <button class="clear-btn" onclick="clearFilters()">Clear Filters</button>
+            <button class="clear-filters" onclick="clearFilters()">Clear Filters</button>
         </div>
-        
-        <div class="jobs-grid" id="jobsList"></div>
-        
-        <div class="cta-banner">
-            <h2>Want the full intelligence?</h2>
-            <p>Get red flags, predecessor intel, company deep-dives, and "skip these roles" analysis every week.</p>
-            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+
+        <div class="jobs-list" id="jobsList">
+            <!-- Jobs will be rendered here -->
+        </div>
+
+        <div class="footer">
+            <p>Jobs updated weekly | <a href="mailto:contact@croreport.com">Contact</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Curated opportunities for executive sales leaders</p>
         </div>
     </div>
-    
-    <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
-    </footer>
-    
+
     <script>
-        const csvData = `{csv_data_escaped}`;
+        // Embedded job data
+        const jobsData = `{csv_data_escaped}`;
+
         let allJobs = [];
         let filteredJobs = [];
-        
-        function parseCSV(csv) {{
-            const lines = csv.trim().split('\\n');
-            const headers = parseCSVLine(lines[0]);
-            return lines.slice(1).map(line => {{
-                const values = parseCSVLine(line);
-                const obj = {{}};
-                headers.forEach((h, i) => obj[h] = values[i] || '');
-                return obj;
-            }});
-        }}
-        
-        function parseCSVLine(line) {{
-            const result = [];
-            let current = '';
+
+        // Robust CSV parser that handles quotes, commas, and newlines
+        function parseCSV(csvText) {{
+            const lines = [];
+            let currentLine = [];
+            let currentField = '';
             let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {{
-                const char = line[i];
-                if (char === '"') {{
-                    if (inQuotes && line[i+1] === '"') {{
-                        current += '"';
-                        i++;
+            
+            // Parse character by character
+            for (let i = 0; i < csvText.length; i++) {{
+                const char = csvText[i];
+                const nextChar = csvText[i + 1];
+                
+                if (inQuotes) {{
+                    if (char === '"' && nextChar === '"') {{
+                        // Escaped quote inside quoted field
+                        currentField += '"';
+                        i++; // Skip next quote
+                    }} else if (char === '"') {{
+                        // End of quoted field
+                        inQuotes = false;
                     }} else {{
-                        inQuotes = !inQuotes;
+                        // Regular character inside quotes (including newlines and commas)
+                        currentField += char;
                     }}
-                }} else if (char === ',' && !inQuotes) {{
-                    result.push(current);
-                    current = '';
                 }} else {{
-                    current += char;
+                    if (char === '"') {{
+                        // Start of quoted field
+                        inQuotes = true;
+                    }} else if (char === ',') {{
+                        // Field separator
+                        currentLine.push(currentField);
+                        currentField = '';
+                    }} else if (char === '\\n') {{
+                        // Line separator (only if not in quotes)
+                        if (currentField || currentLine.length > 0) {{
+                            currentLine.push(currentField);
+                            lines.push(currentLine);
+                            currentLine = [];
+                            currentField = '';
+                        }}
+                    }} else if (char === '\\r') {{
+                        // Skip carriage return
+                        continue;
+                    }} else {{
+                        currentField += char;
+                    }}
                 }}
             }}
-            result.push(current);
-            return result;
-        }}
-        
-        function init() {{
-            allJobs = parseCSV(csvData);
-            filteredJobs = [...allJobs];
-            populateFilters();
-            attachListeners();
-            renderJobs();
-        }}
-        
-        function populateFilters() {{
-            const seniorities = new Set();
-            const metros = new Set();
-            allJobs.forEach(job => {{
-                if (job.seniority) seniorities.add(job.seniority);
-                if (job.metro) metros.add(job.metro);
-            }});
             
-            const senioritySelect = document.getElementById('seniorityFilter');
-            Array.from(seniorities).sort().forEach(s => {{
-                senioritySelect.innerHTML += `<option value="${{s}}">${{s}}</option>`;
-            }});
-            
-            const metroSelect = document.getElementById('metroFilter');
-            Array.from(metros).sort().forEach(m => {{
-                metroSelect.innerHTML += `<option value="${{m}}">${{m}}</option>`;
-            }});
-        }}
-        
-        function applyFilters() {{
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const seniority = document.getElementById('seniorityFilter').value;
-            const metro = document.getElementById('metroFilter').value;
-            const minSalary = parseFloat(document.getElementById('minSalary').value) || 0;
-            
-            filteredJobs = allJobs.filter(job => {{
-                if (search && !`${{job.title}} ${{job.company}}`.toLowerCase().includes(search)) return false;
-                if (seniority && job.seniority !== seniority) return false;
-                if (metro && job.metro !== metro) return false;
-                if (minSalary && (parseFloat(job.max_amount) || 0) < minSalary) return false;
-                return true;
-            }});
-            
-            renderJobs();
-        }}
-        
-        function renderJobs() {{
-            const container = document.getElementById('jobsList');
-            document.getElementById('jobCount').textContent = filteredJobs.length;
-            
-            if (filteredJobs.length === 0) {{
-                container.innerHTML = '<div class="no-results"><h2>No jobs found</h2><p>Try adjusting your filters</p></div>';
-                return;
+            // Don't forget last field and line
+            if (currentField || currentLine.length > 0) {{
+                currentLine.push(currentField);
+                lines.push(currentLine);
             }}
             
-            container.innerHTML = filteredJobs.map(job => {{
-                if (!job.title) return '';
-                const url = job.job_url_direct || '#';
+            // First line is headers
+            const headers = lines[0];
+            
+            // Convert remaining lines to objects
+            const data = [];
+            for (let i = 1; i < lines.length; i++) {{
+                const line = lines[i];
+                if (line.length < headers.length) continue; // Skip malformed lines
+                
+                const obj = {{}};
+                headers.forEach((header, index) => {{
+                    obj[header] = line[index] || '';
+                }});
+                
+                // Only include if has title and company
+                if (obj.title && obj.company) {{
+                    data.push(obj);
+                }}
+            }}
+            
+            return data;
+        }}
+
+        // Initialize
+        function init() {{
+            allJobs = parseCSV(jobsData);
+            filteredJobs = [...allJobs];
+            
+            populateFilters();
+            renderJobs();
+            attachEventListeners();
+        }}
+
+        // Populate filter dropdowns
+        function populateFilters() {{
+            const locations = new Set();
+            const seniorities = new Set();
+
+            allJobs.forEach(job => {{
+                if (job.location) locations.add(job.location);
+                if (job.seniority) seniorities.add(job.seniority);
+            }});
+
+            populateSelect('locationFilter', Array.from(locations).sort());
+            populateSelect('seniorityFilter', Array.from(seniorities).sort());
+        }}
+
+        function populateSelect(id, options) {{
+            const select = document.getElementById(id);
+            options.forEach(option => {{
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                select.appendChild(opt);
+            }});
+        }}
+
+        // Apply filters
+        function applyFilters() {{
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const seniority = document.getElementById('seniorityFilter').value;
+            const location = document.getElementById('locationFilter').value;
+            const minSalary = document.getElementById('minSalary').value;
+            const maxSalary = document.getElementById('maxSalary').value;
+            const remoteOnly = document.getElementById('remoteOnly').checked;
+
+            filteredJobs = allJobs.filter(job => {{
+                // Search filter
+                if (searchTerm) {{
+                    const searchableText = `${{job.title}} ${{job.company}}`.toLowerCase();
+                    if (!searchableText.includes(searchTerm)) return false;
+                }}
+
+                // Seniority filter
+                if (seniority && job.seniority !== seniority) return false;
+
+                // Location filter
+                if (location && job.location !== location) return false;
+
+                // Salary filters
+                const jobMinSalary = parseFloat(job.min_amount) || 0;
+                const jobMaxSalary = parseFloat(job.max_amount) || Infinity;
+                
+                if (minSalary && jobMaxSalary < parseFloat(minSalary)) return false;
+                if (maxSalary && jobMinSalary > parseFloat(maxSalary)) return false;
+
+                // Remote filter
+                if (remoteOnly && job.is_remote !== 'True') return false;
+
+                return true;
+            }});
+
+            renderJobs();
+        }}
+
+        // Render jobs
+        function renderJobs() {{
+            const jobsList = document.getElementById('jobsList');
+            const jobCount = document.getElementById('jobCount');
+            
+            jobCount.textContent = filteredJobs.length;
+
+            if (filteredJobs.length === 0) {{
+                jobsList.innerHTML = `
+                    <div class="no-results">
+                        <h2>No jobs found</h2>
+                        <p>Try adjusting your filters to see more results</p>
+                    </div>
+                `;
+                return;
+            }}
+
+            jobsList.innerHTML = filteredJobs.map(job => {{
+                // Skip jobs with no title or company
+                if (!job.title || !job.company) return '';
+                
+                // Get job URL - try multiple fields with validation
+                let jobUrl = job.job_url_direct || job.job_url || '';
+                
+                // Validate URL
+                if (!jobUrl || jobUrl.length < 10 || !jobUrl.startsWith('http')) {{
+                    console.warn('Invalid job URL for:', job.title, 'URL:', jobUrl);
+                    jobUrl = '#';  // Fallback to prevent broken links
+                }}
+                
                 const salary = formatSalary(job.min_amount, job.max_amount);
                 const isRemote = job.is_remote === 'True';
                 
                 return `
-                    <div class="job-card" onclick="window.open('${{url}}', '_blank')">
+                    <div class="job-card" onclick="if('${{jobUrl}}' !== '#') window.open('${{jobUrl}}', '_blank')">
                         <div class="job-header">
                             <div>
                                 <div class="job-title">${{escapeHtml(job.title)}}</div>
@@ -477,67 +686,129 @@ html_content = f'''<!DOCTYPE html>
                             </div>
                             ${{salary ? `<div class="job-salary">${{salary}}</div>` : ''}}
                         </div>
-                        <div class="job-meta">
-                            ${{job.location ? `<span>📍 ${{escapeHtml(job.location)}}</span>` : ''}}
-                            ${{job.date_posted ? `<span>📅 ${{formatDate(job.date_posted)}}</span>` : ''}}
+                        
+                        <div class="job-details">
+                            ${{job.location ? `
+                                <div class="job-detail">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                    ${{escapeHtml(job.location)}}
+                                </div>
+                            ` : ''}}
+                            
+                            ${{job.date_posted ? `
+                                <div class="job-detail">
+                                    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                                    ${{formatDate(job.date_posted)}}
+                                </div>
+                            ` : ''}}
                         </div>
+                        
                         <div class="job-tags">
-                            ${{isRemote ? '<span class="tag remote">🏠 Remote</span>' : ''}}
-                            ${{job.seniority ? `<span class="tag seniority">${{job.seniority}}</span>` : ''}}
+                            ${{isRemote ? '<span class="job-tag remote">🏠 Remote</span>' : ''}}
+                            ${{job.seniority ? `<span class="job-tag seniority">${{escapeHtml(job.seniority)}}</span>` : ''}}
+                            ${{job.is_tech === 'True' ? '<span class="job-tag">💻 Tech Company</span>' : ''}}
+                            ${{job.company_industry ? `<span class="job-tag">${{escapeHtml(job.company_industry)}}</span>` : ''}}
                         </div>
-                        <a href="${{url}}" class="apply-btn" target="_blank" onclick="event.stopPropagation()">Apply →</a>
+                        
+                        ${{jobUrl !== '#' ? `
+                            <a href="${{jobUrl}}" class="apply-btn" target="_blank" onclick="event.stopPropagation()">
+                                Apply Now →
+                            </a>
+                        ` : `
+                            <div class="apply-btn" style="opacity: 0.5; cursor: not-allowed;" title="Job URL not available">
+                                URL Not Available
+                            </div>
+                        `}}
                     </div>
                 `;
-            }}).join('');
+            }}).filter(html => html).join(''); // Filter out empty strings
         }}
-        
+
+        // Helper functions
         function escapeHtml(text) {{
             if (!text) return '';
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }}
-        
         function formatSalary(min, max) {{
             if (!min && !max) return '';
-            const fmt = n => n >= 1000 ? '$' + (n/1000).toFixed(0) + 'K' : '$' + n;
-            if (min && max) return fmt(parseFloat(min)) + ' - ' + fmt(parseFloat(max));
-            if (min) return fmt(parseFloat(min)) + '+';
-            return 'Up to ' + fmt(parseFloat(max));
+            
+            const formatNum = (num) => {{
+                if (!num) return '';
+                const n = parseFloat(num);
+                if (n >= 1000) {{
+                    return '$' + (n / 1000).toFixed(0) + 'K';
+                }}
+                return '$' + n.toLocaleString();
+            }};
+
+            if (min && max) {{
+                return `${{formatNum(min)}} - ${{formatNum(max)}}`;
+            }} else if (min) {{
+                return `${{formatNum(min)}}+`;
+            }} else {{
+                return `Up to ${{formatNum(max)}}`;
+            }}
         }}
-        
-        function formatDate(d) {{
-            const date = new Date(d);
-            const days = Math.ceil((new Date() - date) / (1000*60*60*24));
-            if (days <= 1) return 'Today';
-            if (days <= 7) return days + ' days ago';
+
+        function formatDate(dateStr) {{
+            const date = new Date(dateStr);
+            const today = new Date();
+            const diffTime = Math.abs(today - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 7) return `${{diffDays}} days ago`;
+            if (diffDays < 30) return `${{Math.floor(diffDays / 7)}} weeks ago`;
             return date.toLocaleDateString();
         }}
-        
+
         function clearFilters() {{
             document.getElementById('searchInput').value = '';
             document.getElementById('seniorityFilter').value = '';
-            document.getElementById('metroFilter').value = '';
+            document.getElementById('locationFilter').value = '';
             document.getElementById('minSalary').value = '';
+            document.getElementById('maxSalary').value = '';
+            document.getElementById('remoteOnly').checked = false;
             applyFilters();
         }}
-        
-        function attachListeners() {{
+
+        // Event listeners
+        function attachEventListeners() {{
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             document.getElementById('seniorityFilter').addEventListener('change', applyFilters);
-            document.getElementById('metroFilter').addEventListener('change', applyFilters);
+            document.getElementById('locationFilter').addEventListener('change', applyFilters);
             document.getElementById('minSalary').addEventListener('input', applyFilters);
+            document.getElementById('maxSalary').addEventListener('input', applyFilters);
+            document.getElementById('remoteOnly').addEventListener('change', applyFilters);
         }}
-        
+
+        // Start the app
         init();
     </script>
 </body>
 </html>'''
 
-# Save job board
-output_path = f'{SITE_DIR}/jobs/index.html'
-with open(output_path, 'w', encoding='utf-8') as f:
+# ============================================================
+# SAVE HTML FILE
+# ============================================================
+
+output_filename = "site/jobs/index.html"
+with open(output_filename, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print(f"✅ Saved job board: {output_path}")
-print(f"📊 {len(df)} jobs embedded")
+print(f"\n" + "="*70)
+print("✅ INDEX.HTML GENERATED!")
+print("="*70)
+print(f"📁 File: {output_filename}")
+print(f"📊 Jobs embedded: {len(df)}")
+print(f"📅 Update date: {update_date}")
+print("\n✅ Job board generated")
+print("="*70)
+print("\nNext steps:")
+print("1. Upload index.html to Netlify")
+print("2. Or drag & drop the file to netlify.com/drop")
+print("3. Your job board will be live!")
+print("="*70)
