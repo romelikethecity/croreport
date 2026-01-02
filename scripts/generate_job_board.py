@@ -9,7 +9,7 @@ import csv
 # ============================================================
 
 print("="*70)
-print("🌐 GENERATING JOB BOARD")
+print("🌐 GENERATING INDEX.HTML FOR NETLIFY DEPLOYMENT")
 print("="*70)
 
 # Find most recent enriched data file
@@ -67,9 +67,8 @@ html_content = f'''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Sales Jobs | VP Sales, CRO Roles | The CRO Report</title>
-    <meta name="description" content="Browse VP Sales, CRO, and executive sales leadership positions. Salary data included. Updated weekly.">
-    <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+    <title>Open Roles for Sales Executives | The CRO Report</title>
+    <meta name="description" content="Curated VP+ sales executive jobs - CRO, SVP Sales, VP Sales positions updated weekly">
     <style>
         * {{
             margin: 0;
@@ -93,44 +92,6 @@ html_content = f'''<!DOCTYPE html>
             overflow: hidden;
         }}
 
-        /* Site Navigation */
-        .site-nav {{
-            background: white;
-            padding: 12px 20px;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }}
-        .site-nav .nav-logo {{
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            color: #1e3a5f;
-            text-decoration: none;
-        }}
-        .site-nav .nav-logo img {{ height: 32px; }}
-        .site-nav .nav-links {{
-            display: flex;
-            gap: 24px;
-            align-items: center;
-        }}
-        .site-nav .nav-links a {{
-            color: #64748b;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }}
-        .site-nav .nav-links a:hover {{ color: #1e3a5f; }}
-        .site-nav .subscribe-btn {{
-            background: #1e3a5f;
-            color: white !important;
-            padding: 8px 16px;
-            border-radius: 6px;
-        }}
-        .site-nav .subscribe-btn:hover {{ background: #2c5282; }}
-        
         .header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
             color: white;
@@ -805,7 +766,7 @@ print("="*70)
 print(f"📁 File: {output_filename}")
 print(f"📊 Jobs embedded: {len(df)}")
 print(f"📅 Update date: {update_date}")
-print("\n✅ Job board generated")
+print("\n🚀 READY FOR NETLIFY DEPLOYMENT")
 print("="*70)
 print("\nNext steps:")
 print("1. Upload index.html to Netlify")
