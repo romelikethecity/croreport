@@ -8,7 +8,7 @@ on:
       - 'scripts/**'
       - 'templates/**'
       - 'site/**'
-  workflow_dispatch:
+  workflow_dispatch:  # Allow manual trigger
 
 permissions:
   contents: read
@@ -32,14 +32,26 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install pandas matplotlib
+        run: |
+          pip install pandas matplotlib
+
+      - name: Run enrichment (if raw data exists)
+        run: |
+          if ls data/raw_jobs_*.csv 1> /dev/null 2>&1; then
+            echo "Found raw jobs data, running enrichment..."
+            python scripts/enrich_and_analyze.py
+          else
+            echo "No new raw data, using existing enriched data"
+          fi
+
+      - name: Merge to master database
+        run: python scripts/merge_to_master.py
 
       - name: Generate trend graphs
         run: python scripts/generate_graphs.py
 
-      # Job board generation disabled - using static file
-      # - name: Generate job board
-      #   run: python scripts/generate_job_board.py
+      - name: Generate job board
+        run: python scripts/generate_job_board.py
 
       - name: Generate salary pages
         run: python scripts/generate_salary_pages.py
