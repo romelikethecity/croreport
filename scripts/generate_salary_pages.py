@@ -272,19 +272,23 @@ def create_salary_page(title, slug, df_subset, description):
     
     return True
 
-# Generate pages by metro
-metros = ['New York', 'San Francisco', 'Boston', 'Chicago', 'Los Angeles', 'Seattle', 'Austin', 'Denver', 'Atlanta', 'Remote', 'Texas']
-metro_pages = []
+# Generate pages by metro (if metro column exists)
+if 'metro' in df_salary.columns:
+    metros = ['New York', 'San Francisco', 'Boston', 'Chicago', 'Los Angeles', 'Seattle', 'Austin', 'Denver', 'Atlanta', 'Remote', 'Texas']
+    metro_pages = []
 
-for metro in metros:
-    df_metro = df_salary[df_salary['metro'] == metro]
-    if len(df_metro) >= 3:
-        slug = metro.lower().replace(' ', '-')
-        title = f"VP Sales {metro}"
-        desc = f"Current VP Sales and CRO salary data for {metro}."
-        if create_salary_page(title, slug, df_metro, desc):
-            metro_pages.append({'title': title, 'slug': slug, 'count': len(df_metro), 'avg_max': df_metro['max_amount'].mean()})
-            print(f"✅ Created: /salaries/{slug}/ ({len(df_metro)} roles)")
+    for metro in metros:
+        df_metro = df_salary[df_salary['metro'] == metro]
+        if len(df_metro) >= 3:
+            slug = metro.lower().replace(' ', '-')
+            title = f"VP Sales {metro}"
+            desc = f"Current VP Sales and CRO salary data for {metro}."
+            if create_salary_page(title, slug, df_metro, desc):
+                metro_pages.append({'title': title, 'slug': slug, 'count': len(df_metro), 'avg_max': df_metro['max_amount'].mean()})
+                print(f"✅ Created: /salaries/{slug}/ ({len(df_metro)} roles)")
+else:
+    metro_pages = []
+    print("⚠️ Skipping metro pages - 'metro' column not found in data")
 
 # Generate pages by seniority
 seniorities = [('VP', 'vp-sales'), ('SVP', 'svp-sales'), ('C-Level', 'cro')]
