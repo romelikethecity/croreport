@@ -302,6 +302,80 @@ def generate_category_page(slug, config, df):
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
         
+        .site-header {{
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }}
+        .header-container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .logo {{
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: #1e3a5f;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .nav-links {{
+            display: flex;
+            list-style: none;
+            gap: 24px;
+            align-items: center;
+        }}
+        .nav-links a {{
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }}
+        .nav-links a:hover {{
+            color: #1e3a5f;
+        }}
+        .btn-subscribe {{
+            background: #1e3a5f;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }}
+        .btn-subscribe:hover {{
+            background: #2d4a6f;
+        }}
+        
+        .hero-header {{
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }}
+        .hero-header .eyebrow {{
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #d97706;
+            margin-bottom: 12px;
+        }}
+        .hero-header h1 {{ font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }}
+        .hero-header p {{ opacity: 0.9; max-width: 600px; margin: 0 auto; }}
+        .hero-header .count {{ 
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 16px;
+            font-size: 0.9rem;
+        }}
+        
         .header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
@@ -471,12 +545,26 @@ def generate_category_page(slug, config, df):
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo"><img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;"> The CRO Report</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero-header">
         <div class="eyebrow">Executive Sales Jobs</div>
         <h1>{config['h1']}</h1>
         <p>{config['description']}</p>
         <div class="count">{job_count} Current Openings</div>
-    </header>
+    </div>
     
     <div class="container">
         <nav class="breadcrumb">
