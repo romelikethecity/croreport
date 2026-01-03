@@ -44,7 +44,7 @@ CHART_LOCATION = SITE_ASSETS / "comp_by_location.png"
 # ============================================================
 # CHART STYLING (matches existing newsletter charts)
 # ============================================================
-DARK_BG = '#1a2332'
+DARK_BG = '#FFFFFF'
 CYAN = '#4dd0e1'
 ORANGE = '#ffa726'
 WHITE = '#ffffff'
@@ -97,15 +97,15 @@ def generate_seniority_chart(analysis):
         ax.barh(i, max_val - min_val, left=min_val, height=0.5, color=CYAN, alpha=0.8)
         ax.scatter(min_val, i, color=CYAN, s=180, zorder=5)
         ax.scatter(max_val, i, color=ORANGE, s=180, zorder=5)
-        ax.text(min_val - 22000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=WHITE, fontsize=22, fontweight='bold')
-        ax.text(max_val + 22000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=WHITE, fontsize=22, fontweight='bold')
+        ax.text(min_val - 22000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
+        ax.text(max_val + 22000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
         ax.text(max_val + 110000, i, f'n={n}', ha='left', va='center', color=GRAY, fontsize=20)
     
     ax.set_yticks(y_pos)
     ax.set_yticklabels(levels, fontsize=26, fontweight='bold')
     ax.set_xlabel('Base Salary Range', fontsize=22, color=GRAY)
     ax.set_xlim(80000, 480000)
-    ax.set_title('Compensation by Seniority Level', fontsize=32, color=WHITE, pad=30, fontweight='bold')
+    ax.set_title('Compensation by Seniority Level', fontsize=32, color=TEXT_DARK, pad=30, fontweight='bold')
     
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x/1000:.0f}K'))
     ax.tick_params(axis='x', labelsize=20)
@@ -113,10 +113,10 @@ def generate_seniority_chart(analysis):
     
     min_patch = mpatches.Patch(color=CYAN, label='Min Base (Avg)')
     max_patch = mpatches.Patch(color=ORANGE, label='Max Base (Avg)')
-    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor=DARK_BG, edgecolor=GRID_COLOR, fontsize=18)
+    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor='#FFFFFF', edgecolor=GRID_COLOR, fontsize=18)
     
     plt.tight_layout()
-    plt.savefig(CHART_SENIORITY, dpi=150, facecolor=DARK_BG, edgecolor='none', bbox_inches='tight')
+    plt.savefig(CHART_SENIORITY, dpi=150, facecolor='#FFFFFF', edgecolor='none', bbox_inches='tight')
     plt.close()
     print(f"  📊 Saved: {CHART_SENIORITY}")
 
@@ -158,15 +158,15 @@ def generate_stage_chart(analysis):
         ax.barh(i, max_val - min_val, left=min_val, height=0.5, color=CYAN, alpha=0.8)
         ax.scatter(min_val, i, color=CYAN, s=180, zorder=5)
         ax.scatter(max_val, i, color=ORANGE, s=180, zorder=5)
-        ax.text(min_val - 20000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=WHITE, fontsize=22, fontweight='bold')
-        ax.text(max_val + 20000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=WHITE, fontsize=22, fontweight='bold')
+        ax.text(min_val - 20000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
+        ax.text(max_val + 20000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
         ax.text(max_val + 95000, i, f'n={n}', ha='left', va='center', color=GRAY, fontsize=20)
     
     ax.set_yticks(y_pos)
     ax.set_yticklabels(stages, fontsize=24, fontweight='bold')
     ax.set_xlabel('Base Salary Range', fontsize=22, color=GRAY)
     ax.set_xlim(60000, 450000)
-    ax.set_title('Compensation by Company Stage', fontsize=32, color=WHITE, pad=30, fontweight='bold')
+    ax.set_title('Compensation by Company Stage', fontsize=32, color=TEXT_DARK, pad=30, fontweight='bold')
     
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x/1000:.0f}K'))
     ax.tick_params(axis='x', labelsize=20)
@@ -182,14 +182,14 @@ def generate_stage_chart(analysis):
         ax.annotate(f'+{premium}% Enterprise Premium', 
                     xy=(0.98, 0.02), xycoords='axes fraction',
                     ha='right', va='bottom', fontsize=20, color=ORANGE, fontweight='bold',
-                    bbox=dict(boxstyle='round,pad=0.5', facecolor=DARK_BG, edgecolor=ORANGE, alpha=0.9, linewidth=2))
+                    bbox=dict(boxstyle='round,pad=0.5', facecolor='#FFFFFF', edgecolor=ORANGE, alpha=0.9, linewidth=2))
     
     min_patch = mpatches.Patch(color=CYAN, label='Min Base (Avg)')
     max_patch = mpatches.Patch(color=ORANGE, label='Max Base (Avg)')
-    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor=DARK_BG, edgecolor=GRID_COLOR, fontsize=18)
+    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor='#FFFFFF', edgecolor=GRID_COLOR, fontsize=18)
     
     plt.tight_layout()
-    plt.savefig(CHART_STAGE, dpi=150, facecolor=DARK_BG, edgecolor='none', bbox_inches='tight')
+    plt.savefig(CHART_STAGE, dpi=150, facecolor='#FFFFFF', edgecolor='none', bbox_inches='tight')
     plt.close()
     print(f"  📊 Saved: {CHART_STAGE}")
 
@@ -219,8 +219,8 @@ def generate_location_chart(analysis):
         ax.barh(i, max_val - min_val, left=min_val, height=0.5, color=CYAN, alpha=0.8)
         ax.scatter(min_val, i, color=CYAN, s=180, zorder=5)
         ax.scatter(max_val, i, color=ORANGE, s=180, zorder=5)
-        ax.text(min_val - 22000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=WHITE, fontsize=22, fontweight='bold')
-        ax.text(max_val + 22000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=WHITE, fontsize=22, fontweight='bold')
+        ax.text(min_val - 22000, i, f'${min_val/1000:.0f}K', ha='right', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
+        ax.text(max_val + 22000, i, f'${max_val/1000:.0f}K', ha='left', va='center', color=TEXT_DARK, fontsize=22, fontweight='bold')
         ax.text(max_val + 105000, i, f'n={n}', ha='left', va='center', color=GRAY, fontsize=20)
     
     ax.set_yticks(y_pos)
@@ -230,7 +230,7 @@ def generate_location_chart(analysis):
     # Dynamic x-axis limit based on data
     max_salary = max(maxs) if maxs else 500000
     ax.set_xlim(50000, max_salary + 160000)
-    ax.set_title('Compensation by Location', fontsize=32, color=WHITE, pad=30, fontweight='bold')
+    ax.set_title('Compensation by Location', fontsize=32, color=TEXT_DARK, pad=30, fontweight='bold')
     
     ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x/1000:.0f}K'))
     ax.tick_params(axis='x', labelsize=20)
@@ -238,10 +238,10 @@ def generate_location_chart(analysis):
     
     min_patch = mpatches.Patch(color=CYAN, label='Min Base (Avg)')
     max_patch = mpatches.Patch(color=ORANGE, label='Max Base (Avg)')
-    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor=DARK_BG, edgecolor=GRID_COLOR, fontsize=18)
+    ax.legend(handles=[min_patch, max_patch], loc='lower right', facecolor='#FFFFFF', edgecolor=GRID_COLOR, fontsize=18)
     
     plt.tight_layout()
-    plt.savefig(CHART_LOCATION, dpi=150, facecolor=DARK_BG, edgecolor='none', bbox_inches='tight')
+    plt.savefig(CHART_LOCATION, dpi=150, facecolor='#FFFFFF', edgecolor='none', bbox_inches='tight')
     plt.close()
     print(f"  📊 Saved: {CHART_LOCATION}")
 
