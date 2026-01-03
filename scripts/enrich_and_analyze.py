@@ -404,7 +404,9 @@ market_stats = {
     "tech_percentage": round(df_output['is_tech'].sum() / len(df_output) * 100, 1) if len(df_output) > 0 else 0,
     "avg_min_salary": int(salary_data['min_amount'].mean()) if len(salary_data) > 0 else 0,
     "avg_max_salary": int(salary_data['max_amount'].mean()) if len(salary_data) > 0 else 0,
-    "date": datetime.now().strftime('%Y-%m-%d')
+    "date": datetime.now().strftime('%Y-%m-%d'),
+    "wow_change": 0,
+    "wow_change_pct": 0
 }
 
 stats_file = f'{DATA_DIR}/market_stats.json'
