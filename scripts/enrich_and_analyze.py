@@ -228,7 +228,7 @@ print("✅ Sorted by seniority, quality, and recency")
 # ============================================================
 
 print(f"\n{'STEP 5: SAVING':-^70}")
-enriched_filename = f"executive_sales_jobs_{datetime.now().strftime('%Y%m%d')}.csv"
+enriched_filename = f"data/executive_sales_jobs_{datetime.now().strftime('%Y%m%d')}.csv"
 df_executive.to_csv(enriched_filename, index=False)
 print(f"✅ Saved enriched data: {enriched_filename}")
 
