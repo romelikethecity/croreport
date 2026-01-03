@@ -5,6 +5,7 @@ Includes Market Pulse, Who's Moving teasers, and newsletter signup
 """
 
 import json
+import pandas as pd
 import os
 from datetime import datetime
 import sys

@@ -33,6 +33,43 @@ print(f"\n📂 Loading: {latest_file}")
 df = pd.read_csv(latest_file)
 print(f"📊 Loaded {len(df)} jobs")
 
+# Calculate and save market stats
+total_roles = len(df)
+remote_count = df['is_remote'].sum() if 'is_remote' in df.columns else 0
+remote_pct = round(100 * remote_count / total_roles, 1) if total_roles > 0 else 0
+
+salary_df = df[df['max_amount'].notna() & (df['max_amount'] > 0)]
+avg_max_salary = int(salary_df['max_amount'].mean()) if len(salary_df) > 0 else 0
+avg_min_salary = int(salary_df['min_amount'].mean()) if len(salary_df) > 0 else 0
+salary_disclosure_rate = round(100 * len(salary_df) / total_roles, 1) if total_roles > 0 else 0
+
+unique_companies = df['company'].nunique()
+seniority_counts = df['seniority'].value_counts().to_dict()
+
+peak_roles = 162
+vs_peak_pct = round(100 * (total_roles - peak_roles) / peak_roles)
+
+market_stats = {
+    "total_roles": total_roles,
+    "unique_companies": unique_companies,
+    "salary_disclosure_rate": salary_disclosure_rate,
+    "by_seniority": {k: int(v) for k, v in seniority_counts.items()},
+    "remote_pct": remote_pct,
+    "avg_min_salary": avg_min_salary,
+    "avg_max_salary": avg_max_salary,
+    "date": datetime.now().strftime('%Y-%m-%d'),
+    "wow_change": 0,
+    "wow_change_pct": 0,
+    "vs_peak_pct": vs_peak_pct,
+    "peak_roles": peak_roles,
+    "top_locations": [],
+    "top_companies": []
+}
+
+with open('data/market_stats.json', 'w') as f:
+    json.dump(market_stats, f, indent=2)
+print(f"📈 Saved market stats: {total_roles} roles, {remote_pct}% remote, ${avg_max_salary:,} avg max")
+
 # Convert DataFrame to JSON for reliable JavaScript parsing
 # Only include columns needed for display (excludes problematic company_addresses with newlines)
 display_cols = ['job_url_direct', 'title', 'company', 'location', 'date_posted', 
