@@ -406,7 +406,11 @@ market_stats = {
     "avg_max_salary": int(salary_data['max_amount'].mean()) if len(salary_data) > 0 else 0,
     "date": datetime.now().strftime('%Y-%m-%d'),
     "wow_change": 0,
-    "wow_change_pct": 0
+    "wow_change_pct": 0,
+    "vs_peak_pct": 0,
+    "peak_roles": 162,
+    "top_locations": [],
+    "top_companies": []
 }
 
 stats_file = f'{DATA_DIR}/market_stats.json'
