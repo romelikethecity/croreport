@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-01-03T02:00:41.630309",
+  "total_records": 66,
+  "records_with_salary": 24,
+  "executive_records": 24,
+  "disclosure_rate": 36.4,
+  "date_range": {
+    "earliest": "2025-01-21",
+    "latest": "2026-01-01"
+  },
+  "by_seniority": {
+    "VP": {
+      "count": 24,
+      "min_base_avg": 152305,
+      "max_base_avg": 194440,
+      "min_base_median": 165000,
+      "max_base_median": 200000,
+      "range_low": 200,
+      "range_high": 347288
+    }
+  },
+  "by_company_stage": {
+    "Series C/D": {
+      "count": 9,
+      "min_base_avg": 132989,
+      "max_base_avg": 174528,
+      "midpoint_avg": 153758,
+      "by_seniority": {
+        "VP": {
+          "count": 9,
+          "min_base_avg": 132989,
+          "max_base_avg": 174528
+        }
+      }
+    }
+  },
+  "by_metro": {
+    "New York": {
+      "count": 4,
+      "min_base_avg": 162500,
+      "max_base_avg": 197500
+    },
+    "Other": {
+      "count": 11,
+      "min_base_avg": 142176,
+      "max_base_avg": 182887
+    },
+    "Remote": {
+      "count": 4,
+      "min_base_avg": 155544,
+      "max_base_avg": 211947
+    }
+  },
+  "by_tech": {
+    "Tech": {
+      "count": 20,
+      "min_base_avg": 154716,
+      "max_base_avg": 197752
+    },
+    "Non-Tech": {
+      "count": 4,
+      "min_base_avg": 140246,
+      "max_base_avg": 177878
+    }
+  },
+  "by_remote": {
+    "Remote": {
+      "count": 4,
+      "min_base_avg": 155544,
+      "max_base_avg": 211947
+    },
+    "On-site": {
+      "count": 20,
+      "min_base_avg": 151657,
+      "max_base_avg": 190938
+    }
+  },
+  "top_paying_roles": [
+    {
+      "title": "VP Data Center Strategy & Sales",
+      "company": "Lumen",
+      "min_amount": 260474.0,
+      "max_amount": 347288.0,
+      "seniority": "VP",
+      "company_stage": "Unknown"
+    },
+    {
+      "title": "Vice President, Global Sales",
+      "company": "KIDDE-FENWAL",
+      "min_amount": 225000.0,
+      "max_amount": 300000.0,
+      "seniority": "VP",
+      "company_stage": "Unknown"
+    },
+    {
+      "title": "RVP, Sales Central",
+      "company": "OutSystems",
+      "min_amount": 180750.0,
+      "max_amount": 250125.0,
+      "seniority": "VP",
+      "company_stage": "Series C/D"
+    },
+    {
+      "title": "RVP, Sales East",
+      "company": "OutSystems",
+      "min_amount": 180750.0,
+      "max_amount": 250125.0,
+      "seniority": "VP",
+      "company_stage": "Series C/D"
+    },
+    {
+      "title": "VP, Revenue Operations",
+      "company": "HALO",
+      "min_amount": 175000.0,
+      "max_amount": 250000.0,
+      "seniority": "VP",
+      "company_stage": "Series C/D"
+    },
+    {
+      "title": "Vice President Aftersales- Supply Chain Consulting",
+      "company": "Genpact",
+      "min_amount": 190000.0,
+      "max_amount": 240000.0,
+      "seniority": "VP",
+      "company_stage": "Unknown"
+    },
+    {
+      "title": "Regional Vice President, Imaging Sales - Southern California",
+      "company": "Siemens Healthineers",
+      "min_amount": 159200.0,
+      "max_amount": 222000.0,
+      "seniority": "VP",
+      "company_stage": "Unknown"
+    },
+    {
+      "title": "Hospice Regional Vice President of Sales (North)",
+      "company": "Mission Healthcare",
+      "min_amount": 180000.0,
+      "max_amount": 215000.0,
+      "seniority": "VP",
+      "company_stage": "Series C/D"
+    },
+    {
+      "title": "Hospice Regional Vice President of Sales (Southern CA)",
+      "company": "Mission Healthcare",
+      "min_amount": 180000.0,
+      "max_amount": 215000.0,
+      "seniority": "VP",
+      "company_stage": "Series C/D"
+    },
+    {
+      "title": "Vice President- Data and AI Advisor/Sales \u2013 Consumer & Healthcare",
+      "company": "Genpact",
+      "min_amount": 160000.0,
+      "max_amount": 200000.0,
+      "seniority": "VP",
+      "company_stage": "Unknown"
+    }
+  ],
+  "weekly_trends": {
+    "2026-W00": {
+      "count": 24,
+      "avg_min": 152305,
+      "avg_max": 194440,
+      "disclosure_rate": 36.4
+    }
+  }
+}
