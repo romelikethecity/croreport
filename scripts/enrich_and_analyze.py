@@ -11,7 +11,7 @@ print("🔧 EXECUTIVE SALES JOB ENRICHMENT & ANALYSIS")
 print("="*70)
 
 # Find most recent raw data file
-files = glob.glob("raw_jobs_*.csv")
+files = glob.glob("data/raw_jobs_*.csv")
 if not files:
     print("\n❌ ERROR: No raw data files found.")
     print("👉 Please run scrape_jobs_weekly.py first.")
