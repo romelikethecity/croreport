@@ -11,7 +11,7 @@ on:
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -33,7 +33,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas matplotlib
+          pip install pandas matplotlib numpy
+
+      - name: Create directories
+        run: |
+          mkdir -p data site/assets site/jobs site/salaries site/insights site/tools
 
       - name: Run enrichment (if raw data exists)
         run: |
@@ -47,8 +51,23 @@ jobs:
       - name: Merge to master database
         run: python scripts/merge_to_master.py
 
-      - name: Generate trend graphs
+      - name: Generate trend graphs (all 5 timeframes)
         run: python scripts/generate_graphs.py
+
+      - name: Run compensation aggregator
+        run: |
+          # Find the most recent enriched CSV
+          ENRICHED_CSV=$(ls -t data/executive_sales_jobs_*.csv 2>/dev/null | head -1)
+          if [ -n "$ENRICHED_CSV" ]; then
+            echo "Adding $ENRICHED_CSV to comp database..."
+            python scripts/cro_comp_aggregator.py --add "$ENRICHED_CSV"
+            echo "Running compensation analysis..."
+            python scripts/cro_comp_aggregator.py --analyze
+            echo "Generating newsletter assets and charts..."
+            python scripts/cro_comp_aggregator.py --newsletter "$ENRICHED_CSV"
+          else
+            echo "No enriched CSV found, skipping comp aggregator"
+          fi
 
       - name: Generate job board
         run: python scripts/generate_job_board.py
@@ -70,6 +89,14 @@ jobs:
 
       - name: Generate sitemap
         run: python scripts/generate_sitemap.py
+
+      - name: Commit updated data files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/*.csv data/*.json data/*.md site/assets/*.png || true
+          git diff --staged --quiet || git commit -m "Update data and assets [skip ci]"
+          git push || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

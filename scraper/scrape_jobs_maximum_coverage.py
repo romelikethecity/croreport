@@ -1,7 +1,10 @@
 from jobspy import scrape_jobs
 import pandas as pd
 import time
+import subprocess
+import shutil
 from datetime import datetime
+import os
 
 # ============================================================
 # EXPANDED CONFIGURATION - Maximum Coverage
@@ -39,6 +42,9 @@ LOCATIONS = [
 
 SITES = ["indeed"]
 
+# GitHub repo location - UPDATE THIS TO YOUR PATH
+GITHUB_REPO = os.path.expanduser("~/Downloads/croreport-github")
+
 # ============================================================
 # SCRAPING LOOP
 # ============================================================
@@ -65,7 +71,7 @@ for site in SITES:
             current_search += 1
             site_stats[site]['attempted'] += 1
             
-            print(f"\n[{current_search}/{total_searches}] 🔍 {term}")
+            print(f"\n[{current_search}/{total_searches}] 🔎 {term}")
             print(f"   📍 {location}")
             
             try:
@@ -73,7 +79,7 @@ for site in SITES:
                     site_name=[site],
                     search_term=term,
                     location=location,
-                    results_wanted=300,  # Maximum practical limit for comprehensive coverage
+                    results_wanted=300,
                     hours_old=168,  # 7 days only
                     country_indeed='USA'
                 )
@@ -88,11 +94,6 @@ for site in SITES:
                 
                 # Wait between searches
                 if current_search < total_searches:
-                    # WAIT TIME: Balance speed vs. safety
-                    # - 180 sec (3 min): Very safe, no risk of blocking
-                    # - 120 sec (2 min): Generally safe for Indeed
-                    # - 60 sec (1 min): Faster but slight risk
-                    # Current setting: 120 seconds (2 minutes)
                     wait_time = 120
                     print(f"   ⏳ Waiting {wait_time} seconds...")
                     time.sleep(wait_time)
@@ -124,7 +125,7 @@ for site, stats in site_stats.items():
     print(f"  Searches successful: {stats['successful']} ({success_rate:.1f}%)")
     print(f"  Jobs found: {stats['jobs']}")
 
-# Save RAW data
+# Save RAW data locally
 raw_filename = f"raw_jobs_{datetime.now().strftime('%Y%m%d_%H%M')}.csv"
 combined.to_csv(raw_filename, index=False)
 
@@ -140,5 +141,40 @@ print(f"🔗 Unique job URLs: {unique_count}")
 print(f"🗑️  Duplicates removed: {duplicate_count}")
 print(f"📁 Saved to: {raw_filename}")
 print(f"📅 Completed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-print("\n👉 NEXT: Run enrich_and_analyze.py for strict filtering")
+
+# ============================================================
+# AUTO-PUSH TO GITHUB
+# ============================================================
+
+print("\n" + "="*70)
+print("🚀 PUSHING TO GITHUB...")
+print("="*70)
+
+try:
+    # Ensure data directory exists in repo
+    data_dir = os.path.join(GITHUB_REPO, "data")
+    os.makedirs(data_dir, exist_ok=True)
+    
+    # Copy file to GitHub repo data/ folder
+    dest_path = os.path.join(data_dir, raw_filename)
+    shutil.copy(raw_filename, dest_path)
+    print(f"📁 Copied to: {dest_path}")
+    
+    # Git add, commit, push
+    subprocess.run(["git", "add", "."], cwd=GITHUB_REPO, check=True)
+    subprocess.run(["git", "commit", "-m", f"Add raw jobs data {datetime.now().strftime('%Y-%m-%d')}"], cwd=GITHUB_REPO, check=True)
+    subprocess.run(["git", "push"], cwd=GITHUB_REPO, check=True)
+    
+    print("✅ Pushed to GitHub!")
+    print("🌐 Site will rebuild automatically - check GitHub Actions")
+    print(f"   https://github.com/romelikethecity/croreport/actions")
+    
+except Exception as e:
+    print(f"❌ GitHub push failed: {e}")
+    print(f"📁 File saved locally: {raw_filename}")
+    print("👉 Manually run:")
+    print(f"   cd {GITHUB_REPO}")
+    print(f"   cp {os.path.abspath(raw_filename)} data/")
+    print("   git add . && git commit -m 'Add jobs' && git push")
+
 print("="*70)

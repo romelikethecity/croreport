@@ -1,95 +1,63 @@
 #!/usr/bin/env python3
 """
-Merge weekly enriched data into the master jobs database
-Preserves all fields including descriptions for historical analysis
-
-Run after enrichment: python scripts/merge_to_master.py
+Merge weekly enriched data into master database.
+This ensures the master_jobs_database.csv is up to date for the website.
 """
 
 import pandas as pd
-from datetime import datetime
-import glob
 import os
+import glob
+from datetime import datetime
 
-DATA_DIR = 'data'
+DATA_DIR = "data"
 
 print("="*70)
-print("📚 MERGING TO MASTER DATABASE")
+print("📊 MERGE TO MASTER DATABASE")
 print("="*70)
 
 # Find most recent enriched file
 enriched_files = glob.glob(f"{DATA_DIR}/executive_sales_jobs_*.csv")
 if not enriched_files:
-    print("❌ No enriched data files found")
-    exit(1)
+    print("❌ No enriched files found")
+    exit(0)
 
 latest_enriched = max(enriched_files)
-print(f"📂 Loading weekly data: {latest_enriched}")
+print(f"\n📂 Latest enriched file: {latest_enriched}")
 
-df_new = pd.read_csv(latest_enriched)
-print(f"   {len(df_new)} new jobs")
+# Load new data
+new_df = pd.read_csv(latest_enriched)
+print(f"📊 New records: {len(new_df)}")
 
 # Add import metadata
-today = datetime.now()
-df_new['import_date'] = today.strftime('%Y-%m-%d')
-df_new['import_week'] = today.strftime('%Y-W%W')
+new_df['import_date'] = datetime.now().strftime('%Y-%m-%d')
+new_df['import_week'] = datetime.now().strftime('%Y-W%W')
 
 # Load or create master database
-master_file = f'{DATA_DIR}/master_jobs_database.csv'
+master_file = f"{DATA_DIR}/master_jobs_database.csv"
 
 if os.path.exists(master_file):
-    print(f"\n📂 Loading existing master: {master_file}")
-    df_master = pd.read_csv(master_file)
-    print(f"   {len(df_master)} existing jobs")
+    master_df = pd.read_csv(master_file)
+    print(f"📂 Existing master database: {len(master_df)} records")
     
-    # Check for duplicates by job_url_direct
-    existing_urls = set(df_master['job_url_direct'].dropna())
-    new_urls = set(df_new['job_url_direct'].dropna())
-    
-    truly_new = new_urls - existing_urls
-    duplicates = new_urls & existing_urls
-    
-    print(f"\n📊 Deduplication:")
-    print(f"   Already in master: {len(duplicates)}")
-    print(f"   Truly new: {len(truly_new)}")
-    
-    # Filter to truly new jobs
-    df_to_add = df_new[df_new['job_url_direct'].isin(truly_new)]
-    
-    # Merge
-    df_master = pd.concat([df_master, df_to_add], ignore_index=True)
-    
+    # Deduplicate based on job_url
+    if 'job_url' in new_df.columns and 'job_url' in master_df.columns:
+        existing_urls = set(master_df['job_url'].dropna().unique())
+        new_records = new_df[~new_df['job_url'].isin(existing_urls)]
+        print(f"✅ New unique records: {len(new_records)}")
+        
+        if len(new_records) > 0:
+            combined_df = pd.concat([master_df, new_records], ignore_index=True)
+        else:
+            combined_df = master_df
+    else:
+        # No job_url column, just replace
+        combined_df = new_df
 else:
-    print(f"\n📂 Creating new master database")
-    df_master = df_new.copy()
+    print("📂 Creating new master database")
+    combined_df = new_df
 
-# Ensure all important columns exist
-required_cols = [
-    'job_url_direct', 'title', 'company', 'location', 'date_posted',
-    'description', 'min_amount', 'max_amount', 'is_remote', 'seniority',
-    'metro', 'is_tech', 'company_industry', 'company_num_employees',
-    'company_revenue', 'import_date', 'import_week', 'has_salary'
-]
+# Save master database
+combined_df.to_csv(master_file, index=False)
+print(f"\n✅ Master database saved: {len(combined_df)} total records")
 
-for col in required_cols:
-    if col not in df_master.columns:
-        df_master[col] = None
-
-# Sort by import date (newest first)
-df_master = df_master.sort_values('import_date', ascending=False)
-
-# Save
-df_master.to_csv(master_file, index=False)
-
-# Report
-print(f"\n✅ MASTER DATABASE UPDATED")
-print(f"   Total jobs: {len(df_master)}")
-print(f"   With descriptions: {df_master['description'].notna().sum()} ({df_master['description'].notna().sum()/len(df_master)*100:.1f}%)")
-print(f"   With salary: {df_master['has_salary'].sum() if 'has_salary' in df_master.columns else 'N/A'}")
-print(f"   Date range: {df_master['import_date'].min()} to {df_master['import_date'].max()}")
-
-# File size
-size_mb = os.path.getsize(master_file) / (1024*1024)
-print(f"   File size: {size_mb:.1f} MB")
-
-print(f"\n📁 Saved: {master_file}")
+print(f"{'='*70}")
