@@ -6,6 +6,7 @@ Creates /newsletter/ page linking to all Substack editions
 
 import xml.etree.ElementTree as ET
 import urllib.request
+import ssl
 import html
 import re
 import os
@@ -33,33 +34,31 @@ os.makedirs(NEWSLETTER_DIR, exist_ok=True)
 print(f"📡 Fetching RSS from {SUBSTACK_RSS}...")
 rss_content = None
 
-# Try multiple user agents
-user_agents = [
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Mozilla/5.0 (compatible; Feedfetcher-Google; +http://www.google.com/feedfetcher.html)',
-]
+# Create SSL context that doesn't verify (for environments with cert issues)
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
-for ua in user_agents:
-    try:
-        req = urllib.request.Request(
-            SUBSTACK_RSS,
-            headers={
-                'User-Agent': ua,
-                'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-            }
-        )
-        with urllib.request.urlopen(req, timeout=30) as response:
-            rss_content = response.read().decode('utf-8')
-        if rss_content and '<item>' in rss_content:
-            print(f"✅ RSS feed fetched successfully with UA: {ua[:50]}...")
-            break
-    except Exception as e:
-        print(f"⚠️ Failed with UA {ua[:30]}...: {e}")
-        continue
+user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
 
-if not rss_content:
-    print("❌ All fetch attempts failed")
+try:
+    req = urllib.request.Request(
+        SUBSTACK_RSS,
+        headers={
+            'User-Agent': user_agent,
+            'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        }
+    )
+    with urllib.request.urlopen(req, timeout=30, context=ssl_context) as response:
+        rss_content = response.read().decode('utf-8')
+    if rss_content and '<item>' in rss_content:
+        print(f"✅ RSS feed fetched successfully")
+    else:
+        print("⚠️ RSS fetched but no items found")
+        rss_content = None
+except Exception as e:
+    print(f"❌ Failed to fetch RSS: {e}")
+    rss_content = None
 
 posts = []
 
