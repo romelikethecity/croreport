@@ -82,6 +82,9 @@ jobs:
         run: python scripts/generate_tools_pages.py
 
       - name: Generate insights page
+
+      - name: Generate insights charts
+        run: python scripts/generate_insights_charts.py
         run: python scripts/generate_insights_page.py
 
       - name: Generate homepage
