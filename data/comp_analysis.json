@@ -1,78 +1,43 @@
 {
-  "generated_at": "2026-01-03T02:51:30.547820",
-  "total_records": 73,
-  "records_with_salary": 30,
-  "executive_records": 30,
-  "disclosure_rate": 41.1,
+  "generated_at": "2026-01-03T03:01:10.651376",
+  "total_records": 57,
+  "records_with_salary": 22,
+  "executive_records": 22,
+  "disclosure_rate": 38.6,
   "date_range": {
     "earliest": "2025-01-21",
     "latest": "2026-01-01"
   },
   "by_seniority": {
     "VP": {
-      "count": 30,
-      "min_base_avg": 149331,
-      "max_base_avg": 193128,
-      "min_base_median": 160000,
+      "count": 22,
+      "min_base_avg": 141167,
+      "max_base_avg": 183345,
+      "min_base_median": 159600,
       "max_base_median": 200000,
       "range_low": 200,
       "range_high": 347288
     }
   },
-  "by_company_stage": {
-    "Series C/D": {
-      "count": 9,
-      "min_base_avg": 132989,
-      "max_base_avg": 174528,
-      "midpoint_avg": 153758,
-      "by_seniority": {
-        "VP": {
-          "count": 9,
-          "min_base_avg": 132989,
-          "max_base_avg": 174528
-        }
-      }
-    }
-  },
-  "by_metro": {
-    "New York": {
-      "count": 4,
-      "min_base_avg": 162500,
-      "max_base_avg": 197500
-    },
-    "Other": {
-      "count": 11,
-      "min_base_avg": 142176,
-      "max_base_avg": 182887
-    },
-    "Remote": {
-      "count": 4,
-      "min_base_avg": 155544,
-      "max_base_avg": 211947
-    }
-  },
+  "by_company_stage": {},
+  "by_metro": {},
   "by_tech": {
-    "Tech": {
-      "count": 20,
-      "min_base_avg": 154716,
-      "max_base_avg": 197752
-    },
     "Non-Tech": {
-      "count": 10,
-      "min_base_avg": 138561,
-      "max_base_avg": 183880
+      "count": 22,
+      "min_base_avg": 141167,
+      "max_base_avg": 183345
     }
   },
   "by_remote": {
     "Remote": {
-      "count": 4,
-      "min_base_avg": 155544,
-      "max_base_avg": 211947
+      "count": 6,
+      "min_base_avg": 122810,
+      "max_base_avg": 156550
     },
     "On-site": {
-      "count": 26,
-      "min_base_avg": 148375,
-      "max_base_avg": 190233
+      "count": 16,
+      "min_base_avg": 148051,
+      "max_base_avg": 193393
     }
   },
   "top_paying_roles": [
@@ -82,7 +47,7 @@
       "min_amount": 260474.0,
       "max_amount": 347288.0,
       "seniority": "VP",
-      "company_stage": "Unknown"
+      "company_stage": NaN
     },
     {
       "title": "Vice President, Global Sales",
@@ -90,7 +55,7 @@
       "min_amount": 225000.0,
       "max_amount": 300000.0,
       "seniority": "VP",
-      "company_stage": "Unknown"
+      "company_stage": NaN
     },
     {
       "title": "AVP Commercial Manager/Team Leader",
@@ -101,44 +66,20 @@
       "company_stage": NaN
     },
     {
-      "title": "RVP, Sales Central",
-      "company": "OutSystems",
-      "min_amount": 180750.0,
-      "max_amount": 250125.0,
-      "seniority": "VP",
-      "company_stage": "Series C/D"
-    },
-    {
-      "title": "RVP, Sales East",
-      "company": "OutSystems",
-      "min_amount": 180750.0,
-      "max_amount": 250125.0,
-      "seniority": "VP",
-      "company_stage": "Series C/D"
-    },
-    {
-      "title": "VP, Revenue Operations",
-      "company": "HALO",
-      "min_amount": 175000.0,
-      "max_amount": 250000.0,
-      "seniority": "VP",
-      "company_stage": "Series C/D"
-    },
-    {
-      "title": "Vice President Aftersales- Supply Chain Consulting",
-      "company": "Genpact",
-      "min_amount": 190000.0,
-      "max_amount": 240000.0,
-      "seniority": "VP",
-      "company_stage": "Unknown"
-    },
-    {
       "title": "Regional Vice President, Imaging Sales - Southern California",
       "company": "Siemens Healthineers",
       "min_amount": 159200.0,
       "max_amount": 222000.0,
       "seniority": "VP",
-      "company_stage": "Unknown"
+      "company_stage": NaN
+    },
+    {
+      "title": "Commercial Banker - Emerging Middle Market Banking - Vice President",
+      "company": "JPMorganChase",
+      "min_amount": 147250.0,
+      "max_amount": 215000.0,
+      "seniority": "VP",
+      "company_stage": NaN
     },
     {
       "title": "Hospice Regional Vice President of Sales (North)",
@@ -146,7 +87,7 @@
       "min_amount": 180000.0,
       "max_amount": 215000.0,
       "seniority": "VP",
-      "company_stage": "Series C/D"
+      "company_stage": NaN
     },
     {
       "title": "Hospice Regional Vice President of Sales (Southern CA)",
@@ -154,15 +95,39 @@
       "min_amount": 180000.0,
       "max_amount": 215000.0,
       "seniority": "VP",
-      "company_stage": "Series C/D"
+      "company_stage": NaN
+    },
+    {
+      "title": "Vice President- Data and AI Advisor/Sales \u2013 Consumer & Healthcare",
+      "company": "Genpact",
+      "min_amount": 160000.0,
+      "max_amount": 200000.0,
+      "seniority": "VP",
+      "company_stage": NaN
+    },
+    {
+      "title": "Vice President, GCP Business Group Specialized Sales",
+      "company": "Genpact",
+      "min_amount": 160000.0,
+      "max_amount": 200000.0,
+      "seniority": "VP",
+      "company_stage": NaN
+    },
+    {
+      "title": "Vice President, Sales Director",
+      "company": "Genpact",
+      "min_amount": 160000.0,
+      "max_amount": 200000.0,
+      "seniority": "VP",
+      "company_stage": NaN
     }
   ],
   "weekly_trends": {
     "2026-W00": {
-      "count": 30,
-      "avg_min": 149331,
-      "avg_max": 193128,
-      "disclosure_rate": 41.1
+      "count": 22,
+      "avg_min": 141167,
+      "avg_max": 183345,
+      "disclosure_rate": 38.6
     }
   }
 }

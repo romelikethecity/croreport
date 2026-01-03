@@ -1,58 +1,55 @@
 {
   "date": "January 03, 2026",
-  "total_jobs": 73,
+  "total_jobs": 57,
   "tools": {
-    "Salesforce": 11,
-    "Outreach": 4,
-    "HubSpot": 2,
-    "Tableau": 1
+    "Salesforce": 5,
+    "Outreach": 3,
+    "HubSpot": 1
   },
   "methodologies": {
-    "Channel/Partner": 18,
+    "Channel/Partner": 15,
     "Consultative Selling": 10,
-    "Enterprise Sales": 8,
-    "PLG/Product-Led": 4
+    "Enterprise Sales": 8
   },
   "trends": {
-    "AI / Machine Learning": 171,
-    "Scale / Scalable": 80,
-    "Go-to-Market / GTM": 50,
+    "AI / Machine Learning": 129,
+    "Scale / Scalable": 64,
     "Cloud": 34,
-    "Data-Driven": 20,
-    "SaaS": 18,
+    "Go-to-Market / GTM": 17,
+    "Data-Driven": 17,
+    "SaaS": 15,
     "GenAI": 12,
-    "Customer Success": 8,
-    "Recurring Revenue/ARR": 6
+    "Customer Success": 3,
+    "Recurring Revenue/ARR": 3
   },
   "industries": {
-    "Technology/Software": 88,
-    "Financial Services": 87,
-    "Healthcare": 80,
-    "Education": 54,
-    "Retail/E-commerce": 45,
-    "Energy": 43,
-    "Government": 29,
-    "Cybersecurity": 24,
-    "Real Estate": 18,
-    "Manufacturing": 17
+    "Technology/Software": 73,
+    "Healthcare": 69,
+    "Financial Services": 51,
+    "Retail/E-commerce": 39,
+    "Energy": 38,
+    "Education": 33,
+    "Government": 24,
+    "Cybersecurity": 19,
+    "Manufacturing": 15,
+    "Real Estate": 6
   },
   "red_flags": {
-    "\"Competitive compensation\" (vague)": 17,
-    "\"Fast-paced environment\"": 11,
+    "\"Competitive compensation\" (vague)": 14,
+    "\"Fast-paced environment\"": 9,
     "\"Self-starter\" required": 6,
     "Travel 50%+": 3,
     "\"Wear many hats\"": 1
   },
   "experience_requirements": {
-    "10": 18,
-    "5": 16,
-    "15": 13,
-    "8": 10,
-    "7": 8,
+    "10": 12,
+    "5": 11,
+    "8": 8,
+    "15": 7,
+    "7": 7,
     "16": 5,
-    "11": 2,
-    "4": 1,
-    "12": 1,
-    "6": 1
+    "6": 1,
+    "3": 1,
+    "4": 1
   }
 }
