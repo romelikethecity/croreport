@@ -84,9 +84,6 @@ jobs:
       - name: Generate company pages
         run: python scripts/generate_company_pages.py
 
-      - name: Generate newsletter archive
-        run: python scripts/generate_newsletter_archive.py
-
       - name: Generate tools pages
         run: python scripts/generate_tools_pages.py
 
