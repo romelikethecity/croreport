@@ -396,7 +396,7 @@ unique_companies = df_output['company'].nunique()
 salary_data = df_output[df_output['has_salary'] == True]
 
 market_stats = {
-    "total_jobs": len(df_output),
+    "total_roles": len(df_output),
     "unique_companies": unique_companies,
     "salary_disclosure_rate": round(len(salary_data) / len(df_output) * 100, 1) if len(df_output) > 0 else 0,
     "by_seniority": seniority_counts,
