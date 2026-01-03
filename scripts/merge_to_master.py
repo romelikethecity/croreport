@@ -40,9 +40,9 @@ if os.path.exists(master_file):
     print(f"📂 Existing master database: {len(master_df)} records")
     
     # Deduplicate based on job_url
-    if 'job_url' in new_df.columns and 'job_url' in master_df.columns:
-        existing_urls = set(master_df['job_url'].dropna().unique())
-        new_records = new_df[~new_df['job_url'].isin(existing_urls)]
+    if 'job_url_direct' in new_df.columns and 'job_url_direct' in master_df.columns:
+        existing_urls = set(master_df['job_url_direct'].dropna().unique())
+        new_records = new_df[~new_df['job_url_direct'].isin(existing_urls)]
         print(f"✅ New unique records: {len(new_records)}")
         
         if len(new_records) > 0:
