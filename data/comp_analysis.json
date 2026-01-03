@@ -1,128 +1,354 @@
 {
-  "generated_at": "2026-01-03T04:23:15.560836",
-  "total_records": 57,
-  "records_with_salary": 22,
-  "executive_records": 22,
-  "disclosure_rate": 38.6,
+  "generated_at": "2026-01-03T04:24:09.793149",
+  "total_records": 924,
+  "records_with_salary": 529,
+  "executive_records": 494,
+  "disclosure_rate": 57.3,
   "date_range": {
     "earliest": "2025-01-21",
     "latest": "2026-01-01"
   },
   "by_seniority": {
+    "C-Level": {
+      "count": 15,
+      "min_base_avg": 217200,
+      "max_base_avg": 291500,
+      "min_base_median": 220000,
+      "max_base_median": 260000,
+      "range_low": 50000,
+      "range_high": 500000
+    },
+    "EVP": {
+      "count": 4,
+      "min_base_avg": 253750,
+      "max_base_avg": 302500,
+      "min_base_median": 257500,
+      "max_base_median": 300000,
+      "range_low": 220000,
+      "range_high": 350000
+    },
+    "SVP": {
+      "count": 28,
+      "min_base_avg": 203523,
+      "max_base_avg": 260157,
+      "min_base_median": 182400,
+      "max_base_median": 261800,
+      "range_low": 170000,
+      "range_high": 450000
+    },
     "VP": {
-      "count": 22,
-      "min_base_avg": 141167,
-      "max_base_avg": 183345,
-      "min_base_median": 159600,
-      "max_base_median": 200000,
+      "count": 447,
+      "min_base_avg": 172009,
+      "max_base_avg": 256304,
+      "min_base_median": 165000,
+      "max_base_median": 232500,
       "range_low": 200,
-      "range_high": 347288
+      "range_high": 900000
     }
   },
-  "by_company_stage": {},
-  "by_metro": {},
+  "by_company_stage": {
+    "Seed/Series A": {
+      "count": 14,
+      "min_base_avg": 192955,
+      "max_base_avg": 257169,
+      "midpoint_avg": 225062,
+      "by_seniority": {
+        "VP": {
+          "count": 12,
+          "min_base_avg": 192614,
+          "max_base_avg": 260448
+        }
+      }
+    },
+    "Series A/B": {
+      "count": 38,
+      "min_base_avg": 147289,
+      "max_base_avg": 183553,
+      "midpoint_avg": 165421,
+      "by_seniority": {
+        "SVP": {
+          "count": 2,
+          "min_base_avg": 235000,
+          "max_base_avg": 275000
+        },
+        "VP": {
+          "count": 36,
+          "min_base_avg": 142417,
+          "max_base_avg": 178472
+        }
+      }
+    },
+    "Series B/C": {
+      "count": 30,
+      "min_base_avg": 164710,
+      "max_base_avg": 226373,
+      "midpoint_avg": 195542,
+      "by_seniority": {
+        "VP": {
+          "count": 28,
+          "min_base_avg": 158618,
+          "max_base_avg": 221114
+        }
+      }
+    },
+    "Series C/D": {
+      "count": 79,
+      "min_base_avg": 222046,
+      "max_base_avg": 314444,
+      "midpoint_avg": 268245,
+      "by_seniority": {
+        "C-Level": {
+          "count": 3,
+          "min_base_avg": 267667,
+          "max_base_avg": 335000
+        },
+        "SVP": {
+          "count": 3,
+          "min_base_avg": 185000,
+          "max_base_avg": 236667
+        },
+        "VP": {
+          "count": 71,
+          "min_base_avg": 220896,
+          "max_base_avg": 317128
+        }
+      }
+    },
+    "Late Stage": {
+      "count": 27,
+      "min_base_avg": 224635,
+      "max_base_avg": 318772,
+      "midpoint_avg": 271704,
+      "by_seniority": {
+        "C-Level": {
+          "count": 2,
+          "min_base_avg": 262500,
+          "max_base_avg": 425000
+        },
+        "SVP": {
+          "count": 2,
+          "min_base_avg": 300000,
+          "max_base_avg": 400000
+        },
+        "VP": {
+          "count": 23,
+          "min_base_avg": 214789,
+          "max_base_avg": 302471
+        }
+      }
+    },
+    "Enterprise/Public": {
+      "count": 188,
+      "min_base_avg": 171334,
+      "max_base_avg": 265444,
+      "midpoint_avg": 218389,
+      "by_seniority": {
+        "C-Level": {
+          "count": 2,
+          "min_base_avg": 197500,
+          "max_base_avg": 258750
+        },
+        "SVP": {
+          "count": 18,
+          "min_base_avg": 189481,
+          "max_base_avg": 247411
+        },
+        "VP": {
+          "count": 167,
+          "min_base_avg": 168654,
+          "max_base_avg": 267261
+        }
+      }
+    }
+  },
+  "by_metro": {
+    "Boston": {
+      "count": 26,
+      "min_base_avg": 201227,
+      "max_base_avg": 282527
+    },
+    "Other": {
+      "count": 205,
+      "min_base_avg": 179772,
+      "max_base_avg": 272933
+    },
+    "Atlanta": {
+      "count": 15,
+      "min_base_avg": 193255,
+      "max_base_avg": 275822
+    },
+    "New York": {
+      "count": 57,
+      "min_base_avg": 180443,
+      "max_base_avg": 249894
+    },
+    "Los Angeles": {
+      "count": 12,
+      "min_base_avg": 173696,
+      "max_base_avg": 239175
+    },
+    "Remote": {
+      "count": 70,
+      "min_base_avg": 151958,
+      "max_base_avg": 216727
+    },
+    "Chicago": {
+      "count": 20,
+      "min_base_avg": 151832,
+      "max_base_avg": 222485
+    },
+    "Denver": {
+      "count": 9,
+      "min_base_avg": 192784,
+      "max_base_avg": 254067
+    },
+    "San Francisco": {
+      "count": 18,
+      "min_base_avg": 244452,
+      "max_base_avg": 347218
+    },
+    "Texas": {
+      "count": 33,
+      "min_base_avg": 157863,
+      "max_base_avg": 260065
+    },
+    "Seattle": {
+      "count": 7,
+      "min_base_avg": 197467,
+      "max_base_avg": 301938
+    }
+  },
   "by_tech": {
+    "Tech": {
+      "count": 15,
+      "min_base_avg": 158688,
+      "max_base_avg": 212950
+    },
     "Non-Tech": {
-      "count": 22,
-      "min_base_avg": 141167,
-      "max_base_avg": 183345
+      "count": 479,
+      "min_base_avg": 176366,
+      "max_base_avg": 259375
     }
   },
   "by_remote": {
     "Remote": {
-      "count": 6,
-      "min_base_avg": 122810,
-      "max_base_avg": 156550
+      "count": 240,
+      "min_base_avg": 181697,
+      "max_base_avg": 261880
     },
     "On-site": {
-      "count": 16,
-      "min_base_avg": 148051,
-      "max_base_avg": 193393
+      "count": 254,
+      "min_base_avg": 170285,
+      "max_base_avg": 254266
     }
   },
   "top_paying_roles": [
     {
-      "title": "VP Data Center Strategy & Sales",
-      "company": "Lumen",
-      "min_amount": 260474.0,
-      "max_amount": 347288.0,
+      "title": "Vice President of Sales",
+      "company": "Energy Harbor",
+      "min_amount": 150000.0,
+      "max_amount": 900000.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Unknown"
     },
     {
-      "title": "Vice President, Global Sales",
-      "company": "KIDDE-FENWAL",
-      "min_amount": 225000.0,
-      "max_amount": 300000.0,
+      "title": "VP, Hybrid Cloud Channel Sales Leader",
+      "company": "Hewlett Packard Enterprise | HPE",
+      "min_amount": 305000.0,
+      "max_amount": 652000.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "AVP Commercial Manager/Team Leader",
-      "company": "Gesa Credit Union",
-      "min_amount": 157373.0,
-      "max_amount": 262288.0,
+      "title": "VP, Market Sales (US- Northeast)",
+      "company": "AVEVA",
+      "min_amount": 376900.0,
+      "max_amount": 628300.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Late Stage"
     },
     {
-      "title": "Regional Vice President, Imaging Sales - Southern California",
-      "company": "Siemens Healthineers",
-      "min_amount": 159200.0,
-      "max_amount": 222000.0,
+      "title": "VP of Sales",
+      "company": "Fieldwire",
+      "min_amount": 400000.0,
+      "max_amount": 600000.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Seed/Series A"
     },
     {
-      "title": "Commercial Banker - Emerging Middle Market Banking - Vice President",
-      "company": "JPMorganChase",
-      "min_amount": 147250.0,
-      "max_amount": 215000.0,
+      "title": "Vice President, Sales Leader (North America Acceptance Solutions)",
+      "company": "Visa",
+      "min_amount": 321400.0,
+      "max_amount": 590900.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "Hospice Regional Vice President of Sales (North)",
-      "company": "Mission Healthcare",
-      "min_amount": 180000.0,
-      "max_amount": 215000.0,
+      "title": "Vice President, Sales Leader (North America Issuing Solutions)",
+      "company": "Visa",
+      "min_amount": 321400.0,
+      "max_amount": 590900.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "Hospice Regional Vice President of Sales (Southern CA)",
-      "company": "Mission Healthcare",
-      "min_amount": 180000.0,
-      "max_amount": 215000.0,
+      "title": "Vice President, Sales",
+      "company": "Thomson Reuters",
+      "min_amount": 315000.0,
+      "max_amount": 585000.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "Vice President- Data and AI Advisor/Sales \u2013 Consumer & Healthcare",
-      "company": "Genpact",
-      "min_amount": 160000.0,
-      "max_amount": 200000.0,
+      "title": "Vice President, Services Sales - West Market",
+      "company": "SAP",
+      "min_amount": 341600.0,
+      "max_amount": 580800.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "Vice President, GCP Business Group Specialized Sales",
-      "company": "Genpact",
-      "min_amount": 160000.0,
-      "max_amount": 200000.0,
+      "title": "Regional Vice President, SASE Sales",
+      "company": "Palo Alto Networks",
+      "min_amount": 478800.0,
+      "max_amount": 558600.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Enterprise/Public"
     },
     {
-      "title": "Vice President, Sales Director",
-      "company": "Genpact",
-      "min_amount": 160000.0,
-      "max_amount": 200000.0,
+      "title": "VP of Sales",
+      "company": "Applause",
+      "min_amount": 300000.0,
+      "max_amount": 500000.0,
       "seniority": "VP",
-      "company_stage": NaN
+      "company_stage": "Unknown"
     }
   ],
   "weekly_trends": {
+    "2025-W48": {
+      "count": 232,
+      "avg_min": 175036,
+      "avg_max": 252819,
+      "disclosure_rate": 50.1
+    },
+    "2025-W49": {
+      "count": 96,
+      "avg_min": 161227,
+      "avg_max": 241959,
+      "disclosure_rate": 64.9
+    },
+    "2025-W50": {
+      "count": 47,
+      "avg_min": 179729,
+      "avg_max": 242002,
+      "disclosure_rate": 45.2
+    },
+    "2025-W51": {
+      "count": 97,
+      "avg_min": 198153,
+      "avg_max": 310773,
+      "disclosure_rate": 63.8
+    },
     "2026-W00": {
       "count": 22,
       "avg_min": 141167,
