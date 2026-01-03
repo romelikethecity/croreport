@@ -223,6 +223,7 @@ html = f'''<!DOCTYPE html>
                     <li><a href="/jobs/">Jobs</a></li>
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="#subscribe" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: white;">Subscribe</a></li>
                 </ul>
             </nav>
