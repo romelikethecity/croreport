@@ -1,10 +1,10 @@
 # 💰 Compensation Benchmarking
 
-**Data as of January 03, 2026** | 24 executive roles with disclosed salary out of 66 total (36.4% disclosure rate)
+**Data as of January 03, 2026** | 30 executive roles with disclosed salary out of 73 total (41.1% disclosure rate)
 
 ## By Seniority Level
 
-**VP** (n=24): $152,305-$194,440 avg base
+**VP** (n=30): $149,331-$193,128 avg base
 
 ## By Company Stage
 
@@ -24,7 +24,7 @@
 
 **Tech** (n=20): $154,716-$197,752 avg base
 
-**Non-Tech** (n=4): $140,246-$177,878 avg base
+**Non-Tech** (n=10): $138,561-$183,880 avg base
 
 ## Highest Paying Roles This Week
 
@@ -32,11 +32,11 @@
 
 2. **$225,000-$300,000**: Vice President, Global Sales @ KIDDE-FENWAL
 
-3. **$180,750-$250,125**: RVP, Sales Central @ OutSystems
+3. **$157,373-$262,288**: AVP Commercial Manager/Team Leader @ Gesa Credit Union
 
-4. **$180,750-$250,125**: RVP, Sales East @ OutSystems
+4. **$159,200-$222,000**: Regional Vice President, Imaging Sales - Southern California @ Siemens Healthineers
 
-5. **$175,000-$250,000**: VP, Revenue Operations @ HALO
+5. **$147,250-$215,000**: Commercial Banker - Emerging Middle Market Banking - Vice President @ JPMorganChase
 
 ## What This Means for Negotiations
 

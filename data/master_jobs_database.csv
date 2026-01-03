@@ -1,4 +1,4 @@
-job_url,title,company,location,date_posted,min_amount,max_amount,currency,interval,seniority,company_stage,metro,is_tech,is_remote,has_description,has_salary,data_quality,description,company_url,company_url_direct,company_num_employees,company_revenue,import_date,import_week,seniority_original
+job_url,title,company,location,date_posted,min_amount,max_amount,currency,interval,seniority,company_stage,metro,is_tech,is_remote,has_description,has_salary,data_quality,description,company_url,company_url_direct,company_num_employees,company_revenue,import_date,import_week,seniority_original,id,site,job_url_direct,job_type,salary_source,job_level,job_function,listing_type,emails,company_industry,company_logo,company_addresses,company_description,skills,experience_range,company_rating,company_reviews_count,vacancy_count,work_from_home_type,data_quality_score,week_added
 https://www.indeed.com/viewjob?jk=88e5302f1456d8e7,Chief Revenue Officer (CRO),Answer247,"Dallas, TX, US",2025-06-16,,,,,C-Level,Unknown,Texas,True,False,True,False,Basic,"**About ContactPoint360**
 
 We’re a global BPO built for brands that want more than just support — they want revenue, results, and real ROI. With 5,000+ people across 10 countries, we power Digital CX, sales, Trust + Safety, and back office for growth-stage and enterprise clients. We’re scaling fast and looking for someone who can turn up the heat.
@@ -63,7 +63,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=ce039bb6bb0c14db,Chief Revenue Officer (CRO),Answer247,"Las Vegas, NV, US",2025-06-16,,,,,C-Level,Unknown,Other,True,False,True,False,Basic,"**About ContactPoint360**
 
 We’re a global BPO built for brands that want more than just support — they want revenue, results, and real ROI. With 5,000+ people across 10 countries, we power Digital CX, sales, Trust + Safety, and back office for growth-stage and enterprise clients. We’re scaling fast and looking for someone who can turn up the heat.
@@ -128,7 +128,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=59130a80e224cd98,Chief Revenue Officer (CRO),Answer247,"Phoenix, AZ, US",2025-06-16,,,,,C-Level,Unknown,Other,True,False,True,False,Basic,"**About ContactPoint360**
 
 We’re a global BPO built for brands that want more than just support — they want revenue, results, and real ROI. With 5,000+ people across 10 countries, we power Digital CX, sales, Trust + Safety, and back office for growth-stage and enterprise clients. We’re scaling fast and looking for someone who can turn up the heat.
@@ -193,7 +193,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=a406387d17330bfc,Vice President of Sales – Commercial Truck Insurance Technology,Carrier Software,"Remote, US",2026-01-01,,,USD,yearly,VP,Unknown,Remote,True,True,True,False,Basic,"**Commission-Driven | Remote | Industry-Focused**
 
 Carrier Software is seeking a **results-oriented Vice President of Sales** with deep experience in **commercial auto and trucking insurance** to lead revenue growth for our underwriting intelligence and risk-analytics platform.
@@ -266,7 +266,7 @@ Experience:
 
 * truck insurance industry: 5 years (Required)
 
-Work Location: Remote",https://www.indeed.com/cmp/Carrier-Software,http://carriersoftware.com/,,,2026-01-03,2026-W00,
+Work Location: Remote",https://www.indeed.com/cmp/Carrier-Software,http://carriersoftware.com/,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=0498ed9e586beb96,"Senior Vice President, Sales and Marketing","Hana Technologies, Inc.","Solon, OH, US",2026-01-01,,,,,SVP,Unknown,Other,True,False,True,False,Basic,"**Senior Vice President, Sales and Marketing** Position Summary:
 
 Provide leadership and coordination of company sales and marketing functions  
@@ -311,7 +311,7 @@ as applicable, and forwards them to the appropriate personnel
 
 management.  
 
-* Knowledge of structuring sales quota goals and revenue expectations.","https://www.indeed.com/cmp/Hana-Technologies,-Inc.-1",,,,2026-01-03,2026-W00,
+* Knowledge of structuring sales quota goals and revenue expectations.","https://www.indeed.com/cmp/Hana-Technologies,-Inc.-1",,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=50377c747f93c2f6,Vice President- Data and AI Advisor/Sales – Consumer & Healthcare,Genpact,"New York, NY, US",2026-01-01,160000.0,200000.0,USD,yearly,VP,Unknown,New York,True,False,True,True,Good,"Ready to build the future with AI?
 
 At Genpact, we don’t just keep up with technology—we set the pace. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s AI Gigafactory, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to agentic AI, our breakthrough solutions tackle companies’ most complex challenges.
@@ -430,7 +430,7 @@ Unposting DateMar 3, 2026, 12:29:00 PM
 
 Master Skills ListSales and Marketing
 
-Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=feaf4efccaf58a6a,"Vice President, GCP Business Group Specialized Sales",Genpact,"New York, NY, US",2026-01-01,160000.0,200000.0,USD,yearly,VP,Unknown,New York,True,False,True,True,Good,"***Ready to shape the future of work?***
 
 ***At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s*** ***AI Gigafactory******, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to*** ***agentic AI******, our breakthrough solutions tackle companies’ most complex challenges.***
@@ -538,7 +538,7 @@ Unposting DateMar 3, 2026, 12:29:00 PM
 
 Master Skills ListDigital
 
-Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=cd745277cdb66826,Vice President of Sales,"Label Solutions, Inc","Marshfield, MO, US",2025-12-31,75986.0,91510.0,USD,yearly,VP,Unknown,Other,False,False,True,True,Good,"**Vice President of Sales – Printing & Labeling (Hybrid)**
 
 **Position Summary**  
@@ -590,7 +590,7 @@ Benefits:
 * Paid time off
 * Vision insurance
 
-Work Location: Hybrid remote in Marshfield, MO 65706","https://www.indeed.com/cmp/Label-Solutions,-Inc-1",http://easylabeling.com/,,,2026-01-03,2026-W00,
+Work Location: Hybrid remote in Marshfield, MO 65706","https://www.indeed.com/cmp/Label-Solutions,-Inc-1",http://easylabeling.com/,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=cc77bfc0d10849c5,"Vice President, Sales & Business Development - Americas",StandardAero,"Cincinnati, OH, US",2025-12-30,,,,,VP,Late Stage,Other,True,False,True,False,Good,"**Vice President, Sales & Business Development - Americas**
 
 **Desired Work Location:** Cincinnati, OH. Open to well-qualified remote candidates within 20 miles of a StandardAero Component Repair Services facility (Cincinnati OH; Hillsboro OH; Phoenix AZ; Broomfield CO; Miami FL; Ft Myers FL; Palm City FL). Open to well-qualified remote candidates located near key North American Customers (GA, TX, OK, CA, etc.)
@@ -639,7 +639,7 @@ As the VP Sales & Business Development Americas in our Component Repair Services
 
 **What makes a good fit for StandardAero**
 
-We love people who take pride in their work and being collaborative with their team. We work together and support each other. We’re very team oriented too and that is greatly valued. We also believe in getting the job done, whatever it takes and that’s a work-ethic that is often hard to describe. We love that too —it’s what makes us great partners and teammates to each other. We are respectful of each other and who we are, and welcome people from all walks of life and give everyone open access to learn and build skills. We live by the StandardAero brand promise as the trusted service partner to our customers. If this sounds like a great fit for you, we hope you apply and join us.",https://www.indeed.com/cmp/Standardaero,http://www.standardaero.com/,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,
+We love people who take pride in their work and being collaborative with their team. We work together and support each other. We’re very team oriented too and that is greatly valued. We also believe in getting the job done, whatever it takes and that’s a work-ethic that is often hard to describe. We love that too —it’s what makes us great partners and teammates to each other. We are respectful of each other and who we are, and welcome people from all walks of life and give everyone open access to learn and build skills. We live by the StandardAero brand promise as the trusted service partner to our customers. If this sounds like a great fit for you, we hope you apply and join us.",https://www.indeed.com/cmp/Standardaero,http://www.standardaero.com/,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=ef65556badad3ff2,Area Vice President Sales,Elara Caring,"Worthington, OH, US",2025-12-30,,,,,VP,Unknown,Other,False,False,True,False,Basic,"At Elara Caring, we have a unique opportunity to play a huge role in the growth of an entire home care industry. Here, each employee has the chance to make a real difference by carrying out our mission every day. Join our elite team of healthcare professionals, providing the Right Care, at the Right Time, in the Right Place.
 
 **Job Description:**
@@ -685,7 +685,7 @@ You will report to the President of Sales.
 
 *This is not a comprehensive list of all job responsibilities and requirements; upon request, a job description can be provided.*
 
-*If you are an individual with a disability and are unable or limited in your ability to use or access our career site as a result of your disability, you may request reasonable accommodations by reaching out to* *recruiting@elara.com.*",https://www.indeed.com/cmp/Elara-Caring,https://elara.com/,"10,000+",$25M to $100M (USD),2026-01-03,2026-W00,
+*If you are an individual with a disability and are unable or limited in your ability to use or access our career site as a result of your disability, you may request reasonable accommodations by reaching out to* *recruiting@elara.com.*",https://www.indeed.com/cmp/Elara-Caring,https://elara.com/,"10,000+",$25M to $100M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=6344676abeff1027,Vice President of Sales,SALMON Health and Retirement,"Milford, MA, US",2025-12-30,125000.0,190000.0,USD,yearly,VP,Series C/D,Other,False,False,True,True,Premium,"**SALMON Health and Retirement** is seeking a Vice President of Sales to provide sales leadership and oversight for SALMON senior living communities and service levels with a specific goal of achieving occupancy targets.
 
 **Responsibilities:**
@@ -713,7 +713,7 @@ https://www.indeed.com/viewjob?jk=6344676abeff1027,Vice President of Sales,SALMO
 
 **SALMON Health and Retirement** offers a generous tuition reimbursement program for degree programs relevant to your role. Your career goals are our goals, too. The right benefits can make your life better. We want you to feel seen, heard, valued and cared for, which is why we offer competitive wages, tuition reimbursement and student loan repayment, wellness perks, generous paid holidays and paid time off, free tickets to sporting events, life insurance, health insurance, dental insurance, a 401(k) plan and more.
 
-#indccm",https://www.indeed.com/cmp/Salmon-Health-and-Retirement,http://www.salmonhealth.com,"1,001 to 5,000",Decline to state,2026-01-03,2026-W00,
+#indccm",https://www.indeed.com/cmp/Salmon-Health-and-Retirement,http://www.salmonhealth.com,"1,001 to 5,000",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=c1dbaac76a02ffd8,"Full Time Vice President, Sales",Performance Development Group,"Philadelphia, PA, US",2025-12-30,,,,,VP,Series A/B,Other,False,False,True,False,Good,"**About PDG**
 
 Performance Development Group (PDG) is an award-winning, global leader helping Life Sciences companies improve business results through improving brand performance. Recognized as a premier company in our field, we provide collaborative advisory services and innovative sales performance solutions that help our clients to exceed their business goals.
@@ -766,7 +766,7 @@ The ideal candidate for this position can consult with clients regarding sales p
 * Familiarity with CRM tools, HubSpot preferred
 * Employment at PDG is contingent upon the successful completion of a criminal background check, which is conducted as a condition of employment.
 
-Please review our privacy policy here.",https://www.indeed.com/cmp/Performance-Development-Group,https://www.performdev.com,51 to 200,,2026-01-03,2026-W00,
+Please review our privacy policy here.",https://www.indeed.com/cmp/Performance-Development-Group,https://www.performdev.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=2fccffc5c24fb92d,Vice President of Sales,SITE IQ LLC,US,2025-12-30,,,USD,yearly,VP,Unknown,Other,True,False,True,False,Basic,"**Vice President of Sales**
 
 **Location**: Remote
@@ -897,7 +897,7 @@ Experience:
 
 * B2B sales: 5 years (Required)
 
-Work Location: Remote",https://www.indeed.com/cmp/Site-Iq-LLC,,,,2026-01-03,2026-W00,
+Work Location: Remote",https://www.indeed.com/cmp/Site-Iq-LLC,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=ab79e0ebe3ec7502,"VP, Property Management Sales",CBRE,"Washington, DC, US",2025-12-29,170000.0,190000.0,USD,yearly,VP,Unknown,Other,True,False,True,True,Good,"VP, Property Management Sales
 
 Job ID
@@ -1001,7 +1001,7 @@ CBRE carefully considers multiple factors to determine compensation, including a
 
 **Equal Employment Opportunity:** CBRE has a long-standing commitment to providing equal employment opportunity to all qualified applicants regardless of race, color, religion, national origin, sex, sexual orientation, gender identity, pregnancy, age, citizenship, marital status, disability, veteran status, political belief, or any other basis protected by applicable law.  
   
-**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=a2902ee12c5ecbc8,"VP, Property Management Sales",CBRE,"Atlanta, GA, US",2025-12-29,,,,,VP,Unknown,Atlanta,True,False,True,False,Basic,"VP, Property Management Sales
 
 Job ID
@@ -1103,7 +1103,7 @@ CBRE Group, Inc. (NYSE:CBRE), a Fortune 500 and S&P 500 company headquartered in
 
 **Equal Employment Opportunity:** CBRE has a long-standing commitment to providing equal employment opportunity to all qualified applicants regardless of race, color, religion, national origin, sex, sexual orientation, gender identity, pregnancy, age, citizenship, marital status, disability, veteran status, political belief, or any other basis protected by applicable law.  
   
-**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=64e0dd7f35461291,"VP, Property Management Sales",CBRE,"New York, NY, US",2025-12-29,170000.0,190000.0,USD,yearly,VP,Unknown,New York,True,False,True,True,Good,"VP, Property Management Sales
 
 Job ID
@@ -1207,7 +1207,7 @@ CBRE carefully considers multiple factors to determine compensation, including a
 
 **Equal Employment Opportunity:** CBRE has a long-standing commitment to providing equal employment opportunity to all qualified applicants regardless of race, color, religion, national origin, sex, sexual orientation, gender identity, pregnancy, age, citizenship, marital status, disability, veteran status, political belief, or any other basis protected by applicable law.  
   
-**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=d3d7394237d6f710,"VP, Property Management Sales",CBRE,"Chicago, IL, US",2025-12-29,170000.0,190000.0,USD,yearly,VP,Unknown,Chicago,True,False,True,True,Good,"VP, Property Management Sales
 
 Job ID
@@ -1311,7 +1311,7 @@ CBRE carefully considers multiple factors to determine compensation, including a
 
 **Equal Employment Opportunity:** CBRE has a long-standing commitment to providing equal employment opportunity to all qualified applicants regardless of race, color, religion, national origin, sex, sexual orientation, gender identity, pregnancy, age, citizenship, marital status, disability, veteran status, political belief, or any other basis protected by applicable law.  
   
-**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Candidate Accommodations:** CBRE values the differences of all current and prospective employees and recognizes how every employee contributes to our company’s success. CBRE provides reasonable accommodations in job application procedures for individuals with disabilities. If you require assistance due to a disability in the application or recruitment process, please submit a request via email at recruitingaccommodations@cbre.com or via telephone at +1 866 225 3099 (U.S.) and +1 866 388 4346 (Canada).",https://www.indeed.com/cmp/Cbre,http://www.cbre.com,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=f25a661d8c20ccd1,"Vice President of Sales-Lincoln, NE",Lee Enterprises,"Lincoln, NE, US",2025-12-29,,,,,VP,Late Stage,Other,True,False,True,False,Good,"The Lincoln Journal Star, partnering with Amplified Digital is seeking a dynamic leader as the Vice President of Sales for Lincoln and the surrounding areas. This position is a “boots on the ground” role responsible for identifying and developing new business opportunities plus growing relationships with existing clients to increase sales and revenue individually and by leading a team. Lee Enterprises is the fastest growing digital subscription platform in the nation for four years running.
   
   
@@ -1356,7 +1356,7 @@ Lee Enterprises is a major subscription and advertising platform and a leading p
 Lee Enterprises is proud to be an equal opportunity employer, and we participate in E-Verify. We are committed to attracting and retaining a workforce whose diversity reflects the communities we serve. Lee embraces change, and we recognize that we must create and maintain a culture of fervent inclusion. For more information about Lee, check us out at www.lee.net.
   
   
-We are focused on building a diverse and inclusive workforce. If you are excited about this role but do not meet 100% of the qualifications above, we still encourage you to apply at https://lee.net.careers and search for Lincoln.",https://www.indeed.com/cmp/Lee-Enterprises,http://www.lee.net,"5,001 to 10,000",$500M to $1B (USD),2026-01-03,2026-W00,
+We are focused on building a diverse and inclusive workforce. If you are excited about this role but do not meet 100% of the qualifications above, we still encourage you to apply at https://lee.net.careers and search for Lincoln.",https://www.indeed.com/cmp/Lee-Enterprises,http://www.lee.net,"5,001 to 10,000",$500M to $1B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=29c50cff9b1a8a40,"VP, Commercial Strategy & Planning",Turning Point Brands Inc.,"Remote, US",2025-12-29,,,,,VP,Series B/C,Remote,True,True,True,False,Good,"**Who we Are:**
 
 Turning Point Brands, Inc. (NYSE: TPB) is a leading manufacturer, marketer, and distributor of branded consumer products with active ingredients. We sell a wide range of products exclusively to adult consumers, from our iconic brands to our next generation products to fulfill evolving consumer preferences. Our three focus segments are led by our core, proprietary brands including Zig-Zag® (rolling papers and wraps), Stoker’s® (looseleaf chew and moist snuff) along with our distribution platforms in NewGen. Our products are sold in over 215,000 retail outlets in North America and through our e-commerce platforms. Our businesses generate solid cash flow which we use to finance acquisitions, increase brand support, expand our distribution infrastructure, and strengthen our capital position.
@@ -1425,7 +1425,7 @@ Turning Point Brands offer a competitive salary and benefits.
 
 Turning Point Brands is an equal opportunity employer. We hire qualified applicants without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, veteran status, and other legally protected classes.
 
-BE AWARE OF FRAUD: When applying for a job at Turning Point Brands (TPB) you will be contacted via correspondence through our official job portal with a clrco.com e-mail address; direct phone call from a member of the TPB team; or direct e-mail with a tpbi.com e-mail address. TPB does not request payments for interviews or at any other point during the hiring process. TPB will not ask for your personal identifying information such as a social security number, birth certificate, financial institution, driver’s license number or passport information over the phone or via e-mail. If you believe you are a victim of identity theft, contact the Federal Bureau of Investigations internet crime hotline (www.ic3.gov), the Federal Trade Commission identity theft hotline (www.identitytheft.gov) and/or your local police department. Any scam job listings should be reported to whatever website it was posted in.",https://www.indeed.com/cmp/Turning-Point-Brands-Inc.,http://www.turningpointbrands.com/,201 to 500,$100M to $500M (USD),2026-01-03,2026-W00,
+BE AWARE OF FRAUD: When applying for a job at Turning Point Brands (TPB) you will be contacted via correspondence through our official job portal with a clrco.com e-mail address; direct phone call from a member of the TPB team; or direct e-mail with a tpbi.com e-mail address. TPB does not request payments for interviews or at any other point during the hiring process. TPB will not ask for your personal identifying information such as a social security number, birth certificate, financial institution, driver’s license number or passport information over the phone or via e-mail. If you believe you are a victim of identity theft, contact the Federal Bureau of Investigations internet crime hotline (www.ic3.gov), the Federal Trade Commission identity theft hotline (www.identitytheft.gov) and/or your local police department. Any scam job listings should be reported to whatever website it was posted in.",https://www.indeed.com/cmp/Turning-Point-Brands-Inc.,http://www.turningpointbrands.com/,201 to 500,$100M to $500M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=c2f8704512785454,"VP, Revenue Operations",HALO,"IL, US",2025-12-29,175000.0,250000.0,USD,yearly,VP,Series C/D,Other,True,False,True,True,Premium,"Description:
 
 We are HALO! We connect people and brands to create unforgettable, meaningful, and lasting experiences that build brand engagement and loyalty for our over 60,000 clients globally, including over 100 of the Fortune 500. Our nearly 2,000 employees and 1,000 Account Executives located in 40+ sales offices across the United States are the reason HALO is #1 in our $25B industry.
@@ -1530,7 +1530,7 @@ HALO is an equal opportunity employer. We celebrate diversity and are committed 
 
 HALO participates in E-Verify. Please see the following notices in English and Spanish for important information: E-Verify Participation and Right to Work.
 
-*HALO is committed to working with and providing reasonable accommodations to individuals with disabilities. If you need reasonable accommodation because of a disability for any part of the employment process – including the online application and/or overall selection process – you may email us at hr@halo.com. Please do not use this as an alternative method for general inquiries or status on applications as you will not receive a response. Reasonable requests will be reviewed and responded to on a case-by-case basis.*",https://www.indeed.com/cmp/Halo-11196e4b,https://halo.com/,"1,001 to 5,000",$500M to $1B (USD),2026-01-03,2026-W00,
+*HALO is committed to working with and providing reasonable accommodations to individuals with disabilities. If you need reasonable accommodation because of a disability for any part of the employment process – including the online application and/or overall selection process – you may email us at hr@halo.com. Please do not use this as an alternative method for general inquiries or status on applications as you will not receive a response. Reasonable requests will be reviewed and responded to on a case-by-case basis.*",https://www.indeed.com/cmp/Halo-11196e4b,https://halo.com/,"1,001 to 5,000",$500M to $1B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=6da9c6c782d1f6c8,"VP, Commercial",Pep Boys,"Bala-Cynwyd, PA, US",2025-12-03,,,,,VP,Late Stage,Other,True,False,True,False,Good,"**This position requires to be working in office, 3 days per week from our Bala Cynwyd, PA office.**
 
 **Position Overview**
@@ -1589,7 +1589,7 @@ The physical demands described above are representative of those that must be me
 
 *Pep Boys is an equal opportunity employer that does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status.*
 
-#LI-AE1",https://www.indeed.com/cmp/Pep-Boys-e73bbdd8,https://www.pepboys.com/careers,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,
+#LI-AE1",https://www.indeed.com/cmp/Pep-Boys-e73bbdd8,https://www.pepboys.com/careers,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=7ed4626e3d044a7c,BPO VP of Sales - USA,Answer247,"Las Vegas, NV, US",2025-03-26,,,,,VP,Unknown,Other,False,False,True,False,Basic,"At our company, we believe in business as a force for good — and that starts with helping Kiwi companies work smarter, grow faster, and compete globally.
 
 We’re on a mission to partner with USA's most forward-thinking organisations — giving them the tools, talent, and operational power to scale through exceptional BPO solutions.
@@ -1655,7 +1655,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=93847be52edc58cc,BPO VP of Sales - USA,Answer247,"Phoenix, AZ, US",2025-03-26,,,,,VP,Unknown,Other,False,False,True,False,Basic,"At our company, we believe in business as a force for good — and that starts with helping Kiwi companies work smarter, grow faster, and compete globally.
 
 We’re on a mission to partner with USA's most forward-thinking organisations — giving them the tools, talent, and operational power to scale through exceptional BPO solutions.
@@ -1721,7 +1721,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=c8f2ac2762c7e0a8,Vice President of Sales – New Logos,Answer247,"Boston, MA, US",2025-01-21,,,,,VP,Unknown,Boston,True,False,True,False,Basic,"We’re looking for an entrepreneurial **Vice President of Sales – New Logos** to join our journey. This is not just a sales role—it’s an opportunity to build transformative relationships with some of the world’s most forward-thinking brands. If you’re driven by purpose, energized by possibility, and eager to bring new customers into the fold, let’s talk.
 
 **What You’ll Be Doing**
@@ -1794,7 +1794,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=a182bf663b065846,Vice President of Sales – New Logos,Answer247,"Denver, CO, US",2025-01-21,,,,,VP,Unknown,Denver,True,False,True,False,Basic,"We’re looking for an entrepreneurial **Vice President of Sales – New Logos** to join our journey. This is not just a sales role—it’s an opportunity to build transformative relationships with some of the world’s most forward-thinking brands. If you’re driven by purpose, energized by possibility, and eager to bring new customers into the fold, let’s talk.
 
 **What You’ll Be Doing**
@@ -1867,7 +1867,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=9477ce920c95c328,Vice President of Sales – New Logos,Answer247,"Los Angeles, CA, US",2025-01-21,,,,,VP,Unknown,Los Angeles,True,False,True,False,Basic,"We’re looking for an entrepreneurial **Vice President of Sales – New Logos** to join our journey. This is not just a sales role—it’s an opportunity to build transformative relationships with some of the world’s most forward-thinking brands. If you’re driven by purpose, energized by possibility, and eager to bring new customers into the fold, let’s talk.
 
 **What You’ll Be Doing**
@@ -1940,7 +1940,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=4b6f233ec382c159,Vice President of Sales – New Logos,Answer247,"San Francisco, CA, US",2025-01-21,,,,,VP,Unknown,San Francisco,True,False,True,False,Basic,"We’re looking for an entrepreneurial **Vice President of Sales – New Logos** to join our journey. This is not just a sales role—it’s an opportunity to build transformative relationships with some of the world’s most forward-thinking brands. If you’re driven by purpose, energized by possibility, and eager to bring new customers into the fold, let’s talk.
 
 **What You’ll Be Doing**
@@ -2013,7 +2013,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video:https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=45381f25c5d234d6,Vice President of Sales – New Logos,Answer247,"Dallas, TX, US",2025-01-21,,,,,VP,Unknown,Texas,True,False,True,False,Basic,"We’re looking for an entrepreneurial **Vice President of Sales – New Logos** to join our journey. This is not just a sales role—it’s an opportunity to build transformative relationships with some of the world’s most forward-thinking brands. If you’re driven by purpose, energized by possibility, and eager to bring new customers into the fold, let’s talk.
 
 **What You’ll Be Doing**
@@ -2086,7 +2086,7 @@ If you’re hungry, if you care, if you want to build a real career instead of j
 
 Our goal is to create the best human experience, ensure the highest client satisfaction, and transform clients’ customers into loyal advocates for life.
 
-Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,
+Check out our YouTube video: https://youtu.be/AsPjX-5uyQQ",https://www.indeed.com/cmp/Answer247,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=30e6786c8614c045,VP Weath Management Sales,Blueprint,"Remote, US",2025-12-31,,,,,VP,Series A/B,Remote,True,True,True,False,Good,"VP, Wealth Management / FinTech Sales | Full-Time | Remote
 
 **WHO WE ARE**
@@ -2158,7 +2158,7 @@ What You Bring
 Preferred Experience
 
 * Understanding of the wealth management and FinTech ecosystem—including business models, pain points, and buying behaviors
-* Familiarity with risk management, vendor management, cyber security or compliance solutions is a strong plus",https://www.indeed.com/cmp/Blueprint,,51 to 200,,2026-01-03,2026-W00,
+* Familiarity with risk management, vendor management, cyber security or compliance solutions is a strong plus",https://www.indeed.com/cmp/Blueprint,,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=5e03fcfb643afbd9,VP of Market Sales,Flowers Foods,"Sun Valley, CA, US",2025-12-30,,,,,VP,Late Stage,Other,True,False,True,False,Good,"**:**
 
 The VP of Market Sales will be responsible for executing local market-specific sales strategies based on guidance from VP of Regional Sales and working with the Retail sales team and the Business Unit to drive profitable sales. Market Sales VPs will own and manage all local market specific DSD sales activities and maintain close contact with Route Sales Directors. Additionally, the Market Sales VP will constantly look for ways to grow business through interaction with key customer accounts. This person will be responsible for coaching and training RSDs on developing relationships with customers and company Route Sales Representatives. They will also maintain consistent communication with their respective Regional Sales VP to provide perspective on local market-specific successes and areas for improvement.
@@ -2197,7 +2197,7 @@ We offer a competitive salary and an excellent total rewards package. Interested
 
 Flowers is an Equal Opportunity Employer. Flowers encourages all qualified candidates to apply, regardless of race, color, religion, gender, gender identity or expression, sexual orientation, national origin, age, veteran status, disability status, or people of any other characteristic protected by state or federal law. The job description above outlines the general nature and level of work expected from employees within this classification. It is not designed to contain or be interpreted as a comprehensive inventory of all duties, responsibilities and qualifications for this position. Equivalent combination of education, experience, and skills may supplement above minimum job requirements.
 
-If you need assistance with submitting your resume due to a medical condition or disability, please send an e-mail to Matthew West at Matthew.West@flocorp.com or (1) 279 7829599.",https://www.indeed.com/cmp/Flowers-Foods,https://www.flowersfoods.com,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,
+If you need assistance with submitting your resume due to a medical condition or disability, please send an e-mail to Matthew West at Matthew.West@flocorp.com or (1) 279 7829599.",https://www.indeed.com/cmp/Flowers-Foods,https://www.flowersfoods.com,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=fb7cbae643f58657,"VP, Revenue Operations",Octopus Deploy,"Remote, US",2025-12-30,,,,,VP,Unknown,Remote,True,True,True,False,Basic,"Octopus Deploy sets the standard for Continuous Delivery, empowering software teams to deliver value in an agile way. Over 4,000 organizations globally – including Ubisoft, Xero, Stack Overflow, NASA, and Disney – rely on our Continuous Delivery, GitOps, and release orchestration solutions.
 
 Founded in Australia in 2012, our team of over 300 Octonauts now spans the globe. We combine high growth and big ambitions with a sustainable, balanced working environment. Our revenue has grown consistently between 30–50% every year for the past 8 years, and we’ve been profitable for 10 out of the past 11 years. Octopus now provides the industry's most comprehensive Continuous Delivery solution for organizations operating at scale.
@@ -2314,7 +2314,7 @@ We take fraudulent activities seriously and are committed to ensuring the integr
 
 Octopus Deploy does not compensate search firms for unsolicited assistance unless they have a written search agreement with Octopus Deploy and the requisition is position-specific. Any resumes, curriculum vitae and other unsolicited assistance from search firms that do not have a written search agreement or position-specific requisition submitted to any Associate of Octopus Deploy will be deemed the sole property of Octopus Deploy and no fee will be paid in the event the candidate is hired by Octopus Deploy.
 
-We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",https://www.indeed.com/cmp/Octopus-Deploy,,,,2026-01-03,2026-W00,
+We may use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact us.",https://www.indeed.com/cmp/Octopus-Deploy,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=e5f62b57adbaba66,VP Data Center Strategy & Sales,Lumen,"Remote, US",2025-12-29,260474.0,347288.0,USD,yearly,VP,Unknown,Remote,True,True,True,True,Good,"**About Lumen**
 
 Lumen connects the world. We are igniting business growth by connecting people, data and applications – quickly, securely, and effortlessly. Together, we are building a culture and company from the people up – committed to teamwork, trust and transparency. People power progress.
@@ -2405,7 +2405,7 @@ The job responsibilities described above indicate the general nature and level o
 
 In any materials you submit, you may redact or remove age-identifying information such as age, date of birth, or dates of school attendance or graduation. You will not be penalized for redacting or removing this information.
 
-Please be advised that Lumen does not require any form of payment from job applicants during the recruitment process. All legitimate job openings will be posted on our official website or communicated through official company email addresses. If you encounter any job offers that request payment in exchange for employment at Lumen, they are not for employment with us, but may relate to another company with a similar name.",https://www.indeed.com/cmp/Lumen-667f951b,http://www.lumen.com,"10,000+",more than $10B (USD),2026-01-03,2026-W00,
+Please be advised that Lumen does not require any form of payment from job applicants during the recruitment process. All legitimate job openings will be posted on our official website or communicated through official company email addresses. If you encounter any job offers that request payment in exchange for employment at Lumen, they are not for employment with us, but may relate to another company with a similar name.",https://www.indeed.com/cmp/Lumen-667f951b,http://www.lumen.com,"10,000+",more than $10B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=557980200407806f,"VP, Consumer Sales",Pep Boys,"Bala-Cynwyd, PA, US",2025-12-03,,,,,VP,Late Stage,Other,True,False,True,False,Good,"**Position Summary**
 
 The ***VP Consumer Sales*** will be responsible for achieving annual sales, margin and revenue objectives through the leadership and management of the sales team. In addition to leading the growth of the business, the VP Consumer Sales will develop and implement best in class performance metrics, sales processes, and collaborate on delivering compensation and incentive programs that drive performance.
@@ -2459,7 +2459,7 @@ The physical demands described above are representative of those that must be me
 
 *Pep Boys is an equal opportunity employer that does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status.*
 
-#LI-AE1",https://www.indeed.com/cmp/Pep-Boys-e73bbdd8,https://www.pepboys.com/careers,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,
+#LI-AE1",https://www.indeed.com/cmp/Pep-Boys-e73bbdd8,https://www.pepboys.com/careers,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=fc643f9ff8955d4f,"Senior Vice President, Sales & Marketing",,"Auburn, AL, US",2025-12-29,,,,,SVP,Unknown,Other,False,False,True,False,Basic,"The Senior Vice President (SVP) of Sales & Marketing will oversee sales and marketing at all Ithaka Hospitality hotels, is responsible for translating company strategy into actionable goals, managing budgets, driving growth, and leading their team to ensure operational excellence, profitability, and compliance. Key duties include strategic planning, financial oversight, talent development, performance evaluation, and representing the company externally, focusing on maximizing revenue and achieving organizational objectives.  
 **Key Responsibilities:**
 
@@ -2469,7 +2469,7 @@ https://www.indeed.com/viewjob?jk=fc643f9ff8955d4f,"Senior Vice President, Sales
 * **Leadership & Talent:** Lead, guide, and evaluate Vice Presidents and managers; ensure adequate staffing and foster a positive culture.
 * **Performance & Compliance:** Monitor performance, ensure regulatory compliance, and drive achievement of financial targets.
 * **Business Development:** Identify new opportunities, build partnerships, and support new company initiatives.
-* **Executive Communication:** Serve as a liaison with the C-suite, board, and other executives, and represent the company externally.",,,,,2026-01-03,2026-W00,
+* **Executive Communication:** Serve as a liaison with the C-suite, board, and other executives, and represent the company externally.",,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=9dc50c03a40cb165,"VP, Employer Channel Sales",Quantum Health,"Remote, US",2025-12-28,,,,,VP,Series C/D,Remote,True,True,True,False,Good,"**Location:** This position is located at our Dublin, OH campus with hybrid flexibility or may work remotely anywhere in the United States of America.
 
 **Who we** **are**
@@ -2546,7 +2546,7 @@ Experience using Salesforce or similar CRM for channel management and forecastin
 
 #LI-AT1
 
-#LI-Remote",https://www.indeed.com/cmp/Quantum-Health-6,http://www.quantum-health.com,"1,001 to 5,000",Decline to state,2026-01-03,2026-W00,
+#LI-Remote",https://www.indeed.com/cmp/Quantum-Health-6,http://www.quantum-health.com,"1,001 to 5,000",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=e1a2d7287c596068,Senior VP - Sales,Direct Rate,"San Antonio, TX, US",2025-12-28,,,USD,yearly,VP,Unknown,Texas,True,False,True,False,Basic,"Senior VP - Market Leader
 
 **Compensation:**Highly competitive, performance-based compensation(100% commission, uncapped; earnings scale with production, team growth, and market leadership)
@@ -2627,7 +2627,7 @@ If that describes you, apply.
 
   
 
--",https://www.indeed.com/cmp/Direct-Rate,,,,2026-01-03,2026-W00,
+-",https://www.indeed.com/cmp/Direct-Rate,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=ad25c59ffba353df,"RVP, Sales Central",OutSystems,"Remote, US",2025-12-28,180750.0,250125.0,USD,yearly,VP,Series C/D,Remote,True,True,True,True,Premium,"**There are NO limits to your career: come shape the future and be part of a truly unique global culture at OutSystems!**
 
 OutSystems is seeking a dynamic and experienced Regional Vice President of Sales to develop and lead a high-performing sales team, focusing on driving net new sales growth and maximizing revenue in complex, large-scale enterprise accounts. This is a second line role, managing between 2 to 4 Regional Sales Directors with teams of between 8 - 16 AEs. This leader will play a key role in shaping the sales strategy, guiding account execution, and building strong, lasting relationships across the region. The ideal candidate has a proven track record in managing sophisticated sales cycles, leading teams to surpass goals, and expanding presence in markets.
@@ -2688,7 +2688,7 @@ Our goal is to ensure that OutSystems is a place for bright, happy, and motivate
 
 Are you ready for the next step in your career? Then we’d love to hear from you!
 
-OutSystems nurtures an inclusive culture of diversity, where everyone feels empowered to be their authentic self and perform at their best. A company that embraces the creativity and innovation that comes through diverse perspectives. We are committed to creating a team that reflects society through inclusive programs and initiatives and are proud to be an equal opportunity employer. All qualified applicants receive equal consideration regardless of race, place of origin, color, age, marital status, religion, sex, sexual orientation, gender expression or identity, protected veteran status, disability status or any other status protected by law.",https://www.indeed.com/cmp/Outsystems,http://www.outsystems.com,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,
+OutSystems nurtures an inclusive culture of diversity, where everyone feels empowered to be their authentic self and perform at their best. A company that embraces the creativity and innovation that comes through diverse perspectives. We are committed to creating a team that reflects society through inclusive programs and initiatives and are proud to be an equal opportunity employer. All qualified applicants receive equal consideration regardless of race, place of origin, color, age, marital status, religion, sex, sexual orientation, gender expression or identity, protected veteran status, disability status or any other status protected by law.",https://www.indeed.com/cmp/Outsystems,http://www.outsystems.com,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=b827fc1c49fd0a7c,"RVP, Sales East",OutSystems,"Remote, US",2025-12-28,180750.0,250125.0,USD,yearly,VP,Series C/D,Remote,True,True,True,True,Premium,"**There are NO limits to your career: come shape the future and be part of a truly unique global culture at OutSystems!**
 
 OutSystems is seeking a dynamic and experienced Regional Vice President of Sales to develop and lead a high-performing sales team, focusing on driving net new sales growth and maximizing revenue in complex, large-scale enterprise accounts. This is a second line role, managing between 2 to 4 Regional Sales Directors with teams of between 8 - 16 AEs. This leader will play a key role in shaping the sales strategy, guiding account execution, and building strong, lasting relationships across the region. The ideal candidate has a proven track record in managing sophisticated sales cycles, leading teams to surpass goals, and expanding presence in markets.
@@ -2749,7 +2749,7 @@ Our goal is to ensure that OutSystems is a place for bright, happy, and motivate
 
 Are you ready for the next step in your career? Then we’d love to hear from you!
 
-OutSystems nurtures an inclusive culture of diversity, where everyone feels empowered to be their authentic self and perform at their best. A company that embraces the creativity and innovation that comes through diverse perspectives. We are committed to creating a team that reflects society through inclusive programs and initiatives and are proud to be an equal opportunity employer. All qualified applicants receive equal consideration regardless of race, place of origin, color, age, marital status, religion, sex, sexual orientation, gender expression or identity, protected veteran status, disability status or any other status protected by law.",https://www.indeed.com/cmp/Outsystems,http://www.outsystems.com,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,
+OutSystems nurtures an inclusive culture of diversity, where everyone feels empowered to be their authentic self and perform at their best. A company that embraces the creativity and innovation that comes through diverse perspectives. We are committed to creating a team that reflects society through inclusive programs and initiatives and are proud to be an equal opportunity employer. All qualified applicants receive equal consideration regardless of race, place of origin, color, age, marital status, religion, sex, sexual orientation, gender expression or identity, protected veteran status, disability status or any other status protected by law.",https://www.indeed.com/cmp/Outsystems,http://www.outsystems.com,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=f1b01bb98bcc760a,"Vice President, Global Sales",KIDDE-FENWAL,US,2025-12-28,225000.0,300000.0,USD,yearly,VP,Unknown,Other,True,False,True,True,Good,"**About KiddeFenwal**
 
 KiddeFenwal is a global leader in industrial and commercial fire suppression systems and safety controls. Through our trusted brands—Kidde Fire Systems, Kidde Fire Protection, and Fenwal Controls—we deliver certified fire detection, suppression, and control solutions for industrial, commercial, and marine applications. With operations in the U.S., U.K., and India, we are committed to protecting lives, livelihoods, and critical assets worldwide.
@@ -2816,7 +2816,7 @@ This is a high‑impact, global leadership role with the opportunity to shape th
 
 **Equal Opportunity Employer**
 
-KiddeFenwal is an Equal Opportunity/Affirmative Action Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, veteran status, age, or any other federally protected class.",https://www.indeed.com/cmp/Kidde--fenwal,,,,2026-01-03,2026-W00,
+KiddeFenwal is an Equal Opportunity/Affirmative Action Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, veteran status, age, or any other federally protected class.",https://www.indeed.com/cmp/Kidde--fenwal,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=2cff7d18a1c48b47,Vice President of Sales,"Nexgen Technologies, LLC","Boynton Beach, FL, US",2025-12-28,,,USD,yearly,VP,Unknown,Other,True,False,True,False,Basic,"NexGen Technologies is seeking a highly accomplished Vice President of Sales to lead enterprise sales initiatives, as well as drive revenue growth across our next-generation BPO and contact center solutions. This senior role reports directly to the CEO and requires a proven track record of closing complex enterprise deals, building executive-level relationships, and scaling sales organizations in fast-paced, growth-oriented environments.
 
 **Key Responsibilities**
@@ -2872,7 +2872,7 @@ https://www.indeed.com/viewjob?jk=2cff7d18a1c48b47,Vice President of Sales,"Nexg
 
 * Competitive base salary plus uncapped commission/bonus plan.
 * Performance-based incentives with direct reporting line to the CEO.
-* High visibility and influence in shaping NexGen’s enterprise sales strategy","https://www.indeed.com/cmp/Nexgen-Technologies,-LLC",,,,2026-01-03,2026-W00,
+* High visibility and influence in shaping NexGen’s enterprise sales strategy","https://www.indeed.com/cmp/Nexgen-Technologies,-LLC",,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=a9eef17fbd0ef24e,VP of Retail Sales,2020 Companies,"Seattle, WA, US",2025-12-25,,,USD,yearly,VP,Late Stage,Seattle,True,False,True,False,Good,"**Job Type:**
 
 Regular
@@ -2950,7 +2950,7 @@ Lastly, the Retail Sales VP will partner with internal 2020 Corporate leadership
 We welcome every voice, and we are committed to building a truly inclusive environment where your differences are not just welcomed, they are celebrated. We are always identifying opportunities to encourage our team to be their authentic selves, while working to provide a best-in-class experience for our employees. Whether that’s paid holidays, long-term career pathing options, personal development opportunities or professional stretch assignments, you can expect 2020 Companies to support you.  
   
 **2020’s Commitment**  
-We are committed to creating a diverse and inclusive organization and are proud to be an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, pregnancy, disability, age, veteran status, or other dimensions of identity.",https://www.indeed.com/cmp/2020-Companies,https://www.2020companies.com/,"5,001 to 10,000",Decline to state,2026-01-03,2026-W00,
+We are committed to creating a diverse and inclusive organization and are proud to be an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, pregnancy, disability, age, veteran status, or other dimensions of identity.",https://www.indeed.com/cmp/2020-Companies,https://www.2020companies.com/,"5,001 to 10,000",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=4ff470e2f17f83ed,"Vice President, Sales Director",Genpact,"New York, NY, US",2025-12-25,160000.0,200000.0,USD,yearly,VP,Unknown,New York,True,False,True,True,Good,"***Ready to shape the future of work?***
 
 ***At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s*** ***AI Gigafactory******, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to*** ***agentic AI******, our breakthrough solutions tackle companies’ most complex challenges.***
@@ -3048,7 +3048,7 @@ Unposting DateMar 26, 2026, 1:29:00 PM
 
 Master Skills ListSales and Marketing
 
-Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=0ff428dbc3d38936,Internal Audit Vice President - Global Sales & Research,JPMorganChase,"Jersey City, NJ, US",2025-12-25,137750.0,200000.0,USD,yearly,VP,Unknown,Other,True,False,True,True,Good,"**JOB DESCRIPTION**
 
 We are on the lookout for a talented Vice President to join our Commercial Investment Banking Audit team. This is your opportunity to play a crucial role in enhancing our organization's governance and operational excellence!
@@ -3098,7 +3098,7 @@ JPMorgan Chase & Co. is an Equal Opportunity Employer, including Disability/Vete
 
 Our professionals in our Corporate Functions cover a diverse range of areas from finance and risk to human resources and marketing. Our corporate teams are an essential part of our company, ensuring that we’re setting our businesses, clients, customers and employees up for success.
 
-The Audit department provides independent assessments to evaluate, test and report on the adequacy and effectiveness of our governance, risk management and internal controls. The team’s priorities are focused on strong governance, transparency, strategic engagement, and fostering a diverse and inclusive culture that develops our talent.",https://www.indeed.com/cmp/Jpmorganchase-2,https://www.jpmorganchase.com/,"10,000+",more than $10B (USD),2026-01-03,2026-W00,
+The Audit department provides independent assessments to evaluate, test and report on the adequacy and effectiveness of our governance, risk management and internal controls. The team’s priorities are focused on strong governance, transparency, strategic engagement, and fostering a diverse and inclusive culture that develops our talent.",https://www.indeed.com/cmp/Jpmorganchase-2,https://www.jpmorganchase.com/,"10,000+",more than $10B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=6113095296792f31,VP of Sales,Nexus Cooperative,"Charles City, IA, US",2025-12-29,,,,,VP,Unknown,Other,True,False,True,False,Basic,"About Us
 
 Nexus Cooperative is a leading provider in the agriculture retail sector, offering innovative solutions and high-quality products to farmers and agribusinesses. Our mission is to empower growers with the tools and expertise they need to maximize productivity and sustainability.
@@ -3165,7 +3165,7 @@ Benefits:
 * Paid time off
 * Vision insurance
 
-Work Location: In person",https://www.indeed.com/cmp/Nexus-Cooperative,,,,2026-01-03,2026-W00,
+Work Location: In person",https://www.indeed.com/cmp/Nexus-Cooperative,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=5a244995ee19c6a0,Assistant VP Revenue Cycle Ops,RadNet,"Richardson, TX, US",2025-12-28,140000.0,165000.0,USD,yearly,VP,Late Stage,Texas,True,False,True,True,Premium,"Job Description:
 
 Artificial Intelligence; Advanced Technology; The very best in patient care. With decades of expertise, RadNet is *Leading Radiology Forward*. With dynamic cross-training and advancement opportunities in a team-focused environment, the core of RadNet’s success is its people with the commitment to a better healthcare experience. When you join RadNet as our **Assistant Vice President of Revenue Cycle Operations (""AVP RCO"")*****,*** you will be joining a dedicated team of professionals who deliver quality, value, and access in the 21st century and align all stakeholders- patients, providers, payors, and regulators achieve the best clinical outcomes.
@@ -3217,7 +3217,7 @@ strengthen collaboration, and uphold the Company's standard of excellence.
 * Follows OSHA regulations, RadNet and site protocols, policies and procedures.
 * Follows HIPAA, compliance, privacy, safety and confidentiality standards at all times.
 
-Pay Range: USD $140,000.00 - USD $165,000.00 /Yr.",https://www.indeed.com/cmp/Radnet,https://www.radnet.com,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,
+Pay Range: USD $140,000.00 - USD $165,000.00 /Yr.",https://www.indeed.com/cmp/Radnet,https://www.radnet.com,"5,001 to 10,000",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=3b7ea550dba897af,"Regional Vice President, Imaging Sales - Southern California",Siemens Healthineers,"Los Angeles, CA, US",2025-12-28,159200.0,222000.0,USD,yearly,VP,Unknown,Los Angeles,True,False,True,True,Good,"Join us in pioneering breakthroughs in healthcare. For everyone. Everywhere. Sustainably.  
   
 Our inspiring and caring environment forms a global community that celebrates diversity and individuality. We encourage you to step beyond your comfort zone, offering resources and flexibility to foster your professional and personal growth, all while valuing your unique contributions.
@@ -3291,7 +3291,7 @@ If you require a reasonable accommodation in completing a job application, inter
 
 **Beware of Job Scams:** Please beware of potentially fraudulent job postings or suspicious recruiting activity by persons that are currently posing as Siemens Healthineers recruiters/employees. These scammers may attempt to collect your confidential personal or financial information. If you are concerned that an offer of employment with Siemens Healthineers might be a scam or that the recruiter is not legitimate, please verify by searching for the posting on the Siemens Healthineers career site.
 
-**To all recruitment agencies:** Siemens Healthineers does not accept agency resumes. Please do not forward resumes to our jobs alias, employees, or any other company location. Siemens Healthineers is not responsible for any fees related to unsolicited resumes.",https://www.indeed.com/cmp/Siemens-Healthineers,https://www.siemens-healthineers.com/,"10,000+",more than $10B (USD),2026-01-03,2026-W00,
+**To all recruitment agencies:** Siemens Healthineers does not accept agency resumes. Please do not forward resumes to our jobs alias, employees, or any other company location. Siemens Healthineers is not responsible for any fees related to unsolicited resumes.",https://www.indeed.com/cmp/Siemens-Healthineers,https://www.siemens-healthineers.com/,"10,000+",more than $10B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=1c6e3373c5af0469,"Vice President, Commercial Operations",,"Houston, TX, US",2025-12-28,,,,,VP,Unknown,Texas,False,False,True,False,Basic,"About Us:
 
 Every moment of every day, people around the world rely on the energy they access through infrastructure built by Quanta. Comprising the largest skilled-labor force in North America, our employees are highly skilled and innovative, continually working to connect people and power. We’re building the infrastructure that supports the energy transition, and there are more opportunities than ever to be part of our team. Join us and build your career building a brighter future.
@@ -3338,7 +3338,7 @@ All qualified applicants will receive consideration for employment and will not 
 We are an Equal Opportunity Employer, including disability and protected veteran status.
   
   
-We prohibit all types of discrimination and are committed to providing access and equal opportunity for individuals with disabilities. For additional information or if reasonable accommodation is needed to participate in the job application, interview, or hiring processes or to perform the essential functions of a position, please contact us the Company’s Human Resources department.",,,,,2026-01-03,2026-W00,
+We prohibit all types of discrimination and are committed to providing access and equal opportunity for individuals with disabilities. For additional information or if reasonable accommodation is needed to participate in the job application, interview, or hiring processes or to perform the essential functions of a position, please contact us the Company’s Human Resources department.",,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=cb4b2fa66fca5c6e,"Vice President, Global GSI Partner Sales",Saviynt,"Remote, US",2025-12-28,,,,,VP,Unknown,Remote,True,True,True,False,Basic,"Saviynt's AI-powered identity platform manages and governs human and non-human access to all of an organization's applications, data, and business processes. Customers trust Saviynt to safeguard their digital assets, drive operational efficiency, and reduce compliance costs. Built for the AI age, Saviynt is today helping organizations safely accelerate their deployment and usage of AI. Saviynt is recognized as the leader in identity security, with solutions that protect and empower the world’s leading brands, Fortune 500 companies and government institutions. For more information, please visit www.saviynt.com.
 
 The Vice President of GSI Partner Sales plays a critical role in accelerating enterprise revenue growth by building, scaling, and leading the global go-to-market strategy with Global Systems Integrators (GSIs) to accelerate enterprise revenue growth. This role will own pipeline creation, co-sell execution, global offering creation, and revenue outcomes through strategic partners including Accenture, Deloitte, EY, KPMG, PwC, IBM, and other global consulting and integration firms.
@@ -3405,7 +3405,7 @@ As a key member of the Partner leadership team, the VP aligns partner strategy w
 
 Saviynt is an amazing place to work. We are a high-growth, Platform as a Service company focused on Identity Authority to power and protect the world at work. You will experience tremendous growth and learning opportunities through challenging yet rewarding work which directly impacts our customers, all within a welcoming and positive work environment. If you're resilient and enjoy working in a dynamic environment you belong with us!
 
-***Saviynt is an equal opportunity employer and we welcome everyone to our team. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, or veteran status.***",https://www.indeed.com/cmp/Saviynt,,Decline to state,Decline to state,2026-01-03,2026-W00,
+***Saviynt is an equal opportunity employer and we welcome everyone to our team. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, or veteran status.***",https://www.indeed.com/cmp/Saviynt,,Decline to state,Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=51489c26092877cb,Vice President of Healthcare Sales - North America,CliniSys,"Tucson, AZ, US",2025-12-25,175000.0,200000.0,USD,yearly,VP,Series C/D,Other,True,False,True,True,Premium,"**Purpose**
 
 The Vice President of Sales for North America will lead a team of Sales Executives and Account Managers who are responsible for driving new sales as well as enhance and leverage current relationships for greater impact. The VP will be responsible for increasing revenue within the assigned region and providing the training, mentorship, and role modeling to ensure the Sales team is successful in not only meeting their goals but exceeding them.
@@ -3473,7 +3473,7 @@ The starting pay range for a candidate selected for this position is generally b
 
 From our business casual dress policy, generous PTO plan and flexible work schedules , to our mission driven organization that supports those who support healthcare organizations, Clinisys promotes work-life balance for all of our employees. We place emphasis on training and development, encourage promotion from within and encourage crossfunctional team participation. These ideals together foster a culture of professional growth and development for our employee.
 
-#LI-TJB",https://www.indeed.com/cmp/Clinisys,https://www.clinisys.com/in/en/,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,
+#LI-TJB",https://www.indeed.com/cmp/Clinisys,https://www.clinisys.com/in/en/,"1,001 to 5,000",$100M to $500M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=acb96a8df90fcba1,Regional VP of Sales,Truveris,"Wilmington, DE, US",2025-12-29,120000.0,160000.0,USD,yearly,VP,Series A/B,Other,True,False,True,True,Premium,"**ABOUT US**
 ------------
 
@@ -3517,7 +3517,7 @@ Truveris provides equal employment opportunities to all employees and applicants
 
 This policy applies to all terms and conditions of employment, including recruiting, hiring, placement, promotion, termination, layoff, recall, transfer, leaves of absence, compensation and training.
 
-Please review our CCPA/CPRA policies here.",https://www.indeed.com/cmp/Truveris,https://www.truveris.com/,51 to 200,$5M to $25M (USD),2026-01-03,2026-W00,
+Please review our CCPA/CPRA policies here.",https://www.indeed.com/cmp/Truveris,https://www.truveris.com/,51 to 200,$5M to $25M (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=3d71bbb51f497de7,"VP Sales, FPSO",Siemens Energy,"Houston, TX, US",2025-12-29,,,,,VP,Unknown,Texas,True,False,True,False,Basic,"**A Snapshot of Your Day**
 
 Join us as the VP Sales FPSO, where you will play a pivotal role in expanding our compression business within the FPSO market. You will lead a dedicated team in collaboration with the VP of regional sales, ensuring a focused approach to this dynamic sector. Imagine defining strategies for bids, coordinating sales across various regions, and engaging early with engineering firms and end users during the Feed phase. You will work closely with the proposal and commercial sales teams, aligning strategies with our Gas turbine business while nurturing relationships with existing and prospective customers. Your expertise will help develop a compelling value proposition for our after-service business, all while promoting technical standards to enhance project execution.
@@ -3558,7 +3558,7 @@ At Siemens Energy, we are more than just an energy technology company. With ~100
 * Family building benefits
 * Parental leave
 
-**Jobs & Careers:** https://jobs.siemens-energy.com/jobs",https://www.indeed.com/cmp/Siemens-Energy,https://www.siemens-energy.com/,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Jobs & Careers:** https://jobs.siemens-energy.com/jobs",https://www.indeed.com/cmp/Siemens-Energy,https://www.siemens-energy.com/,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=15c4faba94b7b6f5,"VP Sales, LNG",Siemens Energy,"Houston, TX, US",2025-12-29,,,,,VP,Unknown,Texas,True,False,True,False,Basic,"**A Snapshot of Your Day**
 
 Join us as the VP Sales LNG, where you will play a pivotal role in expanding our compression business on a global scale, focusing on Main Refrigerant Compression, BOG (Boil-Off Gas), Feed Gas Booster, and NRU (Nitrogen Rejection Unit). Engage early with End Users, EPCs, and process licensors to identify the best technical solutions from our diverse compression portfolio. A strategic mindset will guide the definition of the approach for all main refrigerant compression opportunities worldwide, while coordination with regional sales teams ensures effective positioning of every opportunity. Building and maintaining strong customer relationships will be key, as collaboration with our engineering team optimizes technical standards, particularly in E-LNG, and partnership with our Gas Turbine Business Area enhances our competitive edge.
@@ -3598,7 +3598,7 @@ At Siemens Energy, we are more than just an energy technology company. With ~100
 * Family building benefits
 * Parental leave
 
-**Jobs & Careers:** https://jobs.siemens-energy.com/jobs",https://www.indeed.com/cmp/Siemens-Energy,https://www.siemens-energy.com/,"10,000+",Decline to state,2026-01-03,2026-W00,
+**Jobs & Careers:** https://jobs.siemens-energy.com/jobs",https://www.indeed.com/cmp/Siemens-Energy,https://www.siemens-energy.com/,"10,000+",Decline to state,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=d18c22709483d514,Regional VP of Sales - Eastern NC,Spring Arbor Senior Living,"Raleigh, NC, US",2025-12-28,,,,,VP,Series C/D,Other,True,False,True,False,Good,"At Spring Arbor Senior Living, we believe that every moment matters. Guided by our values of compassion, respect, integrity, and collaboration, we strive to provide a purposeful journey while celebrating life’s most meaningful moments. Our mission is to listen, care, inspire growth, and cherish every individual in a community where accountability, independence, and wellness are prioritized. With 35 locations across 9 states, we are dedicated to fostering an inclusive environment where both residents and team members thrive. Join us and help make a difference every day!
   
   
@@ -3652,7 +3652,7 @@ The Regional VP of Sales is responsible for supporting all sales, marketing and 
 Spring Arbor Senior Living is an Equal Opportunity Employer
   
   
-Spring Arbor Management is an equal opportunity employer and makes employment decisions on the basis of merit. We want to have the best available person in every job. It is the policy of Spring Arbor Senior Living to grant equal employment opportunities to all qualified persons without regard to race, color, creed, sex, religion, age, national origin, marital status, sexual orientation, citizenship, physical or mental disability that does not prohibit performance of essential job functions, veteran's status, or any other conditions or identifications against which discrimination is prohibited.",https://www.indeed.com/cmp/Spring-Arbor-Senior-Living-1,https://www.springarborliving.com,"1,001 to 5,000",,2026-01-03,2026-W00,
+Spring Arbor Management is an equal opportunity employer and makes employment decisions on the basis of merit. We want to have the best available person in every job. It is the policy of Spring Arbor Senior Living to grant equal employment opportunities to all qualified persons without regard to race, color, creed, sex, religion, age, national origin, marital status, sexual orientation, citizenship, physical or mental disability that does not prohibit performance of essential job functions, veteran's status, or any other conditions or identifications against which discrimination is prohibited.",https://www.indeed.com/cmp/Spring-Arbor-Senior-Living-1,https://www.springarborliving.com,"1,001 to 5,000",,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=4ab35f6cb0fe998f,VP of Sales,Sales Xceleration,"Fort Lauderdale, FL, US",2025-12-28,,,,,VP,Series A/B,Other,True,False,True,False,Good,"* Full Time
 * Miami-Fort Lauderdale Area
   
@@ -3678,7 +3678,7 @@ As a Sales Xceleration Advisor, you will help your Clients build a sales engine 
 * 16+ years of sales experience
 * Minimum 8 years of Senior Sales Leadership experience
 * Revenue responsibility of $25M+annually
-* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,
+* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=fee2082a29f91f84,VP of Sales,Sales Xceleration,"Salt Lake City, UT, US",2025-12-28,,,,,VP,Series A/B,Other,True,False,True,False,Good,"* Full Time
 * Salt Lake City Metropolitan Area
   
@@ -3704,7 +3704,7 @@ As a Sales Xceleration Advisor, you will help your Clients build a sales engine 
 * 16+ years of sales experience
 * Minimum 8 years of Senior Sales Leadership experience
 * Revenue responsibility of $25M+annually
-* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,
+* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=7b0e7f932413237e,VP of Sales,Sales Xceleration,"Portland, OR, US",2025-12-28,,,,,VP,Series A/B,Other,True,False,True,False,Good,"* Full Time
 * Portland, Oregon Metropolitan Area
   
@@ -3730,7 +3730,7 @@ As a Sales Xceleration Advisor, you will help your Clients build a sales engine 
 * 16+ years of sales experience
 * Minimum 8 years of Senior Sales Leadership experience
 * Revenue responsibility of $25M+annually
-* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,
+* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=f3311853289360a0,VP of Sales,Sales Xceleration,"Greenville, SC, US",2025-12-28,,,,,VP,Series A/B,Other,True,False,True,False,Good,"* Full Time
 * Greenville-Spartanburg-Anderson, South Carolina Area
   
@@ -3756,7 +3756,7 @@ As a Sales Xceleration Advisor, you will help your Clients build a sales engine 
 * 16+ years of sales experience
 * Minimum 8 years of Senior Sales Leadership experience
 * Revenue responsibility of $25M+annually
-* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,
+* Business-to-business background",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=daa0135ff6ef2d24,VP of Sales,Sales Xceleration,"Austin, TX, US",2025-12-28,,,USD,yearly,VP,Series A/B,Texas,True,False,True,False,Good,"* Full Time
 * Austin, Texas Metropolitan Area
   
@@ -3786,7 +3786,7 @@ Benefits:
 * Access to a network of experienced sales executives
 * Marketing, business development, and office support
 
-If you’re an experienced sales leader looking for a dynamic and rewarding way to utilize your skills, apply today at eration.com. If you meet the qualifications, a recruiter will reach out to discuss the opportunity.",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,
+If you’re an experienced sales leader looking for a dynamic and rewarding way to utilize your skills, apply today at eration.com. If you meet the qualifications, a recruiter will reach out to discuss the opportunity.",https://www.indeed.com/cmp/Sales-Xceleration,https://www.salesxceleration.com,51 to 200,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=51ea6ec784c98504,Director / VP Sales,Linqia,"San Francisco, CA, US",2025-12-25,,,,,VP,Unknown,San Francisco,True,False,True,False,Basic,"Linqia is the leader in the growing creator marketing industry. We partner with the world's largest brands, including Danone, AB InBev, Kimberly-Clark, Unilever, and Walmart, to build compelling and effective influencer marketing campaigns. Our AI-driven platform and team of experts are leading the transformation of influencer marketing.
 
 We value intelligence, recognize talent, and have instilled a culture that supports our career development and personal growth. We thrive on innovation and accountability, with a customer-first attitude that adds actual value to everything we touch. Our team members are intelligent, hard-working, and have integrity. They love to have fun as we play to win. At Linqia, you'll be working with others who are passionate about marketing in a fun, fast-paced, and data-driven environment.
@@ -3831,7 +3831,7 @@ Deep understanding of the advertising industry* -including client-direct and key
 
 This position description is intended to describe the duties most frequently performed by an individual in this position. Linqia is an equal opportunity employer supporting workforce diversity. We actively encourage women, people with disabilities, veterans, underrepresented minorities, and LGBTQ+ people to apply. We do not discriminate on the basis of race, religion, color, national origin, gender, gender identity or expression, sexual orientation, age, marital status, veteran status, or disability status. Pursuant to the San Francisco Fair Chance Ordinance, we will consider for employment qualified applicants with arrest and conviction records.
 
-Headhunters and recruitment agencies may not submit resumes or candidates through this Web site or directly to employees. Linqia does not accept unsolicited headhunter and agency resumes and will not pay fees to any third-party agency or company that does not have a signed agreement with us.",https://www.indeed.com/cmp/Linqia,,,,2026-01-03,2026-W00,
+Headhunters and recruitment agencies may not submit resumes or candidates through this Web site or directly to employees. Linqia does not accept unsolicited headhunter and agency resumes and will not pay fees to any third-party agency or company that does not have a signed agreement with us.",https://www.indeed.com/cmp/Linqia,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=a707308c3c2922de,Director / VP Sales,Linqia,"Chicago, IL, US",2025-12-25,,,,,VP,Unknown,Chicago,True,False,True,False,Basic,"Linqia is the leader in the growing creator marketing industry. We partner with the world's largest brands, including Danone, AB InBev, Kimberly-Clark, Unilever, and Walmart, to build compelling and effective influencer marketing campaigns. Our AI-driven platform and team of experts are leading the transformation of influencer marketing.
 
 We value intelligence, recognize talent, and have instilled a culture that supports our career development and personal growth. We thrive on innovation and accountability, with a customer-first attitude that adds actual value to everything we touch. Our team members are intelligent, hard-working, and have integrity. They love to have fun as we play to win. At Linqia, you'll be working with others who are passionate about marketing in a fun, fast-paced, and data-driven environment.
@@ -3879,7 +3879,7 @@ Deep understanding of the advertising industry* -including client-direct and key
 
 This position description is intended to describe the duties most frequently performed by an individual in this position. Linqia is an equal opportunity employer supporting workforce diversity. We actively encourage women, people with disabilities, veterans, underrepresented minorities, and LGBTQ+ people to apply. We do not discriminate on the basis of race, religion, color, national origin, gender, gender identity or expression, sexual orientation, age, marital status, veteran status, or disability status. Pursuant to the San Francisco Fair Chance Ordinance, we will consider for employment qualified applicants with arrest and conviction records.
 
-Headhunters and recruitment agencies may not submit resumes or candidates through this Web site or directly to employees. Linqia does not accept unsolicited headhunter and agency resumes and will not pay fees to any third-party agency or company that does not have a signed agreement with us.",https://www.indeed.com/cmp/Linqia,,,,2026-01-03,2026-W00,
+Headhunters and recruitment agencies may not submit resumes or candidates through this Web site or directly to employees. Linqia does not accept unsolicited headhunter and agency resumes and will not pay fees to any third-party agency or company that does not have a signed agreement with us.",https://www.indeed.com/cmp/Linqia,,,,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=1735d6dc982b9c63,Vice President- Data and AI Advisor/Sales – Consumer & Healthcare,Genpact,"Chicago, IL, US",2025-12-25,160000.0,200000.0,USD,yearly,VP,Unknown,Chicago,True,False,True,True,Good,"***Ready to shape the future of work?***
 
 ***At Genpact, we*** ***don’t*** ***just adapt to change—we drive it. AI and digital innovation are redefining industries, and*** ***we’re*** ***leading the charge. Genpact’s*** ***AI Gigafactory******, our industry-first accelerator, is an example of how*** ***we’re*** *scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to* ***agentic AI******, our breakthrough solutions tackle companies’ most complex challenges.***
@@ -3993,7 +3993,7 @@ Unposting DateMar 26, 2026, 1:29:00 PM
 
 Master Skills ListSales and Marketing
 
-Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=35aff478426b2889,Vice President Aftersales- Supply Chain Consulting,Genpact,"Atlanta, GA, US",2025-12-25,190000.0,240000.0,USD,yearly,VP,Unknown,Atlanta,True,False,True,True,Good,"***Ready to shape the future of work?***
 
 **At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s** **AI Gigafactory****, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to** **agentic AI****, our breakthrough solutions tackle companies’ most complex challenges.**
@@ -4097,7 +4097,7 @@ Unposting DateMar 26, 2026, 1:29:00 PM
 
 Master Skills ListConsulting
 
-Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=2786a85f4e96c784,VP of Sales (Remote),Discovery Behavioral Health,"Remote, US",2025-12-28,200.0,250.0,USD,daily,VP,Series C/D,Remote,True,True,True,False,Good,"Discovery Behavioral Health
   
 Discovery Behavioral Health (DBH) is a national leader in behavioral healthcare and one of the fastest growing companies in the field. DBH offers world-class treatment for those struggling with eating disorders, mental health, and substance use and places a high priority on seeking employees who share our passion for improving the lives we serve.
@@ -4129,7 +4129,7 @@ The VP of Sales manages marketing, internal and external communications, communi
 
 Discovery Behavioral Health seeks to build a diverse staff that is reflective of the patients we serve and the communities where we work. DBH encourages multiple perspectives, experiences, and strives to hire and retain a diverse workforce.
   
-We are proud to be an EEO employer M/F/D/V. We maintain a drug-free workplace and perform pre-employment substance abuse testing. All qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, or national origin.",https://www.indeed.com/cmp/Discovery-Behavioral-Health,http://www.discoverybh.com,"1,001 to 5,000",,2026-01-03,2026-W00,
+We are proud to be an EEO employer M/F/D/V. We maintain a drug-free workplace and perform pre-employment substance abuse testing. All qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, or national origin.",https://www.indeed.com/cmp/Discovery-Behavioral-Health,http://www.discoverybh.com,"1,001 to 5,000",,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=63f2f51a2c562aea,Hospice Regional Vice President of Sales (North),Mission Healthcare,"Concord, CA, US",2025-12-25,180000.0,215000.0,USD,yearly,VP,Series C/D,Other,False,False,True,True,Premium,"Mission Healthcare, located in seven states, is the largest home health and hospice company in the western United States. We have a critical mission—to take care of our people. We provide a comprehensive array of services that meet the needs of patients and families across the healthcare continuum. We believe our people, partners, patients and their families deserve care delivered with **C**ompassion, **A**ccountability, **R**espect, **E**xcellence and **S**ervice **(CARES),** Mission Healthcare's core values. By joining our team, you will have the opportunity to impact patient's lives daily and grow your career in a culture of collaboration, compassion, and commitment. We are excited to continue to grow our mission family!
 
 **Benefits for Eligible Employees**  
@@ -4205,7 +4205,7 @@ Mission Healthcare values your voice. We believe in maintaining a dialogue about
 Communication Consent:  
 By submitting an application, you acknowledge and consent to receive communications—including emails, phone calls, and text messages—from Mission Healthcare and its recruiters regarding your application and potential employment opportunities. You may opt out of text messages at any time by responding with ""STOP"".
 
-**Let Better Growth Come To You!**",https://www.indeed.com/cmp/Mission-Healthcare-1,https://www.homewithmission.com/,"1,001 to 5,000",,2026-01-03,2026-W00,
+**Let Better Growth Come To You!**",https://www.indeed.com/cmp/Mission-Healthcare-1,https://www.homewithmission.com/,"1,001 to 5,000",,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=e178152dc62c89e9,Hospice Regional Vice President of Sales (Southern CA),Mission Healthcare,"Irvine, CA, US",2025-12-25,180000.0,215000.0,USD,yearly,VP,Series C/D,Other,False,False,True,True,Premium,"Mission Healthcare, located in seven states, is the largest home health and hospice company in the western United States. We have a critical mission—to take care of our people. We provide a comprehensive array of services that meet the needs of patients and families across the healthcare continuum. We believe our people, partners, patients and their families deserve care delivered with **C**ompassion, **A**ccountability, **R**espect, **E**xcellence and **S**ervice **(CARES),** Mission Healthcare's core values. By joining our team, you will have the opportunity to impact patient's lives daily and grow your career in a culture of collaboration, compassion, and commitment. We are excited to continue to grow our mission family!
 
 **Benefits for Eligible Employees**  
@@ -4281,7 +4281,7 @@ Mission Healthcare values your voice. We believe in maintaining a dialogue about
 Communication Consent:  
 By submitting an application, you acknowledge and consent to receive communications—including emails, phone calls, and text messages—from Mission Healthcare and its recruiters regarding your application and potential employment opportunities. You may opt out of text messages at any time by responding with ""STOP"".
 
-**Let Better Growth Come To You!**",https://www.indeed.com/cmp/Mission-Healthcare-1,https://www.homewithmission.com/,"1,001 to 5,000",,2026-01-03,2026-W00,
+**Let Better Growth Come To You!**",https://www.indeed.com/cmp/Mission-Healthcare-1,https://www.homewithmission.com/,"1,001 to 5,000",,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
 https://www.indeed.com/viewjob?jk=7cb4c99fcd1dd611,VP of Sales (Remote),Discovery Behavioral Health,"Irvine, CA, US",2025-12-28,200.0,250.0,USD,daily,VP,Series C/D,Other,True,False,True,False,Good,"Discovery Behavioral Health
   
 Discovery Behavioral Health (DBH) is a national leader in behavioral healthcare and one of the fastest growing companies in the field. DBH offers world-class treatment for those struggling with eating disorders, mental health, and substance use and places a high priority on seeking employees who share our passion for improving the lives we serve.
@@ -4313,4 +4313,630 @@ The VP of Sales manages marketing, internal and external communications, communi
 
 Discovery Behavioral Health seeks to build a diverse staff that is reflective of the patients we serve and the communities where we work. DBH encourages multiple perspectives, experiences, and strives to hire and retain a diverse workforce.
   
-We are proud to be an EEO employer M/F/D/V. We maintain a drug-free workplace and perform pre-employment substance abuse testing. All qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, or national origin.",https://www.indeed.com/cmp/Discovery-Behavioral-Health,http://www.discoverybh.com,"1,001 to 5,000",,2026-01-03,2026-W00,
+We are proud to be an EEO employer M/F/D/V. We maintain a drug-free workplace and perform pre-employment substance abuse testing. All qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, or national origin.",https://www.indeed.com/cmp/Discovery-Behavioral-Health,http://www.discoverybh.com,"1,001 to 5,000",,2026-01-03,2026-W00,,,,,,,,,,,,,,,,,,,,,,
+https://www.indeed.com/viewjob?jk=a4e70823a721b62a,AVP Commercial Manager/Team Leader,Gesa Credit Union,"Spokane, WA, US",2025-12-30,157373.0,262288.0,USD,yearly,VP,,,False,False,True,True,Premium,"**Take a leap and join our team!**
+==================================
+
+At Gesa, we believe in the power of our people. Coming from all walks of life, our team members’ individual stories and unique experiences are our most valuable asset. But it’s how we come together, igniting our collective compassion and commitment to empowering our communities, that makes us succeed. Because we know we go further when we go together.
+
+Here you can join a team who is passionate about serving others, has a desire to do good, and shares a deep love of people. You can engage in meaningful work that impacts your community. You can challenge yourself and grow in your career. And, you can rest assured that your wellbeing and prosperity are our priority.
+
+**Get to know us:** About - Gesa Credit Union
+
+**Role Summary:**
+=================
+
+Under the direction of the Vice President of Commercial Services, the AVP Commercial Manager/Team Leader is responsible for directing, managing, and coordinating the commercial loan, business deposit, and cash management functions of their respective team. The AVP will participate on the Gesa Leadership team and provide input on the strategic initiatives of the organization. They will coordinate the business development activities of their team and manage commercial loan relationships. The team leader will manage a group of lenders, small business development officers, and other staff as designated to grow a profitable commercial loan portfolio that is consistent with established policies, guidelines, and procedures. They make commercial loan and cash management exposure decisions according to the MBL Policies and underwriting guidelines. They will be responsible for controlling commercial loan delinquencies and charge offs and assist in portfolio management to ensure safety and soundness. Ensures the enhancement of commercial loan relationships by cross-selling business deposits and cash management products and services. Projects professional image, exercises independent judgment, and maintains confidentiality with all customer and sensitive data.
+
+**What You Will Be Doing:**
+===========================
+
+* Maintain a highly qualified staff, sufficient to meet the daily demands of the Credit Union’s members.
+* Interview, select, train, evaluate, supervise, schedule, coach and develop team members as needed to provide responsive and professional service to our membership. Note observations of employee performance into appropriate reporting tools, as well as give to and receive feedback from employee on quarterly basis.
+* Complete performance reviews within the prescribed time frame.
+* Ensure the team remains in compliance with all state and federal laws and credit Union policies and procedures.
+* Ensure that the team is providing friendly, professional, personal service to all members.
+* Assist the Vice President in managing the Commercial Lending Department operations and administer the credit union lending policies and procedures.
+* Prepare credit requests for submission to Loan Committee and approved credit submissions when appropriate.
+* Identify and monitor all MBL loans and provide senior management with regular detailed reports.
+* Establish production goals and provide productions reports to management.
+* Attend credit union training, conferences and seminars, or professional organization events for continued professional growth.
+* Maintain awareness of laws, rules, regulations, and policies and procedures which impact position duties and responsibilities.
+* Maintain thorough and up-to-date knowledge of the MBLs and other investor requirements; recommend changes as necessary to the credit union policy manual.
+* Provide recommendations to management of changes to products, loan policies, and procedures by following lending laws and regulations.
+* Oversee financial transactions, such as draws, advances, disbursements made by Commercial Loan Servicing.
+* Responsible for the business development of commercial loan relationships.
+* Maintain written, telephone and personal contacts.
+* Develop and maintain up-to-date knowledge of the credit union lending policies and market areas.
+* Maintain historical pricing information, including all indices.
+* Provide basic financial counseling when needed or requested by members.
+* Participate in community activities and business development including, but not limited to, Chamber of Commerce, Board of Realtors and Homebuilders (activities that are industry related.)
+* Maintain effective communication with all credit union employees to ensure coordination and exchange of information for accomplishing Credit Union goals.
+* Maintain and protect all sensitive data utilizing the highest standard of confidentiality and professionalism. Consistently display respect for all areas of diversity and levels of knowledge.
+* Display leadership values such as mutual respect, trust and dignity, and act in the best interest of the credit union. Lead by example by displaying solid ethics and integrity at all times
+* Control risk and operate in a safe and sound manner.
+* Contribute to effective department and credit union operations by performing, special projects and other related duties as assigned.
+* Provide recommendations and process improvements regarding commercial loan activity and processes.
+
+**About You:**
+==============
+
+* Ability to multi-task on numerous projects simultaneously.
+* Ability to effectively and successfully communicate, both orally and in writing.
+* Ability to make quality decisions in a timely manner with extreme attention to detail.
+* Ability to perform required work under limited supervision.
+* Ability to supervise, train and motivate staff.
+* Ability to formulate, implement and administer policies and procedures relating to Member Business Loans.
+
+**Leadership Core Competencies:**
+
+Leaders at Gesa Credit Union are lifelong learners who, by developing themselves, are better able to grow our team members and our organization as well as serve as influential role models for each other. We believe that every team leader, no matter their position or years of experience, must model and continue to strengthen these competencies which are foundational to our view of leadership and support the achievement of our strategic goals.
+
+* Leading Others
+* Developing Others
+* Emotional Intelligence
+* Social Responsibility
+* Performance & Results Orientation
+
+**What You Will Need:**
+=======================
+
+1. Eight to ten years’ similar or related experience.
+
+2. Minimum three years managerial/supervisory position within a financial organization desired, preferred.
+
+3. Bachelor’s degree or equivalent combination of specialized courses in business related training or experience.
+
+4. Experience underwriting commercial loans including commercial real estate loans, agriculture, commercial and industry, and SBA; five years desired.
+
+5. Professional sales ability required; experience relating to commercial loan products desired.
+
+6. Experience analyzing local and national economic data to assist setting marketing and pricing strategies.
+
+7. Familiarity with SBA loan programs and underwriting requirements.
+
+8. Proficient with standard office equipment, Excel, MS Word, Outlook, computer software, lending software, and department specific programs.
+
+9. Maintain a professional image and must maintain confidentiality of sensitive information.
+
+**Our Team Member Value Proposition:**
+======================================
+
+In exchange for bringing your talent to Gesa, here are a just a few of the benefits and perks we offer:
+
+* Competitive Pay
+* Medical, Dental, Vision, and Life Insurance
+* 20 days/year of Paid Time Off – Plus 10 Paid Holidays!
+* 401(k) Match
+* Incentive Program
+* Tuition Assistance and Student Loan Repayment
+* Commuter Benefits
+* Paid Time Off to Volunteer in the Community
+* Product discounts
+* Engaging Work Environment
+* Rewards and Recognition Programs
+
+**Full Salary Range:**
+======================
+
+$157,373.36 - $262,288.94
+
+* *While our full pay range is listed, most new team members typically start between the minimum and midpoint based on their experience and qualifications. This approach gives room to grow within the role as your career progresses with us!""*
+
+Get wise to what’s possible with a career at Gesa. Join us!
+
+We will ensure that individuals with disabilities are provided reasonable accommodation to participate in the job application or interview process, to perform essential job functions, and to receive other benefits and privileges of employment. Please contact the HR Department at (509) 378-3100 or hrmail@gesa.com to request an accommodation.
+
+Gesa Credit Union reserves the right to revise or change the job description as the need arises. This job description is not all inclusive of total job responsibilities nor does it constitute a written or implied contract of employment.
+
+Selected candidate(s) must be able to pass a pre-employment credit/background check.
+
+Gesa Credit Union is an Equal Opportunity Employer and strong advocate of workforce diversity. Race/Color/Gender/Sexual Orientation/Gender Identity/Religion/National Origin/Disability/Veteran.
+
+Equal Employment Opportunity (gesa.com)",https://www.indeed.com/cmp/Gesa-Credit-Union,https://www.secuwa.org,51 to 200,$25M to $100M (USD),2026-01-03,2026-W00,,in-a4e70823a721b62a,indeed,https://www.paycomonline.net/v4/ats/web.php/jobs/ViewJobDetails?job=433523&clientkey=E7A3819EACC22746FA78AB1D19A8ACB0&source=Indeed,fulltime,direct_data,,,,hrmail@gesa.com,Banks And Financial Services,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/ab564c06417733c2f3867bff46a9d1b4,Tukwila,,,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=6e26def4f96e75ad,Commercial Banker - Emerging Middle Market Banking - Vice President,JPMorganChase,"San Francisco, CA, US",2025-12-29,147250.0,215000.0,USD,yearly,VP,,,False,False,True,True,Premium,"**JOB DESCRIPTION**
+
+If you are customer-focused, enjoy building relationships, and collaborating with a wide spectrum of partners to provide strategic financial advice to businesses, a role as a Commercial Banker might be perfect for you.
+
+As a Commercial Banker in Emerging Middle Market Banking, your role is to be the focal point of client acquisition and ongoing relationships. You will work both independently and collaboratively to introduce our comprehensive solutions to clients. Your role involves growing and retaining profitable relationships within the Emerging Middle Market target space. Emerging Middle Market bankers generally focus on companies with annual revenues ranging from $20 million to $100 million.
+
+**Job Responsibilities:**
+
+* Champion a culture of innovation and a customer centric mindset
+
+* Stay up to date with industry trends to identify opportunities for innovation or strategic partnerships
+
+* Find ways to further efficiency with existing technical infrastructure through automation while embracing the innovative opportunities offered by new technologies
+
+**Required qualifications, capabilities and skills:**
+
+* Five plus years lending or credit support related experience with a focus on business relationships
+
+* Understanding of Commercial Banking products and services
+
+* Methodical approach to market activities and prospecting, demonstrate proven client relationship skills, and can engage with CEOs and CFOs
+
+* Ability to collaborate with internal partners and resources
+
+* Demonstrated experience of meeting or exceeding sales goals
+
+* Excellent organizational skills and the ability to manage, prioritize, work under pressure and meet tight deadlines
+
+* Strong interpersonal and influencing skills, with the ability to establish credibility and strong partnership with senior business and control partners
+
+* Deep local connections and market knowledge
+
+**Preferred qualifications, capabilities and skills:**
+
+* Bachelor’s degree and formal credit training preferred
+
+* Sales management, business development skills, proficiency in building and maintaining positive client relationships
+
+* Strong creative solution, problem solving abilities, flexible to changing business priorities and ability to multitask
+
+* Excellent business judgment, strategic thinking, self-directed, proactive and creative
+
+FEDERAL DEPOSIT INSURANCE ACT:
+
+This position is subject to Section 19 of the Federal Deposit Insurance Act. As such, an employment offer for this position is contingent on JPMorganChase’s review of criminal conviction history, including pretrial diversions or program entries.
+
+**ABOUT US**  
+
+JPMorganChase, one of the oldest financial institutions, offers innovative financial solutions to millions of consumers, small businesses and many of the world’s most prominent corporate, institutional and government clients under the J.P. Morgan and Chase brands. Our history spans over 200 years and today we are a leader in investment banking, consumer and small business banking, commercial banking, financial transaction processing and asset management.
+
+We offer a competitive total rewards package including base salary determined based on the role, experience, skill set and location. Those in eligible roles may receive commission-based pay and/or discretionary incentive compensation, paid in the form of cash and/or forfeitable equity, awarded in recognition of individual achievements and contributions. We also offer a range of benefits and programs to meet employee needs, based on eligibility. These benefits include comprehensive health care coverage, on-site health and wellness centers, a retirement savings plan, backup childcare, tuition reimbursement, mental health support, financial coaching and more. Additional details about total compensation and benefits will be provided during the hiring process.
+
+We recognize that our people are our strength and the diverse talents they bring to our global workforce are directly linked to our success. We are an equal opportunity employer and place a high value on diversity and inclusion at our company. We do not discriminate on the basis of any protected attribute, including race, religion, color, national origin, gender, sexual orientation, gender identity, gender expression, age, marital or veteran status, pregnancy or disability, or any other basis protected under applicable law. We also make reasonable accommodations for applicants’ and employees’ religious practices and beliefs, as well as mental health or physical disability needs. Visit our FAQs for more information about requesting an accommodation.
+
+JPMorgan Chase & Co. is an Equal Opportunity Employer, including Disability/Veterans
+
+  
+  
+**ABOUT THE TEAM**  
+  
+J.P. Morgan’s Commercial & Investment Bank is a global leader across banking, markets, securities services and payments. Corporations, governments and institutions throughout the world entrust us with their business in more than 100 countries. The Commercial & Investment Bank provides strategic advice, raises capital, manages risk and extends liquidity in markets around the world.",https://www.indeed.com/cmp/Jpmorganchase-2,https://www.jpmorganchase.com/,"10,000+",more than $10B (USD),2026-01-03,2026-W00,,in-6e26def4f96e75ad,indeed,https://JPMorganChase.contacthr.com/150441480,fulltime,direct_data,,,,,,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/62e186e96c7550325814ef6880fae379,"New York, NY","Headquartered in New York City, JPMorgan Chase is the largest bank in the United States.",,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=94580163f31ffd90,"Assistant Vice President, Sales Director",Genpact,"New York, NY, US",2025-12-25,100000.0,125000.0,USD,yearly,VP,,,False,False,True,True,Premium,"Ready to shape the future of work?
+
+At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s AI Gigafactory, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to agentic AI, our breakthrough solutions tackle companies’ most complex challenges.
+
+If you thrive in a fast-moving, tech-driven environment, love solving real-world problems, and want to be part of a team that’s shaping the future, this is your moment.
+
+Genpact (NYSE: G) is an advanced technology services and solutions company that delivers lasting value for leading enterprises globally. Through our deep business knowledge, operational excellence, and cutting-edge solutions – we help companies across industries get ahead and stay ahead. Powered by curiosity, courage, and innovation, our teams implement data, technology, and AI to create tomorrow, today. Get to know us at genpact.com and on LinkedIn, X, YouTube, and Facebook.
+
+Inviting applications for the role of Assistant Vice President, Sales Director
+
+In this role, you will be responsible for growing our business by pursuing new clients and managing the entire pursuit process from lead generation to contract signature.
+
+Responsibilities
+
+* Deal Origination: Responsible for growing our business with new clients across various industries.
+* Market Research: Conduct thorough market analysis to identify trends, opportunities, and competitive landscape. Utilize insights to shape business development strategies and approaches.
+* Maintains a consistent pipeline of opportunities that aligns to the organization's strategic focus.
+* Proposal Development: Collaborate with Business Units, Data-Tech-AI Function and Commercial/ Pricing teams to craft compelling proposals that effectively communicate the value of our services to potential clients.
+* Negotiation and Closing: Lead contract negotiations, ensuring mutually beneficial agreements are reached. Close deals in a timely manner while meeting or exceeding revenue targets.
+* Sales Management: Maintain accurate records of all business development activities, including pipeline updates, client interactions, and sales performance metrics. Provide regular reports to senior management.
+
+Qualifications we seek in you!
+
+Minimum Qualifications / Skills
+
+* Based in the US, UK, or EU and open to relocating to these regions
+* Exposure to client facing engagements and building and growing relationships with C-suite executives and senior stakeholders
+* Understanding of the services landscape focused on Finance & Accounting or Supply chain or financial services, including market trends, client needs, and competitive dynamics.
+* Proficiency and familiarity/ application of technology tools, platforms, and systems and understanding of artificial intelligence (AI) concepts, applications, and technologies relevant to the individual's industry and domain.
+* Open to Travel for internal and client meetings and other sales activities
+* For Europe hires, you’ll need proficiency in one or more regional languages (German, Dutch, Swedish, Italian, French)
+
+Preferred Qualifications / Skills
+
+* Prior experience in sales and/or consulting at Genpact (part of Flying formation of deal pursuits)
+* Sales and CRM technology understanding: Familiarity with CRM systems (e.g., Salesforce) and digital tools used in sales management would be beneficial.
+
+Personal Attributes
+
+* Hunger, passion & drive to build a career in sales. Someone who actively seeks out challenges, strives to exceed expectations and is not afraid to take bold steps to achieve success.
+* Strong storytelling and presentation skills
+* Results-oriented with a strong drive to achieve and exceed targets.
+* Ability to be a self-starter and work independently and as part of a team.
+* Strong negotiation and influencing skills.
+
+Why join Genpact?
+
+* Be a transformation leader – Work at the cutting edge of AI, automation, and digital innovation
+* Make an impact – Drive change for global enterprises and solve business challenges that matter
+* Accelerate your career – Get hands-on experience, mentorship, and continuous learning opportunities
+* Work with the best – Join 140,000+ bold thinkers and problem-solvers who push boundaries every day
+* Thrive in a values-driven culture – Our courage, curiosity, and incisiveness - built on a foundation of integrity and inclusion - allow your ideas to fuel progress
+
+Come join the tech shapers and growth makers at Genpact and take your career in the only direction that matters: Up.
+
+Let’s build tomorrow together.
+
+The approximate annual base compensation range for this position is $100,000-$125,000. The actual offer, reflecting the total compensation package plus benefits, will be determined by several factors which include but are not limited to the applicant’s experience, knowledge, skills, and abilities; geographic location; and internal equity.
+
+Work-from-Anywhere Roles – “Los Angeles California-based candidates are not eligible for this role”
+
+Location-based Roles (e.g., New York roles – metro area can be adjusted by role location) – “Los Angeles, California based candidates are not eligible for this role. < New York > area candidates are eligible for this role only.”
+
+Genpact is an Equal Opportunity Employer and considers applicants for all positions without regard to race, color, religion or belief, sex, age, national origin, citizenship status, marital status, military/veteran status, genetic information, sexual orientation, gender identity, physical or mental disability or any other characteristic protected by applicable laws. Genpact is committed to creating a dynamic work environment that values respect and integrity, customer focus, and innovation. Furthermore, please do note that Genpact does not charge fees to process job applications and applicants are not required to pay to participate in our hiring process in any other way. Examples of such scams include purchasing a 'starter kit,' paying to apply, or purchasing equipment or training
+
+JobAssistant Vice President
+
+Primary LocationUSA-New York
+
+Education LevelBachelor's / Graduation / Equivalent
+
+Job PostingDec 29, 2025, 3:07:44 AM
+
+Unposting DateMar 29, 2026, 1:29:00 PM
+
+Master Skills ListSales and Marketing
+
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,in-94580163f31ffd90,indeed,https://genpact.taleo.net/careersection/sgy_external_career_section/jobdetail.ftl?job=COR033717&tz=GMT-06%3A00&tzname=America%2FChicago,fulltime,direct_data,,,,,,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/505bd58a0a332271212ac1b411dd3cd0,"New York, NY",,,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=b7fcffdccefa57e0,"Assistant Vice President, Sales Director",Genpact,"New York, NY, US",2025-12-25,100000.0,125000.0,USD,yearly,VP,,,False,False,True,True,Premium,"Ready to shape the future of work?
+
+At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s AI Gigafactory, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to agentic AI, our breakthrough solutions tackle companies’ most complex challenges.
+
+If you thrive in a fast-moving, tech-driven environment, love solving real-world problems, and want to be part of a team that’s shaping the future, this is your moment.
+
+Genpact (NYSE: G) is an advanced technology services and solutions company that delivers lasting value for leading enterprises globally. Through our deep business knowledge, operational excellence, and cutting-edge solutions – we help companies across industries get ahead and stay ahead. Powered by curiosity, courage, and innovation, our teams implement data, technology, and AI to create tomorrow, today. Get to know us at genpact.com and on LinkedIn, X, YouTube, and Facebook.
+
+Inviting applications for the role of Assistant Vice President, Sales Director
+
+In this role, you will be responsible for growing our business by pursuing new clients and managing the entire pursuit process from lead generation to contract signature.
+
+Responsibilities
+
+* Deal Origination: Responsible for growing our business with new clients across various industries.
+* Market Research: Conduct thorough market analysis to identify trends, opportunities, and competitive landscape. Utilize insights to shape business development strategies and approaches.
+* Maintains a consistent pipeline of opportunities that aligns to the organization's strategic focus.
+* Proposal Development: Collaborate with Business Units, Data-Tech-AI Function and Commercial/ Pricing teams to craft compelling proposals that effectively communicate the value of our services to potential clients.
+* Negotiation and Closing: Lead contract negotiations, ensuring mutually beneficial agreements are reached. Close deals in a timely manner while meeting or exceeding revenue targets.
+* Sales Management: Maintain accurate records of all business development activities, including pipeline updates, client interactions, and sales performance metrics. Provide regular reports to senior management.
+
+Qualifications we seek in you!
+
+Minimum Qualifications / Skills
+
+* Based in the US, UK, or EU and open to relocating to these regions
+* Exposure to client facing engagements and building and growing relationships with C-suite executives and senior stakeholders
+* Understanding of the services landscape focused on Finance & Accounting or Supply chain or financial services, including market trends, client needs, and competitive dynamics.
+* Proficiency and familiarity/ application of technology tools, platforms, and systems and understanding of artificial intelligence (AI) concepts, applications, and technologies relevant to the individual's industry and domain.
+* Open to Travel for internal and client meetings and other sales activities
+* For Europe hires, you’ll need proficiency in one or more regional languages (German, Dutch, Swedish, Italian, French)
+
+Preferred Qualifications / Skills
+
+* Prior experience in sales and/or consulting at Genpact (part of Flying formation of deal pursuits)
+* Sales and CRM technology understanding: Familiarity with CRM systems (e.g., Salesforce) and digital tools used in sales management would be beneficial.
+
+Personal Attributes
+
+* Hunger, passion & drive to build a career in sales. Someone who actively seeks out challenges, strives to exceed expectations and is not afraid to take bold steps to achieve success.
+* Strong storytelling and presentation skills
+* Results-oriented with a strong drive to achieve and exceed targets.
+* Ability to be a self-starter and work independently and as part of a team.
+* Strong negotiation and influencing skills.
+
+Why join Genpact?
+
+* Be a transformation leader – Work at the cutting edge of AI, automation, and digital innovation
+* Make an impact – Drive change for global enterprises and solve business challenges that matter
+* Accelerate your career – Get hands-on experience, mentorship, and continuous learning opportunities
+* Work with the best – Join 140,000+ bold thinkers and problem-solvers who push boundaries every day
+* Thrive in a values-driven culture – Our courage, curiosity, and incisiveness - built on a foundation of integrity and inclusion - allow your ideas to fuel progress
+
+Come join the tech shapers and growth makers at Genpact and take your career in the only direction that matters: Up.
+
+Let’s build tomorrow together.
+
+The approximate annual base compensation range for this position is $100,000-$125,000. The actual offer, reflecting the total compensation package plus benefits, will be determined by several factors which include but are not limited to the applicant’s experience, knowledge, skills, and abilities; geographic location; and internal equity.
+
+Work-from-Anywhere Roles – “Los Angeles California-based candidates are not eligible for this role”
+
+Location-based Roles (e.g., New York roles – metro area can be adjusted by role location) – “Los Angeles, California based candidates are not eligible for this role. < New York > area candidates are eligible for this role only.”
+
+Genpact is an Equal Opportunity Employer and considers applicants for all positions without regard to race, color, religion or belief, sex, age, national origin, citizenship status, marital status, military/veteran status, genetic information, sexual orientation, gender identity, physical or mental disability or any other characteristic protected by applicable laws. Genpact is committed to creating a dynamic work environment that values respect and integrity, customer focus, and innovation. Furthermore, please do note that Genpact does not charge fees to process job applications and applicants are not required to pay to participate in our hiring process in any other way. Examples of such scams include purchasing a 'starter kit,' paying to apply, or purchasing equipment or training
+
+JobAssistant Vice President
+
+Primary LocationUSA-New York
+
+Education LevelBachelor's / Graduation / Equivalent
+
+Job PostingDec 29, 2025, 3:06:28 AM
+
+Unposting DateMar 29, 2026, 1:29:00 PM
+
+Master Skills ListSales and Marketing
+
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,in-b7fcffdccefa57e0,indeed,https://genpact.taleo.net/careersection/sgy_external_career_section/jobdetail.ftl?job=COR033714&tz=GMT-06%3A00&tzname=America%2FChicago,fulltime,direct_data,,,,,,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/505bd58a0a332271212ac1b411dd3cd0,"New York, NY",,,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=d92baf6b4228e5dc,"Vice President, GCP Business Group Specialized Sales",Genpact,"New York, NY, US",2025-12-25,160000.0,200000.0,USD,yearly,VP,,,False,False,True,True,Premium,"***Ready to shape the future of work?***
+
+***At Genpact, we don’t just adapt to change—we drive it. AI and digital innovation are redefining industries, and we’re leading the charge. Genpact’s*** ***AI Gigafactory******, our industry-first accelerator, is an example of how we’re scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to*** ***agentic AI******, our breakthrough solutions tackle companies’ most complex challenges.***
+
+***If you thrive in a fast-moving, tech-driven environment, love solving real-world problems, and want to be part of a team that’s shaping the future, this is your moment.***
+
+***Genpact (NYSE: G) is an******advanced technology services and solutions company that delivers******lasting******value for leading enterprises******globally.******Through our******deep business knowledge, operational excellence, and cutting-edge solutions – we help companies across industries get ahead and stay ahead.******Powered by curiosity, courage, and innovation******,******our teams******implement******data, technology, and AI******to******create tomorrow, today.******Get to know us at******genpact.com******and on******LinkedIn******,******X******,******YouTube******, and******Facebook******.***
+
+**Inviting applications for the role of** **Vice President,** **GCP Business Group Specialized Sales**
+
+**We are a leading global system integrator dedicated to driving digital transformation and innovation for our clients. Partnering with industry leaders, we harness our deep industry knowledge and cutting-edge technologies to deliver unparalleled solutions. We integrate data, technology, and AI-first principles into every client interaction, delivering transformative, scalable solutions. This approach drives greater client value, fosters loyalty, and positions us for growth in AI and advanced technologies.**
+
+**\*\*Position Overview: \*\***
+
+**As a Specialized Sales Leader in the GCP Business Group, you will drive joint go-to-market success by selling and solutioning cloud deals aligned to partner offerings. You’ll work closely with Genpact Sales (LCPs, Tech and Data & AI sellers), Alliance, and Partner field teams to build strong account-level engagement, lead joint campaigns, and convert strategic opportunities. Deep knowledge of the partner tech stack, combined with collaboration across Alliance and Delivery teams, will be key to driving joint pipeline inflows, bookings, and consumption. This is a high-impact role at the intersection of Genpact and strategic partner ecosystems.**
+
+Responsibilities
+
+**Act as a trusted advisor in establishing relationships (in partnership with Genpact Sales, Alliance teams, and SMEs/Solution Architects), assisting clients in navigating complex business challenges. Leverage GCP capabilities to craft transformational digital value propositions aligned to client priorities.**
+
+**Proactively create, identify, and develop opportunities centered on Genpact’s partner-led offerings anchored in the GCP ecosystem.**
+
+**Immerse self in the respective cloud partner technology stack, understanding key features and differentiators, and applying this knowledge to drive impactful client conversations and solutioning.**
+
+**Serve as the connection point between Genpact and partner field teams (GCP), helping broker account-level collaboration, lead joint sales campaigns, and deliver a seamless engagement model that strengthens Genpact’s position with clients.**
+
+**Collaborate with internal teams including LCPs, Tech Sales, and Data & AI Sellers to win marquee logos by providing cutting-edge technical depth and strong solutioning capability.**
+
+**Expand Genpact's positioning in the market by helping develop new offerings and thought leadership marketing.**
+
+**Partner with Genpact’s Alliance and Offering teams to shape joint GTM plays, contribute to new offering development, and enhance Genpact’s visibility through thought leadership.**
+
+**Deliver against key performance metrics: Joint Pipeline, Inflows, Bookings, and Cloud Consumption.**
+
+**This role reports to the GCP Business Group Leader. The Business Group Leader would have end-to-end accountability for scaling revenue and will include core functional units of Specialized Sales, Alliance Partnership, Offering and Solution Development and Delivery**
+
+Qualifications we seek in you!
+
+Minimum Qualifications
+
+**Relevant years of experience in technology sales, with Minimum years focused on cloud solutions (GCP preferred).**
+
+**Proven success in driving complex, cloud-led digital transformation deals in large enterprise environments.**
+
+**Strong understanding of cloud partner ecosystems, including commercial models, co-sell motions, and solution architectures.**
+
+**Demonstrated ability to engage senior client stakeholders (CIO, CTO, CDO, business leaders) and translate business needs into actionable solutions.**
+
+**Track record of meeting or exceeding revenue, pipeline, and margin targets.**
+
+**Experience working with cross-functional teams across Sales, Alliances, Offerings, and Delivery.**
+
+**Travel and Driving may be required for this role. The amount of travel and driving will vary from 25 to 100% depending on business need and client requirements.**
+
+Preferred Qualifications/ Skills
+
+**Experience selling or solutioning GCP native services (certifications and proficiency in GCP would be a plus).**
+
+**Familiarity with cloud consumption metrics, partner sales campaigns, and joint GTM strategies.**
+
+**Prior experience working closely with alliance teams to land joint opportunities.**
+
+**Strong commercial acumen with exposure to pricing, contracting, and deal structuring for cloud/SaaS offerings.**
+
+**Executive presence, excellent communication skills, and a collaborative, high-growth mindset.**
+
+**Willingness to travel globally (25–100%) as per business needs.**
+
+***Why join Genpact?***
+
+***Be a transformation leader*** ***– Work at the cutting edge of AI, automation, and digital innovation***
+
+***Make an impact*** ***– Drive change for global enterprises and solve business challenges that matter***
+
+***Accelerate your career*** ***– Get hands-on experience, mentorship, and continuous learning opportunities***
+
+***Work with the best*** ***– Join 140,000+ bold thinkers and problem-solvers who push boundaries every day***
+
+***Thrive in a values-driven culture*** ***– Our courage, curiosity, and incisiveness - built on a foundation of integrity and inclusion - allow your ideas to fuel progress***
+
+***Come join the tech shapers and growth makers at Genpact and take your career in the only direction that matters: Up.***
+
+***Let’s build tomorrow together.***
+
+***The approximate annual base compensation range for this position is [$160,000 to $200,000]. The actual offer, reflecting the total compensation package plus benefits, will be determined by*** ***a number of*** ***factors which include but are not limited to the applicant’s experience, knowledge, skills, and abilities; geographic location; and internal equity***
+
+**Work-from-Anywhere Roles** **– “Los Angeles California-based candidates are not eligible for this role”**
+
+**Location-based Roles** **(*****e.g., Richardson roles – metro area can be adjusted by role location)*** **– “Los Angeles, California based candidates are not eligible for this role. <*****Dallas Metro*****> area candidates are eligible for this role only.”**
+
+***Genpact is an Equal Opportunity Employer and considers applicants for all positions without regard to race,*** ***color******, religion or belief, sex, age, national origin, citizenship status, marital status, military/veteran status, genetic information, sexual orientation, gender identity, physical or mental disability or any other characteristic protected by applicable laws. Genpact is committed to creating a dynamic work environment that values respect and integrity, customer focus, and innovation.***  
+***Furthermore, please do note that Genpact does not charge fees to process job applications and applicants are not required to pay to participate in our hiring process in any other way. Examples of such scams include purchasing a 'starter kit,' paying to apply, or purchasing equipment or training.***
+
+JobVice President
+
+Primary LocationUSA-New York
+
+ScheduleFull-time
+
+Education LevelBachelor's / Graduation / Equivalent
+
+Job PostingDec 26, 2025, 9:24:42 AM
+
+Unposting DateMar 26, 2026, 1:29:00 PM
+
+Master Skills ListDigital
+
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,in-d92baf6b4228e5dc,indeed,https://genpact.taleo.net/careersection/sgy_external_career_section/jobdetail.ftl?job=COR033641&tz=GMT-06%3A00&tzname=America%2FChicago,fulltime,direct_data,,,,,,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/505bd58a0a332271212ac1b411dd3cd0,"New York, NY",,,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=1cba4120d96bee24,Vice President- Data and AI Advisor/Sales – Consumer & Healthcare,Genpact,"New York, NY, US",2025-12-25,160000.0,200000.0,USD,yearly,VP,,,False,False,True,True,Premium,"***Ready to shape the future of work?***
+
+***At Genpact, we*** ***don’t*** ***just adapt to change—we drive it. AI and digital innovation are redefining industries, and*** ***we’re*** ***leading the charge. Genpact’s*** ***AI Gigafactory******, our industry-first accelerator, is an example of how*** ***we’re*** *scaling advanced technology solutions to help global enterprises work smarter, grow faster, and transform at scale. From large-scale models to* ***agentic AI******, our breakthrough solutions tackle companies’ most complex challenges.***
+
+***If you thrive in a fast-moving, tech-driven environment, love solving real-world problems, and want to be part of a team*** ***that’s*** ***shaping the future, this is your moment.***
+
+***Genpact (NYSE: G) is an******advanced technology services and solutions company that delivers******lasting******value for leading enterprises******globally.******Through our******deep business knowledge, operational excellence, and*** ***cutting-edge*** *solutions* *–* ***we help companies across industries get ahead and stay ahead.******Powered by curiosity, courage, and innovation******,******our teams******implement******data, technology, and AI******to******create tomorrow, today.******Get to know us at******genpact.com******and on******LinkedIn******,******X******,******YouTube******, and******Facebook******.***
+
+**Inviting applications for the role of** **Vice President- Data and AI Advisor/Sales – Consumer & Healthcare**
+
+**The Data AI Sales Lead will be a member of a dynamic team driving growth of Genpact’s Data and AI led solutions in a prioritized portfolio of accounts. Creating, shaping, and responding to the ever-increasing new challenges being faced within one of the specific industry verticals such as** **Healthcare****,****in support of Genpact’s Sales and Transformation Services community.**
+
+**The Data and AI growth strategy is aligned** **to** **Genpact’s vision of being a distinguished partner as Clients adopt AI at scale to transform and accelerate growth. This role will** **identify****, shape and close revenue generating opportunities in new and existing accounts on a foundation of carefully selected & curated, repeatable offerings and solutions for driving change in specific vertical industries. The role will combine leading edge Data and AI solutions focused on (and not limited to) Databricks, Snowflake and** **Data Cloud on** **Cloud providers, and with your deep domain** **expertise** **to create innovation and thought leadership opportunities.**
+
+**A sales professional who has successfully created positive impact through year-on-year business expansion and has capability to originate new deals, qualify, shape solutions, sell, negotiate and close by sales process and technical expertise.** **You develop relationships with key buyers and decision-makers at new and existing clients by bringing the best of Genpact’s domain and technology capabilities to offer a value centric proposition to clients.**
+
+**Responsibilities**
+
+**Act as a trusted advisor in** **establishing** **relationships (in partnership with Genpact Sales and SMEs / Solution Architects), and** **assisting****clients think** **through challenging business opportunities.**
+
+**Demonstrate an understanding of a client’s business and use of leading Data Platform (specifically focused on** **GCP, Databricks****, Snowflake), AI, LLM** **technologies to craft transformational value propositions for the clients.**
+
+**Proactively create,** **identify****, and develop opportunities for** **GenAI****/AI solutions.**
+
+**Provide domain and digital solution** **expertise** **and support to internal teams including participation in RFI, RFP, proactive bids, customer-facing envisioning sessions/demonstrations, assessments, and workshops.**
+
+**Collaborate with other cross functionals Genpact’s team to assess and scope new opportunities (Analytics, Tech, Experience, Digital delivery etc.)**
+
+**Own revenue and bookings targets for dedicated Data AI industry segment and** **maintain** **up to date revenue forecasts**
+
+**Build trusted relationship with leading Data Partners and their sales leadership to bring innovative solutions on new capabilities to clients**
+
+**Expand Genpact's positioning in the market by helping develop new offerings and thought leadership marketing.**
+
+**Own delivery estimations, solutioning and pricing for proposed client solutions and working closely with Genpact and client is legal in the creation and review of customer commercial agreements, License, SOW, Change requests etc.**
+
+**Qualifications we** **seek** **in you!**
+
+**Minimum Qualifications/Skills**
+
+**Leaders with deep Data and AI product knowledge in one or more Data platforms, proven** **knowledge** **and experience in solutioning and selling data and AI transformation solutions, data migration and data management services.**
+
+**Experience and comfort carrying a sale, booking, and margin target.**
+
+**Leaders who are passionate about the opportunity to tackle a role that will have a multiplier effect in creating a highly differentiated and scalable transformation services business for Genpact.**
+
+**Experience in either a** **Consumer & Healthcare/Data/AI company** **or similar consulting firm and are looking for a role with the potential to catalyze the growth of a rapidly growing business.**
+
+**The ability to clearly articulate the value and benefits of Genpact’s digital & transformation solutions in a compelling way to both a business and technical audience.**
+
+**Relevant Industry and Sales experience in one or more of the following:** **Healthcare****.**
+
+**Deep** **expertise** **in developing Data and AI solution as part of a multi-Tech, multi-Cloud and SaaS/on-prem package solution stack**
+
+**Executive presence and prior engagement building** **relationship** **with clients at C-Suite, EVP, VP and Technical buyers.**
+
+**Travel and Driving may be** **required** **for this role****.** **The amount of travel and driving will vary from 25 to 100% depending on business** **need** **and client requirements.**
+
+**Preferred Qualifications/ Skills**
+
+**Deep** **expertise** **in one or more specific industry verticals such as** **Healthcare****.**
+
+**Experience in driving front, middle, back-office transformation in Consumer & Healthcare firms will be a BIG plus.**
+
+**Experienced in applying groundbreaking AI/****GenAI** **technologies to solving business problems, coordinated across digital software & SaaS products and transformation service solutions.**
+
+**Relevant vertical/proven experience with** **understanding of** **business dynamics – especially those based on a foundation of digitalization and** **GenAI** **disruption.**
+
+**Good cultural fit – role model in (CI)2 i.e., curious, incisive, and courageous, on a bedrock of integrity.**
+
+**Good “roll up the sleeves” collaboration attitude to work across Genpact, client teams and Genpact’s SaaS partners to bring the greatest possible impact through new ways of working.**
+
+**Technical understanding of full stack AI architecture, integrations, and domain** **expertise**
+
+**Strong Services business acumen: Commercial understanding with the ability to** **solution****, estimate, and negotiate commercial constructs while driving the sales cycle with clients in collaboration with** **Genpact** **Sales and Transformation Services community.**
+
+***Why join Genpact?***
+
+***Be a transformation leader*** ***– Work at the*** ***cutting edge*** ***of AI, automation, and digital innovation***
+
+***Make an impact*** ***– Drive change for global enterprises and solve business challenges that matter***
+
+***Accelerate your career*** ***– Get hands-on experience, mentorship, and continuous learning opportunities***
+
+***Work with the best*** ***– Join 140,000+ bold thinkers and problem-solvers who push boundaries every day***
+
+***Thrive in a values-driven culture*** ***– Our courage, curiosity, and incisiveness - built on a foundation of integrity and inclusion - allow your ideas to fuel progress***
+
+***Come join the tech shapers and growth makers at Genpact and take your career in the only direction that matters: Up.***
+
+***Let’s*** ***build tomorrow together.***
+
+***The approximate annual base compensation range for this position is [$******160,000 to $******200,000******].*** ***The actual offer, reflecting the total compensation package plus benefits, will be*** *determined* *by* ***a number of*** *factors which include but are not limited to the applicant’s experience, knowledge, skills, and abilities; geographic location; and internal equity*
+
+**Work-from-Anywhere Roles** **– “Los Angeles California-based candidates are not eligible for this role”**
+
+**Location-based Roles** **(*****e.g.,*** ***New York*** *roles – metro area can be adjusted by role location)* **– “Los Angeles, California based candidates are not eligible for this role. <*****New York*****> area candidates are eligible for this role only.”**
+
+***Genpact is an Equal Opportunity Employer and considers applicants for all positions without regard to race, color, religion or belief, sex, age, national origin, citizenship status, marital status, military/veteran status, genetic information, sexual orientation, gender identity, physical or mental disability or any other characteristic protected by applicable laws. Genpact is committed to creating a dynamic work environment that values respect and integrity, customer focus, and innovation.***  
+***Furthermore, please do note that Genpact does not charge fees to process job applications and applicants*** ***are not required to*** *pay to* *participate* ***in our hiring process in any other way. Examples of such*** *scams* *include* *purchasing* *a 'starter kit,' paying to apply, or* *purchasing* *equipment or training.*
+
+JobVice President
+
+Primary LocationUSA-New York
+
+Education LevelBachelor's / Graduation / Equivalent
+
+Job PostingDec 26, 2025, 9:23:43 AM
+
+Unposting DateMar 26, 2026, 1:29:00 PM
+
+Master Skills ListSales and Marketing
+
+Job CategoryFull Time",https://www.indeed.com/cmp/Genpact,https://www.genpact.com,"10,000+",$1B to $5B (USD),2026-01-03,2026-W00,,in-1cba4120d96bee24,indeed,https://genpact.taleo.net/careersection/sgy_external_career_section/jobdetail.ftl?job=COR033622&tz=GMT-06%3A00&tzname=America%2FChicago,fulltime,direct_data,,,,,,https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/505bd58a0a332271212ac1b411dd3cd0,"New York, NY",,,,,,,,100.0,2026-01-03
+https://www.indeed.com/viewjob?jk=1e40fa86a6bfd60d,"Vice President, Global GSI Partner Sales",Saviynt,"Remote, US",2025-12-28,,,,,VP,,,False,True,True,False,Good,"Saviynt's AI-powered identity platform manages and governs human and non-human access to all of an organization's applications, data, and business processes. Customers trust Saviynt to safeguard their digital assets, drive operational efficiency, and reduce compliance costs. Built for the AI age, Saviynt is today helping organizations safely accelerate their deployment and usage of AI. Saviynt is recognized as the leader in identity security, with solutions that protect and empower the world’s leading brands, Fortune 500 companies and government institutions. For more information, please visit www.saviynt.com.
+
+The Vice President of GSI Partner Sales plays a critical role in accelerating enterprise revenue growth by building, scaling, and leading the global go-to-market strategy with Global Systems Integrators (GSIs) to accelerate enterprise revenue growth. This role will own pipeline creation, co-sell execution, global offering creation, and revenue outcomes through strategic partners including Accenture, Deloitte, EY, KPMG, PwC, IBM, and other global consulting and integration firms.
+
+As a key member of the Partner leadership team, the VP aligns partner strategy with direct sales, product, and marketing to establish the company’s digital identity security platform as a core component in GSI practices and client transformation programs.
+
+### **WHAT YOU WILL DO:**
+
+* + Define and execute the global GSI partner sales strategy aligned to company growth objectives
+  + Build executive-level relationships across priority GSIs, including alliance leaders, practice heads, and regional sales leadership
+  + Develop and establish clear value propositions and joint solutions that position identity security as foundational to digital transformation, cloud, zero trust, and compliance initiatives
+  + Drive GSI sourced and influenced pipeline and revenue achieving aggressive growth targets.
+  + Drive consistent, scalable co-sell motions with field sales teams
+  + Forecast partner-driven pipeline and revenue with accuracy and rigor
+  + Collaborate with partner programs, marketing, and product teams to enable GSIs with training, certifications, sales assets, and repeatable offerings
+  + Ensure partners can independently position, sell, and deliver the company’s identity security platform at scale
+  + Drive the creation of joint offerings, reference architectures, and packaged solutions
+  + Serve as the executive liaison between GSIs and internal stakeholders including sales, product management, customer success, and marketing
+  + Ensure partner strategy is fully integrated into field sales execution and account planning
+  + Influence product roadmap based on partner and customer feedback
+  + Build and lead a high-performing global GSI partner sales organization setting clear goals, KPIs, and accountability for partner sales leaders and managers
+  + Mentor and develop talent with a focus on execution excellence and long-term scalability
+
+### **WHAT YOU BRING:**
+
+* + 15+ years of enterprise technology sales experience, with significant leadership experience in GSI or strategic partner sales
+  + Proven track record of building and scaling GSI-driven revenue in a high growth enterprise SaaS company
+  + Deep relationships and credibility with top-tier GSIs (Accenture, Deloitte, PwC, EY, KPMG, IBM, etc.)
+  + Experience selling security, identity, cloud, or infrastructure platforms into large enterprise accounts
+
+### **Skills & Attributes Needed:**
+
+* + Strong executive presence with the ability to influence and lead at the C-suite level with confidence and credibility
+  + Collaborative leader who aligns cross-functional teams around shared outcomes
+  + Deep understanding of enterprise sales cycles, co-sell models, and partner economics
+  + Data-driven operator with strong forecasting and pipeline management discipline
+  + Ability to thrive in a high-growth, fast-paced environment
+  + Ability to collect information and identify fundamental patterns/trends in data. This includes the ability to gather, integrate, and interpret information from several sources.
+  + Ability to build trusting, collaborative relationships and rapport with different types of people and businesses. This includes delivering on commitments and maintaining confidential information, as well as being approachable, showing interest in the other person, and relating well to people regardless of personality or background.
+  + Ability to convey information clearly and accurately, as well as choosing the most effective method of delivery (e.g., email, phone, face-to-face). This includes using a technically sound communication style both verbally and in writing.
+  + Ability to be creative. This includes the ability to produce breakthrough ideas, being a visionary, managing innovation, seeing multiple futures, having broad interests and knowledge, and gaining support in order to translate new ideas into solutions. This also includes the ability to plan and implement unconventional ideas and speculate about alternative futures without all of the data.
+  + Ability to be organized, resourceful, and planful. This includes the ability to leverage multiple resources to get things done and lay out tasks in sufficient detail. This also includes the ability to get things done with fewer resources and in less time, work on multiple tasks at once without losing track, and foresee and plan around obstacles.
+
+**If required for this role, you will:**
+
+* Complete security & privacy literacy and awareness training during onboarding and annually thereafter
+* Review (initially and annually thereafter), understand, and adhere to Information Security/Privacy Policies and Procedures such as (but not limited to):
+
+> Data Classification, Retention & Handling Policy
+
+> Incident Response Policy/Procedures
+
+> Business Continuity/Disaster Recovery Policy/Procedures
+
+> Mobile Device Policy
+
+> Account Management Policy
+
+> Access Control Policy
+
+> Personnel Security Policy
+
+> Privacy Policy
+
+Saviynt is an amazing place to work. We are a high-growth, Platform as a Service company focused on Identity Authority to power and protect the world at work. You will experience tremendous growth and learning opportunities through challenging yet rewarding work which directly impacts our customers, all within a welcoming and positive work environment. If you're resilient and enjoy working in a dynamic environment you belong with us!
+
+***Saviynt is an equal opportunity employer and we welcome everyone to our team. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, disability, or veteran status.***",https://www.indeed.com/cmp/Saviynt,,Decline to state,Decline to state,2026-01-03,2026-W00,,in-1e40fa86a6bfd60d,indeed,https://jobs.lever.co/saviynt/95746617-f572-4a70-a3e6-40a55702dca2,,,,,,,,,,,,,,,,,70.0,2026-01-03

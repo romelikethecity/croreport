@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-01-03T02:35:50.444261",
-  "total_records": 66,
-  "records_with_salary": 24,
-  "executive_records": 24,
-  "disclosure_rate": 36.4,
+  "generated_at": "2026-01-03T02:51:30.547820",
+  "total_records": 73,
+  "records_with_salary": 30,
+  "executive_records": 30,
+  "disclosure_rate": 41.1,
   "date_range": {
     "earliest": "2025-01-21",
     "latest": "2026-01-01"
   },
   "by_seniority": {
     "VP": {
-      "count": 24,
-      "min_base_avg": 152305,
-      "max_base_avg": 194440,
-      "min_base_median": 165000,
+      "count": 30,
+      "min_base_avg": 149331,
+      "max_base_avg": 193128,
+      "min_base_median": 160000,
       "max_base_median": 200000,
       "range_low": 200,
       "range_high": 347288
@@ -58,9 +58,9 @@
       "max_base_avg": 197752
     },
     "Non-Tech": {
-      "count": 4,
-      "min_base_avg": 140246,
-      "max_base_avg": 177878
+      "count": 10,
+      "min_base_avg": 138561,
+      "max_base_avg": 183880
     }
   },
   "by_remote": {
@@ -70,9 +70,9 @@
       "max_base_avg": 211947
     },
     "On-site": {
-      "count": 20,
-      "min_base_avg": 151657,
-      "max_base_avg": 190938
+      "count": 26,
+      "min_base_avg": 148375,
+      "max_base_avg": 190233
     }
   },
   "top_paying_roles": [
@@ -91,6 +91,14 @@
       "max_amount": 300000.0,
       "seniority": "VP",
       "company_stage": "Unknown"
+    },
+    {
+      "title": "AVP Commercial Manager/Team Leader",
+      "company": "Gesa Credit Union",
+      "min_amount": 157373.0,
+      "max_amount": 262288.0,
+      "seniority": "VP",
+      "company_stage": NaN
     },
     {
       "title": "RVP, Sales Central",
@@ -147,22 +155,14 @@
       "max_amount": 215000.0,
       "seniority": "VP",
       "company_stage": "Series C/D"
-    },
-    {
-      "title": "Vice President- Data and AI Advisor/Sales \u2013 Consumer & Healthcare",
-      "company": "Genpact",
-      "min_amount": 160000.0,
-      "max_amount": 200000.0,
-      "seniority": "VP",
-      "company_stage": "Unknown"
     }
   ],
   "weekly_trends": {
     "2026-W00": {
-      "count": 24,
-      "avg_min": 152305,
-      "avg_max": 194440,
-      "disclosure_rate": 36.4
+      "count": 30,
+      "avg_min": 149331,
+      "avg_max": 193128,
+      "disclosure_rate": 41.1
     }
   }
 }
