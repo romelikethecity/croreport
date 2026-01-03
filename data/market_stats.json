@@ -1,20 +1,19 @@
 {
-  "total_roles": 66,
-  "unique_companies": 38,
-  "salary_disclosure_rate": 33.3,
+  "total_roles": 57,
+  "unique_companies": 31,
+  "salary_disclosure_rate": 38.6,
   "by_seniority": {
-    "VP": 61,
+    "VP": 52,
     "C-Level": 3,
     "SVP": 2
   },
-  "remote_pct": 15.2,
-  "tech_percentage": 84.8,
-  "avg_min_salary": 166132,
-  "avg_max_salary": 212093,
+  "remote_pct": 43.9,
+  "avg_min_salary": 141167,
+  "avg_max_salary": 183344,
   "date": "2026-01-03",
   "wow_change": 0,
   "wow_change_pct": 0,
-  "vs_peak_pct": -35,
+  "vs_peak_pct": -65,
   "peak_roles": 162,
   "top_locations": [],
   "top_companies": []
