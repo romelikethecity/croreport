@@ -48,6 +48,7 @@ DARK_BG = '#FFFFFF'
 CYAN = '#4dd0e1'
 ORANGE = '#ffa726'
 WHITE = '#ffffff'
+TEXT_DARK = '#1E3A5F'
 GRAY = '#8899aa'
 GRID_COLOR = '#2a3a4a'
 
