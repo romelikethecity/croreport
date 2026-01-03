@@ -386,6 +386,7 @@ def generate_company_page(company_name, company_df):
                     <li><a href="/jobs/">Jobs</a></li>
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
@@ -601,6 +602,7 @@ def generate_companies_index(companies_data):
                     <li><a href="/jobs/">Jobs</a></li>
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>

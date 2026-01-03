@@ -553,6 +553,7 @@ def generate_category_page(slug, config, df):
                     <li><a href="/jobs/">Jobs</a></li>
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
