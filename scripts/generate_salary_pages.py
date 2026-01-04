@@ -431,7 +431,7 @@ if 'metro' in df_salary.columns:
                 print(f"✅ Created: /salaries/{slug}/ ({len(df_metro)} roles)")
 else:
     metro_pages = []
-    print("⚠️ Skipping metro pages - 'metro' column not found in data")
+    print("[WARNING] Skipping metro pages - 'metro' column not found in data")
 
 # Generate pages by seniority
 seniorities = [('VP', 'vp-sales'), ('SVP', 'svp-sales'), ('C-Level', 'cro')]
@@ -468,11 +468,61 @@ if 'company_stage' in df_salary.columns:
                 stage_pages.append({'title': title, 'slug': slug, 'count': len(df_stage), 'avg_max': df_stage['max_amount'].mean()})
                 print(f"✅ Created: /salaries/{slug}/ ({len(df_stage)} roles) [GATED]")
 else:
-    print("⚠️ Skipping company stage pages - 'company_stage' column not found in data")
+    print("[WARNING] Skipping company stage pages - 'company_stage' column not found in data")
 
 # Calculate overall stats for index page
 overall_avg_min = df_salary['min_amount'].mean()
 overall_avg_max = df_salary['max_amount'].mean()
+
+# Pre-compute HTML sections to avoid f-string nesting issues
+metro_cards_html = ''
+for p in sorted(metro_pages, key=lambda x: -x['avg_max']):
+    metro_cards_html += f'''
+    <a href="{p['slug']}/" class="salary-card">
+        <h3>{p['title']}</h3>
+        <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+        <div class="meta">{p['count']} roles with salary data</div>
+    </a>
+    '''
+
+seniority_cards_html = ''
+for p in sorted(seniority_pages, key=lambda x: -x['avg_max']):
+    seniority_cards_html += f'''
+    <a href="{p['slug']}/" class="salary-card">
+        <h3>{p['title']}</h3>
+        <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+        <div class="meta">{p['count']} roles with salary data</div>
+    </a>
+    '''
+
+if stage_pages:
+    stage_cards_html = ''
+    for p in sorted(stage_pages, key=lambda x: -x['avg_max']):
+        stage_cards_html += f'''
+        <a href="{p['slug']}/" class="salary-card">
+            <h3>{p['title']}</h3>
+            <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+            <div class="meta">{p['count']} roles</div>
+        </a>
+        '''
+else:
+    stage_cards_html = '''
+    <div class="salary-card gated">
+        <h3>Seed / Series A</h3>
+        <div class="range">$XXX avg max</div>
+        <div class="lock">Subscribe for company stage data</div>
+    </div>
+    <div class="salary-card gated">
+        <h3>Series B/C</h3>
+        <div class="range">$XXX avg max</div>
+        <div class="lock">Subscribe for company stage data</div>
+    </div>
+    <div class="salary-card gated">
+        <h3>Enterprise / Public</h3>
+        <div class="range">$XXX avg max</div>
+        <div class="lock">Subscribe for company stage data</div>
+    </div>
+    '''
 
 # Generate index page
 index_html = f'''<!DOCTYPE html>
@@ -617,52 +667,18 @@ index_html = f'''<!DOCTYPE html>
     <div class="container">
         <h2>By Location</h2>
         <div class="salary-grid">
-            {''.join([f"""
-            <a href="{p['slug']}/" class="salary-card">
-                <h3>{p['title']}</h3>
-                <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
-                <div class="meta">{p['count']} roles with salary data</div>
-            </a>
-            """ for p in sorted(metro_pages, key=lambda x: -x['avg_max'])])}
+            {metro_cards_html}
         </div>
         
         <h2>By Seniority</h2>
         <div class="salary-grid">
-            {''.join([f"""
-            <a href="{p['slug']}/" class="salary-card">
-                <h3>{p['title']}</h3>
-                <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
-                <div class="meta">{p['count']} roles with salary data</div>
-            </a>
-            """ for p in sorted(seniority_pages, key=lambda x: -x['avg_max'])])}
+            {seniority_cards_html}
         </div>
         
         <h2>By Company Stage</h2>
         <p style="color: #64748b; margin-bottom: 16px;">How does compensation vary from Seed to Enterprise?</p>
         <div class="salary-grid">
-            {''.join([f"""
-            <a href="{p['slug']}/" class="salary-card">
-                <h3>{p['title']}</h3>
-                <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
-                <div class="meta">{p['count']} roles</div>
-            </a>
-            """ for p in sorted(stage_pages, key=lambda x: -x['avg_max'])]) if stage_pages else '''
-            <div class="salary-card gated">
-                <h3>Seed / Series A</h3>
-                <div class="range">$XXX avg max</div>
-                <div class="lock">Subscribe for company stage data</div>
-            </div>
-            <div class="salary-card gated">
-                <h3>Series B/C</h3>
-                <div class="range">$XXX avg max</div>
-                <div class="lock">Subscribe for company stage data</div>
-            </div>
-            <div class="salary-card gated">
-                <h3>Enterprise / Public</h3>
-                <div class="range">$XXX avg max</div>
-                <div class="lock">Subscribe for company stage data</div>
-            </div>
-            '''}
+            {stage_cards_html}
         </div>
         
         <div class="cta-inline">
