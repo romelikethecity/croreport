@@ -27,7 +27,7 @@ SALARIES_DIR = f'{SITE_DIR}/salaries'
 MASTER_DB = f'{DATA_DIR}/master_jobs_database.csv'
 
 print("="*70)
-print("💰 GENERATING SALARY BENCHMARK PAGES")
+print("[SALARY] GENERATING SALARY BENCHMARK PAGES")
 print("="*70)
 
 os.makedirs(SALARIES_DIR, exist_ok=True)
@@ -38,11 +38,11 @@ if not os.path.exists(MASTER_DB):
     exit(1)
 
 df = pd.read_csv(MASTER_DB)
-print(f"📂 Loaded {len(df)} jobs from {MASTER_DB}")
+print(f"[FILE] Loaded {len(df)} jobs from {MASTER_DB}")
 
 # Filter to jobs with salary data
 df_salary = df[df['max_amount'].notna() & (df['max_amount'] > 0)].copy()
-print(f"📊 {len(df_salary)} jobs with salary data")
+print(f"[DATA] {len(df_salary)} jobs with salary data")
 
 update_date = datetime.now().strftime('%B %d, %Y')
 
@@ -175,7 +175,7 @@ def create_salary_page(title, slug, df_subset, description, show_top_companies=T
     else:
         top_companies_html = '''
         <section class="section gated-section">
-            <h2>🔒 Top Paying Companies</h2>
+            <h2>Top Paying Companies</h2>
             <p class="gated-message">Subscribe to see which companies are paying top dollar for this role.</p>
             <a href="https://croreport.substack.com/subscribe" class="cta-btn-small">Unlock Full Data →</a>
         </section>
@@ -615,7 +615,7 @@ index_html = f'''<!DOCTYPE html>
     </div>
     
     <div class="container">
-        <h2>📍 By Location</h2>
+        <h2>By Location</h2>
         <div class="salary-grid">
             {''.join([f"""
             <a href="{p['slug']}/" class="salary-card">
@@ -626,7 +626,7 @@ index_html = f'''<!DOCTYPE html>
             """ for p in sorted(metro_pages, key=lambda x: -x['avg_max'])])}
         </div>
         
-        <h2>📊 By Seniority</h2>
+        <h2>By Seniority</h2>
         <div class="salary-grid">
             {''.join([f"""
             <a href="{p['slug']}/" class="salary-card">
@@ -637,7 +637,7 @@ index_html = f'''<!DOCTYPE html>
             """ for p in sorted(seniority_pages, key=lambda x: -x['avg_max'])])}
         </div>
         
-        <h2>🏢 By Company Stage</h2>
+        <h2>By Company Stage</h2>
         <p style="color: #64748b; margin-bottom: 16px;">How does compensation vary from Seed to Enterprise?</p>
         <div class="salary-grid">
             {''.join([f"""
@@ -650,17 +650,17 @@ index_html = f'''<!DOCTYPE html>
             <div class="salary-card gated">
                 <h3>Seed / Series A</h3>
                 <div class="range">$XXX avg max</div>
-                <div class="lock">🔒 Subscribe for company stage data</div>
+                <div class="lock">Subscribe for company stage data</div>
             </div>
             <div class="salary-card gated">
                 <h3>Series B/C</h3>
                 <div class="range">$XXX avg max</div>
-                <div class="lock">🔒 Subscribe for company stage data</div>
+                <div class="lock">Subscribe for company stage data</div>
             </div>
             <div class="salary-card gated">
                 <h3>Enterprise / Public</h3>
                 <div class="range">$XXX avg max</div>
-                <div class="lock">🔒 Subscribe for company stage data</div>
+                <div class="lock">Subscribe for company stage data</div>
             </div>
             '''}
         </div>
@@ -682,7 +682,7 @@ with open(f'{SALARIES_DIR}/index.html', 'w') as f:
     f.write(index_html)
 
 print(f"\n✅ Created salary index: /salaries/")
-print(f"📊 Generated {len(metro_pages)} location pages")
-print(f"📊 Generated {len(seniority_pages)} seniority pages")
-print(f"📊 Generated {len(stage_pages)} company stage pages")
-print(f"📈 Total salary data points: {len(df_salary)} jobs from master database")
+print(f"[DATA] Generated {len(metro_pages)} location pages")
+print(f"[DATA] Generated {len(seniority_pages)} seniority pages")
+print(f"[DATA] Generated {len(stage_pages)} company stage pages")
+print(f"[STATS] Total salary data points: {len(df_salary)} jobs from master database")
