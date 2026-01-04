@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """
 Generate salary benchmark pages for programmatic SEO
-Creates pages like /salaries/vp-sales-nyc, /salaries/cro-remote, etc.
+Creates pages like /salaries/vp-sales-nyc, /salaries/cro-remote, /salaries/series-b-c/, etc.
 
 DATA SOURCE: master_jobs_database.csv (historical data for larger sample size)
+
+CONTENT STRATEGY:
+- Free: Basic salary ranges, top locations, seniority levels
+- Gated: Company stage breakdowns, top paying companies (except top metros)
 """
 
 import pandas as pd
@@ -42,7 +46,100 @@ print(f"📊 {len(df_salary)} jobs with salary data")
 
 update_date = datetime.now().strftime('%B %d, %Y')
 
-def create_salary_page(title, slug, df_subset, description):
+def get_nav_bar():
+    """Standard nav bar matching homepage"""
+    return '''
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img">
+                <span>The CRO Report</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
+                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+        </div>
+    </header>
+'''
+
+def get_nav_styles():
+    """CSS for nav bar matching homepage"""
+    return '''
+        .site-header {
+            background: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }
+        .logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 4px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: #1e3a5f; }
+        .btn-subscribe {
+            background: #1e3a5f !important;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .btn-subscribe:hover {
+            background: #2d4a6f !important;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+'''
+
+def create_salary_page(title, slug, df_subset, description, show_top_companies=True):
     """Generate a salary benchmark page"""
     
     if len(df_subset) < 3:
@@ -56,8 +153,33 @@ def create_salary_page(title, slug, df_subset, description):
     max_salary = df_subset['max_amount'].max()
     count = len(df_subset)
     
-    # Top paying companies
-    top_companies = df_subset.nlargest(5, 'max_amount')[['company', 'title', 'min_amount', 'max_amount']].to_dict('records')
+    # Top paying companies - only show if flag is True
+    if show_top_companies:
+        top_companies = df_subset.nlargest(5, 'max_amount')[['company', 'title', 'min_amount', 'max_amount']].to_dict('records')
+        top_companies_html = f'''
+        <section class="section">
+            <h2>Top Paying Companies</h2>
+            <div class="top-companies">
+                {''.join([f"""
+                <div class="company-row">
+                    <div class="company-info">
+                        <h3>{c['company']}</h3>
+                        <p>{c['title']}</p>
+                    </div>
+                    <div class="company-salary">${c['min_amount']/1000:.0f}K - ${c['max_amount']/1000:.0f}K</div>
+                </div>
+                """ for c in top_companies])}
+            </div>
+        </section>
+        '''
+    else:
+        top_companies_html = '''
+        <section class="section gated-section">
+            <h2>🔒 Top Paying Companies</h2>
+            <p class="gated-message">Subscribe to see which companies are paying top dollar for this role.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn-small">Unlock Full Data →</a>
+        </section>
+        '''
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -66,7 +188,7 @@ def create_salary_page(title, slug, df_subset, description):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} Salary | The CRO Report</title>
     <meta name="description" content="{description} Based on {count} job postings. Updated {update_date}.">
-    <link rel="canonical" href="https://romelikethecity.github.io/croreport/salaries/{slug}/">
+    <link rel="canonical" href="https://thecroreport.com/salaries/{slug}/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -74,6 +196,8 @@ def create_salary_page(title, slug, df_subset, description):
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
+        
+        {get_nav_styles()}
         
         .header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
@@ -161,6 +285,28 @@ def create_salary_page(title, slug, df_subset, description):
             border-radius: 6px;
         }}
         
+        .gated-section {{
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }}
+        .gated-message {{
+            color: #64748b;
+            margin-bottom: 16px;
+        }}
+        .cta-btn-small {{
+            display: inline-block;
+            background: #d97706;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }}
+        
         .cta-section {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
@@ -199,11 +345,13 @@ def create_salary_page(title, slug, df_subset, description):
     </style>
 </head>
 <body>
-    <header class="header">
+    {get_nav_bar()}
+    
+    <div class="header">
         <div class="eyebrow">Salary Benchmarks</div>
         <h1>{title} Salary</h1>
         <p>{description}</p>
-    </header>
+    </div>
     
     <div class="container">
         <div class="stats-grid">
@@ -242,20 +390,7 @@ def create_salary_page(title, slug, df_subset, description):
             </div>
         </section>
         
-        <section class="section">
-            <h2>Top Paying Companies</h2>
-            <div class="top-companies">
-                {''.join([f"""
-                <div class="company-row">
-                    <div class="company-info">
-                        <h3>{c['company']}</h3>
-                        <p>{c['title']}</p>
-                    </div>
-                    <div class="company-salary">${c['min_amount']/1000:.0f}K - ${c['max_amount']/1000:.0f}K</div>
-                </div>
-                """ for c in top_companies])}
-            </div>
-        </section>
+        {top_companies_html}
         
         <div class="cta-section">
             <h2>Get Full Compensation Intelligence</h2>
@@ -265,7 +400,7 @@ def create_salary_page(title, slug, df_subset, description):
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 </body>
 </html>'''
@@ -289,7 +424,9 @@ if 'metro' in df_salary.columns:
             slug = metro.lower().replace(' ', '-')
             title = f"VP Sales {metro}"
             desc = f"Current VP Sales and CRO salary data for {metro}."
-            if create_salary_page(title, slug, df_metro, desc):
+            # Show top companies for top 4 metros only (free teaser)
+            show_companies = metro in ['New York', 'San Francisco', 'Remote', 'Boston']
+            if create_salary_page(title, slug, df_metro, desc, show_top_companies=show_companies):
                 metro_pages.append({'title': title, 'slug': slug, 'count': len(df_metro), 'avg_max': df_metro['max_amount'].mean()})
                 print(f"✅ Created: /salaries/{slug}/ ({len(df_metro)} roles)")
 else:
@@ -305,9 +442,37 @@ for sen, slug in seniorities:
     if len(df_sen) >= 3:
         title = f"{sen} Sales" if sen != 'C-Level' else "CRO / Chief Revenue Officer"
         desc = f"Current {title} salary benchmarks across all markets."
-        if create_salary_page(title, slug, df_sen, desc):
+        if create_salary_page(title, slug, df_sen, desc, show_top_companies=True):
             seniority_pages.append({'title': title, 'slug': slug, 'count': len(df_sen), 'avg_max': df_sen['max_amount'].mean()})
             print(f"✅ Created: /salaries/{slug}/ ({len(df_sen)} roles)")
+
+# Generate pages by company stage (if column exists) - GATED CONTENT
+stage_pages = []
+if 'company_stage' in df_salary.columns:
+    stages = [
+        ('Seed/Series A', 'seed-series-a'),
+        ('Series A/B', 'series-a-b'),
+        ('Series B/C', 'series-b-c'),
+        ('Series C/D', 'series-c-d'),
+        ('Late Stage', 'late-stage'),
+        ('Enterprise/Public', 'enterprise-public')
+    ]
+    
+    for stage, slug in stages:
+        df_stage = df_salary[df_salary['company_stage'] == stage]
+        if len(df_stage) >= 3:
+            title = f"{stage} Company"
+            desc = f"VP Sales and CRO salary benchmarks at {stage} companies."
+            # Company stage pages are gated - no top companies shown
+            if create_salary_page(title, slug, df_stage, desc, show_top_companies=False):
+                stage_pages.append({'title': title, 'slug': slug, 'count': len(df_stage), 'avg_max': df_stage['max_amount'].mean()})
+                print(f"✅ Created: /salaries/{slug}/ ({len(df_stage)} roles) [GATED]")
+else:
+    print("⚠️ Skipping company stage pages - 'company_stage' column not found in data")
+
+# Calculate overall stats for index page
+overall_avg_min = df_salary['min_amount'].mean()
+overall_avg_max = df_salary['max_amount'].mean()
 
 # Generate index page
 index_html = f'''<!DOCTYPE html>
@@ -316,7 +481,8 @@ index_html = f'''<!DOCTYPE html>
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
-    <meta name="description" content="VP Sales and CRO salary data by location and seniority. Based on {len(df_salary)} job postings with disclosed compensation.">
+    <meta name="description" content="VP Sales and CRO salary data by location, seniority, and company stage. Based on {len(df_salary)} job postings with disclosed compensation.">
+    <link rel="canonical" href="https://thecroreport.com/salaries/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -324,6 +490,8 @@ index_html = f'''<!DOCTYPE html>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
+        
+        {get_nav_styles()}
         
         .header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
@@ -334,9 +502,30 @@ index_html = f'''<!DOCTYPE html>
         .header h1 {{ font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }}
         .header p {{ opacity: 0.9; }}
         
-        .container {{ max-width: 900px; margin: 0 auto; padding: 40px 20px; }}
+        .container {{ max-width: 1000px; margin: 0 auto; padding: 40px 20px; }}
         
-        h2 {{ font-family: 'Fraunces', serif; font-size: 1.5rem; color: #1e3a5f; margin: 32px 0 16px; }}
+        .stats-row {{
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }}
+        .stat {{
+            text-align: center;
+        }}
+        .stat-value {{
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #d97706;
+        }}
+        .stat-label {{
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }}
+        
+        h2 {{ font-family: 'Fraunces', serif; font-size: 1.5rem; color: #1e3a5f; margin: 40px 0 20px; }}
         
         .salary-grid {{
             display: grid;
@@ -362,6 +551,40 @@ index_html = f'''<!DOCTYPE html>
         .salary-card .range {{ font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; color: #166534; }}
         .salary-card .meta {{ font-size: 0.85rem; color: #64748b; margin-top: 8px; }}
         
+        .salary-card.gated {{
+            background: #f8fafc;
+            border-style: dashed;
+        }}
+        .salary-card.gated .range {{
+            color: #94a3b8;
+            filter: blur(4px);
+        }}
+        .salary-card.gated .lock {{
+            font-size: 0.75rem;
+            color: #d97706;
+            margin-top: 8px;
+        }}
+        
+        .cta-inline {{
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin: 40px 0;
+        }}
+        .cta-inline h3 {{ font-family: 'Fraunces', serif; margin-bottom: 12px; }}
+        .cta-inline p {{ opacity: 0.9; margin-bottom: 16px; }}
+        .cta-btn {{
+            display: inline-block;
+            background: #d97706;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }}
+        
         .footer {{
             background: #1e3a5f;
             color: #94a3b8;
@@ -373,13 +596,26 @@ index_html = f'''<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <header class="header">
+    {get_nav_bar()}
+    
+    <div class="header">
         <h1>Sales Executive Salary Benchmarks</h1>
-        <p>Based on {len(df_salary)} job postings · Updated {update_date}</p>
-    </header>
+        <p>Based on {len(df_salary)} job postings with disclosed compensation</p>
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">${overall_avg_min/1000:.0f}K - ${overall_avg_max/1000:.0f}K</div>
+                <div class="stat-label">Average Range</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">{len(df_salary)}</div>
+                <div class="stat-label">Roles Analyzed</div>
+            </div>
+        </div>
+        <p style="margin-top: 16px; font-size: 0.85rem; opacity: 0.7;">Updated {update_date}</p>
+    </div>
     
     <div class="container">
-        <h2>By Location</h2>
+        <h2>📍 By Location</h2>
         <div class="salary-grid">
             {''.join([f"""
             <a href="{p['slug']}/" class="salary-card">
@@ -390,7 +626,7 @@ index_html = f'''<!DOCTYPE html>
             """ for p in sorted(metro_pages, key=lambda x: -x['avg_max'])])}
         </div>
         
-        <h2>By Seniority</h2>
+        <h2>📊 By Seniority</h2>
         <div class="salary-grid">
             {''.join([f"""
             <a href="{p['slug']}/" class="salary-card">
@@ -400,10 +636,44 @@ index_html = f'''<!DOCTYPE html>
             </a>
             """ for p in sorted(seniority_pages, key=lambda x: -x['avg_max'])])}
         </div>
+        
+        <h2>🏢 By Company Stage</h2>
+        <p style="color: #64748b; margin-bottom: 16px;">How does compensation vary from Seed to Enterprise?</p>
+        <div class="salary-grid">
+            {''.join([f"""
+            <a href="{p['slug']}/" class="salary-card">
+                <h3>{p['title']}</h3>
+                <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+                <div class="meta">{p['count']} roles</div>
+            </a>
+            """ for p in sorted(stage_pages, key=lambda x: -x['avg_max'])]) if stage_pages else '''
+            <div class="salary-card gated">
+                <h3>Seed / Series A</h3>
+                <div class="range">$XXX avg max</div>
+                <div class="lock">🔒 Subscribe for company stage data</div>
+            </div>
+            <div class="salary-card gated">
+                <h3>Series B/C</h3>
+                <div class="range">$XXX avg max</div>
+                <div class="lock">🔒 Subscribe for company stage data</div>
+            </div>
+            <div class="salary-card gated">
+                <h3>Enterprise / Public</h3>
+                <div class="range">$XXX avg max</div>
+                <div class="lock">🔒 Subscribe for company stage data</div>
+            </div>
+            '''}
+        </div>
+        
+        <div class="cta-inline">
+            <h3>Get Weekly Compensation Intelligence</h3>
+            <p>Full salary breakdowns, company stage analysis, and negotiation insights every Thursday.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe Free →</a>
+        </div>
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 </body>
 </html>'''
@@ -412,5 +682,7 @@ with open(f'{SALARIES_DIR}/index.html', 'w') as f:
     f.write(index_html)
 
 print(f"\n✅ Created salary index: /salaries/")
-print(f"📊 Generated {len(metro_pages) + len(seniority_pages)} salary pages")
+print(f"📊 Generated {len(metro_pages)} location pages")
+print(f"📊 Generated {len(seniority_pages)} seniority pages")
+print(f"📊 Generated {len(stage_pages)} company stage pages")
 print(f"📈 Total salary data points: {len(df_salary)} jobs from master database")
