@@ -2,13 +2,13 @@
 """
 Generate salary benchmark pages for programmatic SEO
 Creates pages like /salaries/vp-sales-nyc, /salaries/cro-remote, etc.
+
+DATA SOURCE: master_jobs_database.csv (historical data for larger sample size)
 """
 
 import pandas as pd
 from datetime import datetime
-import glob
 import os
-import json
 import sys
 sys.path.insert(0, 'scripts')
 try:
@@ -20,6 +20,7 @@ except:
 DATA_DIR = 'data'
 SITE_DIR = 'site'
 SALARIES_DIR = f'{SITE_DIR}/salaries'
+MASTER_DB = f'{DATA_DIR}/master_jobs_database.csv'
 
 print("="*70)
 print("💰 GENERATING SALARY BENCHMARK PAGES")
@@ -27,15 +28,13 @@ print("="*70)
 
 os.makedirs(SALARIES_DIR, exist_ok=True)
 
-# Find most recent enriched data
-files = glob.glob(f"{DATA_DIR}/executive_sales_jobs_*.csv")
-if not files:
-    print("❌ No enriched data found")
+# Load master database for comprehensive salary data
+if not os.path.exists(MASTER_DB):
+    print(f"❌ Master database not found at {MASTER_DB}")
     exit(1)
 
-latest_file = max(files)
-df = pd.read_csv(latest_file)
-print(f"📂 Loaded {len(df)} jobs from {latest_file}")
+df = pd.read_csv(MASTER_DB)
+print(f"📂 Loaded {len(df)} jobs from {MASTER_DB}")
 
 # Filter to jobs with salary data
 df_salary = df[df['max_amount'].notna() & (df['max_amount'] > 0)].copy()
@@ -66,7 +65,7 @@ def create_salary_page(title, slug, df_subset, description):
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} Salary | The CRO Report</title>
-    <meta name="description" content="{description} Based on {count} current job postings. Updated {update_date}.">
+    <meta name="description" content="{description} Based on {count} job postings. Updated {update_date}.">
     <link rel="canonical" href="https://romelikethecity.github.io/croreport/salaries/{slug}/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -221,7 +220,7 @@ def create_salary_page(title, slug, df_subset, description):
             <div class="stat-card">
                 <div class="label">Sample Size</div>
                 <div class="value">{count}</div>
-                <div class="sublabel">Current postings</div>
+                <div class="sublabel">Job postings</div>
             </div>
         </div>
         
@@ -317,7 +316,7 @@ index_html = f'''<!DOCTYPE html>
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
-    <meta name="description" content="VP Sales and CRO salary data by location and seniority. Based on {len(df_salary)} current job postings with disclosed compensation.">
+    <meta name="description" content="VP Sales and CRO salary data by location and seniority. Based on {len(df_salary)} job postings with disclosed compensation.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -376,7 +375,7 @@ index_html = f'''<!DOCTYPE html>
 <body>
     <header class="header">
         <h1>Sales Executive Salary Benchmarks</h1>
-        <p>Based on {len(df_salary)} current job postings · Updated {update_date}</p>
+        <p>Based on {len(df_salary)} job postings · Updated {update_date}</p>
     </header>
     
     <div class="container">
@@ -414,3 +413,4 @@ with open(f'{SALARIES_DIR}/index.html', 'w') as f:
 
 print(f"\n✅ Created salary index: /salaries/")
 print(f"📊 Generated {len(metro_pages) + len(seniority_pages)} salary pages")
+print(f"📈 Total salary data points: {len(df_salary)} jobs from master database")
