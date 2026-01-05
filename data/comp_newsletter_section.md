@@ -1,6 +1,6 @@
 # 💰 Compensation Benchmarking
 
-**Data as of January 04, 2026** | 494 executive roles with disclosed salary out of 924 total (57.3% disclosure rate)
+**Data as of January 05, 2026** | 494 executive roles with disclosed salary out of 924 total (57.3% disclosure rate)
 
 ## By Seniority Level
 
