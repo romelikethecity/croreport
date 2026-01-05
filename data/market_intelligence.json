@@ -1,55 +1,56 @@
 {
   "date": "January 05, 2026",
-  "total_jobs": 57,
+  "total_jobs": 873,
   "tools": {
-    "Salesforce": 5,
-    "Outreach": 3,
-    "HubSpot": 1
+    "Salesforce": 139,
+    "Outreach": 43,
+    "HubSpot": 34,
+    "ZoomInfo": 5,
+    "Tableau": 5,
+    "Gong": 4,
+    "LinkedIn Sales Nav": 4,
+    "Clari": 1
   },
   "methodologies": {
-    "Channel/Partner": 15,
-    "Consultative Selling": 10,
-    "Enterprise Sales": 8
+    "Consultative Selling": 132,
+    "Enterprise Sales": 75,
+    "Channel/Partner": 66,
+    "MEDDIC/MEDDPICC": 30,
+    "PLG/Product-Led": 14,
+    "Value Selling": 13,
+    "Challenger": 13,
+    "Account-Based (ABM)": 9
   },
   "trends": {
-    "AI / Machine Learning": 129,
-    "Scale / Scalable": 64,
-    "Cloud": 34,
-    "Go-to-Market / GTM": 17,
-    "Data-Driven": 17,
-    "SaaS": 15,
-    "GenAI": 12,
-    "Customer Success": 3,
-    "Recurring Revenue/ARR": 3
+    "Scale / Scalable": 349,
+    "Go-to-Market / GTM": 310,
+    "AI / Machine Learning": 211,
+    "Data-Driven": 180,
+    "SaaS": 138,
+    "Customer Success": 118,
+    "Cloud": 82,
+    "Recurring Revenue/ARR": 54,
+    "Series A-D (Startup)": 21,
+    "GenAI": 16
   },
   "industries": {
-    "Technology/Software": 73,
-    "Healthcare": 69,
-    "Financial Services": 51,
-    "Retail/E-commerce": 39,
-    "Energy": 38,
-    "Education": 33,
-    "Government": 24,
-    "Cybersecurity": 19,
-    "Manufacturing": 15,
-    "Real Estate": 6
+    "Healthcare": 469,
+    "Education": 458,
+    "Technology/Software": 437,
+    "Financial Services": 429,
+    "Government": 269,
+    "Energy": 109,
+    "Cybersecurity": 103,
+    "Retail/E-commerce": 96,
+    "Manufacturing": 90,
+    "Real Estate": 61
   },
   "red_flags": {
-    "\"Competitive compensation\" (vague)": 14,
-    "\"Fast-paced environment\"": 9,
-    "\"Self-starter\" required": 6,
-    "Travel 50%+": 3,
-    "\"Wear many hats\"": 1
-  },
-  "experience_requirements": {
-    "10": 12,
-    "5": 11,
-    "8": 8,
-    "15": 7,
-    "7": 7,
-    "16": 5,
-    "6": 1,
-    "3": 1,
-    "4": 1
+    "\"Fast-paced environment\"": 179,
+    "\"Competitive compensation\" (vague)": 154,
+    "\"Self-starter\" required": 74,
+    "Travel 50%+": 37,
+    "\"Scrappy\"": 7,
+    "\"Wear many hats\"": 4
   }
 }
