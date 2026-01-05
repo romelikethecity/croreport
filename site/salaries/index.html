@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3119XDMC12"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3119XDMC12');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "uvbemaajqm");
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
-    <meta name="description" content="VP Sales and CRO salary data by location and seniority. Based on 507 current job postings with disclosed compensation.">
+    <meta name="description" content="VP Sales and CRO salary data by location, seniority, and company stage. Based on 529 job postings with disclosed compensation.">
+    <link rel="canonical" href="https://thecroreport.com/salaries/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -12,6 +31,74 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
+        
+        
+        .site-header {
+            background: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }
+        .logo-img {
+            height: 36px;
+            width: auto;
+            border-radius: 4px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: #1e3a5f; }
+        .btn-subscribe {
+            background: #1e3a5f !important;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .btn-subscribe:hover {
+            background: #2d4a6f !important;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
         
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
@@ -22,9 +109,30 @@
         .header h1 { font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }
         .header p { opacity: 0.9; }
         
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
         
-        h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; color: #1e3a5f; margin: 32px 0 16px; }
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #d97706;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; color: #1e3a5f; margin: 40px 0 20px; }
         
         .salary-grid {
             display: grid;
@@ -50,6 +158,40 @@
         .salary-card .range { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; color: #166534; }
         .salary-card .meta { font-size: 0.85rem; color: #64748b; margin-top: 8px; }
         
+        .salary-card.gated {
+            background: #f8fafc;
+            border-style: dashed;
+        }
+        .salary-card.gated .range {
+            color: #94a3b8;
+            filter: blur(4px);
+        }
+        .salary-card.gated .lock {
+            font-size: 0.75rem;
+            color: #d97706;
+            margin-top: 8px;
+        }
+        
+        .cta-inline {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta-inline h3 { font-family: 'Fraunces', serif; margin-bottom: 12px; }
+        .cta-inline p { opacity: 0.9; margin-bottom: 16px; }
+        .cta-btn {
+            display: inline-block;
+            background: #d97706;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
         .footer {
             background: #1e3a5f;
             color: #94a3b8;
@@ -61,103 +203,183 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Sales Executive Salary Benchmarks</h1>
-        <p>Based on 507 current job postings · Updated January 02, 2026</p>
+    
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img">
+                <span>The CRO Report</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
+                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+        </div>
     </header>
+
+    
+    <div class="header">
+        <h1>Sales Executive Salary Benchmarks</h1>
+        <p>Based on 529 job postings with disclosed compensation</p>
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">$173K - $254K</div>
+                <div class="stat-label">Average Range</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">529</div>
+                <div class="stat-label">Roles Analyzed</div>
+            </div>
+        </div>
+        <p style="margin-top: 16px; font-size: 0.85rem; opacity: 0.7;">Updated January 05, 2026</p>
+    </div>
     
     <div class="container">
         <h2>By Location</h2>
         <div class="salary-grid">
             
-            <a href="san-francisco/" class="salary-card">
-                <h3>VP Sales San Francisco</h3>
-                <div class="range">$337K avg max</div>
-                <div class="meta">20 roles with salary data</div>
-            </a>
-            
-            <a href="seattle/" class="salary-card">
-                <h3>VP Sales Seattle</h3>
-                <div class="range">$302K avg max</div>
-                <div class="meta">8 roles with salary data</div>
-            </a>
-            
-            <a href="boston/" class="salary-card">
-                <h3>VP Sales Boston</h3>
-                <div class="range">$279K avg max</div>
-                <div class="meta">27 roles with salary data</div>
-            </a>
-            
-            <a href="texas/" class="salary-card">
-                <h3>VP Sales Texas</h3>
-                <div class="range">$260K avg max</div>
-                <div class="meta">33 roles with salary data</div>
-            </a>
-            
-            <a href="atlanta/" class="salary-card">
-                <h3>VP Sales Atlanta</h3>
-                <div class="range">$257K avg max</div>
-                <div class="meta">18 roles with salary data</div>
-            </a>
-            
-            <a href="denver/" class="salary-card">
-                <h3>VP Sales Denver</h3>
-                <div class="range">$254K avg max</div>
-                <div class="meta">9 roles with salary data</div>
-            </a>
-            
-            <a href="los-angeles/" class="salary-card">
-                <h3>VP Sales Los Angeles</h3>
-                <div class="range">$245K avg max</div>
-                <div class="meta">13 roles with salary data</div>
-            </a>
-            
-            <a href="new-york/" class="salary-card">
-                <h3>VP Sales New York</h3>
-                <div class="range">$242K avg max</div>
-                <div class="meta">62 roles with salary data</div>
-            </a>
-            
-            <a href="remote/" class="salary-card">
-                <h3>VP Sales Remote</h3>
-                <div class="range">$219K avg max</div>
-                <div class="meta">73 roles with salary data</div>
-            </a>
-            
-            <a href="chicago/" class="salary-card">
-                <h3>VP Sales Chicago</h3>
-                <div class="range">$215K avg max</div>
-                <div class="meta">23 roles with salary data</div>
-            </a>
-            
+    <a href="san-francisco/" class="salary-card">
+        <h3>VP Sales San Francisco</h3>
+        <div class="range">$337K avg max</div>
+        <div class="meta">20 roles with salary data</div>
+    </a>
+    
+    <a href="seattle/" class="salary-card">
+        <h3>VP Sales Seattle</h3>
+        <div class="range">$302K avg max</div>
+        <div class="meta">8 roles with salary data</div>
+    </a>
+    
+    <a href="boston/" class="salary-card">
+        <h3>VP Sales Boston</h3>
+        <div class="range">$279K avg max</div>
+        <div class="meta">27 roles with salary data</div>
+    </a>
+    
+    <a href="texas/" class="salary-card">
+        <h3>VP Sales Texas</h3>
+        <div class="range">$260K avg max</div>
+        <div class="meta">33 roles with salary data</div>
+    </a>
+    
+    <a href="atlanta/" class="salary-card">
+        <h3>VP Sales Atlanta</h3>
+        <div class="range">$257K avg max</div>
+        <div class="meta">18 roles with salary data</div>
+    </a>
+    
+    <a href="denver/" class="salary-card">
+        <h3>VP Sales Denver</h3>
+        <div class="range">$254K avg max</div>
+        <div class="meta">9 roles with salary data</div>
+    </a>
+    
+    <a href="los-angeles/" class="salary-card">
+        <h3>VP Sales Los Angeles</h3>
+        <div class="range">$245K avg max</div>
+        <div class="meta">13 roles with salary data</div>
+    </a>
+    
+    <a href="new-york/" class="salary-card">
+        <h3>VP Sales New York</h3>
+        <div class="range">$242K avg max</div>
+        <div class="meta">62 roles with salary data</div>
+    </a>
+    
+    <a href="remote/" class="salary-card">
+        <h3>VP Sales Remote</h3>
+        <div class="range">$219K avg max</div>
+        <div class="meta">73 roles with salary data</div>
+    </a>
+    
+    <a href="chicago/" class="salary-card">
+        <h3>VP Sales Chicago</h3>
+        <div class="range">$215K avg max</div>
+        <div class="meta">23 roles with salary data</div>
+    </a>
+    
         </div>
         
         <h2>By Seniority</h2>
         <div class="salary-grid">
             
-            <a href="cro/" class="salary-card">
-                <h3>CRO / Chief Revenue Officer</h3>
-                <div class="range">$292K avg max</div>
-                <div class="meta">15 roles with salary data</div>
-            </a>
+    <a href="cro/" class="salary-card">
+        <h3>CRO / Chief Revenue Officer</h3>
+        <div class="range">$292K avg max</div>
+        <div class="meta">15 roles with salary data</div>
+    </a>
+    
+    <a href="svp-sales/" class="salary-card">
+        <h3>SVP Sales</h3>
+        <div class="range">$260K avg max</div>
+        <div class="meta">28 roles with salary data</div>
+    </a>
+    
+    <a href="vp-sales/" class="salary-card">
+        <h3>VP Sales</h3>
+        <div class="range">$256K avg max</div>
+        <div class="meta">447 roles with salary data</div>
+    </a>
+    
+        </div>
+        
+        <h2>By Company Stage</h2>
+        <p style="color: #64748b; margin-bottom: 16px;">How does compensation vary from Seed to Enterprise?</p>
+        <div class="salary-grid">
             
-            <a href="svp-sales/" class="salary-card">
-                <h3>SVP Sales</h3>
-                <div class="range">$260K avg max</div>
-                <div class="meta">28 roles with salary data</div>
-            </a>
-            
-            <a href="vp-sales/" class="salary-card">
-                <h3>VP Sales</h3>
-                <div class="range">$260K avg max</div>
-                <div class="meta">425 roles with salary data</div>
-            </a>
-            
+        <a href="late-stage/" class="salary-card">
+            <h3>Late Stage Company</h3>
+            <div class="range">$319K avg max</div>
+            <div class="meta">27 roles</div>
+        </a>
+        
+        <a href="series-c-d/" class="salary-card">
+            <h3>Series C/D Company</h3>
+            <div class="range">$308K avg max</div>
+            <div class="meta">87 roles</div>
+        </a>
+        
+        <a href="seed-series-a/" class="salary-card">
+            <h3>Seed/Series A Company</h3>
+            <div class="range">$257K avg max</div>
+            <div class="meta">14 roles</div>
+        </a>
+        
+        <a href="enterprise-public/" class="salary-card">
+            <h3>Enterprise/Public Company</h3>
+            <div class="range">$254K avg max</div>
+            <div class="meta">210 roles</div>
+        </a>
+        
+        <a href="series-b-c/" class="salary-card">
+            <h3>Series B/C Company</h3>
+            <div class="range">$228K avg max</div>
+            <div class="meta">32 roles</div>
+        </a>
+        
+        <a href="series-a-b/" class="salary-card">
+            <h3>Series A/B Company</h3>
+            <div class="range">$189K avg max</div>
+            <div class="meta">40 roles</div>
+        </a>
+        
+        </div>
+        
+        <div class="cta-inline">
+            <h3>Get Weekly Compensation Intelligence</h3>
+            <p>Full salary breakdowns, company stage analysis, and negotiation insights every Thursday.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe Free →</a>
         </div>
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 </body>
 </html>
