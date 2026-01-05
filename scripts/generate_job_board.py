@@ -2,12 +2,27 @@
 """
 Generate Job Board Page for The CRO Report
 Produces a clean, compact job listing page with separate filter boxes
+
+SEO FEATURES:
+- Tracking code included
+- Open Graph tags for social sharing
+- Twitter card tags
+- Canonical URL
 """
 
 import os
 import glob
 import pandas as pd
 from datetime import datetime
+import sys
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
+
+BASE_URL = 'https://thecroreport.com'
 
 def get_latest_jobs_file():
     """Find the most recent executive_sales_jobs CSV file"""
@@ -160,15 +175,43 @@ def generate_html(df, stats):
     filter_boxes_html = generate_filter_boxes(df)
     
     current_year = datetime.now().year
+    update_date = datetime.now().strftime('%B %d, %Y')
+    
+    # SEO metadata
+    page_title = f"VP Sales & CRO Jobs - {stats['total']} Open Roles | The CRO Report"
+    meta_desc = f"Browse {stats['total']} VP Sales, CRO, and executive sales positions. {stats['remote']} remote roles available. Average max salary ${stats['avg_salary']}K. Updated weekly."
+    canonical_url = f"{BASE_URL}/jobs/"
+    og_title = f"{stats['total']} VP Sales & CRO Jobs"
+    og_description = f"Executive sales positions with salary data. {stats['remote']} remote, ${stats['avg_salary']}K avg max salary."
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Leadership Jobs | The CRO Report</title>
-    <meta name="description" content="VP Sales, CRO, and executive roles at companies worth working for. Browse {stats['total']} open positions.">
-    <link rel="canonical" href="https://thecroreport.com/jobs/">
+    
+    <!-- SEO Meta Tags -->
+    <title>{page_title}</title>
+    <meta name="description" content="{meta_desc}">
+    <link rel="canonical" href="{canonical_url}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{canonical_url}">
+    <meta property="og:title" content="{og_title}">
+    <meta property="og:description" content="{og_description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="{BASE_URL}/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{og_title}">
+    <meta name="twitter:description" content="{og_description}">
+    <meta name="twitter:image" content="{BASE_URL}/assets/social-preview.png">
+    
+    <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
+    
     <style>
         * {{
             margin: 0;
@@ -201,6 +244,13 @@ def generate_html(df, stats):
             font-weight: 700;
             color: #1a365d;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .nav-logo img {{
+            height: 36px;
+            border-radius: 4px;
         }}
         
         .nav-links {{
@@ -277,16 +327,11 @@ def generate_html(df, stats):
             font-size: 0.95rem;
         }}
         
-        .hero-stat strong {{
-            color: #d69e2e;
-            font-weight: 700;
-        }}
-        
         /* Main Layout */
         .main-container {{
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            margin: 2rem auto;
+            padding: 0 2rem;
             display: grid;
             grid-template-columns: 1fr 280px;
             gap: 2rem;
@@ -298,6 +343,9 @@ def generate_html(df, stats):
             }}
             .sidebar {{
                 order: -1;
+            }}
+            .nav-links {{
+                display: none;
             }}
         }}
         
@@ -482,7 +530,10 @@ def generate_html(df, stats):
 </head>
 <body>
     <nav class="nav">
-        <a href="/" class="nav-logo">The CRO Report</a>
+        <a href="/" class="nav-logo">
+            <img src="/assets/logo.jpg" alt="The CRO Report">
+            The CRO Report
+        </a>
         <div class="nav-links">
             <a href="/jobs/">Jobs</a>
             <a href="/salaries/">Salaries</a>
@@ -525,6 +576,7 @@ def generate_html(df, stats):
     
     <footer class="footer">
         <p>&copy; {current_year} The CRO Report. <a href="https://croreport.substack.com">Subscribe to the Newsletter</a></p>
+        <p style="margin-top: 8px; font-size: 0.8rem; color: #94a3b8;">Updated {update_date}</p>
     </footer>
 </body>
 </html>
@@ -563,6 +615,11 @@ def main():
         f.write(html)
     
     print(f"Generated: {output_path}")
+    print(f"\n📊 SEO Features Added:")
+    print(f"   - Tracking code (GA4 + Clarity)")
+    print(f"   - Open Graph tags")
+    print(f"   - Twitter card tags")
+    print(f"   - Canonical URL")
 
 
 if __name__ == "__main__":

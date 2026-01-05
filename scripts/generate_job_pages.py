@@ -3,6 +3,13 @@
 Generate individual job pages for programmatic SEO
 Creates pages like /jobs/acme-corp-vp-sales/ for each job posting
 Target: 150+ pages per week, each targeting "[Company] [Role] job"
+
+SEO FEATURES:
+- Correct canonical URLs (thecroreport.com)
+- Salary/location in title tags
+- Open Graph tags for LinkedIn shares
+- Twitter card tags
+- JobPosting JSON-LD schema for rich results
 """
 
 import pandas as pd
@@ -11,6 +18,7 @@ import glob
 import os
 import re
 import hashlib
+import json
 import sys
 sys.path.insert(0, 'scripts')
 try:
@@ -22,6 +30,7 @@ except:
 DATA_DIR = 'data'
 SITE_DIR = 'site'
 JOBS_DIR = f'{SITE_DIR}/jobs'
+BASE_URL = 'https://thecroreport.com'
 
 print("="*70)
 print("📄 GENERATING INDIVIDUAL JOB PAGES")
@@ -40,6 +49,7 @@ df = pd.read_csv(latest_file)
 print(f"📂 Loaded {len(df)} jobs from {latest_file}")
 
 update_date = datetime.now().strftime('%B %d, %Y')
+iso_date = datetime.now().strftime('%Y-%m-%d')
 
 def slugify(text):
     """Convert text to URL-friendly slug"""
@@ -51,12 +61,24 @@ def slugify(text):
     text = re.sub(r'-+', '-', text)
     return text.strip('-')[:50]
 
+def escape_html(text):
+    """Escape HTML special characters"""
+    if pd.isna(text):
+        return ''
+    return str(text).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace("'", '&#39;')
+
+def escape_json(text):
+    """Escape text for JSON"""
+    if pd.isna(text):
+        return ''
+    return str(text).replace('\\', '\\\\').replace('"', '\\"').replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
+
 def create_job_page(job, idx):
-    """Generate an individual job page"""
+    """Generate an individual job page with full SEO optimization"""
     
     company = str(job.get('company', 'Unknown'))
     title = str(job.get('title', 'Sales Executive'))
-    location = str(job.get('location', ''))
+    location = str(job.get('location', '')) if pd.notna(job.get('location')) else ''
     
     # Create unique slug
     slug = f"{slugify(company)}-{slugify(title)}"
@@ -70,42 +92,208 @@ def create_job_page(job, idx):
     # Format salary
     min_sal = job.get('min_amount')
     max_sal = job.get('max_amount')
-    if pd.notna(min_sal) and pd.notna(max_sal):
+    if pd.notna(min_sal) and pd.notna(max_sal) and float(min_sal) > 0 and float(max_sal) > 0:
         salary_display = f"${int(min_sal):,} - ${int(max_sal):,}"
         salary_short = f"${int(min_sal)//1000}K-${int(max_sal)//1000}K"
-    elif pd.notna(max_sal):
+        salary_schema_min = int(min_sal)
+        salary_schema_max = int(max_sal)
+    elif pd.notna(max_sal) and float(max_sal) > 0:
         salary_display = f"Up to ${int(max_sal):,}"
         salary_short = f"Up to ${int(max_sal)//1000}K"
+        salary_schema_min = None
+        salary_schema_max = int(max_sal)
     else:
         salary_display = "Not disclosed"
         salary_short = ""
+        salary_schema_min = None
+        salary_schema_max = None
     
-    seniority = job.get('seniority', 'VP')
+    seniority = job.get('seniority', 'VP') if pd.notna(job.get('seniority')) else 'VP'
     is_remote = job.get('is_remote') == True or str(job.get('is_remote')).lower() == 'true'
-    job_url = job.get('job_url_direct', '#')
+    job_url = job.get('job_url_direct', '#') if pd.notna(job.get('job_url_direct')) else '#'
     
-    meta_desc = f"{title} at {company}"
+    # Escape for HTML
+    company_escaped = escape_html(company)
+    title_escaped = escape_html(title)
+    location_escaped = escape_html(location)
+    
+    # === SEO-OPTIMIZED TITLE ===
+    # Format: "VP Sales at Acme Corp - $200K-$300K (Remote) | The CRO Report"
+    title_parts = [f"{title_escaped} at {company_escaped}"]
+    if salary_short:
+        title_parts.append(f"- {salary_short}")
+    if is_remote:
+        title_parts.append("(Remote)")
+    elif location:
+        # Extract city name for shorter title
+        city = location.split(',')[0].strip() if ',' in location else location
+        if len(city) < 20:
+            title_parts.append(f"({escape_html(city)})")
+    page_title = ' '.join(title_parts) + " | The CRO Report"
+    
+    # === META DESCRIPTION ===
+    meta_desc = f"{title_escaped} at {company_escaped}"
     if location:
-        meta_desc += f" in {location}"
+        meta_desc += f" in {location_escaped}"
     if salary_short:
         meta_desc += f". {salary_short} base salary."
-    meta_desc += " Apply now."
+    meta_desc += " Apply now. Updated weekly."
+    meta_desc = meta_desc[:155]
+    
+    # === CANONICAL URL ===
+    canonical_url = f"{BASE_URL}/jobs/{slug}/"
+    
+    # === OPEN GRAPH TAGS ===
+    og_title = f"{title_escaped} at {company_escaped}"
+    if salary_short:
+        og_title += f" ({salary_short})"
+    og_description = f"{seniority}-level sales role at {company_escaped}."
+    if salary_short:
+        og_description += f" {salary_short} base."
+    if is_remote:
+        og_description += " Remote eligible."
+    elif location:
+        og_description += f" {location_escaped}."
+    
+    # === JOBPOSTING SCHEMA (JSON-LD) ===
+    schema_data = {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": title,
+        "description": f"{seniority}-level sales executive position at {company}",
+        "datePosted": iso_date,
+        "validThrough": (datetime.now().replace(day=1) + pd.DateOffset(months=2)).strftime('%Y-%m-%d'),
+        "employmentType": "FULL_TIME",
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": company,
+        },
+        "jobLocationType": "TELECOMMUTE" if is_remote else None,
+        "applicantLocationRequirements": {
+            "@type": "Country",
+            "name": "United States"
+        } if is_remote else None,
+    }
+    
+    # Add location if not remote-only
+    if location and not is_remote:
+        # Parse location
+        loc_parts = location.split(',')
+        if len(loc_parts) >= 2:
+            schema_data["jobLocation"] = {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": loc_parts[0].strip(),
+                    "addressRegion": loc_parts[1].strip() if len(loc_parts) > 1 else "",
+                    "addressCountry": "US"
+                }
+            }
+    
+    # Add salary if disclosed
+    if salary_schema_max:
+        schema_data["baseSalary"] = {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "YEAR"
+            }
+        }
+        if salary_schema_min and salary_schema_max:
+            schema_data["baseSalary"]["value"]["minValue"] = salary_schema_min
+            schema_data["baseSalary"]["value"]["maxValue"] = salary_schema_max
+        elif salary_schema_max:
+            schema_data["baseSalary"]["value"]["maxValue"] = salary_schema_max
+    
+    # Remove None values from schema
+    schema_data = {k: v for k, v in schema_data.items() if v is not None}
+    schema_json = json.dumps(schema_data, indent=2)
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} at {company} | The CRO Report</title>
-    <meta name="description" content="{meta_desc[:155]}">
-    <link rel="canonical" href="https://romelikethecity.github.io/croreport/jobs/{slug}/">
     
+    <!-- SEO Meta Tags -->
+    <title>{page_title}</title>
+    <meta name="description" content="{meta_desc}">
+    <link rel="canonical" href="{canonical_url}">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags (LinkedIn, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{canonical_url}">
+    <meta property="og:title" content="{og_title}">
+    <meta property="og:description" content="{og_description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="{BASE_URL}/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{og_title}">
+    <meta name="twitter:description" content="{og_description}">
+    <meta name="twitter:image" content="{BASE_URL}/assets/social-preview.png">
+    
+    <!-- JobPosting Schema -->
+    <script type="application/ld+json">
+{schema_json}
+    </script>
+    
+    <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
     
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
+        
+        .site-header {{
+            background: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }}
+        .header-container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .logo {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }}
+        .logo img {{ height: 36px; border-radius: 4px; }}
+        .nav-links {{
+            display: flex;
+            list-style: none;
+            gap: 24px;
+            align-items: center;
+        }}
+        .nav-links a {{
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }}
+        .nav-links a:hover {{ color: #1e3a5f; }}
+        .btn-subscribe {{
+            background: #1e3a5f !important;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }}
         
         .header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
@@ -163,6 +351,7 @@ def create_job_page(job, idx):
             border-radius: 12px;
             padding: 32px;
             margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }}
         .details h2 {{
             font-family: 'Fraunces', serif;
@@ -207,19 +396,42 @@ def create_job_page(job, idx):
             margin-top: 60px;
         }}
         .footer a {{ color: #d97706; text-decoration: none; }}
+        
+        @media (max-width: 768px) {{
+            .nav-links {{ display: none; }}
+            .header h1 {{ font-size: 1.5rem; }}
+        }}
     </style>
 </head>
 <body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report">
+                <span>The CRO Report</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
+                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
     <header class="header">
         <div class="container">
             <nav class="breadcrumb">
-                <a href="/">The CRO Report</a> → <a href="/jobs/">Jobs</a> → {company}
+                <a href="/">The CRO Report</a> → <a href="/jobs/">Jobs</a> → {company_escaped}
             </nav>
-            <h1>{title}</h1>
-            <div class="company">{company}</div>
+            <h1>{title_escaped}</h1>
+            <div class="company">{company_escaped}</div>
             <div class="job-meta">
                 {f'<span class="meta-item salary">{salary_display}</span>' if salary_display != "Not disclosed" else ''}
-                {f'<span class="meta-item">📍 {location}</span>' if location else ''}
+                {f'<span class="meta-item">📍 {location_escaped}</span>' if location else ''}
                 {'<span class="meta-item">🏠 Remote</span>' if is_remote else ''}
                 {f'<span class="meta-item">{seniority}</span>' if seniority else ''}
             </div>
@@ -229,7 +441,7 @@ def create_job_page(job, idx):
     <div class="content">
         <div class="container">
             <div class="apply-box">
-                <p>Interested in this {seniority} role at {company}?</p>
+                <p>Interested in this {seniority} role at {company_escaped}?</p>
                 <a href="{job_url}" class="apply-btn" target="_blank" rel="noopener">Apply Now →</a>
             </div>
             
@@ -237,15 +449,15 @@ def create_job_page(job, idx):
                 <h2>Role Details</h2>
                 <div class="detail-row">
                     <span class="detail-label">Company</span>
-                    <span class="detail-value">{company}</span>
+                    <span class="detail-value">{company_escaped}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Title</span>
-                    <span class="detail-value">{title}</span>
+                    <span class="detail-value">{title_escaped}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Location</span>
-                    <span class="detail-value">{location if location else 'Not specified'}</span>
+                    <span class="detail-value">{location_escaped if location else 'Not specified'}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Seniority</span>
@@ -301,3 +513,9 @@ with open(f'{DATA_DIR}/job_slugs.txt', 'w') as f:
     f.write('\n'.join(job_slugs))
 
 print(f"✅ Saved job slug index")
+print(f"\n📊 SEO Features Added:")
+print(f"   - Correct canonical URLs ({BASE_URL})")
+print(f"   - Salary/location in title tags")
+print(f"   - Open Graph tags for social sharing")
+print(f"   - Twitter card tags")
+print(f"   - JobPosting JSON-LD schema")
