@@ -3,8 +3,7 @@
 Generate Market Intelligence page from job description analysis
 Creates /insights/ with skills heatmap, methodology trends, red flags, etc.
 
-Uses master_jobs_database.csv for historical analysis when available,
-falls back to weekly file for current snapshot.
+Uses master_jobs_database.csv for historical analysis.
 """
 
 import pandas as pd
@@ -27,7 +26,7 @@ SITE_DIR = 'site'
 INSIGHTS_DIR = f'{SITE_DIR}/insights'
 
 print("="*70)
-print("📊 GENERATING MARKET INTELLIGENCE PAGE")
+print("[INSIGHTS] GENERATING MARKET INTELLIGENCE PAGE")
 print("="*70)
 
 os.makedirs(INSIGHTS_DIR, exist_ok=True)
@@ -35,127 +34,114 @@ os.makedirs(INSIGHTS_DIR, exist_ok=True)
 # Try master database first for historical analysis
 master_file = f'{DATA_DIR}/master_jobs_database.csv'
 if os.path.exists(master_file):
-    df_all = pd.read_csv(master_file)
-    print(f"📂 Loaded master database: {len(df_all)} total jobs")
-    has_historical = True
+    df = pd.read_csv(master_file)
+    print(f"[FILE] Loaded master database: {len(df)} total jobs")
 else:
     # Fall back to weekly file
     files = glob.glob(f"{DATA_DIR}/executive_sales_jobs_*.csv")
     if not files:
-        print("❌ No job data found")
+        print("[ERROR] No job data found")
         exit(1)
     latest_file = max(files)
-    df_all = pd.read_csv(latest_file)
-    print(f"📂 Loaded weekly file: {len(df_all)} jobs")
-    has_historical = False
+    df = pd.read_csv(latest_file)
+    print(f"[FILE] Loaded weekly file: {len(df)} jobs")
 
-# Get current week's data for "This Week" stats
-if 'import_date' in df_all.columns:
-    df_all['import_date'] = pd.to_datetime(df_all['import_date'], errors='coerce')
-    latest_date = df_all['import_date'].max()
-    df_current = df_all[df_all['import_date'] == latest_date]
-    
-    # Get 30 days ago for comparison
-    thirty_days_ago = latest_date - timedelta(days=30)
-    df_30d_ago = df_all[(df_all['import_date'] >= thirty_days_ago - timedelta(days=7)) & 
-                        (df_all['import_date'] <= thirty_days_ago)]
-else:
-    df_current = df_all
-    df_30d_ago = pd.DataFrame()
+# Filter to jobs with descriptions for analysis
+df_with_desc = df[df['description'].notna() & (df['description'].str.len() > 50)].copy()
+print(f"[DATA] {len(df_with_desc)} jobs with descriptions for analysis")
 
-print(f"📊 Current week: {len(df_current)} jobs")
-if len(df_30d_ago) > 0:
-    print(f"📊 30 days ago: {len(df_30d_ago)} jobs (for comparison)")
-
-# Use current week for primary analysis
-df = df_current if len(df_current) > 0 else df_all
-
-# Combine all descriptions
-all_text = ' '.join(df['description'].dropna().astype(str)).lower()
-total_jobs = len(df)
+total_jobs = len(df_with_desc)
 update_date = datetime.now().strftime('%B %d, %Y')
 
 # === ANALYSIS FUNCTIONS ===
 
-def count_pattern(pattern):
-    return len(re.findall(pattern, all_text, re.IGNORECASE))
+def count_jobs_with_pattern(pattern):
+    """Count how many JOBS mention the pattern (not total occurrences)"""
+    count = 0
+    for desc in df_with_desc['description'].dropna():
+        if re.search(pattern, str(desc), re.IGNORECASE):
+            count += 1
+    return count
 
 def pct(count):
+    """Calculate percentage of jobs"""
+    if total_jobs == 0:
+        return 0
     return round(count / total_jobs * 100, 1)
 
 # === RUN ANALYSIS ===
 
-# Tools
+print("[ANALYSIS] Counting tools...")
+# Tools - count jobs that mention each tool
 tools_analysis = {
-    'Salesforce': count_pattern(r'\bsalesforce\b'),
-    'HubSpot': count_pattern(r'\bhubspot\b'),
-    'Gong': count_pattern(r'\bgong\b'),
-    'Outreach': count_pattern(r'\boutreach\b'),
-    'ZoomInfo': count_pattern(r'\bzoominfo\b'),
-    'Clari': count_pattern(r'\bclari\b'),
-    'Tableau': count_pattern(r'\btableau\b'),
-    'LinkedIn Sales Nav': count_pattern(r'\blinkedin\s*(?:sales)?\s*nav'),
+    'Salesforce': count_jobs_with_pattern(r'\bsalesforce\b'),
+    'HubSpot': count_jobs_with_pattern(r'\bhubspot\b'),
+    'Gong': count_jobs_with_pattern(r'\bgong\b'),
+    'Outreach': count_jobs_with_pattern(r'\boutreach\b'),
+    'ZoomInfo': count_jobs_with_pattern(r'\bzoominfo\b'),
+    'Clari': count_jobs_with_pattern(r'\bclari\b'),
+    'Tableau': count_jobs_with_pattern(r'\btableau\b'),
+    'LinkedIn Sales Nav': count_jobs_with_pattern(r'\blinkedin\s*(?:sales)?\s*nav'),
 }
 tools_analysis = {k: v for k, v in sorted(tools_analysis.items(), key=lambda x: -x[1]) if v > 0}
 
+print("[ANALYSIS] Counting methodologies...")
 # Methodologies
 methods_analysis = {
-    'Enterprise Sales': count_pattern(r'\benterprise\s*sales'),
-    'Consultative Selling': count_pattern(r'\bconsultative\b'),
-    'Channel/Partner': count_pattern(r'\bchannel\s*(?:sales|partner)|partner\s*(?:sales|channel)'),
-    'Value Selling': count_pattern(r'\bvalue\s*sell'),
-    'MEDDIC/MEDDPICC': count_pattern(r'\bmedd[ip]*i?c+\b'),
-    'PLG/Product-Led': count_pattern(r'\bplg\b|product.led'),
-    'Challenger': count_pattern(r'\bchallenger\b'),
-    'Account-Based (ABM)': count_pattern(r'\baccount.based|abm\b'),
+    'Enterprise Sales': count_jobs_with_pattern(r'\benterprise\s*sales'),
+    'Consultative Selling': count_jobs_with_pattern(r'\bconsultative\b'),
+    'Channel/Partner': count_jobs_with_pattern(r'\bchannel\s*(?:sales|partner)|partner\s*(?:sales|channel)'),
+    'Value Selling': count_jobs_with_pattern(r'\bvalue\s*sell'),
+    'MEDDIC/MEDDPICC': count_jobs_with_pattern(r'\bmedd[ip]*i?c+\b'),
+    'PLG/Product-Led': count_jobs_with_pattern(r'\bplg\b|product.led'),
+    'Challenger': count_jobs_with_pattern(r'\bchallenger\b'),
+    'Account-Based (ABM)': count_jobs_with_pattern(r'\baccount.based|abm\b'),
 }
 methods_analysis = {k: v for k, v in sorted(methods_analysis.items(), key=lambda x: -x[1]) if v > 0}
 
+print("[ANALYSIS] Counting trends...")
 # Buzzwords/Trends
 trends_analysis = {
-    'AI / Machine Learning': count_pattern(r'\bartificial\s*intelligence|\b(?<!equ)ai\b|machine\s*learning'),
-    'Go-to-Market / GTM': count_pattern(r'\bgo.to.market|\bgtm\b'),
-    'Scale / Scalable': count_pattern(r'\bscalab|\bscale\b'),
-    'SaaS': count_pattern(r'\bsaas\b'),
-    'Data-Driven': count_pattern(r'\bdata.driven\b'),
-    'Cloud': count_pattern(r'\bcloud\b'),
-    'Series A-D (Startup)': count_pattern(r'\bseries\s*[a-d]\b'),
-    'Customer Success': count_pattern(r'\bcustomer\s*success\b'),
-    'Recurring Revenue/ARR': count_pattern(r'\brecurring\s*revenue|arr\b|mrr\b'),
-    'GenAI': count_pattern(r'\bgenai|generative\s*ai|gen\s*ai|llm\b'),
+    'AI / Machine Learning': count_jobs_with_pattern(r'\bartificial\s*intelligence|\bai\b|machine\s*learning'),
+    'Go-to-Market / GTM': count_jobs_with_pattern(r'\bgo.to.market|\bgtm\b'),
+    'Scale / Scalable': count_jobs_with_pattern(r'\bscalab|\bscale\b'),
+    'SaaS': count_jobs_with_pattern(r'\bsaas\b'),
+    'Data-Driven': count_jobs_with_pattern(r'\bdata.driven\b'),
+    'Cloud': count_jobs_with_pattern(r'\bcloud\b'),
+    'Series A-D (Startup)': count_jobs_with_pattern(r'\bseries\s*[a-d]\b'),
+    'Customer Success': count_jobs_with_pattern(r'\bcustomer\s*success\b'),
+    'Recurring Revenue/ARR': count_jobs_with_pattern(r'\brecurring\s*revenue|arr\b|mrr\b'),
+    'GenAI': count_jobs_with_pattern(r'\bgenai|generative\s*ai|gen\s*ai|llm\b'),
 }
 trends_analysis = {k: v for k, v in sorted(trends_analysis.items(), key=lambda x: -x[1]) if v > 0}
 
+print("[ANALYSIS] Counting industries...")
 # Industries
 industries_analysis = {
-    'Technology/Software': count_pattern(r'\btechnology|software|tech\s*companies'),
-    'Healthcare': count_pattern(r'\bhealthcare|health\s*tech|medical|pharma|biotech'),
-    'Financial Services': count_pattern(r'\bfinancial\s*services|fintech|banking|insurance'),
-    'Education': count_pattern(r'\beducation|edtech|learning'),
-    'Government': count_pattern(r'\bgovernment|public\s*sector|federal'),
-    'Cybersecurity': count_pattern(r'\bcyber|security|infosec'),
-    'Retail/E-commerce': count_pattern(r'\bretail|e.commerce|ecommerce'),
-    'Real Estate': count_pattern(r'\breal\s*estate|proptech'),
-    'Energy': count_pattern(r'\benergy|utilities|renewable'),
-    'Manufacturing': count_pattern(r'\bmanufacturing|industrial'),
+    'Technology/Software': count_jobs_with_pattern(r'\btechnology|software|tech\s*companies'),
+    'Healthcare': count_jobs_with_pattern(r'\bhealthcare|health\s*tech|medical|pharma|biotech'),
+    'Financial Services': count_jobs_with_pattern(r'\bfinancial\s*services|fintech|banking|insurance'),
+    'Education': count_jobs_with_pattern(r'\beducation|edtech|learning'),
+    'Government': count_jobs_with_pattern(r'\bgovernment|public\s*sector|federal'),
+    'Cybersecurity': count_jobs_with_pattern(r'\bcyber|security|infosec'),
+    'Retail/E-commerce': count_jobs_with_pattern(r'\bretail|e.commerce|ecommerce'),
+    'Real Estate': count_jobs_with_pattern(r'\breal\s*estate|proptech'),
+    'Energy': count_jobs_with_pattern(r'\benergy|utilities|renewable'),
+    'Manufacturing': count_jobs_with_pattern(r'\bmanufacturing|industrial'),
 }
 industries_analysis = {k: v for k, v in sorted(industries_analysis.items(), key=lambda x: -x[1]) if v > 0}
 
+print("[ANALYSIS] Counting red flags...")
 # Red Flags
 red_flags_analysis = {
-    '"Competitive compensation" (vague)': count_pattern(r'\bcompetitive\s*(?:salary|compensation|pay)'),
-    '"Fast-paced environment"': count_pattern(r'\bfast.paced\b'),
-    'Travel 50%+': count_pattern(r'\b(?:5[0-9]|[6-9][0-9]|100)\s*%\s*travel'),
-    '"Self-starter" required': count_pattern(r'\bself.starter\b'),
-    '"Wear many hats"': count_pattern(r'\bwear\s*many\s*hats|wear\s*multiple\s*hats'),
-    '"Scrappy"': count_pattern(r'\bscrappy\b'),
+    '"Competitive compensation" (vague)': count_jobs_with_pattern(r'\bcompetitive\s*(?:salary|compensation|pay)'),
+    '"Fast-paced environment"': count_jobs_with_pattern(r'\bfast.paced\b'),
+    'Travel 50%+': count_jobs_with_pattern(r'\b(?:5[0-9]|[6-9][0-9]|100)\s*%\s*travel'),
+    '"Self-starter" required': count_jobs_with_pattern(r'\bself.starter\b'),
+    '"Wear many hats"': count_jobs_with_pattern(r'\bwear\s*many\s*hats|wear\s*multiple\s*hats'),
+    '"Scrappy"': count_jobs_with_pattern(r'\bscrappy\b'),
 }
 red_flags_analysis = {k: v for k, v in sorted(red_flags_analysis.items(), key=lambda x: -x[1]) if v > 0}
-
-# Experience requirements
-exp_pattern = r'(\d+)\+?\s*(?:years?|yrs?)\s*(?:of)?\s*(?:experience|exp)?'
-exp_mentions = re.findall(exp_pattern, all_text)
-exp_counts = Counter([int(y) for y in exp_mentions if int(y) <= 20])
 
 # Save analysis to JSON for other uses
 analysis_data = {
@@ -166,12 +152,11 @@ analysis_data = {
     'trends': trends_analysis,
     'industries': industries_analysis,
     'red_flags': red_flags_analysis,
-    'experience_requirements': dict(exp_counts.most_common(10)),
 }
 
 with open(f'{DATA_DIR}/market_intelligence.json', 'w') as f:
     json.dump(analysis_data, f, indent=2)
-print(f"✅ Saved analysis to {DATA_DIR}/market_intelligence.json")
+print(f"[FILE] Saved analysis to {DATA_DIR}/market_intelligence.json")
 
 # === GENERATE HTML ===
 
@@ -238,16 +223,76 @@ html = f'''<!DOCTYPE html>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
         
-        .header {{
+        /* Navigation */
+        .site-header {{
+            background: white;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }}
+        .header-container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        .logo {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }}
+        .logo-img {{
+            height: 32px;
+            width: auto;
+        }}
+        .nav-links {{
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }}
+        .nav-links a {{
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }}
+        .nav-links a:hover {{
+            color: #1e3a5f;
+        }}
+        .btn-subscribe {{
+            background: #1e3a5f;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+        }}
+        .btn-subscribe:hover {{
+            background: #2d4a6f;
+        }}
+        @media (max-width: 768px) {{
+            .nav-links {{ display: none; }}
+        }}
+        
+        .hero-header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
         }}
-        .header .eyebrow {{ font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #d97706; margin-bottom: 12px; }}
-        .header h1 {{ font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }}
-        .header p {{ opacity: 0.9; max-width: 600px; margin: 0 auto; }}
-        .header .update {{ margin-top: 16px; font-size: 0.85rem; opacity: 0.7; }}
+        .hero-header .eyebrow {{ font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #d97706; margin-bottom: 12px; }}
+        .hero-header h1 {{ font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }}
+        .hero-header p {{ opacity: 0.9; max-width: 600px; margin: 0 auto; }}
+        .hero-header .update {{ margin-top: 16px; font-size: 0.85rem; opacity: 0.7; }}
         
         .container {{ max-width: 1000px; margin: 0 auto; padding: 0 20px; }}
         
@@ -345,12 +390,30 @@ html = f'''<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img">
+                <span>The CRO Report</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/newsletter/">Newsletter</a></li>
+                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero-header">
         <div class="eyebrow">Market Intelligence</div>
         <h1>What Companies Want in 2025</h1>
         <p>Skills, tools, and experience requirements extracted from {total_jobs} VP Sales and CRO job postings</p>
         <div class="update">Analysis updated {update_date}</div>
-    </header>
+    </div>
     
     <div class="container">
         <div class="callouts">
@@ -378,18 +441,18 @@ html = f'''<!DOCTYPE html>
             
             <div class="chart-grid">
                 <div class="chart-card">
-                    <h3>🔧 Tools & Platforms</h3>
+                    <h3>Tools & Platforms</h3>
                     {generate_bar_chart(dict(list(tools_analysis.items())[:8]))}
                 </div>
                 
                 <div class="chart-card">
-                    <h3>📈 Sales Methodologies</h3>
+                    <h3>Sales Methodologies</h3>
                     {generate_bar_chart(dict(list(methods_analysis.items())[:8]), color='#0891b2')}
                 </div>
             </div>
             
             <div class="insight-box">
-                <h4>💡 Key Insight</h4>
+                <h4>Key Insight</h4>
                 <p>Salesforce remains dominant, but notice the rise of MEDDIC requirements ({meddic_count} explicit mentions). 
                 Two years ago, specific methodology requirements were rare in job postings. Now they're table stakes for enterprise roles.</p>
             </div>
@@ -401,25 +464,25 @@ html = f'''<!DOCTYPE html>
             
             <div class="chart-grid">
                 <div class="chart-card">
-                    <h3>🔥 2025 Buzzwords</h3>
+                    <h3>2025 Buzzwords</h3>
                     {generate_bar_chart(dict(list(trends_analysis.items())[:8]), color='#7c3aed')}
                 </div>
                 
                 <div class="chart-card">
-                    <h3>🏢 Industry Focus</h3>
+                    <h3>Industry Focus</h3>
                     {generate_bar_chart(dict(list(industries_analysis.items())[:8]), color='#059669')}
                 </div>
             </div>
             
             <div class="insight-box">
-                <h4>💡 Key Insight</h4>
-                <p>AI mentions appear in {ai_pct}% of job descriptions—even for traditional sales leadership roles. 
+                <h4>Key Insight</h4>
+                <p>AI mentions appear in {ai_pct}% of job descriptions, even for traditional sales leadership roles. 
                 Companies want leaders who can leverage AI in their sales motion, not just sell AI products.</p>
             </div>
         </section>
         
         <section class="section">
-            <h2>🚩 Red Flags to Watch</h2>
+            <h2>Red Flags to Watch</h2>
             <p class="subtitle">Language patterns that often signal problems</p>
             
             <div class="chart-card red-flag-card" style="max-width: 600px;">
@@ -428,7 +491,7 @@ html = f'''<!DOCTYPE html>
             </div>
             
             <div class="insight-box" style="background: #fef2f2; border-color: #fecaca;">
-                <h4 style="color: #991b1b;">⚠️ What These Mean</h4>
+                <h4 style="color: #991b1b;">What These Mean</h4>
                 <p style="color: #7f1d1d;">
                     <strong>"Competitive compensation"</strong> without ranges usually means below-market or highly variable. 
                     <strong>"Fast-paced"</strong> often signals understaffing or constant fire-drills.
@@ -440,12 +503,12 @@ html = f'''<!DOCTYPE html>
         <div class="cta-box">
             <h2>Get This Analysis Weekly</h2>
             <p>Market trends, red flags, and hiring intelligence delivered every Thursday.</p>
-            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report</a>
         </div>
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 </body>
 </html>'''
@@ -454,5 +517,6 @@ html = f'''<!DOCTYPE html>
 with open(f'{INSIGHTS_DIR}/index.html', 'w') as f:
     f.write(html)
 
-print(f"✅ Generated /insights/ page")
-print(f"📊 Analysis covers {total_jobs} job descriptions")
+print(f"[DONE] Generated /insights/ page")
+print(f"[DATA] Analysis covers {total_jobs} job descriptions")
+print(f"[STATS] AI mentions: {ai_pct}%, Salesforce: {salesforce_pct}%, MEDDIC: {meddic_count}")
