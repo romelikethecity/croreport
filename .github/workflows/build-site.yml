@@ -103,7 +103,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.csv data/*.json data/*.md site/assets/*.png || true
+          git add data/*.csv data/*.json data/*.md site/ || true
           git diff --staged --quiet || git commit -m "Update data and assets [skip ci]"
           git push || true
 
