@@ -89,6 +89,22 @@ html = f'''<!DOCTYPE html>
     <title>The CRO Report | Intelligence for Revenue Leaders</title>
     <meta name="description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders. {stats['total_roles']} open roles tracked.">
     
+    <link rel="canonical" href="https://thecroreport.com/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/">
+    <meta property="og:title" content="The CRO Report | Intelligence for Revenue Leaders">
+    <meta property="og:description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders.">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The CRO Report | Intelligence for Revenue Leaders">
+    <meta name="twitter:description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders.">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+    
     <link rel="icon" type="image/jpeg" href="/assets/logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">

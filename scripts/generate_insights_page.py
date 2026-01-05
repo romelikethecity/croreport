@@ -208,6 +208,21 @@ html = f'''<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VP Sales & CRO Job Market Intelligence | The CRO Report</title>
     <meta name="description" content="What skills, tools, and experience are companies looking for in VP Sales and CRO roles? Analysis of {total_jobs} executive sales job postings.">
+    <link rel="canonical" href="https://thecroreport.com/insights/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/insights/">
+    <meta property="og:title" content="VP Sales & CRO Job Market Intelligence">
+    <meta property="og:description" content="What skills, tools, and experience are companies looking for in VP Sales and CRO roles?">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VP Sales & CRO Job Market Intelligence">
+    <meta name="twitter:description" content="What skills, tools, and experience are companies looking for in VP Sales and CRO roles?">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">

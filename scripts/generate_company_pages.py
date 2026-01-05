@@ -156,6 +156,20 @@ def generate_company_page(company_name, company_df):
     <meta name="keywords" content="{company_name} VP Sales jobs, {company_name} CRO jobs, {company_name} sales executive careers">
     <link rel="canonical" href="https://thecroreport.com/companies/{slug}/">
     
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/companies/{slug}/">
+    <meta property="og:title" content="{company_name} VP Sales & CRO Jobs">
+    <meta property="og:description" content="{description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{company_name} VP Sales & CRO Jobs">
+    <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
     
@@ -480,6 +494,20 @@ def generate_companies_index(companies_data):
     <title>Companies Hiring VP Sales & CROs | The CRO Report</title>
     <meta name="description" content="Browse {len(sorted_companies)} companies currently hiring VP Sales and CRO positions. Updated {update_date}.">
     <link rel="canonical" href="https://thecroreport.com/companies/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/companies/">
+    <meta property="og:title" content="Companies Hiring VP Sales & CROs">
+    <meta property="og:description" content="Browse companies currently hiring VP Sales and CRO positions.">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Companies Hiring VP Sales & CROs">
+    <meta name="twitter:description" content="Browse companies currently hiring VP Sales and CRO positions.">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">

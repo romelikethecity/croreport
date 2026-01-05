@@ -190,6 +190,20 @@ def create_salary_page(title, slug, df_subset, description, show_top_companies=T
     <meta name="description" content="{description} Based on {count} job postings. Updated {update_date}.">
     <link rel="canonical" href="https://thecroreport.com/salaries/{slug}/">
     
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/salaries/{slug}/">
+    <meta property="og:title" content="{title} Salary | The CRO Report">
+    <meta property="og:description" content="{description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title} Salary | The CRO Report">
+    <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
     
@@ -533,6 +547,20 @@ index_html = f'''<!DOCTYPE html>
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
     <meta name="description" content="VP Sales and CRO salary data by location, seniority, and company stage. Based on {len(df_salary)} job postings with disclosed compensation.">
     <link rel="canonical" href="https://thecroreport.com/salaries/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/salaries/">
+    <meta property="og:title" content="Sales Executive Salary Benchmarks">
+    <meta property="og:description" content="VP Sales and CRO salary data by location, seniority, and company stage.">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sales Executive Salary Benchmarks">
+    <meta name="twitter:description" content="VP Sales and CRO salary data by location, seniority, and company stage.">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
