@@ -5293,6 +5293,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/11x-alternatives/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/11x/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/ai-sdr/11x-vs-aisdr/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -5311,7 +5323,19 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/aisdr/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/apollo/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/artisan/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -5324,6 +5348,18 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/clari/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/clay-vs-apollo/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/clay/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -5347,6 +5383,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/gong-vs-clari/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/gong/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -5354,6 +5396,12 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/hubspot/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/instantly/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -5378,6 +5426,12 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/outreach/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/reply-io/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

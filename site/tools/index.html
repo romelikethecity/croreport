@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9HVVR5L5K"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3119XDMC12"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-K9HVVR5L5K');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3119XDMC12');
     </script>
+
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "prmc966s0a");
+        })(window, document, "clarity", "script", "uvbemaajqm");
     </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTM Tools & Reviews | The CRO Report</title>
     <meta name="description" content="Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders. Real pricing, user complaints, and recommendations by company stage.">
@@ -26,30 +28,33 @@
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thecroreport.com/tools/">
-    <meta property="og:title" content="GTM Tools & Reviews | The CRO Report">
-    <meta property="og:description" content="Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders.">
+    <meta property="og:title" content="GTM Tools & Reviews">
+    <meta property="og:description" content="Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders. Real pricing, user complaints, and recommendations by company stage.">
     <meta property="og:site_name" content="The CRO Report">
     <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GTM Tools & Reviews | The CRO Report">
-    <meta name="twitter:description" content="Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders.">
+    <meta name="twitter:title" content="GTM Tools & Reviews">
+    <meta name="twitter:description" content="Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders. Real pricing, user complaints, and recommendations by company stage.">
     <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --navy: #0a1628;
             --navy-light: #132038;
             --gold: #d4a853;
             --gold-muted: #b8956a;
-            --teal: #4a9b9b;
             --red: #dc3545;
             --green: #28a745;
             --gray-50: #f8fafc;
@@ -72,7 +77,7 @@
             line-height: 1.6;
         }
         
-        /* Navigation - matches your site */
+        /* Navigation */
         .site-header {
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
@@ -131,6 +136,15 @@
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+        .breadcrumb a { color: var(--gold-muted); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
         
         .page-label {
             font-size: 13px;
@@ -244,7 +258,6 @@
         
         .tool-card.coming-soon {
             opacity: 0.6;
-            pointer-events: none;
         }
         
         .card-badge {
@@ -261,6 +274,7 @@
         
         .badge-live { background: rgba(40, 167, 69, 0.12); color: var(--green); }
         .badge-soon { background: rgba(100, 116, 139, 0.12); color: var(--gray-500); }
+        .badge-comparison { background: rgba(212, 168, 83, 0.15); color: var(--gold-muted); }
         
         .card-logos {
             display: flex;
@@ -312,6 +326,120 @@
         .card-meta { font-size: 0.8rem; color: var(--gray-500); }
         .card-link { font-size: 0.85rem; font-weight: 600; color: var(--gold-muted); }
         
+        /* Pros/Cons */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
+        
+        .pros, .cons {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .pros { border: 1px solid var(--green); }
+        .cons { border: 1px solid var(--red); }
+        
+        .pros h4, .cons h4 { font-size: 0.95rem; margin-bottom: 12px; }
+        .pros h4 { color: var(--green); }
+        .cons h4 { color: var(--red); }
+        
+        .pros ul, .cons ul { list-style: none; }
+        .pros li, .cons li { padding: 6px 0; font-size: 0.9rem; }
+        .pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
+        .cons li::before { content: '✗ '; color: var(--red); font-weight: 600; }
+        
+        /* Info Card */
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: var(--gray-500); font-size: 0.9rem; }
+        .info-value { font-weight: 500; font-size: 0.9rem; }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .comparison-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:nth-child(even) { background: var(--gray-50); }
+        .winner { color: var(--green); font-weight: 600; }
+        
+        /* CTA Box */
+        .cta-box {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .cta-box p {
+            color: var(--gray-300);
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-gold { background: var(--gold); color: var(--navy); }
+        .btn-gold:hover { background: var(--gold-muted); }
+        
         /* Insight Box */
         .insight-box {
             background: var(--navy);
@@ -333,39 +461,6 @@
             line-height: 1.65; 
             color: var(--gray-300);
         }
-        
-        /* CTA Section */
-        .cta-section {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 36px;
-            text-align: center;
-            margin-top: 48px;
-        }
-        
-        .cta-section h3 {
-            font-size: 1.25rem;
-            color: var(--navy);
-            margin-bottom: 10px;
-        }
-        
-        .cta-section p {
-            color: var(--gray-600);
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        
-        .btn-primary { background: var(--gold); color: var(--navy); }
-        .btn-primary:hover { background: var(--gold-muted); }
         
         /* Footer */
         .site-footer {
@@ -398,6 +493,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="site-header">
         <div class="header-container">
@@ -415,29 +511,29 @@
             </nav>
         </div>
     </header>
-    
+
     <section class="page-header">
         <div class="container">
             <div class="page-label">Tool Reviews</div>
             <h1>GTM Tools & Reviews</h1>
-            <p class="lead">The tools your team uses matter more than most vendors want to admit. We dig into real pricing, user complaints, and contract terms so you don't have to learn the hard way. No affiliate fluff. Just what actually works.</p>
+            <p class="lead">The tools your team uses matter more than most vendors want to admit. We dig into real pricing, user complaints, and contract terms so you don't have to learn the hard way.</p>
             
             <div class="stats-row">
                 <div class="stat-box">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">AI SDR Comparisons</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Tools Reviewed</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number green">$900</div>
-                    <div class="stat-label">Lowest AI SDR Monthly</div>
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Comparisons</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number red">75%</div>
-                    <div class="stat-label">11x Reported Churn</div>
+                    <div class="stat-number green">3</div>
+                    <div class="stat-label">In-Depth Analyses</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number gold">5</div>
-                    <div class="stat-label">Categories Covered</div>
+                    <div class="stat-label">Categories</div>
                 </div>
             </div>
         </div>
@@ -445,207 +541,244 @@
     
     <main>
         <div class="container">
-            
-            <!-- AI SDR Section -->
+
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">🤖</span>
-                    <h2>AI SDR Tools</h2>
+                    <h2>AI SDR</h2>
                 </div>
-                <p class="section-description">The AI SDR market is exploding. So is the hype. Here's what actually works, what doesn't, and who should skip this category entirely. We cover 11x, Artisan, AiSDR, Ava, and Regie.ai.</p>
+                <p class="section-description">AI-powered sales development reps for automated outreach</p>
                 
                 <div class="tools-grid">
+
                     <a href="/tools/ai-sdr/11x-vs-artisan/" class="tool-card">
-                        <span class="card-badge badge-live">Live</span>
-                        <div class="card-logos">
-                            <div class="card-logo"><img src="/assets/logos/11x_logo.jpeg" alt="11x"></div>
-                            <div class="card-logo"><img src="/assets/logos/artisan_Logo.webp" alt="Artisan"></div>
-                        </div>
+                        <span class="card-badge badge-live">In-Depth</span>
+                        <div class="card-logos"><div class="card-logo"><img src="/assets/logos/11x_logo.jpeg" alt="11x"></div><div class="card-logo"><img src="/assets/logos/artisan_Logo.webp" alt="Artisan"></div></div>
                         <h3>11x vs Artisan</h3>
-                        <p>The two most-hyped AI SDRs compared. Both want annual contracts. Both have red flags. We break down who should consider each, and who should skip both entirely.</p>
+                        <p>The two most-hyped AI SDRs compared. Both want annual contracts. Both have red flags.</p>
                         <div class="card-footer">
                             <span class="card-meta">Updated Jan 2026</span>
                             <span class="card-link">Read Analysis →</span>
                         </div>
                     </a>
-                    
+
                     <a href="/tools/ai-sdr/artisan-vs-aisdr/" class="tool-card">
-                        <span class="card-badge badge-live">Live</span>
-                        <div class="card-logos">
-                            <div class="card-logo"><img src="/assets/logos/artisan_Logo.webp" alt="Artisan"></div>
-                            <div class="card-logo"><img src="/assets/logos/AiSDR_logo.png" alt="AiSDR"></div>
-                        </div>
+                        <span class="card-badge badge-live">In-Depth</span>
+                        <div class="card-logos"><div class="card-logo"><img src="/assets/logos/artisan_Logo.webp" alt="Artisan"></div><div class="card-logo"><img src="/assets/logos/AiSDR_logo.png" alt="AiSDR"></div></div>
                         <h3>Artisan vs AiSDR</h3>
-                        <p>Annual lock-in vs quarterly flexibility. Artisan promises more features but requires 12 months. AiSDR lets you leave after 90 days. The contract terms alone tell you a lot.</p>
+                        <p>Annual lock-in vs quarterly flexibility. The contract terms tell you everything.</p>
                         <div class="card-footer">
                             <span class="card-meta">Updated Jan 2026</span>
                             <span class="card-link">Read Analysis →</span>
                         </div>
                     </a>
-                    
+
                     <a href="/tools/ai-sdr/11x-vs-aisdr/" class="tool-card">
-                        <span class="card-badge badge-live">Live</span>
-                        <div class="card-logos">
-                            <div class="card-logo"><img src="/assets/logos/11x_logo.jpeg" alt="11x"></div>
-                            <div class="card-logo"><img src="/assets/logos/AiSDR_logo.png" alt="AiSDR"></div>
-                        </div>
+                        <span class="card-badge badge-live">In-Depth</span>
+                        <div class="card-logos"><div class="card-logo"><img src="/assets/logos/11x_logo.jpeg" alt="11x"></div><div class="card-logo"><img src="/assets/logos/AiSDR_logo.png" alt="AiSDR"></div></div>
                         <h3>11x vs AiSDR</h3>
-                        <p>$60K/year with credibility issues vs $2,700/quarter with transparent pricing. 11x got exposed by TechCrunch. AiSDR publishes pricing. This comparison isn't close.</p>
+                        <p>The $60K gamble vs the $2,700 test. This comparison isn't close.</p>
                         <div class="card-footer">
                             <span class="card-meta">Updated Jan 2026</span>
                             <span class="card-link">Read Analysis →</span>
                         </div>
                     </a>
-                </div>
-                
-                <div class="insight-box">
-                    <h4>💡 Key Insight</h4>
-                    <p>AI SDRs work best for high-volume, low-personalization outreach to massive TAMs. If your ICP is narrow or requires genuine personalization, these tools will disappoint. Most teams under 10 AEs should stick with Apollo + human review. If you're going to test AI SDRs, start with quarterly contracts so you're not trapped when it doesn't work.</p>
+
                 </div>
             </div>
-            
-            <!-- Data Enrichment Section -->
+
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">📊</span>
                     <h2>Data Enrichment</h2>
                 </div>
-                <p class="section-description">Your outbound is only as good as your data. Clay, Apollo, and ZoomInfo take different approaches to the same problem. Here's what matters for each company stage.</p>
+                <p class="section-description">Contact data, company intel, and prospecting tools</p>
                 
                 <div class="tools-grid">
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
-                        <div class="card-logos">
-                            <div class="card-logo"><img src="/assets/logos/Clay%20Logo%20Dark.png" alt="Clay"></div>
-                            <div class="card-logo"><img src="/assets/logos/Apollo.io_logo.png" alt="Apollo"></div>
-                        </div>
+
+                    <a href="/tools/clay-vs-apollo/" class="tool-card">
+                        <span class="card-badge badge-comparison">Comparison</span>
+                        <div class="card-logos"><div class="card-logo"><img src="/assets/logos/Clay%20Logo%20Dark.png" alt="Clay"></div><div class="card-logo"><img src="/assets/logos/Apollo.io_logo.png" alt="Apollo"></div></div>
                         <h3>Clay vs Apollo</h3>
-                        <p>The flexibility of Clay's waterfall enrichment vs Apollo's all-in-one simplicity. Which approach makes sense for your team size and budget?</p>
+                        <p>Waterfall enrichment flexibility vs all-in-one simplicity.</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Updated Jan 2026</span>
+                            <span class="card-link">Read Analysis →</span>
                         </div>
-                    </div>
-                    
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
-                        <h3>ZoomInfo Alternatives</h3>
-                        <p>ZoomInfo costs $15K-$40K/year. Here are the alternatives that might give you 80% of the value at 20% of the price.</p>
+                    </a>
+
+                    <a href="/tools/zoominfo-vs-apollo/" class="tool-card">
+                        <span class="card-badge badge-comparison">Comparison</span>
+                        <div class="card-logos"><div class="card-logo"><img src="/assets/logos/Apollo.io_logo.png" alt="Apollo"></div></div>
+                        <h3>ZoomInfo vs Apollo</h3>
+                        <p>Enterprise data giant vs scrappy all-in-one challenger.</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Updated Jan 2026</span>
+                            <span class="card-link">Read Analysis →</span>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
             </div>
-            
-            <!-- Conversation Intelligence Section -->
+
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">🎙️</span>
                     <h2>Conversation Intelligence</h2>
                 </div>
-                <p class="section-description">Gong dominates the category, but is it worth the price? We compare Gong, Clari, and the newer entrants trying to unseat them.</p>
+                <p class="section-description">Call recording, transcription, and deal analytics</p>
                 
                 <div class="tools-grid">
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
+
+                    <a href="/tools/gong-vs-clari/" class="tool-card">
+                        <span class="card-badge badge-comparison">Comparison</span>
+                        
                         <h3>Gong vs Clari</h3>
-                        <p>Revenue intelligence from two different angles. Gong starts with conversations. Clari starts with forecasting. Which foundation matters more?</p>
+                        <p>Conversation intelligence vs revenue forecasting. Different problems, different tools.</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Updated Jan 2026</span>
+                            <span class="card-link">Read Analysis →</span>
                         </div>
-                    </div>
-                    
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
-                        <h3>Gong Alternatives</h3>
-                        <p>Gong's pricing can hit $100K+ for mid-market teams. Here's what else is out there and whether the alternatives actually compare.</p>
+                    </a>
+
+                    <a href="/tools/gong/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Gong</h3>
+                        <p>Market-leading conversation intelligence for sales calls</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Custom pricing, typically $100...</span>
+                            <span class="card-link">View Details →</span>
                         </div>
-                    </div>
+                    </a>
+
+                    <a href="/tools/clari/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Clari</h3>
+                        <p>Revenue platform for forecasting and pipeline visibility</p>
+                        <div class="card-footer">
+                            <span class="card-meta">Custom enterprise pricing...</span>
+                            <span class="card-link">View Details →</span>
+                        </div>
+                    </a>
+
+                    <a href="/tools/chorus/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Chorus.ai</h3>
+                        <p>Conversation intelligence platform (acquired by ZoomInfo)</p>
+                        <div class="card-footer">
+                            <span class="card-meta">Bundled with ZoomInfo or stand...</span>
+                            <span class="card-link">View Details →</span>
+                        </div>
+                    </a>
+
                 </div>
             </div>
-            
-            <!-- Sales Engagement Section -->
+
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">📧</span>
                     <h2>Sales Engagement</h2>
                 </div>
-                <p class="section-description">Outreach and Salesloft have been fighting for years. Reply.io and the newer players are taking share. Here's the current state of the category.</p>
+                <p class="section-description">Platforms for sequences, cadences, and prospect engagement</p>
                 
                 <div class="tools-grid">
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
+
+                    <a href="/tools/outreach-vs-salesloft/" class="tool-card">
+                        <span class="card-badge badge-comparison">Comparison</span>
+                        
                         <h3>Outreach vs Salesloft</h3>
-                        <p>The classic comparison, updated for 2026. Both have changed significantly. We break down the current feature gaps and pricing.</p>
+                        <p>The definitive comparison of Outreach and Salesloft for sales engagement.</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Updated Jan 2026</span>
+                            <span class="card-link">Read Analysis →</span>
                         </div>
-                    </div>
-                    
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
+                    </a>
+
+                    <a href="/tools/outreach/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Outreach</h3>
+                        <p>Enterprise sales engagement platform for multi-channel sequences</p>
+                        <div class="card-footer">
+                            <span class="card-meta">Custom pricing, typically $100...</span>
+                            <span class="card-link">View Details →</span>
+                        </div>
+                    </a>
+
+                    <a href="/tools/salesloft/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Salesloft</h3>
+                        <p>Sales engagement platform acquired by Vista Equity</p>
+                        <div class="card-footer">
+                            <span class="card-meta">Custom pricing, typically $75-...</span>
+                            <span class="card-link">View Details →</span>
+                        </div>
+                    </a>
+
+                    <a href="/tools/reply-io/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
                         <div class="card-logos">
                             <div class="card-logo"><img src="/assets/logos/Reply.io_logo.png" alt="Reply.io"></div>
-                            <div class="card-logo"><img src="/assets/logos/Instantly.ai_logo.png" alt="Instantly"></div>
                         </div>
-                        <h3>Reply.io vs Instantly</h3>
-                        <p>The budget-friendly alternatives for teams that don't need enterprise features. What you get and what you give up.</p>
+                        <h3>Reply.io</h3>
+                        <p>Multichannel sales engagement with AI assistance</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q1 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">From $60/user/month...</span>
+                            <span class="card-link">View Details →</span>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
             </div>
-            
-            <!-- CRM & RevOps Section -->
+
             <div class="section">
                 <div class="section-header">
                     <span class="section-icon">🗄️</span>
                     <h2>CRM & RevOps</h2>
                 </div>
-                <p class="section-description">Salesforce vs HubSpot is the eternal debate. We help you figure out when to switch, when to stay, and what it actually costs.</p>
+                <p class="section-description">Customer relationship management and revenue operations</p>
                 
                 <div class="tools-grid">
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
-                        <h3>When to Leave HubSpot</h3>
-                        <p>HubSpot works great until it doesn't. Here are the signals that you've outgrown it, and what the migration to Salesforce actually looks like.</p>
+
+                    <a href="/tools/salesforce/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>Salesforce</h3>
+                        <p>The dominant enterprise CRM platform</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q2 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">$25-300/user/month depending o...</span>
+                            <span class="card-link">View Details →</span>
                         </div>
-                    </div>
-                    
-                    <div class="tool-card coming-soon">
-                        <span class="card-badge badge-soon">Coming Soon</span>
-                        <h3>Salesforce Pricing Reality</h3>
-                        <p>What Salesforce actually costs once you factor in implementation, add-ons, and the consultants you'll inevitably hire.</p>
+                    </a>
+
+                    <a href="/tools/hubspot/" class="tool-card">
+                        <span class="card-badge badge-soon">Tool Review</span>
+                        
+                        <h3>HubSpot</h3>
+                        <p>All-in-one CRM with marketing automation</p>
                         <div class="card-footer">
-                            <span class="card-meta">Coming Q2 2026</span>
-                            <span class="card-link">Coming Soon</span>
+                            <span class="card-meta">Free tier, paid from $45/month...</span>
+                            <span class="card-link">View Details →</span>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
             </div>
-            
-            <!-- CTA -->
-            <div class="cta-section">
+
+            <div class="cta-box">
                 <h3>Want a Tool Reviewed?</h3>
-                <p>We're building this section based on what revenue leaders actually need. Got a tool you're evaluating?</p>
-                <a href="mailto:rome@thecroreport.com?subject=Tool Review Request" class="btn btn-primary">Request a Review</a>
+                <p>We're building this section based on what revenue leaders actually need.</p>
+                <a href="mailto:rome@thecroreport.com?subject=Tool Review Request" class="btn btn-gold">Request a Review</a>
             </div>
             
         </div>
     </main>
-    
+
     <footer class="site-footer">
         <div class="footer-content">
             <span>© 2025 <a href="/">The CRO Report</a></span>

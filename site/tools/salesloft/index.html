@@ -21,8 +21,24 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesloft Review | The CRO Report</title>
+    <meta name="description" content="Sales engagement platform acquired by Vista Equity Pricing, pros, cons, and alternatives.">
+    <link rel="canonical" href="https://thecroreport.com/tools/salesloft/">
     
-    <!-- Favicons -->
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/tools/salesloft/">
+    <meta property="og:title" content="Salesloft Review">
+    <meta property="og:description" content="Sales engagement platform acquired by Vista Equity Pricing, pros, cons, and alternatives.">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Salesloft Review">
+    <meta name="twitter:description" content="Sales engagement platform acquired by Vista Equity Pricing, pros, cons, and alternatives.">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+    
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -30,138 +46,504 @@
     <link rel="manifest" href="/site.webmanifest">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }
-        
-        .header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+        :root {
+            --navy: #0a1628;
+            --navy-light: #132038;
+            --gold: #d4a853;
+            --gold-muted: #b8956a;
+            --red: #dc3545;
+            --green: #28a745;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --white: #ffffff;
         }
-        .header .eyebrow {
-            font-size: 0.8rem;
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .logo img { width: 40px; height: 40px; border-radius: 8px; }
+        
+        .nav { display: flex; gap: 28px; align-items: center; }
+        .nav a { 
+            color: var(--gray-600); 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            font-weight: 500; 
+            transition: color 0.2s; 
+        }
+        .nav a:hover { color: var(--navy); }
+        .nav a.active { color: var(--navy); font-weight: 600; }
+        
+        .nav-cta {
+            background: var(--navy);
+            color: var(--white) !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .nav-cta:hover { background: var(--navy-light); }
+        
+        /* Page Header */
+        .page-header {
+            background: var(--white);
+            padding: 48px 0 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+        .breadcrumb a { color: var(--gold-muted); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        
+        .page-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #d97706;
+            color: var(--gold-muted);
             margin-bottom: 12px;
         }
-        .header h1 { font-family: 'Fraunces', serif; font-size: 2.5rem; margin-bottom: 12px; }
-        .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .content { padding: 40px 0; }
+        .page-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
         
-        h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; color: #1e3a5f; margin: 32px 0 16px; }
-        h3 { font-size: 1.1rem; color: #1e3a5f; margin-bottom: 8px; }
+        .page-header .lead {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            line-height: 1.7;
+        }
         
-        .card {
-            background: white;
-            border: 1px solid #e2e8f0;
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        @media (max-width: 768px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+        
+        .stat-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+        
+        .stat-number.gold { color: var(--gold-muted); }
+        .stat-number.red { color: var(--red); }
+        .stat-number.green { color: var(--green); }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 6px;
+        }
+        
+        /* Main Content */
+        main { padding: 48px 0; }
+        
+        .section { margin-bottom: 56px; }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .section-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .section-icon { font-size: 1.4rem; }
+        
+        .section-description {
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            max-width: 650px;
+            font-size: 0.95rem;
+        }
+        
+        /* Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
             border-radius: 12px;
             padding: 24px;
-            margin-bottom: 16px;
+            text-decoration: none;
+            color: inherit;
             transition: all 0.2s;
-        }
-        .card:hover { border-color: #1e3a5f; box-shadow: 0 4px 12px rgba(30,58,95,0.1); }
-        .card a { text-decoration: none; color: inherit; }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            display: flex;
+            flex-direction: column;
         }
         
-        .tag { 
+        .tool-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        
+        .tool-card.coming-soon {
+            opacity: 0.6;
+        }
+        
+        .card-badge {
             display: inline-block;
-            background: #f1f5f9;
-            color: #475569;
             padding: 4px 10px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            width: fit-content;
+        }
+        
+        .badge-live { background: rgba(40, 167, 69, 0.12); color: var(--green); }
+        .badge-soon { background: rgba(100, 116, 139, 0.12); color: var(--gray-500); }
+        .badge-comparison { background: rgba(212, 168, 83, 0.15); color: var(--gold-muted); }
+        
+        .card-logos {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        
+        .card-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .card-logo img {
+            max-width: 32px;
+            max-height: 32px;
+            object-fit: contain;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--navy);
             margin-bottom: 8px;
         }
-        .tag.pro { background: #dcfce7; color: #166534; }
-        .tag.con { background: #fee2e2; color: #991b1b; }
         
-        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+        .tool-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+            flex-grow: 1;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .card-meta { font-size: 0.8rem; color: var(--gray-500); }
+        .card-link { font-size: 0.85rem; font-weight: 600; color: var(--gold-muted); }
+        
+        /* Pros/Cons */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
         @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
-        .pros-cons h4 { font-size: 0.9rem; margin-bottom: 12px; }
-        .pros-cons ul { list-style: none; }
-        .pros-cons li { padding: 8px 0; font-size: 0.9rem; }
-        .pros li::before { content: '✓'; color: #16a34a; margin-right: 8px; }
-        .cons li::before { content: '✗'; color: #dc2626; margin-right: 8px; }
         
+        .pros, .cons {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .pros { border: 1px solid var(--green); }
+        .cons { border: 1px solid var(--red); }
+        
+        .pros h4, .cons h4 { font-size: 0.95rem; margin-bottom: 12px; }
+        .pros h4 { color: var(--green); }
+        .cons h4 { color: var(--red); }
+        
+        .pros ul, .cons ul { list-style: none; }
+        .pros li, .cons li { padding: 6px 0; font-size: 0.9rem; }
+        .pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
+        .cons li::before { content: '✗ '; color: var(--red); font-weight: 600; }
+        
+        /* Info Card */
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: var(--gray-500); font-size: 0.9rem; }
+        .info-value { font-weight: 500; font-size: 0.9rem; }
+        
+        /* Comparison Table */
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin: 24px 0;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
         }
-        .comparison-table th, .comparison-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .comparison-table th { background: #f8fafc; font-weight: 600; }
-        .comparison-table .winner { color: #16a34a; font-weight: 500; }
         
+        .comparison-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:nth-child(even) { background: var(--gray-50); }
+        .winner { color: var(--green); font-weight: 600; }
+        
+        /* CTA Box */
         .cta-box {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
-            color: white;
+            background: var(--navy);
+            color: var(--white);
             border-radius: 12px;
             padding: 32px;
             text-align: center;
             margin: 40px 0;
         }
-        .cta-box h2 { color: white; }
-        .cta-box p { opacity: 0.9; margin: 12px 0 20px; }
-        .cta-btn {
+        
+        .cta-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .cta-box p {
+            color: var(--gray-300);
+            margin-bottom: 20px;
+        }
+        
+        .btn {
             display: inline-block;
-            background: #d97706;
-            color: white;
             padding: 12px 24px;
             border-radius: 8px;
-            text-decoration: none;
             font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
         }
         
-        .breadcrumb { font-size: 0.85rem; color: #64748b; padding: 16px 0; }
-        .breadcrumb a { color: #1e3a5f; text-decoration: none; }
+        .btn-gold { background: var(--gold); color: var(--navy); }
+        .btn-gold:hover { background: var(--gold-muted); }
         
-        .footer {
-            background: #1e3a5f;
-            color: #94a3b8;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
+        /* Insight Box */
+        .insight-box {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
         }
-        .footer a { color: #d97706; text-decoration: none; }
+        
+        .insight-box h4 {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .insight-box p { 
+            font-size: 0.95rem; 
+            line-height: 1.65; 
+            color: var(--gray-300);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            padding: 24px 0;
+            margin-top: 48px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+        
+        .footer-content a { color: var(--gray-600); text-decoration: none; }
+        .footer-links a { margin-left: 24px; }
+        .footer-links a:hover { color: var(--navy); }
+        
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 12px; text-align: center; }
+            .footer-links a { margin: 0 12px; }
+        }
     </style>
-
-    <title>Salesloft Review for Sales Teams | The CRO Report</title>
-    <meta name="description" content="Salesloft review for sales leaders. Sales engagement platform acquired by Vista Equity Pricing, pros, cons, and alternatives.">
 </head>
+
 <body>
-    <header class="header">
-        <div class="eyebrow">Sales Engagement</div>
-        <h1>Salesloft</h1>
-        <p>Sales engagement platform acquired by Vista Equity</p>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report">
+                The CRO Report
+            </a>
+            <nav class="nav">
+                <a href="/jobs/">Jobs</a>
+                <a href="/salaries/">Salaries</a>
+                <a href="/tools/" class="active">Tools</a>
+                <a href="/insights/">Market Intel</a>
+                <a href="/newsletter/">Newsletter</a>
+                <a href="https://croreport.substack.com/subscribe" class="nav-cta">Subscribe</a>
+            </nav>
+        </div>
     </header>
+
+    <section class="page-header">
+        <div class="container-narrow">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> → <a href="/tools/">Tools</a> → Salesloft
+            </nav>
+            <div class="page-label">Sales Engagement</div>
+            
+            <h1>Salesloft</h1>
+            <p class="lead">Sales engagement platform acquired by Vista Equity</p>
+        </div>
+    </section>
     
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="/">Home</a> → <a href="/tools/">Tools</a> → Salesloft
-        </nav>
-        
-        <div class="content">
-            <div class="card">
+    <main>
+        <div class="container-narrow">
+            <div class="info-card">
                 <h3>Quick Facts</h3>
-                <p><strong>Best For:</strong> Mid-market to enterprise B2B sales teams</p>
-                <p><strong>Pricing:</strong> Custom pricing, typically $75-125/user/month</p>
-                <p><strong>Website:</strong> <a href="https://www.salesloft.com" target="_blank" rel="noopener">https://www.salesloft.com</a></p>
+                <div class="info-row">
+                    <span class="info-label">Best For</span>
+                    <span class="info-value">Mid-market to enterprise B2B sales teams</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Pricing</span>
+                    <span class="info-value">Custom pricing, typically $75-125/user/month</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Category</span>
+                    <span class="info-value">Sales Engagement</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Website</span>
+                    <span class="info-value"><a href="https://www.salesloft.com" target="_blank" rel="noopener">https://www.salesloft.com</a></span>
+                </div>
             </div>
             
             <div class="pros-cons">
@@ -175,20 +557,24 @@
                 </div>
             </div>
             
-            <h2>Looking for Alternatives?</h2>
-            <p>See our <a href="/tools/salesloft-alternatives/">full list of Salesloft alternatives</a> with detailed comparisons.</p>
-            
             <div class="cta-box">
-                <h2>Get Weekly Tool Reviews</h2>
+                <h3>Get Weekly Tool Reviews</h3>
                 <p>Honest assessments of GTM tools from a practitioner perspective.</p>
-                <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+                <a href="https://croreport.substack.com/subscribe" class="btn btn-gold">Subscribe to The CRO Report →</a>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/tools/">Tools</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
-        <p style="margin-top: 8px; font-size: 0.85rem;">Updated January 06, 2026</p>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>© 2025 <a href="/">The CRO Report</a></span>
+            <div class="footer-links">
+                <a href="/jobs/">Jobs</a>
+                <a href="/salaries/">Salaries</a>
+                <a href="/tools/">Tools</a>
+                <a href="https://croreport.substack.com">Newsletter</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
