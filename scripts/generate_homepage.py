@@ -150,7 +150,130 @@ html = f'''<!DOCTYPE html>
         .logo {{ font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); }}
         .nav-links {{ display: flex; gap: 2rem; list-style: none; }}
         .nav-links a {{ font-size: 0.9rem; font-weight: 500; color: var(--gray-600); }}
-        @media (max-width: 600px) {{ .nav-links {{ display: none; }} }}
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {{
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+            padding: 0.5rem;
+            z-index: 1001;
+        }}
+
+        .mobile-nav-overlay {{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }}
+
+        .mobile-nav-overlay.active {{
+            opacity: 1;
+        }}
+
+        .mobile-nav {{
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            max-width: 85%;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1000;
+            padding: 1.5rem;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }}
+
+        .mobile-nav.active {{
+            right: 0;
+        }}
+
+        .mobile-nav-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }}
+
+        .mobile-nav-header .logo-text {{
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }}
+
+        .mobile-nav-close {{
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            padding: 0.25rem;
+        }}
+
+        .mobile-nav-close:hover {{
+            color: var(--navy);
+        }}
+
+        .mobile-nav-links {{
+            list-style: none;
+            margin-bottom: 2rem;
+        }}
+
+        .mobile-nav-links li {{
+            border-bottom: 1px solid var(--gray-100);
+        }}
+
+        .mobile-nav-links a {{
+            display: block;
+            padding: 1rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: color 0.2s;
+        }}
+
+        .mobile-nav-links a:hover {{
+            color: var(--navy);
+        }}
+
+        .mobile-nav-subscribe {{
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }}
+
+        .mobile-nav-subscribe:hover {{
+            background: var(--navy-light);
+            color: var(--white);
+        }}
+
+        @media (max-width: 768px) {{
+            .nav-links {{ display: none; }}
+            .mobile-menu-btn {{ display: block; }}
+            .mobile-nav-overlay {{ display: block; pointer-events: none; }}
+            .mobile-nav-overlay.active {{ pointer-events: auto; }}
+        }}
         
         /* Buttons */
         .btn {{ display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 8px; transition: all 0.2s; }}
@@ -248,8 +371,56 @@ html = f'''<!DOCTYPE html>
                     <li><a href="#subscribe" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: white;">Subscribe</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
+        </ul>
+        <a href="#subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <script>
+        (function() {{
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {{
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }}
+
+            function closeMenu() {{
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }}
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            mobileLinks.forEach(link => {{
+                link.addEventListener('click', closeMenu);
+            }});
+        }})();
+    </script>
 
     <main>
         <section class="hero">
