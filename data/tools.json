@@ -1,27 +1,141 @@
 {
   "categories": [
     {
+      "name": "AI SDR",
+      "slug": "ai-sdr",
+      "icon": "🤖",
+      "description": "AI-powered sales development reps for automated outreach"
+    },
+    {
+      "name": "Data Enrichment",
+      "slug": "data-enrichment",
+      "icon": "📊",
+      "description": "Contact data, company intel, and prospecting tools"
+    },
+    {
+      "name": "Conversation Intelligence",
+      "slug": "conversation-intelligence",
+      "icon": "🎙️",
+      "description": "Call recording, transcription, and deal analytics"
+    },
+    {
       "name": "Sales Engagement",
       "slug": "sales-engagement",
-      "description": "Platforms for automating outreach, sequences, and prospect engagement"
+      "icon": "📧",
+      "description": "Platforms for sequences, cadences, and prospect engagement"
     },
     {
-      "name": "Revenue Intelligence",
-      "slug": "revenue-intelligence",
-      "description": "Conversation intelligence and deal analytics platforms"
-    },
-    {
-      "name": "Sales Intelligence",
-      "slug": "sales-intelligence",
-      "description": "Contact data, intent signals, and prospecting tools"
-    },
-    {
-      "name": "CRM",
-      "slug": "crm",
-      "description": "Customer relationship management platforms"
+      "name": "CRM & RevOps",
+      "slug": "crm-revops",
+      "icon": "🗄️",
+      "description": "Customer relationship management and revenue operations"
     }
   ],
   "tools": [
+    {
+      "name": "11x",
+      "slug": "11x",
+      "category": "AI SDR",
+      "description": "AI SDR platform backed by a16z and Benchmark",
+      "pricing": "~$5,000/month, annual contract required",
+      "best_for": "Enterprise teams with massive TAM and budget to absorb risk",
+      "website": "https://www.11x.ai",
+      "logo": "/assets/logos/11x_logo.jpeg",
+      "pros": ["High-volume automation", "Done-for-you approach", "VC-backed development"],
+      "cons": ["$60K+ annual commitment", "Can't handle replies", "TechCrunch exposed fake customers", "75% reported 3-month churn"]
+    },
+    {
+      "name": "Artisan",
+      "slug": "artisan",
+      "category": "AI SDR",
+      "description": "AI BDR platform with 'Ava' assistant, Y Combinator backed",
+      "pricing": "~$1,500-2,000/month, annual contract required",
+      "best_for": "Teams wanting all-in-one platform with tool consolidation",
+      "website": "https://www.artisan.co",
+      "logo": "/assets/logos/artisan_Logo.webp",
+      "pros": ["All-in-one platform", "300M+ contact database", "Active development"],
+      "cons": ["Annual contract required", "Inconsistent results reported", "UI issues noted in reviews"]
+    },
+    {
+      "name": "AiSDR",
+      "slug": "aisdr",
+      "category": "AI SDR",
+      "description": "AI SDR with quarterly contracts and transparent pricing",
+      "pricing": "$900/month, quarterly billing, cancel anytime",
+      "best_for": "Teams wanting to test AI SDRs without long-term commitment",
+      "website": "https://www.aisdr.com",
+      "logo": "/assets/logos/AiSDR_logo.png",
+      "pros": ["Quarterly contracts", "Transparent pricing", "Replies in under 10 min", "700M+ contacts", "Unused messages roll over"],
+      "cons": ["HubSpot only (Salesforce coming)", "Limited signal customization", "$0.75/message adds up at scale"]
+    },
+    {
+      "name": "Clay",
+      "slug": "clay",
+      "category": "Data Enrichment",
+      "description": "Waterfall data enrichment with 75+ providers",
+      "pricing": "From $149/month",
+      "best_for": "Teams wanting maximum data coverage and flexibility",
+      "website": "https://www.clay.com",
+      "logo": "/assets/logos/Clay%20Logo%20Dark.png",
+      "pros": ["Waterfall enrichment", "75+ data providers", "Highly flexible"],
+      "cons": ["Learning curve", "Can get expensive at scale"]
+    },
+    {
+      "name": "Apollo.io",
+      "slug": "apollo",
+      "category": "Data Enrichment",
+      "description": "All-in-one sales intelligence and engagement platform",
+      "pricing": "Free tier available, paid from $49/user/month",
+      "best_for": "SMB and mid-market teams wanting data + engagement",
+      "website": "https://www.apollo.io",
+      "logo": "/assets/logos/Apollo.io_logo.png",
+      "pros": ["Built-in data", "Affordable", "Easy to use", "Sequences included"],
+      "cons": ["Data quality varies", "Less enterprise features"]
+    },
+    {
+      "name": "ZoomInfo",
+      "slug": "zoominfo",
+      "category": "Data Enrichment",
+      "description": "Enterprise B2B contact and company data platform",
+      "pricing": "Custom pricing, typically $15K-50K+/year",
+      "best_for": "Enterprise teams needing comprehensive B2B data",
+      "website": "https://www.zoominfo.com",
+      "pros": ["Largest database", "Intent data", "Enterprise integrations"],
+      "cons": ["Expensive", "Data decay", "Aggressive sales tactics", "Long contracts"]
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "category": "Conversation Intelligence",
+      "description": "Market-leading conversation intelligence for sales calls",
+      "pricing": "Custom pricing, typically $100-150/user/month",
+      "best_for": "Sales teams wanting call coaching and deal insights",
+      "website": "https://www.gong.io",
+      "pros": ["Best-in-class transcription", "Deal intelligence", "Coaching tools"],
+      "cons": ["Expensive", "Requires call volume for insights"]
+    },
+    {
+      "name": "Clari",
+      "slug": "clari",
+      "category": "Conversation Intelligence",
+      "description": "Revenue platform for forecasting and pipeline visibility",
+      "pricing": "Custom enterprise pricing",
+      "best_for": "Revenue leaders wanting forecast accuracy",
+      "website": "https://www.clari.com",
+      "pros": ["Forecasting accuracy", "Pipeline visibility", "CRO dashboards"],
+      "cons": ["Complex implementation", "Expensive"]
+    },
+    {
+      "name": "Chorus.ai",
+      "slug": "chorus",
+      "category": "Conversation Intelligence",
+      "description": "Conversation intelligence platform (acquired by ZoomInfo)",
+      "pricing": "Bundled with ZoomInfo or standalone",
+      "best_for": "Teams already using ZoomInfo",
+      "website": "https://www.chorus.ai",
+      "pros": ["ZoomInfo integration", "Good transcription"],
+      "cons": ["Less standalone value post-acquisition"]
+    },
     {
       "name": "Outreach",
       "slug": "outreach",
@@ -45,86 +159,33 @@
       "cons": ["Limited customization", "Reporting could be better"]
     },
     {
-      "name": "Apollo.io",
-      "slug": "apollo",
+      "name": "Reply.io",
+      "slug": "reply-io",
       "category": "Sales Engagement",
-      "description": "All-in-one sales intelligence and engagement platform",
-      "pricing": "Free tier available, paid from $49/user/month",
-      "best_for": "SMB and mid-market teams wanting data + engagement",
-      "website": "https://www.apollo.io",
-      "pros": ["Built-in data", "Affordable", "Easy to use"],
-      "cons": ["Data quality varies", "Less enterprise features"]
+      "description": "Multichannel sales engagement with AI assistance",
+      "pricing": "From $60/user/month",
+      "best_for": "SMB teams wanting affordable multichannel outreach",
+      "website": "https://reply.io",
+      "logo": "/assets/logos/Reply.io_logo.png",
+      "pros": ["Affordable", "Multichannel", "AI writing assistance"],
+      "cons": ["Less robust than enterprise tools", "Smaller ecosystem"]
     },
     {
-      "name": "Gong",
-      "slug": "gong",
-      "category": "Revenue Intelligence",
-      "description": "Conversation intelligence platform for sales calls",
-      "pricing": "Custom pricing, typically $100-150/user/month",
-      "best_for": "Sales teams wanting call coaching and deal insights",
-      "website": "https://www.gong.io",
-      "pros": ["Best-in-class transcription", "Deal intelligence", "Coaching tools"],
-      "cons": ["Expensive", "Requires volume for insights"]
-    },
-    {
-      "name": "Chorus.ai",
-      "slug": "chorus",
-      "category": "Revenue Intelligence",
-      "description": "Conversation intelligence platform (acquired by ZoomInfo)",
-      "pricing": "Bundled with ZoomInfo or standalone",
-      "best_for": "Teams already using ZoomInfo",
-      "website": "https://www.chorus.ai",
-      "pros": ["ZoomInfo integration", "Good transcription"],
-      "cons": ["Less standalone value post-acquisition"]
-    },
-    {
-      "name": "Clari",
-      "slug": "clari",
-      "category": "Revenue Intelligence",
-      "description": "Revenue operations platform for forecasting and pipeline",
-      "pricing": "Custom enterprise pricing",
-      "best_for": "Revenue leaders wanting forecast accuracy",
-      "website": "https://www.clari.com",
-      "pros": ["Forecasting accuracy", "Pipeline visibility", "CRO dashboards"],
-      "cons": ["Complex implementation", "Expensive"]
-    },
-    {
-      "name": "ZoomInfo",
-      "slug": "zoominfo",
-      "category": "Sales Intelligence",
-      "description": "B2B contact and company data platform",
-      "pricing": "Custom pricing, typically $15K-50K+/year",
-      "best_for": "Enterprise teams needing comprehensive B2B data",
-      "website": "https://www.zoominfo.com",
-      "pros": ["Largest database", "Intent data", "Integrations"],
-      "cons": ["Expensive", "Data decay", "Aggressive sales tactics"]
-    },
-    {
-      "name": "LinkedIn Sales Navigator",
-      "slug": "linkedin-sales-navigator",
-      "category": "Sales Intelligence",
-      "description": "LinkedIn's premium sales prospecting tool",
-      "pricing": "$79.99-$159.99/user/month",
-      "best_for": "Individual reps and small teams",
-      "website": "https://business.linkedin.com/sales-solutions",
-      "pros": ["Direct LinkedIn integration", "InMail credits", "Lead recommendations"],
-      "cons": ["Limited export", "No email data"]
-    },
-    {
-      "name": "Cognism",
-      "slug": "cognism",
-      "category": "Sales Intelligence",
-      "description": "GDPR-compliant B2B data provider, strong in EMEA",
-      "pricing": "Custom pricing",
-      "best_for": "Teams selling into Europe",
-      "website": "https://www.cognism.com",
-      "pros": ["GDPR compliant", "Phone-verified mobiles", "EMEA strength"],
-      "cons": ["Weaker US coverage", "Smaller database"]
+      "name": "Instantly",
+      "slug": "instantly",
+      "category": "Sales Engagement",
+      "description": "Cold email platform with unlimited sending accounts",
+      "pricing": "From $37/month",
+      "best_for": "Teams focused on high-volume cold email",
+      "website": "https://instantly.ai",
+      "logo": "/assets/logos/Instantly.ai_logo.png",
+      "pros": ["Unlimited email accounts", "Affordable", "Good deliverability tools"],
+      "cons": ["Email only", "Less features than full platforms"]
     },
     {
       "name": "Salesforce",
       "slug": "salesforce",
-      "category": "CRM",
+      "category": "CRM & RevOps",
       "description": "The dominant enterprise CRM platform",
       "pricing": "$25-300/user/month depending on edition",
       "best_for": "Mid-market to enterprise with complex needs",
@@ -133,9 +194,9 @@
       "cons": ["Complexity", "Cost", "Admin overhead"]
     },
     {
-      "name": "HubSpot CRM",
+      "name": "HubSpot",
       "slug": "hubspot",
-      "category": "CRM",
+      "category": "CRM & RevOps",
       "description": "All-in-one CRM with marketing automation",
       "pricing": "Free tier, paid from $45/month",
       "best_for": "SMB and mid-market with marketing alignment",
@@ -146,15 +207,27 @@
   ],
   "alternatives": [
     {
+      "main_tool": "11x",
+      "slug": "11x-alternatives",
+      "title": "11x Alternatives",
+      "description": "Looking for 11x alternatives? Compare AI SDR platforms with better pricing and contract terms.",
+      "alternatives": ["AiSDR", "Artisan", "Apollo.io"],
+      "comparison_points": [
+        "AiSDR offers quarterly contracts vs 11x's annual lock-in",
+        "Artisan has similar features at lower price point",
+        "Apollo.io provides data + basic automation at fraction of cost"
+      ]
+    },
+    {
       "main_tool": "Outreach",
       "slug": "outreach-alternatives",
       "title": "Outreach Alternatives",
-      "description": "Looking for Outreach alternatives? Compare the top sales engagement platforms for 2025.",
-      "alternatives": ["Salesloft", "Apollo.io", "HubSpot"],
+      "description": "Looking for Outreach alternatives? Compare the top sales engagement platforms.",
+      "alternatives": ["Salesloft", "Apollo.io", "Reply.io"],
       "comparison_points": [
         "Salesloft offers similar features at slightly lower cost with better UX",
         "Apollo.io bundles data + engagement at a fraction of the price",
-        "HubSpot sequences work well if you're already in their ecosystem"
+        "Reply.io provides multichannel at SMB-friendly pricing"
       ]
     },
     {
@@ -162,11 +235,10 @@
       "slug": "gong-alternatives",
       "title": "Gong Alternatives",
       "description": "Exploring Gong alternatives? Compare conversation intelligence platforms for sales teams.",
-      "alternatives": ["Chorus.ai", "Clari", "Salesforce Einstein"],
+      "alternatives": ["Chorus.ai", "Clari"],
       "comparison_points": [
         "Chorus offers similar transcription, now bundled with ZoomInfo",
-        "Clari focuses more on forecasting than call coaching",
-        "Native CRM tools are catching up but lack depth"
+        "Clari focuses more on forecasting than call coaching"
       ]
     },
     {
@@ -174,23 +246,22 @@
       "slug": "zoominfo-alternatives",
       "title": "ZoomInfo Alternatives",
       "description": "Looking for ZoomInfo alternatives? Compare B2B data providers for prospecting.",
-      "alternatives": ["Apollo.io", "Cognism", "LinkedIn Sales Navigator"],
+      "alternatives": ["Apollo.io", "Clay"],
       "comparison_points": [
         "Apollo bundles data + engagement at much lower cost",
-        "Cognism is stronger for EMEA and GDPR compliance",
-        "LinkedIn Sales Nav has direct platform access but limited export"
+        "Clay offers waterfall enrichment from 75+ providers"
       ]
     },
     {
       "main_tool": "Salesloft",
       "slug": "salesloft-alternatives",
       "title": "Salesloft Alternatives",
-      "description": "Comparing Salesloft alternatives? Find the right sales engagement platform for your team.",
-      "alternatives": ["Outreach", "Apollo.io", "HubSpot"],
+      "description": "Comparing Salesloft alternatives? Find the right sales engagement platform.",
+      "alternatives": ["Outreach", "Apollo.io", "Reply.io"],
       "comparison_points": [
         "Outreach has more enterprise features but higher complexity",
         "Apollo.io offers data + engagement at lower cost",
-        "HubSpot works well for marketing-aligned teams"
+        "Reply.io works well for budget-conscious teams"
       ]
     },
     {
@@ -198,15 +269,69 @@
       "slug": "salesforce-alternatives",
       "title": "Salesforce Alternatives",
       "description": "Exploring Salesforce alternatives? Compare CRM platforms for sales teams.",
-      "alternatives": ["HubSpot", "Pipedrive", "Close"],
+      "alternatives": ["HubSpot"],
       "comparison_points": [
         "HubSpot offers better UX and marketing integration",
-        "Pipedrive is built for salespeople, not admins",
-        "Close excels for inside sales teams"
+        "HubSpot free tier lets you start without commitment"
       ]
     }
   ],
   "comparisons": [
+    {
+      "tool_a": "11x",
+      "tool_b": "Artisan",
+      "slug": "11x-vs-artisan",
+      "title": "11x vs Artisan",
+      "description": "The two most-hyped AI SDRs compared. Both want annual contracts. Both have red flags.",
+      "custom_url": "/tools/ai-sdr/11x-vs-artisan/",
+      "winner_for": {
+        "volume": "11x",
+        "features": "Artisan",
+        "value": "Neither",
+        "flexibility": "Neither"
+      }
+    },
+    {
+      "tool_a": "Artisan",
+      "tool_b": "AiSDR",
+      "slug": "artisan-vs-aisdr",
+      "title": "Artisan vs AiSDR",
+      "description": "Annual lock-in vs quarterly flexibility. The contract terms tell you everything.",
+      "custom_url": "/tools/ai-sdr/artisan-vs-aisdr/",
+      "winner_for": {
+        "features": "Artisan",
+        "flexibility": "AiSDR",
+        "value": "AiSDR",
+        "transparency": "AiSDR"
+      }
+    },
+    {
+      "tool_a": "11x",
+      "tool_b": "AiSDR",
+      "slug": "11x-vs-aisdr",
+      "title": "11x vs AiSDR",
+      "description": "The $60K gamble vs the $2,700 test. This comparison isn't close.",
+      "custom_url": "/tools/ai-sdr/11x-vs-aisdr/",
+      "winner_for": {
+        "value": "AiSDR",
+        "flexibility": "AiSDR",
+        "transparency": "AiSDR",
+        "volume": "11x"
+      }
+    },
+    {
+      "tool_a": "Clay",
+      "tool_b": "Apollo",
+      "slug": "clay-vs-apollo",
+      "title": "Clay vs Apollo",
+      "description": "Waterfall enrichment flexibility vs all-in-one simplicity.",
+      "winner_for": {
+        "data_coverage": "Clay",
+        "ease_of_use": "Apollo",
+        "value": "Apollo",
+        "flexibility": "Clay"
+      }
+    },
     {
       "tool_a": "Outreach",
       "tool_b": "Salesloft",
@@ -222,15 +347,15 @@
     },
     {
       "tool_a": "Gong",
-      "tool_b": "Chorus",
-      "slug": "gong-vs-chorus",
-      "title": "Gong vs Chorus",
-      "description": "Comparing Gong and Chorus for conversation intelligence.",
+      "tool_b": "Clari",
+      "slug": "gong-vs-clari",
+      "title": "Gong vs Clari",
+      "description": "Conversation intelligence vs revenue forecasting. Different problems, different tools.",
       "winner_for": {
-        "standalone": "Gong",
-        "zoominfo_users": "Chorus",
-        "transcription": "Gong",
-        "value": "Chorus"
+        "call_coaching": "Gong",
+        "forecasting": "Clari",
+        "deal_visibility": "Clari",
+        "transcription": "Gong"
       }
     },
     {
@@ -238,7 +363,7 @@
       "tool_b": "Apollo",
       "slug": "zoominfo-vs-apollo",
       "title": "ZoomInfo vs Apollo",
-      "description": "Comparing ZoomInfo and Apollo.io for sales intelligence and data.",
+      "description": "Enterprise data giant vs scrappy all-in-one challenger.",
       "winner_for": {
         "data_quality": "ZoomInfo",
         "value": "Apollo",
