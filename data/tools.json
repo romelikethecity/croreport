@@ -325,6 +325,7 @@
       "slug": "clay-vs-apollo",
       "title": "Clay vs Apollo",
       "description": "Waterfall enrichment flexibility vs all-in-one simplicity.",
+      "custom_url": "/tools/clay-vs-apollo/",
       "winner_for": {
         "data_coverage": "Clay",
         "ease_of_use": "Apollo",
