@@ -339,6 +339,7 @@
       "slug": "outreach-vs-salesloft",
       "title": "Outreach vs Salesloft",
       "description": "The definitive comparison of Outreach and Salesloft for sales engagement.",
+      "custom_url": "/tools/outreach-vs-salesloft/",
       "winner_for": {
         "enterprise": "Outreach",
         "mid_market": "Salesloft",
@@ -352,6 +353,7 @@
       "slug": "gong-vs-clari",
       "title": "Gong vs Clari",
       "description": "Conversation intelligence vs revenue forecasting. Different problems, different tools.",
+      "custom_url": "/tools/gong-vs-clari/",
       "winner_for": {
         "call_coaching": "Gong",
         "forecasting": "Clari",
@@ -365,6 +367,7 @@
       "slug": "zoominfo-vs-apollo",
       "title": "ZoomInfo vs Apollo",
       "description": "Enterprise data giant vs scrappy all-in-one challenger.",
+      "custom_url": "/tools/zoominfo-vs-apollo/",
       "winner_for": {
         "data_quality": "ZoomInfo",
         "value": "Apollo",
