@@ -541,6 +541,7 @@ def generate_html(df, stats):
         <div class="nav-links">
             <a href="/jobs/">Jobs</a>
             <a href="/salaries/">Salaries</a>
+            <a href="/tools/">Tools</a>
             <a href="/insights/">Market Intel</a>
             <a href="/newsletter/">Newsletter</a>
             <a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a>

@@ -400,6 +400,7 @@ html = f'''<!DOCTYPE html>
                 <ul class="nav-links">
                     <li><a href="/jobs/">Jobs</a></li>
                     <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
