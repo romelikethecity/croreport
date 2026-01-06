@@ -5305,6 +5305,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/ai-sdr/</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/ai-sdr/11x-vs-aisdr/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
