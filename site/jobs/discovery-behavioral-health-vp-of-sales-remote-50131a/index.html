@@ -234,8 +234,95 @@
         }
         .footer a { color: #d97706; text-decoration: none; }
         
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3a5f;
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.active { opacity: 1; }
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            max-width: 85%;
+            height: 100vh;
+            background: #fff;
+            z-index: 1000;
+            padding: 1.5rem;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .mobile-nav-header .logo-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+        .mobile-nav-links {
+            list-style: none;
+            margin: 0 0 2rem 0;
+            padding: 0;
+        }
+        .mobile-nav-links li { border-bottom: 1px solid #f1f5f9; }
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #475569;
+            text-decoration: none;
+        }
+        .mobile-nav-subscribe {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #1e3a5f;
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-nav-overlay { display: block; pointer-events: none; }
+            .mobile-nav-overlay.active { pointer-events: auto; }
             .header h1 { font-size: 1.5rem; }
         }
     </style>
@@ -257,9 +344,51 @@
                     <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
         </div>
     </header>
-    
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
+        </ul>
+        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <script>
+        (function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+            function openMenu() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+        })();
+    </script>
+
     <header class="header">
         <div class="container">
             <nav class="breadcrumb">
