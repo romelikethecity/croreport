@@ -279,8 +279,99 @@ html = f'''<!DOCTYPE html>
         .btn-subscribe:hover {{
             background: #2d4a6f;
         }}
+        /* Mobile Navigation */
+        .mobile-menu-btn {{
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3a5f;
+        }}
+        .mobile-nav-overlay {{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }}
+        .mobile-nav-overlay.active {{
+            opacity: 1;
+        }}
+        .mobile-nav {{
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }}
+        .mobile-nav.active {{
+            right: 0;
+        }}
+        .mobile-nav-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }}
+        .mobile-nav-header .logo-text {{
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }}
+        .mobile-nav-close {{
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }}
+        .mobile-nav-links {{
+            list-style: none;
+            padding: 20px;
+        }}
+        .mobile-nav-links li {{
+            margin-bottom: 8px;
+        }}
+        .mobile-nav-links a {{
+            display: block;
+            padding: 12px 16px;
+            color: #1e3a5f;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }}
+        .mobile-nav-links a:hover {{
+            background: #f1f5f9;
+        }}
+        .mobile-nav-subscribe {{
+            display: block;
+            margin: 20px;
+            padding: 14px;
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }}
         @media (max-width: 768px) {{
             .nav-links {{ display: none; }}
+            .mobile-menu-btn {{ display: block; }}
+            .mobile-nav-overlay {{ display: block; pointer-events: none; }}
+            .mobile-nav-overlay.active {{ pointer-events: auto; }}
         }}
         
         .hero-header {{
@@ -406,8 +497,26 @@ html = f'''<!DOCTYPE html>
                     <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
+        </ul>
+        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
 
     <div class="hero-header">
         <div class="eyebrow">Market Intelligence</div>
@@ -511,6 +620,33 @@ html = f'''<!DOCTYPE html>
     <footer class="footer">
         <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
+
+    <script>
+        (function() {{
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {{
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }}
+
+            function closeMenu() {{
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }}
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => {{ link.addEventListener('click', closeMenu); }});
+        }})();
+    </script>
 </body>
 </html>'''
 
