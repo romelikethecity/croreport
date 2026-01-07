@@ -36,10 +36,13 @@ cd /home/claude/croreport && git pull
 | Master database | `data/master_jobs_database.csv` | All historical jobs for context |
 | 90-day graph | `site/assets/trend_90_days.png` | For newsletter image |
 | All-time graph | `site/assets/trend_all_time.png` | For newsletter image |
-| Buzzwords chart | `site/assets/buzzwords_chart.png` | What Employers Want section (PAID) |
-| Industry chart | `site/assets/industry_chart.png` | What Employers Want section (PAID) |
-| Methodology chart | `site/assets/methodology_chart.png` | What Employers Want section (PAID) |
-| Tools chart | `site/assets/tools_chart.png` | What Employers Want section (PAID) |
+| Buzzwords chart | `site/assets/insights_buzzwords.png` | What Employers Want section (PAID) |
+| Industry chart | `site/assets/insights_industries.png` | What Employers Want section (PAID) |
+| Methodology chart | `site/assets/insights_methodologies.png` | What Employers Want section (PAID) |
+| Tools chart | `site/assets/insights_tools.png` | What Employers Want section (PAID) |
+| Comp by location | `site/assets/comp_by_location.png` | Compensation Benchmarking section |
+| Comp by seniority | `site/assets/comp_by_seniority.png` | Compensation Benchmarking section |
+| Comp by stage | `site/assets/comp_by_stage.png` | Compensation Benchmarking section |
 
 ### Finding the Latest Data
 
@@ -125,7 +128,7 @@ Read `master_jobs_database.csv` and analyze the `description` field for keyword 
 
 **Industry Focus**: Use the `company_industry` field from the database.
 
-**Output**: Reference the pre-generated charts (buzzwords_chart.png, industry_chart.png, methodology_chart.png, tools_chart.png). Write 2-3 sentence analysis per chart focusing on positioning implications for job seekers.
+**Output**: Reference the pre-generated charts (insights_buzzwords.png, insights_industries.png, insights_methodologies.png, insights_tools.png). Write 2-3 sentence analysis per chart focusing on positioning implications for job seekers.
 
 **Free Teaser**: Pick ONE compelling stat for the Market Intelligence section with "Full breakdown for paid subscribers."
 
@@ -190,10 +193,17 @@ cp /home/claude/croreport/site/assets/trend_all_time.png /mnt/user-data/outputs/
 
 Copy What Employers Want charts (for paid section):
 ```bash
-cp /home/claude/croreport/site/assets/buzzwords_chart.png /mnt/user-data/outputs/
-cp /home/claude/croreport/site/assets/industry_chart.png /mnt/user-data/outputs/
-cp /home/claude/croreport/site/assets/methodology_chart.png /mnt/user-data/outputs/
-cp /home/claude/croreport/site/assets/tools_chart.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/insights_buzzwords.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/insights_industries.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/insights_methodologies.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/insights_tools.png /mnt/user-data/outputs/
+```
+
+Copy Compensation Benchmarking charts:
+```bash
+cp /home/claude/croreport/site/assets/comp_by_location.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/comp_by_seniority.png /mnt/user-data/outputs/
+cp /home/claude/croreport/site/assets/comp_by_stage.png /mnt/user-data/outputs/
 ```
 
 **Note:** If any chart files are missing, skip that subsection in the What Employers Want section rather than fabricating data.

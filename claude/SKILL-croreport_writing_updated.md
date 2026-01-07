@@ -510,10 +510,10 @@ This section analyzes job description data to show what employers actually requi
 **Purpose:** Help readers optimize their positioning (resumes, LinkedIn, interview talking points) based on what employers actually ask for.
 
 **Data Inputs (4 charts generated automatically):**
-- **buzzwords_chart.png**: Buzzwords & Trends (Scale, GTM, AI/ML, Data-Driven, SaaS, etc.)
-- **industry_chart.png**: Industry Focus (Technology, Healthcare, Education, Financial Services, etc.)
-- **methodology_chart.png**: Sales Methodologies Required (Consultative, Enterprise, Channel/Partner, MEDDIC, etc.)
-- **tools_chart.png**: Tools & Platforms in Demand (Salesforce, Outreach, HubSpot, etc.)
+- **insights_buzzwords.png**: Buzzwords & Trends (Scale, GTM, AI/ML, Data-Driven, SaaS, etc.)
+- **insights_industries.png**: Industry Focus (Technology, Healthcare, Education, Financial Services, etc.)
+- **insights_methodologies.png**: Sales Methodologies Required (Consultative, Enterprise, Channel/Partner, MEDDIC, etc.)
+- **insights_tools.png**: Tools & Platforms in Demand (Salesforce, Outreach, HubSpot, etc.)
 
 **Section Format:**
 
@@ -641,10 +641,15 @@ Each edition requires:
 - **Spotlight company job posting URL** (for Company Deep-Dive)
 
 **For What Employers Want section (PAID):**
-- **buzzwords_chart.png**: Buzzwords & Trends analysis
-- **industry_chart.png**: Industry Focus breakdown
-- **methodology_chart.png**: Sales Methodologies Required
-- **tools_chart.png**: Tools & Platforms in Demand
+- **insights_buzzwords.png**: Buzzwords & Trends analysis
+- **insights_industries.png**: Industry Focus breakdown
+- **insights_methodologies.png**: Sales Methodologies Required
+- **insights_tools.png**: Tools & Platforms in Demand
+
+**For Compensation Benchmarking section:**
+- **comp_by_location.png**: Compensation by geographic market
+- **comp_by_seniority.png**: Compensation by seniority level
+- **comp_by_stage.png**: Compensation by company stage
 
 These charts are generated automatically from the master jobs database. If any charts are missing, skip that subsection rather than fabricating data.
 
