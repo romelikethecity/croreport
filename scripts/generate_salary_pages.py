@@ -582,7 +582,7 @@ if 'metro' in df_salary.columns:
             # Show top companies for top 4 metros only (free teaser)
             show_companies = metro in ['New York', 'San Francisco', 'Remote', 'Boston']
             if create_salary_page(title, slug, df_metro, desc, show_top_companies=show_companies):
-                metro_pages.append({'title': title, 'slug': slug, 'count': len(df_metro), 'avg_max': df_metro['max_amount'].mean()})
+                metro_pages.append({'title': title, 'slug': slug, 'count': len(df_metro), 'avg_min': df_metro['min_amount'].mean(), 'avg_max': df_metro['max_amount'].mean()})
                 print(f"✅ Created: /salaries/{slug}/ ({len(df_metro)} roles)")
 else:
     metro_pages = []
@@ -598,7 +598,7 @@ for sen, slug in seniorities:
         title = f"{sen} Sales" if sen != 'C-Level' else "CRO / Chief Revenue Officer"
         desc = f"Current {title} salary benchmarks across all markets."
         if create_salary_page(title, slug, df_sen, desc, show_top_companies=True):
-            seniority_pages.append({'title': title, 'slug': slug, 'count': len(df_sen), 'avg_max': df_sen['max_amount'].mean()})
+            seniority_pages.append({'title': title, 'slug': slug, 'count': len(df_sen), 'avg_min': df_sen['min_amount'].mean(), 'avg_max': df_sen['max_amount'].mean()})
             print(f"✅ Created: /salaries/{slug}/ ({len(df_sen)} roles)")
 
 # Generate pages by company stage (if column exists) - GATED CONTENT
@@ -620,7 +620,7 @@ if 'company_stage' in df_salary.columns:
             desc = f"VP Sales and CRO salary benchmarks at {stage} companies."
             # Company stage pages are gated - no top companies shown
             if create_salary_page(title, slug, df_stage, desc, show_top_companies=False):
-                stage_pages.append({'title': title, 'slug': slug, 'count': len(df_stage), 'avg_max': df_stage['max_amount'].mean()})
+                stage_pages.append({'title': title, 'slug': slug, 'count': len(df_stage), 'avg_min': df_stage['min_amount'].mean(), 'avg_max': df_stage['max_amount'].mean()})
                 print(f"✅ Created: /salaries/{slug}/ ({len(df_stage)} roles) [GATED]")
 else:
     print("[WARNING] Skipping company stage pages - 'company_stage' column not found in data")
@@ -635,7 +635,7 @@ for p in sorted(metro_pages, key=lambda x: -x['avg_max']):
     metro_cards_html += f'''
     <a href="{p['slug']}/" class="salary-card">
         <h3>{p['title']}</h3>
-        <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+        <div class="range">${p['avg_min']/1000:.0f}K - ${p['avg_max']/1000:.0f}K avg</div>
         <div class="meta">{p['count']} roles with salary data</div>
     </a>
     '''
@@ -645,7 +645,7 @@ for p in sorted(seniority_pages, key=lambda x: -x['avg_max']):
     seniority_cards_html += f'''
     <a href="{p['slug']}/" class="salary-card">
         <h3>{p['title']}</h3>
-        <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+        <div class="range">${p['avg_min']/1000:.0f}K - ${p['avg_max']/1000:.0f}K avg</div>
         <div class="meta">{p['count']} roles with salary data</div>
     </a>
     '''
@@ -656,7 +656,7 @@ if stage_pages:
         stage_cards_html += f'''
         <a href="{p['slug']}/" class="salary-card">
             <h3>{p['title']}</h3>
-            <div class="range">${p['avg_max']/1000:.0f}K avg max</div>
+            <div class="range">${p['avg_min']/1000:.0f}K - ${p['avg_max']/1000:.0f}K avg</div>
             <div class="meta">{p['count']} roles</div>
         </a>
         '''
