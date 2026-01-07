@@ -7,6 +7,7 @@ Includes Market Pulse, Who's Moving teasers, and newsletter signup
 import json
 import pandas as pd
 import os
+import glob
 from datetime import datetime
 import sys
 sys.path.insert(0, 'scripts')
@@ -19,16 +20,49 @@ except:
 DATA_DIR = 'data'
 SITE_DIR = 'site'
 
+def get_latest_jobs_file():
+    """Find the most recent executive_sales_jobs CSV file"""
+    pattern = f"{DATA_DIR}/executive_sales_jobs_*.csv"
+    files = glob.glob(pattern)
+    if not files:
+        return None
+    return max(files)  # YYYYMMDD format sorts correctly alphabetically
+
 print("="*70)
 print("🏠 GENERATING HOMEPAGE")
 print("="*70)
 
-# Load market stats
-stats_file = f'{DATA_DIR}/market_stats.json'
-if os.path.exists(stats_file):
-    with open(stats_file) as f:
-        stats = json.load(f)
-    print(f"✅ Loaded market stats: {stats['total_roles']} roles")
+# Calculate stats from CSV directly
+jobs_file = get_latest_jobs_file()
+if jobs_file:
+    df = pd.read_csv(jobs_file)
+    total_roles = len(df)
+
+    # Calculate remote percentage
+    remote_pct = 0
+    if 'is_remote' in df.columns:
+        remote_pct = (df['is_remote'].sum() / total_roles * 100) if total_roles > 0 else 0
+    elif 'location' in df.columns:
+        remote_count = df['location'].str.lower().str.contains('remote', na=False).sum()
+        remote_pct = (remote_count / total_roles * 100) if total_roles > 0 else 0
+
+    # Calculate average max salary
+    avg_max_salary = 0
+    if 'max_amount' in df.columns:
+        salary_data = pd.to_numeric(df['max_amount'], errors='coerce')
+        salary_data = salary_data[salary_data > 0]
+        if len(salary_data) > 0:
+            avg_max_salary = int(salary_data.mean())
+
+    stats = {
+        'date': datetime.now().strftime('%Y-%m-%d'),
+        'total_roles': total_roles,
+        'wow_change': 0,  # Would need historical data to calculate
+        'vs_peak_pct': 0,
+        'remote_pct': remote_pct,
+        'avg_max_salary': avg_max_salary
+    }
+    print(f"✅ Loaded {total_roles} jobs from {jobs_file}")
 else:
     stats = {
         'date': datetime.now().strftime('%Y-%m-%d'),
@@ -38,7 +72,7 @@ else:
         'remote_pct': 0,
         'avg_max_salary': 0
     }
-    print("⚠️  No market stats found, using defaults")
+    print("⚠️  No job data found, using defaults")
 
 # Load moves
 moves_file = f'{DATA_DIR}/moves.json'
