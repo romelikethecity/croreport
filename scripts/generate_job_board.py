@@ -33,7 +33,7 @@ def get_latest_jobs_file():
         if os.path.exists("data/master_jobs_database.csv"):
             return "data/master_jobs_database.csv"
         return None
-    return max(files, key=os.path.getctime)
+    return max(files)  # YYYYMMDD format sorts correctly alphabetically
 
 def calculate_stats(df):
     """Calculate summary statistics for the hero section"""
