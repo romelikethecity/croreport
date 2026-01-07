@@ -525,12 +525,6 @@ html = f'''<!DOCTYPE html>
         <div class="update">Analysis updated {update_date}</div>
     </div>
 
-    <div class="intro-text" style="max-width: 700px; margin: -20px auto 30px; text-align: center; padding: 0 20px;">
-        <p style="font-size: 1.05rem; color: #e2e8f0; line-height: 1.7;">
-            This report analyzes {total_jobs} VP Sales and CRO job postings to surface what companies actually prioritize—not what recruiters claim matters.
-        </p>
-    </div>
-
     <div class="container">
         <div class="callouts">
             <div class="callout">
@@ -551,6 +545,12 @@ html = f'''<!DOCTYPE html>
             </div>
         </div>
         
+        <div style="background: #f1f5f9; border-radius: 12px; padding: 32px; margin-bottom: 40px;">
+            <p style="color: #475569; margin: 0; font-size: 1.05rem; line-height: 1.7;">
+                This report analyzes {total_jobs} VP Sales and CRO job postings to surface what companies actually prioritize—not what recruiters claim matters.
+            </p>
+        </div>
+
         <section class="section">
             <h2>Skills & Tools in Demand</h2>
             <p class="subtitle">What technologies and platforms are companies looking for?</p>
