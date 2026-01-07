@@ -20,23 +20,34 @@ except:
 DATA_DIR = 'data'
 SITE_DIR = 'site'
 
-def get_latest_jobs_file():
-    """Find the most recent executive_sales_jobs CSV file"""
+def get_jobs_files():
+    """Find the two most recent executive_sales_jobs CSV files"""
     pattern = f"{DATA_DIR}/executive_sales_jobs_*.csv"
-    files = glob.glob(pattern)
+    files = sorted(glob.glob(pattern))  # YYYYMMDD format sorts correctly
     if not files:
-        return None
-    return max(files)  # YYYYMMDD format sorts correctly alphabetically
+        return None, None
+    current = files[-1]
+    previous = files[-2] if len(files) >= 2 else None
+    return current, previous
 
 print("="*70)
 print("🏠 GENERATING HOMEPAGE")
 print("="*70)
 
 # Calculate stats from CSV directly
-jobs_file = get_latest_jobs_file()
-if jobs_file:
-    df = pd.read_csv(jobs_file)
+current_file, previous_file = get_jobs_files()
+if current_file:
+    df = pd.read_csv(current_file)
     total_roles = len(df)
+
+    # Calculate WoW change by comparing to previous week
+    wow_change = 0
+    if previous_file:
+        prev_df = pd.read_csv(previous_file)
+        prev_roles = len(prev_df)
+        if prev_roles > 0:
+            wow_change = ((total_roles - prev_roles) / prev_roles) * 100
+            print(f"📊 WoW: {prev_roles} → {total_roles} ({wow_change:+.0f}%)")
 
     # Calculate remote percentage
     remote_pct = 0
@@ -57,12 +68,12 @@ if jobs_file:
     stats = {
         'date': datetime.now().strftime('%Y-%m-%d'),
         'total_roles': total_roles,
-        'wow_change': 0,  # Would need historical data to calculate
+        'wow_change': wow_change,
         'vs_peak_pct': 0,
         'remote_pct': remote_pct,
         'avg_max_salary': avg_max_salary
     }
-    print(f"✅ Loaded {total_roles} jobs from {jobs_file}")
+    print(f"✅ Loaded {total_roles} jobs from {current_file}")
 else:
     stats = {
         'date': datetime.now().strftime('%Y-%m-%d'),
