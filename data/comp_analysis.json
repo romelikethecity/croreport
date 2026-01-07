@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-01-07T17:59:02.491469",
-  "total_records": 924,
-  "records_with_salary": 529,
-  "executive_records": 494,
-  "disclosure_rate": 57.3,
+  "generated_at": "2026-01-07T18:33:55.486604",
+  "total_records": 1025,
+  "records_with_salary": 602,
+  "executive_records": 567,
+  "disclosure_rate": 58.7,
   "date_range": {
     "earliest": "2025-01-21",
-    "latest": "2026-01-01"
+    "latest": "2026-01-06"
   },
   "by_seniority": {
     "C-Level": {
-      "count": 15,
-      "min_base_avg": 217200,
-      "max_base_avg": 291500,
+      "count": 17,
+      "min_base_avg": 216941,
+      "max_base_avg": 295441,
       "min_base_median": 220000,
       "max_base_median": 260000,
       "range_low": 50000,
@@ -37,11 +37,11 @@
       "range_high": 450000
     },
     "VP": {
-      "count": 447,
-      "min_base_avg": 172009,
-      "max_base_avg": 256304,
-      "min_base_median": 165000,
-      "max_base_median": 232500,
+      "count": 518,
+      "min_base_avg": 168001,
+      "max_base_avg": 253152,
+      "min_base_median": 157686,
+      "max_base_median": 225000,
       "range_low": 200,
       "range_high": 900000
     }
@@ -225,21 +225,21 @@
       "max_base_avg": 212950
     },
     "Non-Tech": {
-      "count": 479,
-      "min_base_avg": 176366,
-      "max_base_avg": 259375
+      "count": 552,
+      "min_base_avg": 172184,
+      "max_base_avg": 256260
     }
   },
   "by_remote": {
     "Remote": {
-      "count": 240,
-      "min_base_avg": 181697,
-      "max_base_avg": 261880
+      "count": 256,
+      "min_base_avg": 181986,
+      "max_base_avg": 264174
     },
     "On-site": {
-      "count": 254,
-      "min_base_avg": 170285,
-      "max_base_avg": 254266
+      "count": 311,
+      "min_base_avg": 163465,
+      "max_base_avg": 247656
     }
   },
   "top_paying_roles": [
@@ -250,6 +250,14 @@
       "max_amount": 900000.0,
       "seniority": "VP",
       "company_stage": "Unknown"
+    },
+    {
+      "title": "Regional Vice President of Sales",
+      "company": "IPS Energy Roofing and Solar",
+      "min_amount": 240000.0,
+      "max_amount": 765000.0,
+      "seniority": "VP",
+      "company_stage": NaN
     },
     {
       "title": "VP, Hybrid Cloud Channel Sales Leader",
@@ -314,14 +322,6 @@
       "max_amount": 558600.0,
       "seniority": "VP",
       "company_stage": "Enterprise/Public"
-    },
-    {
-      "title": "VP of Sales",
-      "company": "Applause",
-      "min_amount": 300000.0,
-      "max_amount": 500000.0,
-      "seniority": "VP",
-      "company_stage": "Unknown"
     }
   ],
   "weekly_trends": {
@@ -354,6 +354,12 @@
       "avg_min": 141167,
       "avg_max": 183345,
       "disclosure_rate": 38.6
+    },
+    "2026-W01": {
+      "count": 73,
+      "avg_min": 144741,
+      "avg_max": 235820,
+      "disclosure_rate": 72.3
     }
   }
 }

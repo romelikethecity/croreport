@@ -1,16 +1,16 @@
 # 💰 Compensation Benchmarking
 
-**Data as of January 07, 2026** | 494 executive roles with disclosed salary out of 924 total (57.3% disclosure rate)
+**Data as of January 07, 2026** | 567 executive roles with disclosed salary out of 1025 total (58.7% disclosure rate)
 
 ## By Seniority Level
 
-**C-Level** (n=15): $217,200-$291,500 avg base
+**C-Level** (n=17): $216,941-$295,441 avg base
 
 **EVP** (n=4): $253,750-$302,500 avg base
 
 **SVP** (n=28): $203,523-$260,157 avg base
 
-**VP** (n=447): $172,009-$256,304 avg base
+**VP** (n=518): $168,001-$253,152 avg base
 
 ## By Company Stage
 
@@ -58,23 +58,23 @@
 
 **Tech** (n=15): $158,688-$212,950 avg base
 
-**Non-Tech** (n=479): $176,366-$259,375 avg base
+**Non-Tech** (n=552): $172,184-$256,260 avg base
 
 ## Highest Paying Roles This Week
 
-1. **$260,474-$347,288**: VP Data Center Strategy & Sales @ Lumen
+1. **$240,000-$765,000**: Regional Vice President of Sales @ IPS Energy Roofing and Solar
 
-2. **$225,000-$300,000**: Vice President, Global Sales @ KIDDE-FENWAL
+2. **$256,400-$529,000**: Vice President of Sales - Territory Ecosystem - Midwest @ SAP
 
-3. **$157,373-$262,288**: AVP Commercial Manager/Team Leader @ Gesa Credit Union
+3. **$300,000-$500,000**: VP of Sales @ Applause
 
-4. **$159,200-$222,000**: Regional Vice President, Imaging Sales - Southern California @ Siemens Healthineers
+4. **$230,000-$400,000**: Chief Revenue Officer (CRO) @ Undisclosed
 
-5. **$147,250-$215,000**: Commercial Banker - Emerging Middle Market Banking - Vice President @ JPMorganChase
+5. **$211,100-$358,900**: VP, Head of Global Sales, ServiceNow.org @ ServiceNow
 
 ## Trend Analysis
 
-Over 5 weeks of data, average max base is **down 27.5%** ($252,819 → $183,345).
+Over 6 weeks of data, average max base is **down 6.7%** ($252,819 → $235,820).
 
 ## What This Means for Negotiations
 
