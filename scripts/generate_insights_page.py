@@ -493,6 +493,7 @@ html = f'''<!DOCTYPE html>
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
                 </ul>
@@ -513,6 +514,7 @@ html = f'''<!DOCTYPE html>
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
         <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
@@ -646,7 +648,7 @@ html = f'''<!DOCTYPE html>
     </div>
     
     <footer class="footer">
-        <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 
     <script>
