@@ -686,7 +686,7 @@ index_html = f'''<!DOCTYPE html>
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Executive Salary Benchmarks | The CRO Report</title>
-    <meta name="description" content="VP Sales and CRO salary data by location, seniority, and company stage. Based on {len(df_salary)} job postings with disclosed compensation.">
+    <meta name="description" content="2026 VP Sales and CRO salary benchmarks based on {len(df_salary)} actual job postings. See compensation by location (NYC, SF, Remote), seniority level, and company stage.">
     <link rel="canonical" href="https://thecroreport.com/salaries/">
     
     <!-- Open Graph Tags -->
@@ -832,8 +832,16 @@ index_html = f'''<!DOCTYPE html>
         </div>
         <p style="margin-top: 16px; font-size: 0.85rem; opacity: 0.7;">Updated {update_date}</p>
     </div>
-    
+
     <div class="container">
+        <div class="intro-section" style="max-width: 700px; margin: 0 auto 40px; text-align: center;">
+            <p style="font-size: 1.1rem; color: #475569; line-height: 1.7;">
+                Our sales executive salary benchmarks track compensation across {len(df_salary)} job postings with disclosed ranges.
+                The current average for VP Sales and CRO roles sits between <strong>${overall_avg_min/1000:.0f}K - ${overall_avg_max/1000:.0f}K</strong> base,
+                though this varies significantly by location, seniority, and company stage.
+            </p>
+        </div>
+
         <h2>By Location</h2>
         <div class="salary-grid">
             {metro_cards_html}
@@ -849,7 +857,22 @@ index_html = f'''<!DOCTYPE html>
         <div class="salary-grid">
             {stage_cards_html}
         </div>
-        
+
+        <div class="methodology-section" style="background: #f1f5f9; border-radius: 12px; padding: 32px; margin: 40px 0;">
+            <h2 style="font-family: 'Fraunces', serif; font-size: 1.3rem; color: #1e3a5f; margin-bottom: 16px;">How We Calculate These Benchmarks</h2>
+            <p style="color: #475569; margin-bottom: 12px;">
+                Unlike survey-based compensation reports that rely on self-reporting (which typically skews 10-15% high),
+                our salary data comes from actual job postings with disclosed ranges. When companies post "$250K-$350K base," that's what we report.
+            </p>
+            <p style="color: #475569; margin-bottom: 12px;">
+                <strong>Data source:</strong> {len(df_salary)} VP Sales, SVP Sales, and CRO job postings from our master database, updated weekly.
+            </p>
+            <p style="color: #475569; margin-bottom: 0;">
+                <strong>What we track:</strong> Base salary ranges (min/max), geographic location, seniority level, and company stage where available.
+                OTE estimates assume standard 30-50% variable compensation for revenue roles.
+            </p>
+        </div>
+
         <div class="cta-inline">
             <h3>Get Weekly Compensation Intelligence</h3>
             <p>Full salary breakdowns, company stage analysis, and negotiation insights every Thursday.</p>
