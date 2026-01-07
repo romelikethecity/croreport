@@ -702,7 +702,44 @@ index_html = f'''<!DOCTYPE html>
     <meta name="twitter:title" content="Sales Executive Salary Benchmarks">
     <meta name="twitter:description" content="VP Sales and CRO salary data by location, seniority, and company stage.">
     <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
-    
+
+    <!-- Dataset Schema for Google Dataset Search -->
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "VP Sales and CRO Salary Benchmarks {datetime.now().year}",
+        "description": "Salary data for VP Sales, SVP Sales, and CRO positions based on {len(df_salary)} job postings with disclosed compensation ranges. Updated weekly.",
+        "url": "https://thecroreport.com/salaries/",
+        "keywords": ["VP Sales salary", "CRO salary", "sales executive compensation", "sales leadership salary"],
+        "creator": {{
+            "@type": "Organization",
+            "name": "The CRO Report",
+            "url": "https://thecroreport.com"
+        }},
+        "dateModified": "{datetime.now().strftime('%Y-%m-%d')}",
+        "temporalCoverage": "{datetime.now().year}",
+        "spatialCoverage": "United States",
+        "variableMeasured": [
+            {{
+                "@type": "PropertyValue",
+                "name": "Base Salary Range",
+                "description": "Minimum and maximum base salary from job postings"
+            }},
+            {{
+                "@type": "PropertyValue",
+                "name": "Location",
+                "description": "Geographic location including NYC, San Francisco, Boston, Remote"
+            }},
+            {{
+                "@type": "PropertyValue",
+                "name": "Seniority Level",
+                "description": "VP Sales, SVP Sales, or CRO"
+            }}
+        ]
+    }}
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
     
@@ -834,25 +871,25 @@ index_html = f'''<!DOCTYPE html>
     </div>
 
     <div class="container">
-        <div class="intro-section" style="max-width: 700px; margin: 0 auto 40px; text-align: center;">
-            <p style="font-size: 1.1rem; color: #475569; line-height: 1.7;">
+        <div style="background: #f1f5f9; border-radius: 12px; padding: 32px; margin-bottom: 40px;">
+            <p style="color: #475569; margin: 0; font-size: 1.05rem; line-height: 1.7;">
                 Our sales executive salary benchmarks track compensation across {len(df_salary)} job postings with disclosed ranges.
                 The current average for VP Sales and CRO roles sits between <strong>${overall_avg_min/1000:.0f}K - ${overall_avg_max/1000:.0f}K</strong> base,
                 though this varies significantly by location, seniority, and company stage.
             </p>
         </div>
 
-        <h2>By Location</h2>
+        <h2>VP Sales Salary by Location: NYC, San Francisco, Seattle & More</h2>
         <div class="salary-grid">
             {metro_cards_html}
         </div>
         
-        <h2>By Seniority</h2>
+        <h2>Sales Executive Salary by Seniority: VP, SVP & CRO</h2>
         <div class="salary-grid">
             {seniority_cards_html}
         </div>
-        
-        <h2>By Company Stage</h2>
+
+        <h2>Sales Leadership Salary by Company Stage</h2>
         <p style="color: #64748b; margin-bottom: 16px;">How does compensation vary from Seed to Enterprise?</p>
         <div class="salary-grid">
             {stage_cards_html}
