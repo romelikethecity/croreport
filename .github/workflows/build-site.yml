@@ -56,8 +56,8 @@ jobs:
 
       - name: Run compensation aggregator
         run: |
-          # Find the most recent enriched CSV
-          ENRICHED_CSV=$(ls -t data/executive_sales_jobs_*.csv 2>/dev/null | head -1)
+          # Find the most recent enriched CSV (sort alphabetically - YYYYMMDD format)
+          ENRICHED_CSV=$(ls data/executive_sales_jobs_*.csv 2>/dev/null | sort | tail -1)
           if [ -n "$ENRICHED_CSV" ]; then
             echo "Adding $ENRICHED_CSV to comp database..."
             python scripts/cro_comp_aggregator.py --add "$ENRICHED_CSV"
