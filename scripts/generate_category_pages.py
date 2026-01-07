@@ -651,6 +651,8 @@ def generate_category_page(slug, config, df):
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+                    <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
                 </ul>
@@ -671,6 +673,8 @@ def generate_category_page(slug, config, df):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+                    <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
         <a href="https://thecroreport.substack.com" class="mobile-nav-subscribe">Subscribe</a>
@@ -741,7 +745,7 @@ def generate_category_page(slug, config, df):
     </div>
     
     <footer class="footer">
-        <p>© 2025 The CRO Report | <a href="/jobs/">All Jobs</a> | <a href="/salaries/">Salary Data</a> | <a href="/insights/">Market Insights</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
 </body>
 </html>'''

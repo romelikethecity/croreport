@@ -658,6 +658,7 @@ def generate_html(df, stats):
             <a href="/salaries/">Salaries</a>
             <a href="/tools/">Tools</a>
             <a href="/insights/">Market Intel</a>
+                <a href="/about/">About</a>
             <a href="/newsletter/">Newsletter</a>
             <a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a>
         </div>
@@ -676,6 +677,8 @@ def generate_html(df, stats):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+                    <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
         <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
@@ -743,7 +746,7 @@ def generate_html(df, stats):
     </main>
     
     <footer class="footer">
-        <p>&copy; {current_year} The CRO Report. <a href="https://croreport.substack.com">Subscribe to the Newsletter</a></p>
+        <p>&copy; {current_year} <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
         <p style="margin-top: 8px; font-size: 0.8rem; color: #94a3b8;">Updated {update_date}</p>
     </footer>
 </body>

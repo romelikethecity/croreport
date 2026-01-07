@@ -507,6 +507,8 @@ def create_job_page(job, idx):
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+                    <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
                     <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
                 </ul>
@@ -527,6 +529,8 @@ def create_job_page(job, idx):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+                    <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
         <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
@@ -616,7 +620,7 @@ def create_job_page(job, idx):
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">All Jobs</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
         <p style="margin-top: 8px; font-size: 0.85rem;">Updated {update_date}</p>
     </footer>
 </body>
