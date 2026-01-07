@@ -60,4 +60,20 @@ else:
 combined_df.to_csv(master_file, index=False)
 print(f"\n✅ Master database saved: {len(combined_df)} total records")
 
+# Update historical tracking file for trend charts
+tracking_file = f"{DATA_DIR}/Sales_Exec_Openings.csv"
+if os.path.exists(tracking_file):
+    # Read existing data to check for duplicates
+    tracking_df = pd.read_csv(tracking_file)
+    today = datetime.now().strftime('%Y-%m-%d')
+    job_count = len(new_df)
+
+    # Only add if this date isn't already in the file
+    if today not in tracking_df['Date'].values:
+        with open(tracking_file, 'a') as f:
+            f.write(f"\n{today},{job_count}")
+        print(f"📈 Updated trend tracking: {today} → {job_count} jobs")
+    else:
+        print(f"📈 Trend tracking already has entry for {today}")
+
 print(f"{'='*70}")
