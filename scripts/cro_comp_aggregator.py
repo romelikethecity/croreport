@@ -522,9 +522,9 @@ def add_weekly_export(csv_path):
         print(f"Initialized master database with {len(new_df)} records")
         return new_df
     
-    # Deduplicate based on job_url (unique identifier)
-    existing_urls = set(master_df['job_url'].dropna().unique())
-    new_records = new_df[~new_df['job_url'].isin(existing_urls)]
+    # Deduplicate based on job_url_direct (unique identifier)
+    existing_urls = set(master_df['job_url_direct'].dropna().unique())
+    new_records = new_df[~new_df['job_url_direct'].isin(existing_urls)]
     
     print(f"Found {len(new_records)} new unique records (filtered {len(new_df) - len(new_records)} duplicates)")
     
