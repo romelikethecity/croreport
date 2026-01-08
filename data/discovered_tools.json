@@ -1,0 +1,405 @@
+{
+  "generated_at": "2026-01-07T22:27:58.372721",
+  "potential_tools": [
+    {
+      "name": "and",
+      "mentions": 92116
+    },
+    {
+      "name": "the",
+      "mentions": 40442
+    },
+    {
+      "name": "sales",
+      "mentions": 24798
+    },
+    {
+      "name": "with",
+      "mentions": 21292
+    },
+    {
+      "name": "for",
+      "mentions": 16770
+    },
+    {
+      "name": "our",
+      "mentions": 10490
+    },
+    {
+      "name": "you",
+      "mentions": 10240
+    },
+    {
+      "name": "experience",
+      "mentions": 7858
+    },
+    {
+      "name": "business",
+      "mentions": 7700
+    },
+    {
+      "name": "are",
+      "mentions": 7264
+    },
+    {
+      "name": "team",
+      "mentions": 7116
+    },
+    {
+      "name": "that",
+      "mentions": 6872
+    },
+    {
+      "name": "revenue",
+      "mentions": 6194
+    },
+    {
+      "name": "this",
+      "mentions": 6172
+    },
+    {
+      "name": "will",
+      "mentions": 5714
+    },
+    {
+      "name": "work",
+      "mentions": 5368
+    },
+    {
+      "name": "growth",
+      "mentions": 5332
+    },
+    {
+      "name": "leadership",
+      "mentions": 5148
+    },
+    {
+      "name": "market",
+      "mentions": 5148
+    },
+    {
+      "name": "management",
+      "mentions": 4996
+    },
+    {
+      "name": "role",
+      "mentions": 4784
+    },
+    {
+      "name": "company",
+      "mentions": 4742
+    },
+    {
+      "name": "performance",
+      "mentions": 4632
+    },
+    {
+      "name": "customer",
+      "mentions": 4450
+    },
+    {
+      "name": "new",
+      "mentions": 4422
+    },
+    {
+      "name": "all",
+      "mentions": 4418
+    },
+    {
+      "name": "your",
+      "mentions": 4286
+    },
+    {
+      "name": "skills",
+      "mentions": 3994
+    },
+    {
+      "name": "across",
+      "mentions": 3966
+    },
+    {
+      "name": "including",
+      "mentions": 3894
+    },
+    {
+      "name": "teams",
+      "mentions": 3884
+    },
+    {
+      "name": "ability",
+      "mentions": 3694
+    },
+    {
+      "name": "strategic",
+      "mentions": 3622
+    },
+    {
+      "name": "marketing",
+      "mentions": 3602
+    },
+    {
+      "name": "high",
+      "mentions": 3534
+    },
+    {
+      "name": "development",
+      "mentions": 3534
+    },
+    {
+      "name": "lead",
+      "mentions": 3450
+    },
+    {
+      "name": "strong",
+      "mentions": 3440
+    },
+    {
+      "name": "client",
+      "mentions": 3414
+    },
+    {
+      "name": "opportunities",
+      "mentions": 3412
+    },
+    {
+      "name": "strategy",
+      "mentions": 3290
+    },
+    {
+      "name": "not",
+      "mentions": 3262
+    },
+    {
+      "name": "clients",
+      "mentions": 3236
+    },
+    {
+      "name": "other",
+      "mentions": 3202
+    },
+    {
+      "name": "develop",
+      "mentions": 3118
+    },
+    {
+      "name": "solutions",
+      "mentions": 3102
+    },
+    {
+      "name": "years",
+      "mentions": 3084
+    },
+    {
+      "name": "their",
+      "mentions": 3062
+    },
+    {
+      "name": "relationships",
+      "mentions": 3052
+    },
+    {
+      "name": "industry",
+      "mentions": 3010
+    },
+    {
+      "name": "ensure",
+      "mentions": 2988
+    },
+    {
+      "name": "more",
+      "mentions": 2964
+    },
+    {
+      "name": "from",
+      "mentions": 2926
+    },
+    {
+      "name": "health",
+      "mentions": 2916
+    },
+    {
+      "name": "president",
+      "mentions": 2916
+    },
+    {
+      "name": "benefits",
+      "mentions": 2910
+    },
+    {
+      "name": "data",
+      "mentions": 2890
+    },
+    {
+      "name": "drive",
+      "mentions": 2880
+    },
+    {
+      "name": "through",
+      "mentions": 2872
+    },
+    {
+      "name": "support",
+      "mentions": 2824
+    },
+    {
+      "name": "vice",
+      "mentions": 2776
+    },
+    {
+      "name": "job",
+      "mentions": 2698
+    },
+    {
+      "name": "time",
+      "mentions": 2666
+    },
+    {
+      "name": "commercial",
+      "mentions": 2660
+    },
+    {
+      "name": "services",
+      "mentions": 2642
+    },
+    {
+      "name": "key",
+      "mentions": 2616
+    },
+    {
+      "name": "build",
+      "mentions": 2614
+    },
+    {
+      "name": "have",
+      "mentions": 2590
+    },
+    {
+      "name": "based",
+      "mentions": 2576
+    },
+    {
+      "name": "product",
+      "mentions": 2526
+    },
+    {
+      "name": "position",
+      "mentions": 2500
+    },
+    {
+      "name": "success",
+      "mentions": 2500
+    },
+    {
+      "name": "compensation",
+      "mentions": 2398
+    },
+    {
+      "name": "executive",
+      "mentions": 2374
+    },
+    {
+      "name": "strategies",
+      "mentions": 2338
+    },
+    {
+      "name": "employment",
+      "mentions": 2254
+    },
+    {
+      "name": "within",
+      "mentions": 2246
+    },
+    {
+      "name": "pipeline",
+      "mentions": 2244
+    },
+    {
+      "name": "partner",
+      "mentions": 2228
+    },
+    {
+      "name": "required",
+      "mentions": 2198
+    },
+    {
+      "name": "process",
+      "mentions": 2192
+    },
+    {
+      "name": "customers",
+      "mentions": 2124
+    },
+    {
+      "name": "opportunity",
+      "mentions": 2104
+    },
+    {
+      "name": "status",
+      "mentions": 2094
+    },
+    {
+      "name": "building",
+      "mentions": 2072
+    },
+    {
+      "name": "enterprise",
+      "mentions": 2058
+    },
+    {
+      "name": "level",
+      "mentions": 2012
+    },
+    {
+      "name": "range",
+      "mentions": 2010
+    },
+    {
+      "name": "about",
+      "mentions": 1988
+    },
+    {
+      "name": "may",
+      "mentions": 1974
+    },
+    {
+      "name": "information",
+      "mentions": 1968
+    },
+    {
+      "name": "goals",
+      "mentions": 1936
+    },
+    {
+      "name": "proven",
+      "mentions": 1910
+    },
+    {
+      "name": "organization",
+      "mentions": 1886
+    },
+    {
+      "name": "insurance",
+      "mentions": 1882
+    },
+    {
+      "name": "who",
+      "mentions": 1880
+    },
+    {
+      "name": "operations",
+      "mentions": 1874
+    },
+    {
+      "name": "environment",
+      "mentions": 1870
+    },
+    {
+      "name": "any",
+      "mentions": 1844
+    },
+    {
+      "name": "service",
+      "mentions": 1814
+    }
+  ]
+}

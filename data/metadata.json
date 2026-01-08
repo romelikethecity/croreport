@@ -1,0 +1,91 @@
+{
+  "title": "CRO Report Company Intelligence",
+  "description": "GTM technographics and business signals extracted from executive sales job postings. Data updated weekly.",
+  "license": "Proprietary",
+  "license_url": "https://thecroreport.com",
+  "source": "The CRO Report",
+  "source_url": "https://thecroreport.com",
+  "databases": {
+    "company_intelligence": {
+      "description": "Company intelligence database with technographics and sales signals",
+      "tables": {
+        "companies": {
+          "title": "Companies",
+          "description": "Unique companies from executive sales job postings with aggregated data",
+          "sort_desc": "total_job_postings",
+          "facets": ["stage", "industry"],
+          "searchable": ["name"],
+          "columns": {
+            "name": "Company name",
+            "url": "Company website",
+            "industry": "Primary industry",
+            "stage": "Funding/company stage",
+            "size": "Employee count range",
+            "revenue": "Revenue range",
+            "total_job_postings": "Number of VP+ job postings",
+            "avg_salary_min": "Average minimum salary",
+            "avg_salary_max": "Average maximum salary",
+            "last_seen": "Most recent job posting date"
+          }
+        },
+        "company_tools": {
+          "title": "Tech Stack",
+          "description": "Tools and software mentioned in job postings by company",
+          "sort_desc": "mention_count",
+          "facets": ["tool_category", "tool_name"],
+          "searchable": ["company_name", "tool_name"],
+          "columns": {
+            "company_name": "Company name",
+            "tool_id": "Tool identifier",
+            "tool_name": "Tool display name",
+            "tool_category": "Tool category (CRM, Sales Engagement, etc.)",
+            "mention_count": "Number of job postings mentioning this tool",
+            "last_seen": "Most recent mention date"
+          }
+        },
+        "company_signals": {
+          "title": "Sales Signals",
+          "description": "Sales methodology, customer segment, and motion signals by company",
+          "sort_desc": "mention_count",
+          "facets": ["signal_type", "signal_value"],
+          "searchable": ["company_name", "signal_value"],
+          "columns": {
+            "company_name": "Company name",
+            "signal_type": "Signal category (methodology, segment, motion, etc.)",
+            "signal_value": "Specific signal detected",
+            "mention_count": "Number of job postings with this signal",
+            "last_seen": "Most recent detection date"
+          }
+        }
+      },
+      "queries": {
+        "companies_using_tool": {
+          "title": "Companies using a specific tool",
+          "description": "Find all companies that mention a specific tool in their job postings",
+          "sql": "SELECT c.name, c.stage, c.industry, ct.tool_name, ct.mention_count FROM companies c JOIN company_tools ct ON c.id = ct.company_id WHERE ct.tool_name LIKE :tool ORDER BY ct.mention_count DESC",
+          "params": {"tool": "%Salesforce%"}
+        },
+        "enterprise_meddic": {
+          "title": "Enterprise companies using MEDDIC",
+          "description": "Find enterprise-focused companies that use MEDDIC sales methodology",
+          "sql": "SELECT DISTINCT c.name, c.stage, c.avg_salary_max FROM companies c JOIN company_signals cs ON c.id = cs.company_id WHERE cs.signal_value LIKE '%Enterprise%' AND c.id IN (SELECT company_id FROM company_signals WHERE signal_value LIKE '%Meddic%') ORDER BY c.avg_salary_max DESC"
+        },
+        "top_tools_by_category": {
+          "title": "Most popular tools by category",
+          "description": "See which tools are most frequently mentioned in each category",
+          "sql": "SELECT tool_category, tool_name, SUM(mention_count) as total_mentions, COUNT(DISTINCT company_id) as company_count FROM company_tools GROUP BY tool_category, tool_name ORDER BY tool_category, total_mentions DESC"
+        },
+        "signal_distribution": {
+          "title": "Signal distribution",
+          "description": "Distribution of signals across all companies",
+          "sql": "SELECT signal_type, signal_value, COUNT(DISTINCT company_id) as company_count, SUM(mention_count) as total_mentions FROM company_signals GROUP BY signal_type, signal_value ORDER BY signal_type, company_count DESC"
+        },
+        "high_salary_with_tools": {
+          "title": "High-salary companies with specific tech stack",
+          "description": "Companies with avg salary > $200K and their tools",
+          "sql": "SELECT c.name, c.stage, c.avg_salary_max, GROUP_CONCAT(DISTINCT ct.tool_name) as tools FROM companies c LEFT JOIN company_tools ct ON c.id = ct.company_id WHERE c.avg_salary_max > 200000 GROUP BY c.id ORDER BY c.avg_salary_max DESC LIMIT 50"
+        }
+      }
+    }
+  }
+}
