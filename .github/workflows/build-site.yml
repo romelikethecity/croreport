@@ -8,6 +8,7 @@ on:
       - 'scripts/**'
       - 'templates/**'
       - 'site/**'
+      - 'newsletters/**'
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
@@ -98,6 +99,9 @@ jobs:
 
       - name: Generate homepage
         run: python scripts/generate_homepage.py
+
+      - name: Generate newsletter archive
+        run: python scripts/generate_newsletter_archive.py
 
       - name: Generate sitemap
         run: python scripts/generate_sitemap.py

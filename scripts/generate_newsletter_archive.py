@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
-Generate newsletter archive page from Substack RSS feed
-Creates /newsletter/ page linking to all Substack editions
+Generate newsletter archive page from local markdown files
+Reads /newsletters/*/cro_report.md with YAML frontmatter
+Creates /newsletter/ page with teaser cards linking to Substack
 """
 
-import xml.etree.ElementTree as ET
-import urllib.request
-import ssl
-import html
-import re
 import os
+import re
+import glob
 from datetime import datetime
 import sys
 sys.path.insert(0, 'scripts')
@@ -19,7 +17,7 @@ try:
 except:
     TRACKING_CODE = ""
 
-SUBSTACK_RSS = "https://croreport.substack.com/feed"
+NEWSLETTERS_DIR = 'newsletters'
 SITE_DIR = 'site'
 NEWSLETTER_DIR = f'{SITE_DIR}/newsletter'
 
@@ -30,92 +28,82 @@ print("="*70)
 # Create directory
 os.makedirs(NEWSLETTER_DIR, exist_ok=True)
 
-# Fetch RSS feed with retries
-print(f"📡 Fetching RSS from {SUBSTACK_RSS}...")
-rss_content = None
+def parse_frontmatter(content):
+    """Parse YAML frontmatter from markdown file"""
+    if not content.startswith('---'):
+        return None, content
 
-# Create SSL context that doesn't verify (for environments with cert issues)
-ssl_context = ssl.create_default_context()
-ssl_context.check_hostname = False
-ssl_context.verify_mode = ssl.CERT_NONE
+    # Find the closing ---
+    end_match = re.search(r'\n---\n', content[3:])
+    if not end_match:
+        return None, content
 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+    frontmatter_text = content[3:end_match.start() + 3]
+    body = content[end_match.end() + 3 + 1:]
 
-try:
-    req = urllib.request.Request(
-        SUBSTACK_RSS,
-        headers={
-            'User-Agent': user_agent,
-            'Accept': 'application/rss+xml, application/xml, text/xml, */*',
-        }
-    )
-    with urllib.request.urlopen(req, timeout=30, context=ssl_context) as response:
-        rss_content = response.read().decode('utf-8')
-    if rss_content and '<item>' in rss_content:
-        print(f"✅ RSS feed fetched successfully")
-    else:
-        print("⚠️ RSS fetched but no items found")
-        rss_content = None
-except Exception as e:
-    print(f"❌ Failed to fetch RSS: {e}")
-    rss_content = None
+    # Parse simple YAML (key: value format)
+    frontmatter = {}
+    for line in frontmatter_text.strip().split('\n'):
+        if ':' in line:
+            key, value = line.split(':', 1)
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            frontmatter[key] = value
+
+    return frontmatter, body
+
+# Scan for newsletter files
+print(f"📂 Scanning {NEWSLETTERS_DIR}/ for newsletters...")
+newsletter_files = glob.glob(f'{NEWSLETTERS_DIR}/*.md')
+print(f"   Found {len(newsletter_files)} newsletter files")
 
 posts = []
 
-if rss_content:
-    # Parse RSS
+for filepath in newsletter_files:
     try:
-        root = ET.fromstring(rss_content)
-        channel = root.find('channel')
-        
-        for item in channel.findall('item'):
-            title = item.find('title')
-            link = item.find('link')
-            pub_date = item.find('pubDate')
-            description = item.find('description')
-            
-            title_text = title.text if title is not None else "Untitled"
-            link_text = link.text if link is not None else "#"
-            
-            # Parse date
-            date_text = ""
-            date_sort = datetime.now()
-            if pub_date is not None and pub_date.text:
-                try:
-                    # RSS date format: "Wed, 27 Dec 2025 12:00:00 GMT"
-                    date_sort = datetime.strptime(pub_date.text.split('+')[0].strip(), "%a, %d %b %Y %H:%M:%S")
-                    date_text = date_sort.strftime("%B %d, %Y")
-                except:
-                    try:
-                        date_sort = datetime.strptime(pub_date.text[:25], "%a, %d %b %Y %H:%M:%S")
-                        date_text = date_sort.strftime("%B %d, %Y")
-                    except:
-                        date_text = pub_date.text[:16] if pub_date.text else ""
-            
-            # Clean description - get first ~200 chars
-            desc_text = ""
-            if description is not None and description.text:
-                # Remove HTML tags
-                desc_text = re.sub(r'<[^>]+>', '', description.text)
-                desc_text = html.unescape(desc_text)
-                desc_text = desc_text[:250].strip()
-                if len(description.text) > 250:
-                    desc_text += "..."
-            
-            posts.append({
-                'title': title_text,
-                'link': link_text,
-                'date': date_text,
-                'date_sort': date_sort,
-                'description': desc_text
-            })
-        
-        # Sort by date (newest first)
-        posts.sort(key=lambda x: x['date_sort'], reverse=True)
-        print(f"📄 Found {len(posts)} newsletter editions")
-        
+        with open(filepath, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        frontmatter, body = parse_frontmatter(content)
+
+        if not frontmatter:
+            print(f"   ⚠️ No frontmatter in {filepath}, skipping")
+            continue
+
+        # Required fields
+        title = frontmatter.get('title', '')
+        date_str = frontmatter.get('date', '')
+        excerpt = frontmatter.get('excerpt', '')
+        substack_url = frontmatter.get('substack_url', '')
+
+        if not all([title, date_str, substack_url]):
+            print(f"   ⚠️ Missing required frontmatter in {filepath}")
+            print(f"      title: {'✓' if title else '✗'}, date: {'✓' if date_str else '✗'}, substack_url: {'✓' if substack_url else '✗'}")
+            continue
+
+        # Parse date for sorting
+        try:
+            date_sort = datetime.strptime(date_str, '%Y-%m-%d')
+            date_display = date_sort.strftime('%B %d, %Y')
+        except:
+            print(f"   ⚠️ Invalid date format in {filepath}: {date_str}")
+            continue
+
+        posts.append({
+            'title': title,
+            'link': substack_url,
+            'date': date_display,
+            'date_sort': date_sort,
+            'description': excerpt
+        })
+        print(f"   ✅ {date_str}: {title[:50]}...")
+
     except Exception as e:
-        print(f"❌ Failed to parse RSS: {e}")
+        print(f"   ❌ Error reading {filepath}: {e}")
+
+# Sort by date (newest first)
+posts.sort(key=lambda x: x['date_sort'], reverse=True)
+print(f"\n📄 Loaded {len(posts)} newsletter editions")
 
 # Generate post cards
 if posts:
@@ -123,7 +111,7 @@ if posts:
     for i, post in enumerate(posts):
         # Add "Latest" badge to first post
         latest_badge = '<span class="badge-latest">Latest</span>' if i == 0 else ''
-        
+
         post_cards += f'''
         <a href="{post['link']}" class="post-card" target="_blank" rel="noopener">
             <div class="post-header">
@@ -135,9 +123,8 @@ if posts:
             <span class="read-more">Read on Substack →</span>
         </a>
         '''
-    
+
     posts_count = len(posts)
-    latest_date = posts[0]['date'] if posts else "N/A"
 else:
     post_cards = '''
     <div class="no-posts">
@@ -145,7 +132,6 @@ else:
     </div>
     '''
     posts_count = 0
-    latest_date = "N/A"
 
 update_date = datetime.now().strftime('%B %d, %Y')
 
@@ -158,14 +144,14 @@ html_content = f'''<!DOCTYPE html>
     <meta name="description" content="Archive of The CRO Report weekly newsletter. {posts_count} editions of VP Sales and CRO job market intelligence, compensation data, and executive movements.">
     <meta name="keywords" content="CRO Report newsletter, VP Sales market intelligence, sales executive newsletter, CRO jobs newsletter">
     <link rel="canonical" href="https://thecroreport.com/newsletter/">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-    
+
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
         body {{ font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; line-height: 1.6; }}
-        
+
         .site-header {{
             background: white;
             padding: 16px 20px;
@@ -215,7 +201,7 @@ html_content = f'''<!DOCTYPE html>
         .btn-subscribe:hover {{
             background: #2d4a6f;
         }}
-        
+
         .hero-header {{
             background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
@@ -248,9 +234,9 @@ html_content = f'''<!DOCTYPE html>
             font-size: 0.8rem;
             opacity: 0.8;
         }}
-        
+
         .container {{ max-width: 800px; margin: 0 auto; padding: 40px 20px; }}
-        
+
         .subscribe-banner {{
             background: white;
             border-radius: 12px;
@@ -282,7 +268,7 @@ html_content = f'''<!DOCTYPE html>
         .subscribe-btn:hover {{
             background: #b45309;
         }}
-        
+
         .post-card {{
             display: block;
             background: white;
@@ -336,7 +322,7 @@ html_content = f'''<!DOCTYPE html>
             font-weight: 600;
             margin-top: 12px;
         }}
-        
+
         .no-posts {{
             text-align: center;
             padding: 40px;
@@ -345,7 +331,7 @@ html_content = f'''<!DOCTYPE html>
         .no-posts a {{
             color: #d97706;
         }}
-        
+
         .footer {{
             background: #1e3a5f;
             color: #94a3b8;
@@ -354,14 +340,108 @@ html_content = f'''<!DOCTYPE html>
             margin-top: 60px;
         }}
         .footer a {{ color: #d97706; text-decoration: none; }}
-        
+
         .update-date {{
             text-align: center;
             color: #64748b;
             font-size: 0.85rem;
             margin-top: 32px;
         }}
-        
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {{
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3a5f;
+        }}
+        .mobile-nav-overlay {{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }}
+        .mobile-nav-overlay.active {{
+            opacity: 1;
+        }}
+        .mobile-nav {{
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }}
+        .mobile-nav.active {{
+            right: 0;
+        }}
+        .mobile-nav-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }}
+        .mobile-nav-header .logo-text {{
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+        }}
+        .mobile-nav-close {{
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }}
+        .mobile-nav-links {{
+            list-style: none;
+            padding: 20px;
+        }}
+        .mobile-nav-links li {{
+            margin-bottom: 8px;
+        }}
+        .mobile-nav-links a {{
+            display: block;
+            padding: 12px 16px;
+            color: #1e3a5f;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }}
+        .mobile-nav-links a:hover {{
+            background: #f1f5f9;
+        }}
+        .mobile-nav-subscribe {{
+            display: block;
+            margin: 20px;
+            padding: 14px;
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }}
+        @media (max-width: 768px) {{
+            .nav-links {{ display: none; }}
+            .mobile-menu-btn {{ display: block; }}
+            .mobile-nav-overlay {{ display: block; pointer-events: none; }}
+            .mobile-nav-overlay.active {{ pointer-events: auto; }}
+        }}
         @media (max-width: 600px) {{
             .hero-header .stats {{
                 flex-direction: column;
@@ -388,9 +468,28 @@ html_content = f'''<!DOCTYPE html>
                     <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
         </div>
     </header>
-    
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
+        </ul>
+        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
+
     <div class="hero-header">
         <div class="eyebrow">Weekly Intelligence</div>
         <h1>The CRO Report Newsletter</h1>
@@ -410,26 +509,53 @@ html_content = f'''<!DOCTYPE html>
             </div>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="subscribe-banner">
             <h2>📬 Get It In Your Inbox</h2>
             <p>Join 500+ sales executives getting weekly market intelligence.</p>
             <a href="https://croreport.substack.com/subscribe" class="subscribe-btn" target="_blank" rel="noopener">Subscribe Free</a>
         </div>
-        
+
         <h2 style="margin-bottom: 24px; color: #1e3a5f;">📰 Newsletter Archive</h2>
-        
+
         <div class="posts-list">
             {post_cards}
         </div>
-        
+
         <p class="update-date">Archive updated: {update_date}</p>
     </div>
-    
+
     <footer class="footer">
         <p>© 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
     </footer>
+
+    <script>
+        (function() {{
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {{
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }}
+
+            function closeMenu() {{
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }}
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => {{ link.addEventListener('click', closeMenu); }});
+        }})();
+    </script>
 </body>
 </html>'''
 

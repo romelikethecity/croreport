@@ -34,11 +34,9 @@ The CRO Report should feel like it's written by someone who's been in the trench
 
 **Add natural pauses and transitions:**
 - "Look,"
-- "Here's the thing:"
 - "And honestly?"
-- "The real question:"
 - "Worth noting:"
-- "But here's what caught my eyeâ€”"
+- "One thing that stood out:"
 
 **Include asides, tangents, and second thoughts:**
 - "(which, by the way, is unusual for this stage)"
@@ -68,13 +66,196 @@ The CRO Report should feel like it's written by someone who's been in the trench
 - "The optimist in me says X. The realist says Y."
 
 **Avoid (these scream "AI wrote this"):**
-- Overusing em dashes (use sparingly, not in every sentence)
+- **Em dashes (—) — DO NOT USE.** They're now universally seen as AI-generated. Use periods, commas, or restructure the sentence instead.
 - "It's not X, it's Y" construction repeatedly
+- "He doesn't X—he Y" construction (see examples below)
 - Starting every paragraph the same way
 - Perfect parallel structure in every list
 - Generic phrases like "in today's market" or "navigate the landscape"
 - "Robust," "leverage," "synergy," "holistic"
-- Overly smooth transitionsâ€”real writing is slightly messy
+- Overly smooth transitions. Real writing is slightly messy.
+
+**CRITICAL: The "False Reframe" (aka "Pseudo-Pivot") — NEVER Use**
+
+This is the most obvious AI tell. It negates something simple, then reframes it as something grander. Dead giveaway every time.
+
+| ❌ FALSE REFRAME (AI trope) | ✅ WRITE INSTEAD (human) |
+|---------------------------|--------------------------|
+| "Bobby Condon doesn't join companies—he scales them through inflection points." | "Bobby Condon is known for scaling companies through inflection points." |
+| "That's not just 'grew revenue'—that's architecting the entire commercial engine." | "He architected the entire commercial engine needed to IPO this infrastructure company." |
+| "This isn't a job posting—it's a distress signal." | "This job posting is basically a distress signal." |
+| "She doesn't manage teams—she transforms them." | "She's built a reputation for transforming sales teams." |
+| "This isn't about selling software—it's about changing how enterprises operate." | "They're trying to change how enterprises operate, not just sell software." |
+| "He didn't just hit quota—he redefined what quota meant." | "He consistently exceeded quota and raised the bar for the whole team." |
+| "That's not a range—that's a negotiation invitation." | "That range reflects the experience spectrum they're considering." |
+
+**The pattern:** "[Subject] doesn't [verb]—[subject] [grander verb]" or "That's not [simple thing]—that's [impressive reframe]"
+
+**Why it's a problem:** This construction tries too hard to sound profound. It's also often wrong—the "reframe" misrepresents reality to sound clever. Real humans just state what something is. They don't need the dramatic negation-then-reframe structure.
+
+**Simple fix:** Just say what the person did or what something is. Drop the negation entirely. Be direct and accurate.
+
+**ALSO AVOID: Unearned Declarations / "Asserting the Insight"**
+
+These phrases claim clarity or insight that the writing hasn't actually earned. They're filler that sounds authoritative but adds nothing:
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "The pattern here is clear:" | Just state what the pattern is. No preamble needed. |
+| "The bet here is clear:" | Just explain the bet directly. |
+| "Here's the thing:" | Delete it. Start with the actual thing. |
+| "The honest tension:" | Just describe the tension directly. |
+| "The bottom line is this:" | Just give the bottom line. |
+| "What this means is:" | Just say what it means. |
+| "The takeaway:" | Just state the takeaway. |
+| "The signal is obvious:" | Just describe the signal. |
+
+**Why it's a problem:** These phrases are throat-clearing. They announce that you're about to say something insightful instead of just saying it. Real experts don't telegraph. They just deliver.
+
+**ALSO AVOID: The "Either/Or + Hedge" Trope**
+
+This is setting up a false binary, then collapsing it with "probably both" or similar hedging. It sounds analytical but adds nothing.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "That's either flexibility or uncertainty. Probably both." | Delete it. The prior sentence already made the point. |
+| "This is either a huge opportunity or a disaster waiting to happen. Maybe both." | Just describe what it is. Don't create fake drama. |
+| "They're either visionary or reckless. Time will tell." | State the facts and let readers decide. |
+
+**Why it's a problem:** The either/or setup pretends to offer analysis, but "probably both" or "time will tell" just retreats to saying nothing. If your prior sentence made the point, stop there. Don't add filler that sounds thoughtful but isn't.
+
+**Example fix:**
+- ❌ "The pattern here is clear: he's built for complex infrastructure sales at scale-up moments."
+- ✅ "He's built for complex infrastructure sales at scale-up moments."
+
+**Another example:**
+- ❌ "Here's the thing about seed-stage AI companies in life sciences: they either raise a Series A or struggle."
+- ✅ Delete entirely. That's a tautology. Every seed-stage company either raises or struggles. If you don't have a specific point of view, don't say anything.
+
+**ALSO AVOID: Empty Calorie Words**
+
+Words that add emphasis but no meaning. Cut them entirely.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "This is genuinely early." | "This is early." |
+| "This is truly impressive." | "This is impressive." |
+| "The results are really compelling." | "The results are compelling." |
+| "It's actually quite good." | "It's good." |
+| "This is a founder-led company, full stop." | "This is a founder-led company." |
+| "Proceed with extreme diligence." | "Proceed with diligence." (or delete entirely) |
+
+**Why it's a problem:** These words feel like they add emphasis but they don't. They're filler. If something is early, say it's early. The word does the work on its own.
+
+**ALSO AVOID: Patronizing Your Audience**
+
+The readers are experienced sales executives. Don't explain obvious implications.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "That's not inherently good or bad, but know what you're signing up for." | Delete. They know founder-led companies have tradeoffs. |
+| "This is something to keep in mind." | Delete. If you stated the fact, they're keeping it in mind. |
+| "You'll want to think carefully about this." | Delete. They're executives. They think carefully about everything. |
+| "Where in the comp range would I land? What's the equity grant?" | Delete. Sales executives know how to negotiate comp. |
+
+**Why it's a problem:** These readers have been around the block. Stating a fact is enough. Don't add "know what you're signing up for" or similar hand-holding. Don't suggest questions they already know to ask. Trust your audience.
+
+**ALSO AVOID: Dramatic Dichotomies**
+
+Don't create false drama with overly theatrical contrasts.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "That's exciting if you want that, terrifying if you don't." | "That's exciting if you want that, but not worth it if you want these functions in place." |
+| "This is either your dream job or your nightmare." | "This fits builders, not optimizers." |
+| "Brilliant or reckless. You decide." | Just describe what it is. |
+
+**Why it's a problem:** The dramatic framing (exciting/terrifying, dream/nightmare) sounds punchy but says nothing useful. Tell the reader what they actually need to know to make a decision.
+
+**ALSO AVOID: Tautologies / Saying Nothing**
+
+Statements that sound like analysis but apply to literally everything. If you don't have a point of view, don't write a sentence.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "Seed-stage companies either raise a Series A or struggle." | Delete. That's true of every seed-stage company. |
+| "This will either work out or it won't." | Delete. Say something specific or nothing. |
+| "Time will tell if this was the right move." | Delete. Time will tell everything. |
+| "Success here depends on execution." | Delete. Success always depends on execution. |
+
+**Why it's a problem:** These sentences feel analytical but contain zero information. They're true of everything, so they're true of nothing specific. If you can't say something that distinguishes this situation from others, cut the sentence entirely.
+
+**ALSO AVOID: Manufacturing Analysis Around Normal Data**
+
+Don't invent meaning around data points that are perfectly normal and expected.
+
+| ❌ DON'T WRITE | ✅ WRITE INSTEAD |
+|----------------|------------------|
+| "The wide comp range suggests flexibility, which could mean capital constraints or early-stage calibration." | Nothing. $230K-$400K is normal for a seed-stage CRO. Wide ranges reflect experience levels. |
+| "The remote-first policy signals something about their culture." | Nothing, if remote is standard for the industry/stage. |
+| "The 12-18 month sales cycle is worth noting." | Nothing, if that's typical for enterprise pharma sales. |
+
+**When to call something out:** Only when it deviates from what's expected. A $60K VP Sales is worth flagging. A $250K seed-stage CRO is not. Use logic: is this actually unusual, or am I manufacturing insight?
+
+## File Output & Frontmatter
+
+**Save newsletters to:** `/newsletters/YYYY-MM-DD.md`
+
+Example: `/newsletters/2026-01-07.md`
+
+**Required YAML frontmatter at top of file:**
+
+```markdown
+---
+title: "CRO Report: Exec Hiring Explodes 79%, Fastly's IPO Architect Joins Forward Networks, and Partex.AI's Life Sciences Bet"
+date: 2026-01-07
+excerpt: "Sales exec hiring surges 79% to 118 roles, Bobby Condon brings his $2M-to-$480M Fastly playbook to network digital twin pioneer, and why Partex.AI's CRO search signals big pharma's AI tipping point"
+substack_url: https://croreport.substack.com/p/cro-report-exec-hiring-explodes-79
+---
+
+# Newsletter content starts here...
+```
+
+**Frontmatter fields:**
+- `title`: Full newsletter headline (same as H1)
+- `date`: Publication date in YYYY-MM-DD format
+- `excerpt`: Subtitle/teaser (same as subtitle line)
+- `substack_url`: Link to Substack post (update after publishing)
+
+**Auto-generation:** When you push to `/newsletters/**`, GitHub Actions runs `generate_newsletter_archive.py` which reads the frontmatter and regenerates the teaser cards at `thecroreport.com/newsletter/`.
+
+## Avoiding Repetition (Prior 5 Weeks Check)
+
+**CRITICAL: Before writing each newsletter, read the prior 5 weeks of newsletters in `/newsletters/` to avoid repeating the same insights.**
+
+**Check for repetition in:**
+1. **Market Intelligence observations** - Don't repeat the same "AI mentions outnumber SaaS" or "Healthcare hiring as aggressively as tech" points week after week
+2. **Who's Moving analysis themes** - If you wrote "IPO playbook" framing last week, use different framing this week
+3. **Company deep-dive red flags** - Don't use the same "seed-stage risk" or "first CRO = unclear playbook" language verbatim
+4. **Skip These Roles reasoning** - Vary the critique angles; don't always lead with comp concerns
+
+**How to check:**
+```
+Read: /newsletters/2026-01-07.md
+Read: /newsletters/2025-12-27.md
+Read: /newsletters/2025-12-18.md
+Read: /newsletters/2025-12-11.md
+Read: /newsletters/2025-12-05.md
+```
+
+**If you find repetition:**
+- Find a fresh angle on the same underlying data
+- Use different framing or metaphors
+- Skip the insight entirely if it's not newsworthy this week
+- If the trend continues (e.g., AI still outpacing SaaS), acknowledge the continuation: "For the third straight week, AI mentions continue to outpace SaaS..."
+
+**Examples of repetition to avoid:**
+
+| ❌ REPEATED INSIGHT | ✅ FRESH ANGLE |
+|---------------------|----------------|
+| "AI mentions now outnumber SaaS" (said last week) | "AI's lead over SaaS widened to 2:1 this week" or skip it |
+| "This is a founder-led company" (used in every deep-dive) | Vary: "Founder still controls the cap table" or "Board is founder-heavy" |
+| "The wide comp range reflects experience levels" (said repeatedly) | Only mention comp range if it's actually unusual for the role/stage |
 
 ## Newsletter Structure
 
@@ -388,21 +569,43 @@ No founder control dynamics to navigate here. Strategic investors (Roche, Quest)
 - Top Markets (ranked list with counts)
 - Salary Transparency (percentage disclosing, average/median ranges)
 
-### ðŸ“ˆ Compensation Benchmarking
+### 💰 Compensation Benchmarking
 
-**Overall Statistics**:
-- Average minimum/maximum salary
-- Median minimum/maximum salary
+**Required format (in this order):**
 
-**By Seniority Level**:
-- VP Sales: $150K-$300K
-- SVP Sales: $225K-$400K
-- EVP Sales: $275K-$450K
-- C-Level: $300K-$600K
+1. **Three charts** (always include in this exact order):
+   - `![Compensation by Seniority](comp_by_seniority.png)`
+   - `![Compensation by Stage](comp_by_stage.png)`
+   - `![Compensation by Location](comp_by_location.png)`
 
-**Geographic Premiums**: Note SF/NY premiums (15-25% above remote)
+2. **Highest Paying Roles This Week** (top 5 roles with disclosed comp)
 
-**Red Flags to Watch**: Identify concerning patterns (transparency drops, wide ranges, below-market comp)
+3. **What This Means for Negotiations** (brief practical guidance)
+
+**Example:**
+```
+## 💰 Compensation Benchmarking
+
+**Data as of [DATE]** | [X] executive roles
+
+![Compensation by Seniority](comp_by_seniority.png)
+
+![Compensation by Stage](comp_by_stage.png)
+
+![Compensation by Location](comp_by_location.png)
+
+### Highest Paying Roles This Week
+
+1. **$256,500-$529,000**: SAP VP Territory Ecosystem @ Accenture
+2. **$230,000-$400,000**: Chief Revenue Officer @ Partex.AI
+3. **$211,100-$358,900**: VP Global Sales @ ServiceNow
+4. **$200,000-$250,000**: Vice President @ Genpact
+5. **$200,000-$250,000**: Chief Revenue Officer @ Wild West Systems
+
+### What This Means for Negotiations
+
+Most disclosed roles don't include variable, but standard is 40-50% of base for revenue-generating VP+ roles.
+```
 
 ### ðŸ“Š Market Intelligence
 
