@@ -423,6 +423,28 @@ for cat in categories:
     cat_comparisons = comparisons_by_category.get(cat['slug'], [])
     index_html += generate_category_section(cat, cat_tools, cat_comparisons, tools, update_date)
 
+# AI Assessments section
+index_html += '''
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <h2>AI Assessments</h2>
+            </div>
+            <p class="section-description">Evaluate your team's readiness for AI-powered revenue operations</p>
+            <div class="tools-grid">
+                <a href="/assessment/" class="tool-card">
+                    <span class="card-badge badge-live">Interactive</span>
+                    <h3>AI Readiness Scorecard</h3>
+                    <p>15-question assessment to benchmark your RevOps team's AI readiness. Get personalized recommendations based on your data quality, adoption level, and team capability.</p>
+                    <div class="card-footer">
+                        <span class="card-meta">3 min assessment</span>
+                        <span class="card-link">Take Assessment →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+'''
+
 # CTA section
 index_html += '''
             <div class="cta-box">

@@ -526,8 +526,8 @@ def get_nav_html(active_page=None):
                 <a href="/salaries/"{active_class('salaries')}>Salaries</a>
                 <a href="/tools/"{active_class('tools')}>Tools</a>
                 <a href="/insights/"{active_class('insights')}>Market Intel</a>
+                <a href="/assessment/"{active_class('assessment')}>AI Assessment</a>
                 <a href="/about/"{active_class('about')}>About</a>
-                <a href="/newsletter/"{active_class('newsletter')}>Newsletter</a>
                 <a href="https://croreport.substack.com/subscribe" class="nav-cta">Subscribe</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -546,8 +546,8 @@ def get_nav_html(active_page=None):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/assessment/">AI Assessment</a></li>
             <li><a href="/about/">About</a></li>
-            <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
         <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
     </nav>
@@ -589,6 +589,7 @@ def get_footer_html():
                 <a href="/salaries/">Salaries</a>
                 <a href="/tools/">Tools</a>
                 <a href="/insights/">Market Intel</a>
+                <a href="/assessment/">AI Assessment</a>
                 <a href="/about/">About</a>
                 <a href="https://croreport.substack.com">Newsletter</a>
             </div>
