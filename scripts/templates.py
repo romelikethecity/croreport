@@ -1,58 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3119XDMC12"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-3119XDMC12');
-    </script>
+#!/usr/bin/env python3
+"""
+Shared templates and utilities for CRO Report page generators.
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "uvbemaajqm");
-    </script>
+This module consolidates common HTML, CSS, and utility functions used across
+multiple page generators to eliminate duplication and centralize maintenance.
+"""
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11x Alternatives | The CRO Report</title>
-    <meta name="description" content="Looking for 11x alternatives? Compare AI SDR platforms with better pricing and contract terms. Compare pricing, features, and find the best fit.">
-    <link rel="canonical" href="https://thecroreport.com/tools/11x-alternatives/">
+import re
+import pandas as pd
+import sys
 
-    <!-- Open Graph Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://thecroreport.com/tools/11x-alternatives/">
-    <meta property="og:title" content="11x Alternatives">
-    <meta property="og:description" content="Looking for 11x alternatives? Compare AI SDR platforms with better pricing and contract terms. Compare pricing, features, and find the best fit.">
-    <meta property="og:site_name" content="The CRO Report">
-    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+sys.path.insert(0, 'scripts')
+try:
+    from tracking_config import get_tracking_code
+    TRACKING_CODE = get_tracking_code()
+except:
+    TRACKING_CODE = ""
 
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="11x Alternatives">
-    <meta name="twitter:description" content="Looking for 11x alternatives? Compare AI SDR platforms with better pricing and contract terms. Compare pricing, features, and find the best fit.">
-    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+# SEO: Always use thecroreport.com as canonical domain
+BASE_URL = 'https://thecroreport.com'
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-</head>
+# =============================================================================
+# UTILITY FUNCTIONS
+# =============================================================================
 
-    <style>
-        
+def slugify(text, max_length=60):
+    """Convert text to URL-safe slug"""
+    if pd.isna(text) or not text:
+        return None
+    slug = str(text).lower()
+    slug = re.sub(r'[^a-z0-9\s-]', '', slug)
+    slug = re.sub(r'[\s_]+', '-', slug)
+    slug = re.sub(r'-+', '-', slug)
+    slug = slug.strip('-')
+    return slug[:max_length] if slug else None
+
+
+def format_salary(min_amount, max_amount):
+    """Format salary range for display"""
+    try:
+        min_sal = float(min_amount) if pd.notna(min_amount) else 0
+        max_sal = float(max_amount) if pd.notna(max_amount) else 0
+    except (ValueError, TypeError):
+        return ""
+
+    if min_sal > 0 and max_sal > 0:
+        return f"${int(min_sal/1000)}K - ${int(max_sal/1000)}K"
+    elif max_sal > 0:
+        return f"Up to ${int(max_sal/1000)}K"
+    elif min_sal > 0:
+        return f"${int(min_sal/1000)}K+"
+    return ""
+
+
+def is_remote(job_data):
+    """Check if job is remote based on job data dict or series"""
+    if isinstance(job_data, dict):
+        if job_data.get('is_remote'):
+            return True
+        location = job_data.get('location', '')
+    else:
+        # pandas Series
+        if 'is_remote' in job_data and job_data['is_remote']:
+            return True
+        location = job_data.get('location', '')
+
+    if pd.notna(location):
+        return 'remote' in str(location).lower()
+    return False
+
+
+# =============================================================================
+# CSS CONSTANTS
+# =============================================================================
+
+CSS_VARIABLES = '''
     :root {
         --navy: #0a1628;
         --navy-light: #132038;
@@ -83,8 +106,9 @@
         color: var(--gray-800);
         line-height: 1.6;
     }
+'''
 
-        
+CSS_NAV = '''
     /* Navigation */
     .site-header {
         background: var(--white);
@@ -240,8 +264,9 @@
         .mobile-nav-overlay { display: block; pointer-events: none; }
         .mobile-nav-overlay.active { pointer-events: auto; }
     }
+'''
 
-        
+CSS_LAYOUT = '''
     /* Layout */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     .container-narrow { max-width: 900px; margin: 0 auto; padding: 0 24px; }
@@ -286,8 +311,9 @@
         max-width: 700px;
         line-height: 1.7;
     }
+'''
 
-        
+CSS_CARDS = '''
     /* Cards */
     .tool-card, .job-card, .company-card, .salary-card {
         background: var(--white);
@@ -356,8 +382,9 @@
         color: var(--gray-500);
         margin-top: 6px;
     }
+'''
 
-        
+CSS_CTA = '''
     /* CTA Box */
     .cta-box {
         background: var(--navy);
@@ -389,8 +416,9 @@
 
     .btn-gold { background: var(--gold); color: var(--navy); }
     .btn-gold:hover { background: var(--gold-muted); }
+'''
 
-        
+CSS_FOOTER = '''
     /* Footer */
     .site-footer, .footer {
         background: var(--white);
@@ -418,185 +446,74 @@
         .footer-content { flex-direction: column; gap: 12px; text-align: center; }
         .footer-links a { margin: 0 12px; }
     }
+'''
 
-        
-    /* Section Headers */
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 12px;
-    }
 
-    .section-header h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--navy);
-    }
-
-    .section-icon { font-size: 1.4rem; }
-
-    .section-description {
-        color: var(--gray-600);
-        margin-bottom: 24px;
-        max-width: 650px;
-        font-size: 0.95rem;
-    }
-
-    /* Tool Cards Grid */
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 20px;
-    }
-
-    @media (max-width: 768px) {
-        .tools-grid { grid-template-columns: 1fr; }
-    }
-
-    .tool-card {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .tool-card.coming-soon { opacity: 0.6; }
-
-    .tool-card h3 {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 8px;
-    }
-
-    .tool-card p {
-        font-size: 0.9rem;
-        color: var(--gray-600);
-        line-height: 1.55;
-        flex-grow: 1;
-    }
-
-    .card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid var(--gray-100);
-    }
-
-    .card-meta { font-size: 0.8rem; color: var(--gray-500); }
-    .card-link { font-size: 0.85rem; font-weight: 600; color: var(--gold-muted); }
-
-    /* Card Logos */
-    .card-logos {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 16px;
-    }
-
-    .card-logo {
-        width: 40px;
-        height: 40px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    .card-logo img {
-        max-width: 32px;
-        max-height: 32px;
-        object-fit: contain;
-    }
-
-    /* Pros/Cons */
-    .pros-cons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin: 24px 0;
-    }
-    @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
-
-    .pros, .cons {
-        background: var(--white);
-        border-radius: 10px;
-        padding: 20px;
-    }
-    .pros { border: 1px solid var(--green); }
-    .cons { border: 1px solid var(--red); }
-
-    .pros h4, .cons h4 { font-size: 0.95rem; margin-bottom: 12px; }
-    .pros h4 { color: var(--green); }
-    .cons h4 { color: var(--red); }
-
-    .pros ul, .cons ul { list-style: none; }
-    .pros li, .cons li { padding: 6px 0; font-size: 0.9rem; }
-    .pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
-    .cons li::before { content: '✗ '; color: var(--red); font-weight: 600; }
-
-    /* Info Card */
-    .info-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 24px;
-    }
-
-    .info-card h3 {
-        font-size: 1.1rem;
-        color: var(--navy);
-        margin-bottom: 16px;
-    }
-
-    .info-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--gray-100);
-    }
-
-    .info-row:last-child { border-bottom: none; }
-    .info-label { color: var(--gray-500); font-size: 0.9rem; }
-    .info-value { font-weight: 500; font-size: 0.9rem; }
-    .info-value a { color: var(--gold-muted); }
-
-    /* Comparison Table */
-    .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 24px 0;
-        background: var(--white);
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid var(--gray-200);
-    }
-
-    .comparison-table th {
-        background: var(--navy);
-        color: var(--white);
-        padding: 14px 16px;
-        text-align: left;
-        font-weight: 600;
-        font-size: 0.9rem;
-    }
-
-    .comparison-table td {
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--gray-200);
-        font-size: 0.9rem;
-    }
-
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table tr:nth-child(even) { background: var(--gray-50); }
-    .winner { color: var(--green); font-weight: 600; }
-
+def get_base_styles():
+    """Get all base CSS styles"""
+    return f'''
+    <style>
+        {CSS_VARIABLES}
+        {CSS_NAV}
+        {CSS_LAYOUT}
+        {CSS_CARDS}
+        {CSS_CTA}
+        {CSS_FOOTER}
     </style>
+'''
 
+
+# =============================================================================
+# HTML GENERATORS
+# =============================================================================
+
+def get_html_head(title, description, page_path, include_styles=True):
+    """Generate SEO-compliant head section"""
+    styles = get_base_styles() if include_styles else ''
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">{TRACKING_CODE}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | The CRO Report</title>
+    <meta name="description" content="{description}">
+    <link rel="canonical" href="{BASE_URL}/{page_path}">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{BASE_URL}/{page_path}">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="{BASE_URL}/assets/social-preview.png">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="{BASE_URL}/assets/social-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {styles}
+</head>
+'''
+
+
+def get_nav_html(active_page=None):
+    """Generate site navigation including mobile nav and JS"""
+    def active_class(page):
+        return ' class="active"' if page == active_page else ''
+
+    return f'''
 <body>
     <header class="site-header">
         <div class="header-container">
@@ -605,12 +522,12 @@
                 The CRO Report
             </a>
             <nav class="nav">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/" class="active">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/about/">About</a>
-                <a href="/newsletter/">Newsletter</a>
+                <a href="/jobs/"{active_class('jobs')}>Jobs</a>
+                <a href="/salaries/"{active_class('salaries')}>Salaries</a>
+                <a href="/tools/"{active_class('tools')}>Tools</a>
+                <a href="/insights/"{active_class('insights')}>Market Intel</a>
+                <a href="/about/"{active_class('about')}>About</a>
+                <a href="/newsletter/"{active_class('newsletter')}>Newsletter</a>
                 <a href="https://croreport.substack.com/subscribe" class="nav-cta">Subscribe</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -636,85 +553,34 @@
     </nav>
 
     <script>
-        (function() {
+        (function() {{
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const closeBtn = document.querySelector('.mobile-nav-close');
             const overlay = document.querySelector('.mobile-nav-overlay');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
-            function openMenu() {
+            function openMenu() {{
                 mobileNav.classList.add('active');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
-            }
-            function closeMenu() {
+            }}
+            function closeMenu() {{
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
-            }
+            }}
             menuBtn.addEventListener('click', openMenu);
             closeBtn.addEventListener('click', closeMenu);
             overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
-        })();
+            mobileLinks.forEach(link => {{ link.addEventListener('click', closeMenu); }});
+        }})();
     </script>
+'''
 
-    <section class="page-header">
-        <div class="container-narrow">
-            <nav class="breadcrumb">
-                <a href="/">Home</a> → <a href="/tools/">Tools</a> → 11x Alternatives
-            </nav>
-            <div class="page-label">Alternatives</div>
-            <h1>11x Alternatives</h1>
-            <p class="lead">Looking for 11x alternatives? Compare AI SDR platforms with better pricing and contract terms.</p>
-        </div>
-    </section>
 
-    <main>
-        <div class="container">
-            <div class="tools-grid">
-                
-                <a href="/tools/aisdr/" class="tool-card">
-                    <span class="card-badge badge-soon">Alternative</span>
-                    <div class="card-logos"><div class="card-logo"><img src="/assets/logos/AiSDR_logo.png" alt="AiSDR"></div></div>
-                    <h3>AiSDR</h3>
-                    <p>AI SDR with quarterly contracts and transparent pricing</p>
-                    <div class="card-footer">
-                        <span class="card-meta">$900/month, quarterly billing,...</span>
-                        <span class="card-link">View Details →</span>
-                    </div>
-                </a>
-
-                <a href="/tools/artisan/" class="tool-card">
-                    <span class="card-badge badge-soon">Alternative</span>
-                    <div class="card-logos"><div class="card-logo"><img src="/assets/logos/artisan_Logo.webp" alt="Artisan"></div></div>
-                    <h3>Artisan</h3>
-                    <p>AI BDR platform with 'Ava' assistant, Y Combinator backed</p>
-                    <div class="card-footer">
-                        <span class="card-meta">~$1,500-2,000/month, annual co...</span>
-                        <span class="card-link">View Details →</span>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="container-narrow" style="margin-top: 40px;">
-                <h2 style="color: var(--navy); margin-bottom: 16px;">How to Choose</h2>
-                <ul style="margin: 16px 0; padding-left: 24px; color: var(--gray-600);">
-                    <li style="padding: 8px 0;">AiSDR offers quarterly contracts vs 11x's annual lock-in</li><li style="padding: 8px 0;">Artisan has similar features at lower price point</li><li style="padding: 8px 0;">Apollo.io provides data + basic automation at fraction of cost</li>
-                </ul>
-
-                
-    <div class="cta-box">
-        <h3>Need Help Choosing?</h3>
-        <p>Get tool recommendations tailored to your team size and budget.</p>
-        <a href="https://croreport.substack.com/subscribe" class="btn btn-gold">Subscribe to The CRO Report →</a>
-    </div>
-
-            </div>
-        </div>
-    </main>
-
+def get_footer_html():
+    """Generate site footer"""
+    return '''
     <footer class="site-footer">
         <div class="footer-content">
             <span>&copy; 2025 <a href="/">The CRO Report</a></span>
@@ -730,3 +596,18 @@
     </footer>
 </body>
 </html>
+'''
+
+
+def get_cta_box(title="Get Weekly Market Intelligence",
+                description="Join 500+ sales executives getting compensation data, executive movements, and opportunity analysis.",
+                button_text="Subscribe Free",
+                button_url="https://croreport.substack.com/subscribe"):
+    """Generate a CTA box"""
+    return f'''
+    <div class="cta-box">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <a href="{button_url}" class="btn btn-gold">{button_text} →</a>
+    </div>
+'''
