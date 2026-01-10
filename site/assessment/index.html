@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3119XDMC12"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3119XDMC12');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "uvbemaajqm");
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Readiness Scorecard | The CRO Report</title>
+    <meta name="description" content="Free assessment: Discover where you stand on AI readiness and get personalized recommendations for your RevOps team.">
+
+    <link rel="canonical" href="https://thecroreport.com/assessment/">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thecroreport.com/assessment/">
+    <meta property="og:title" content="AI Readiness Scorecard | The CRO Report">
+    <meta property="og:description" content="Free assessment: Discover where you stand on AI readiness for RevOps.">
+    <meta property="og:site_name" content="The CRO Report">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #1e3a5f;
+            --navy-light: #2d4a6f;
+            --navy-dark: #152d4a;
+            --gold: #d97706;
+            --gold-hover: #b45309;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-900: #0f172a;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --red: #ef4444;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-900); background: var(--gray-50); line-height: 1.6; min-height: 100vh; }
+
+        h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.2; color: var(--navy); }
+        h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+        p { color: var(--gray-600); margin-bottom: 1rem; }
+        a { color: var(--navy); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--gold); }
+
+        /* Header */
+        .site-header { padding: 1rem 0; background: var(--white); border-bottom: 1px solid var(--gray-200); }
+        .site-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 0.5rem; }
+        .logo img { height: 36px; }
+        .back-link { font-size: 0.9rem; color: var(--gray-500); }
+
+        .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Progress Bar */
+        .progress-container { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+        .progress-bar { height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--gold); transition: width 0.3s ease; border-radius: 4px; }
+        .progress-text { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.5rem; text-align: center; }
+
+        /* Assessment Container */
+        .assessment-container { padding: 2rem 0 4rem; }
+
+        /* Intro Section */
+        .intro { text-align: center; padding: 3rem 0; }
+        .intro h1 { margin-bottom: 1rem; }
+        .intro p { max-width: 500px; margin: 0 auto 2rem; font-size: 1.1rem; }
+        .intro-features { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .intro-feature { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gray-600); }
+        .intro-feature span { color: var(--green); }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-weight: 600; font-size: 1rem; border-radius: 8px; transition: all 0.2s; cursor: pointer; border: none; }
+        .btn--primary { background: var(--navy); color: var(--white); }
+        .btn--primary:hover { background: var(--navy-light); }
+        .btn--secondary { background: var(--white); color: var(--navy); border: 2px solid var(--gray-300); }
+        .btn--secondary:hover { border-color: var(--navy); }
+        .btn--gold { background: var(--gold); color: var(--white); }
+        .btn--gold:hover { background: var(--gold-hover); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Question Card */
+        .question-card { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 1.5rem; display: none; }
+        .question-card.active { display: block; }
+        .question-card h2 { margin-bottom: 0.5rem; }
+        .question-category { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
+        .question-text { font-size: 1.1rem; color: var(--gray-900); margin-bottom: 1.5rem; }
+
+        /* Options */
+        .options { display: flex; flex-direction: column; gap: 0.75rem; }
+        .option { display: flex; align-items: center; padding: 1rem 1.25rem; border: 2px solid var(--gray-200); border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+        .option:hover { border-color: var(--navy-light); background: var(--gray-50); }
+        .option.selected { border-color: var(--navy); background: rgba(30, 58, 95, 0.05); }
+        .option input { display: none; }
+        .option-radio { width: 20px; height: 20px; border: 2px solid var(--gray-300); border-radius: 50%; margin-right: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .option.selected .option-radio { border-color: var(--navy); }
+        .option.selected .option-radio::after { content: ''; width: 10px; height: 10px; background: var(--navy); border-radius: 50%; }
+        .option-text { font-size: 0.95rem; color: var(--gray-700); }
+
+        /* Navigation */
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+        .nav-buttons .btn { flex: 1; max-width: 200px; }
+
+        /* Results */
+        .results { display: none; }
+        .results.active { display: block; }
+        .results-header { text-align: center; padding: 2rem 0; }
+        .results-header h1 { margin-bottom: 0.5rem; }
+
+        .score-card { background: var(--white); border-radius: 16px; padding: 2.5rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        .score-number { font-family: 'Fraunces', serif; font-size: 5rem; font-weight: 600; line-height: 1; }
+        .score-number.high { color: var(--green); }
+        .score-number.medium { color: var(--gold); }
+        .score-number.low { color: var(--red); }
+        .score-label { font-size: 1.25rem; color: var(--gray-500); margin-top: 0.5rem; }
+        .score-benchmark { font-size: 0.9rem; color: var(--gray-500); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gray-200); }
+        .score-benchmark strong { color: var(--navy); }
+
+        /* Category Breakdown */
+        .categories { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        .categories h3 { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .category-item { margin-bottom: 1.25rem; }
+        .category-item:last-child { margin-bottom: 0; }
+        .category-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .category-name { font-weight: 500; color: var(--gray-700); }
+        .category-score { font-weight: 600; color: var(--navy); }
+        .category-bar { height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden; }
+        .category-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+        .category-fill.high { background: var(--green); }
+        .category-fill.medium { background: var(--gold); }
+        .category-fill.low { background: var(--red); }
+
+        /* Recommendations */
+        .recommendations { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        .recommendations h3 { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .recommendation { padding: 1.25rem; background: var(--gray-50); border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--gold); }
+        .recommendation:last-child { margin-bottom: 0; }
+        .recommendation-title { font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+        .recommendation-text { font-size: 0.9rem; color: var(--gray-600); margin: 0; }
+
+        /* CTA Section */
+        .cta-section { background: var(--navy); border-radius: 16px; padding: 2.5rem; text-align: center; color: var(--white); }
+        .cta-section h3 { color: var(--white); margin-bottom: 1rem; font-size: 1.5rem; }
+        .cta-section p { color: var(--white); margin-bottom: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+        .cta-section .btn { margin: 0.5rem; }
+        .teardown-benefits { margin: 1.5rem auto; max-width: 500px; text-align: left; }
+        .benefit-item { color: var(--white); font-size: 0.9rem; padding: 0.4rem 0; }
+
+        /* Email Capture */
+        .email-capture { background: var(--gray-50); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+        .email-capture h4 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--navy); }
+        .email-capture p { font-size: 0.9rem; margin-bottom: 1rem; }
+        .email-form { display: flex; gap: 0.75rem; }
+        .email-form input { flex: 1; padding: 0.75rem 1rem; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 1rem; }
+        .email-form input:focus { outline: none; border-color: var(--navy); }
+        .email-form .btn { padding: 0.75rem 1.5rem; }
+        .email-success { display: none; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 8px; color: var(--green); text-align: center; font-weight: 500; }
+
+        /* Footer */
+        .site-footer { background: var(--navy-dark); color: var(--gray-400); padding: 2rem 0; text-align: center; font-size: 0.9rem; }
+        .site-footer a { color: var(--gold); }
+
+        @media (max-width: 600px) {
+            .intro-features { flex-direction: column; align-items: center; gap: 0.75rem; }
+            .email-form { flex-direction: column; }
+            .nav-buttons { flex-direction: column; }
+            .nav-buttons .btn { max-width: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report">
+                The CRO Report
+            </a>
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+    </header>
+
+    <div class="progress-container" id="progressContainer" style="display: none;">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text" id="progressText">Question 1 of 15</div>
+        </div>
+    </div>
+
+    <main class="assessment-container">
+        <div class="container">
+            <!-- Intro Section -->
+            <section class="intro" id="intro">
+                <h1>AI Readiness Scorecard</h1>
+                <p>Discover where your RevOps team stands on AI adoption and get actionable recommendations in 3 minutes.</p>
+                <div class="intro-features">
+                    <div class="intro-feature"><span>✓</span> 15 questions</div>
+                    <div class="intro-feature"><span>✓</span> 3 minutes</div>
+                    <div class="intro-feature"><span>✓</span> Free insights</div>
+                </div>
+                <button class="btn btn--primary" onclick="startAssessment()">Start Assessment</button>
+            </section>
+
+            <!-- Questions -->
+            <div id="questionsContainer">
+                <!-- Questions will be injected here by JavaScript -->
+            </div>
+
+            <!-- Results Section -->
+            <section class="results" id="results">
+                <div class="results-header">
+                    <h1>Your AI Readiness Score</h1>
+                    <p>Here's how your RevOps team stacks up</p>
+                </div>
+
+                <div class="score-card">
+                    <div class="score-number" id="totalScore">0</div>
+                    <div class="score-label" id="scoreLabel">out of 100</div>
+                    <div class="score-benchmark" id="scoreBenchmark">
+                        You're ahead of <strong>0%</strong> of similar companies
+                    </div>
+                </div>
+
+                <div class="categories">
+                    <h3>Category Breakdown</h3>
+                    <div id="categoryBreakdown">
+                        <!-- Categories will be injected here -->
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <h3>Your Top Recommendations</h3>
+                    <div id="recommendationsList">
+                        <!-- Recommendations will be injected here -->
+                    </div>
+                </div>
+
+                <div class="email-capture" id="emailCapture">
+                    <h4>Get your full report via email</h4>
+                    <p>We'll send you a detailed PDF with your scores and personalized action plan.</p>
+                    <form class="email-form" id="emailForm" onsubmit="submitEmail(event)">
+                        <input type="email" placeholder="your@email.com" required id="emailInput">
+                        <button type="submit" class="btn btn--gold">Send Report</button>
+                    </form>
+                    <div class="email-success" id="emailSuccess">
+                        ✓ Check your inbox! Your report is on its way.
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Want to accelerate your AI journey?</h3>
+                    <p>Get a personalized teardown of your RevOps stack with specific AI opportunities.</p>
+                    <a href="#" class="btn btn--gold" id="ctaButton">Book a Teardown ($1,000)</a>
+                    <div class="teardown-benefits">
+                        <div class="benefit-item">✓ 45-min strategy call to map your GTM stack and workflows</div>
+                        <div class="benefit-item">✓ 5-10 prioritized AI opportunities ranked by impact</div>
+                        <div class="benefit-item">✓ ROI estimates + one quick-win you can implement immediately</div>
+                    </div>
+                    <a href="/" class="btn btn--secondary" style="background: transparent; border-color: var(--gray-400); color: var(--white);">Back to Home</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2025 <a href="/">The CRO Report</a> · <a href="/assessment/">AI Readiness Scorecard</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Assessment Questions
+        const questions = [
+            // Data Readiness (25%)
+            {
+                category: "Data Readiness",
+                question: "How would you rate your CRM data quality?",
+                options: [
+                    { text: "Poor - lots of duplicates, missing fields, outdated info", value: 1 },
+                    { text: "Fair - some issues but mostly usable", value: 2 },
+                    { text: "Good - regularly cleaned, mostly accurate", value: 3 },
+                    { text: "Excellent - clean, complete, and trusted by the team", value: 4 }
+                ]
+            },
+            {
+                category: "Data Readiness",
+                question: "Do you have a single source of truth for pipeline and revenue data?",
+                options: [
+                    { text: "No - data lives in multiple disconnected systems", value: 1 },
+                    { text: "Partially - some integration but still gaps", value: 2 },
+                    { text: "Mostly - one main system with a few exceptions", value: 3 },
+                    { text: "Yes - everything flows to one centralized system", value: 4 }
+                ]
+            },
+            {
+                category: "Data Readiness",
+                question: "How many data sources feed your RevOps reporting?",
+                options: [
+                    { text: "7+ sources - it's a mess", value: 1 },
+                    { text: "4-6 sources - manageable but complex", value: 2 },
+                    { text: "2-3 sources - fairly streamlined", value: 3 },
+                    { text: "1 source - everything is consolidated", value: 4 }
+                ]
+            },
+            {
+                category: "Data Readiness",
+                question: "How often does your team manually clean or dedupe data?",
+                options: [
+                    { text: "Daily - constant firefighting", value: 1 },
+                    { text: "Weekly - regular maintenance required", value: 2 },
+                    { text: "Monthly - occasional cleanup", value: 3 },
+                    { text: "Rarely - automated processes handle it", value: 4 }
+                ]
+            },
+            // AI Adoption (25%)
+            {
+                category: "AI Adoption",
+                question: "Which AI tools does your RevOps team currently use?",
+                options: [
+                    { text: "None - we haven't adopted any AI tools yet", value: 1 },
+                    { text: "Basic - ChatGPT for ad-hoc tasks", value: 2 },
+                    { text: "Some - 1-2 AI features in existing tools (Gong, Clari, etc.)", value: 3 },
+                    { text: "Multiple - several AI tools integrated into workflows", value: 4 }
+                ]
+            },
+            {
+                category: "AI Adoption",
+                question: "Has your team received any formal AI training?",
+                options: [
+                    { text: "No training at all", value: 1 },
+                    { text: "Self-taught - people figuring it out on their own", value: 2 },
+                    { text: "Some training - a few workshops or sessions", value: 3 },
+                    { text: "Comprehensive - structured training program in place", value: 4 }
+                ]
+            },
+            {
+                category: "AI Adoption",
+                question: "Do you have any AI-powered automations running today?",
+                options: [
+                    { text: "No automations", value: 1 },
+                    { text: "A few manual workflows we'd like to automate", value: 2 },
+                    { text: "Some basic automations (not AI-powered)", value: 3 },
+                    { text: "Yes - AI automations are part of our daily workflow", value: 4 }
+                ]
+            },
+            {
+                category: "AI Adoption",
+                question: "How would you rate your team's comfort level with AI?",
+                options: [
+                    { text: "Skeptical or fearful", value: 1 },
+                    { text: "Curious but unsure where to start", value: 2 },
+                    { text: "Comfortable with basics, want to learn more", value: 3 },
+                    { text: "Enthusiastic early adopters", value: 4 }
+                ]
+            },
+            // Team Capability (25%)
+            {
+                category: "Team Capability",
+                question: "Do you have technical resources who could implement AI solutions?",
+                options: [
+                    { text: "No - we'd need to hire or outsource everything", value: 1 },
+                    { text: "Limited - some technical skills but not AI-specific", value: 2 },
+                    { text: "Moderate - people who could learn and implement", value: 3 },
+                    { text: "Strong - technical team ready to build", value: 4 }
+                ]
+            },
+            {
+                category: "Team Capability",
+                question: "How would you rate executive buy-in for AI initiatives?",
+                options: [
+                    { text: "Low - leadership is skeptical or unaware", value: 1 },
+                    { text: "Mixed - some interest but no commitment", value: 2 },
+                    { text: "Supportive - leadership wants to explore AI", value: 3 },
+                    { text: "Strong - AI is a stated priority with budget", value: 4 }
+                ]
+            },
+            {
+                category: "Team Capability",
+                question: "Does your organization have experience with change management?",
+                options: [
+                    { text: "Poor - new tools/processes rarely stick", value: 1 },
+                    { text: "Fair - some successes, some failures", value: 2 },
+                    { text: "Good - we've successfully rolled out new systems", value: 3 },
+                    { text: "Excellent - proven change management framework", value: 4 }
+                ]
+            },
+            {
+                category: "Team Capability",
+                question: "How quickly can your team typically adopt new tools?",
+                options: [
+                    { text: "Slowly - months of resistance and training", value: 1 },
+                    { text: "Gradually - takes time but eventually adopts", value: 2 },
+                    { text: "Reasonably fast - a few weeks to get comfortable", value: 3 },
+                    { text: "Very fast - team embraces new tools quickly", value: 4 }
+                ]
+            },
+            // Process Maturity (25%)
+            {
+                category: "Process Maturity",
+                question: "Are your RevOps workflows documented?",
+                options: [
+                    { text: "No - everything is tribal knowledge", value: 1 },
+                    { text: "Partially - some documentation exists but outdated", value: 2 },
+                    { text: "Mostly - key processes are documented", value: 3 },
+                    { text: "Fully - comprehensive, up-to-date documentation", value: 4 }
+                ]
+            },
+            {
+                category: "Process Maturity",
+                question: "What percentage of your team's time is spent on manual reporting?",
+                options: [
+                    { text: "Over 50% - we're drowning in manual work", value: 1 },
+                    { text: "25-50% - significant time spent on reports", value: 2 },
+                    { text: "10-25% - some manual work but manageable", value: 3 },
+                    { text: "Under 10% - mostly automated", value: 4 }
+                ]
+            },
+            {
+                category: "Process Maturity",
+                question: "How accurate is your current pipeline forecast?",
+                options: [
+                    { text: "Poor - forecasts are usually way off", value: 1 },
+                    { text: "Fair - within 30% of actual most quarters", value: 2 },
+                    { text: "Good - within 15% of actual", value: 3 },
+                    { text: "Excellent - consistently within 10%", value: 4 }
+                ]
+            }
+        ];
+
+        // Recommendations by tier
+        const recommendations = {
+            high: [
+                {
+                    title: "Scale your AI advantage",
+                    text: "You're ahead of most companies. Focus on building custom AI agents that give you competitive advantages others can't easily replicate."
+                },
+                {
+                    title: "Document and share learnings",
+                    text: "Create internal playbooks for AI adoption so your processes can scale as the team grows."
+                },
+                {
+                    title: "Explore advanced use cases",
+                    text: "Consider AI-powered forecasting, predictive lead scoring, or automated coaching insights."
+                }
+            ],
+            medium: [
+                {
+                    title: "Start with quick wins",
+                    text: "Focus on 1-2 high-impact AI implementations like pipeline risk alerts or ICP analysis before expanding."
+                },
+                {
+                    title: "Invest in team training",
+                    text: "Your team is curious but needs structured guidance. Consider AI training focused on RevOps use cases."
+                },
+                {
+                    title: "Clean your data foundation",
+                    text: "AI is only as good as your data. Prioritize CRM hygiene and data consolidation before major AI investments."
+                }
+            ],
+            low: [
+                {
+                    title: "Start with the basics",
+                    text: "Begin by getting your team comfortable with AI tools like ChatGPT for everyday tasks before implementing RevOps-specific solutions."
+                },
+                {
+                    title: "Fix your data foundation",
+                    text: "Your data readiness needs work. Focus on CRM cleanup and establishing a single source of truth first."
+                },
+                {
+                    title: "Build executive buy-in",
+                    text: "AI initiatives need leadership support. Start by presenting small proof-of-concepts that demonstrate clear ROI."
+                }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let answers = [];
+
+        // Test mode: add ?test to URL to skip to results with sample data
+        if (window.location.search.includes('test')) {
+            answers = [2, 3, 2, 3, 2, 2, 2, 3, 2, 3, 3, 3, 2, 2, 2]; // Sample mid-tier answers
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('intro').style.display = 'none';
+                showResults();
+            });
+        }
+
+        function startAssessment() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            renderQuestions();
+            showQuestion(0);
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = questions.map((q, index) => `
+                <div class="question-card" id="question-${index}">
+                    <div class="question-category">${q.category}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((opt, optIndex) => `
+                            <label class="option" onclick="selectOption(${index}, ${optIndex}, ${opt.value})">
+                                <input type="radio" name="q${index}" value="${opt.value}">
+                                <div class="option-radio"></div>
+                                <span class="option-text">${opt.text}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div class="nav-buttons">
+                        ${index > 0 ? `<button class="btn btn--secondary" onclick="prevQuestion()">← Previous</button>` : '<div></div>'}
+                        <button class="btn btn--primary" id="nextBtn-${index}" onclick="${index === questions.length - 1 ? 'showResults()' : 'nextQuestion()'}" disabled>
+                            ${index === questions.length - 1 ? 'See Results' : 'Next →'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showQuestion(index) {
+            document.querySelectorAll('.question-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`question-${index}`).classList.add('active');
+            updateProgress();
+        }
+
+        function selectOption(questionIndex, optionIndex, value) {
+            answers[questionIndex] = value;
+
+            // Update visual selection
+            const options = document.querySelectorAll(`#question-${questionIndex} .option`);
+            options.forEach((opt, i) => {
+                opt.classList.toggle('selected', i === optionIndex);
+            });
+
+            // Enable next button
+            document.getElementById(`nextBtn-${questionIndex}`).disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function calculateScores() {
+            const categories = {
+                "Data Readiness": { score: 0, count: 0, weight: 0.25 },
+                "AI Adoption": { score: 0, count: 0, weight: 0.25 },
+                "Team Capability": { score: 0, count: 0, weight: 0.25 },
+                "Process Maturity": { score: 0, count: 0, weight: 0.25 }
+            };
+
+            questions.forEach((q, i) => {
+                if (answers[i]) {
+                    categories[q.category].score += answers[i];
+                    categories[q.category].count++;
+                }
+            });
+
+            // Calculate category percentages and weighted total
+            let totalScore = 0;
+            const categoryScores = {};
+
+            for (const [name, data] of Object.entries(categories)) {
+                const maxScore = data.count * 4;
+                const percentage = Math.round((data.score / maxScore) * 100);
+                categoryScores[name] = percentage;
+                totalScore += percentage * data.weight;
+            }
+
+            return {
+                total: Math.round(totalScore),
+                categories: categoryScores
+            };
+        }
+
+        function getTier(score) {
+            if (score >= 70) return 'high';
+            if (score >= 40) return 'medium';
+            return 'low';
+        }
+
+        function getBenchmark(score) {
+            // Simulated benchmark (you could make this more sophisticated)
+            if (score >= 80) return 85;
+            if (score >= 70) return 70;
+            if (score >= 60) return 55;
+            if (score >= 50) return 40;
+            if (score >= 40) return 30;
+            return 20;
+        }
+
+        function showResults() {
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('questionsContainer').style.display = 'none';
+            document.getElementById('results').classList.add('active');
+
+            const scores = calculateScores();
+            const tier = getTier(scores.total);
+            const benchmark = getBenchmark(scores.total);
+
+            // Update total score
+            const scoreEl = document.getElementById('totalScore');
+            scoreEl.textContent = scores.total;
+            scoreEl.className = `score-number ${tier}`;
+
+            // Update benchmark
+            document.getElementById('scoreBenchmark').innerHTML =
+                `You're ahead of <strong>${benchmark}%</strong> of similar companies`;
+
+            // Update category breakdown
+            const categoryHtml = Object.entries(scores.categories).map(([name, score]) => `
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">${name}</span>
+                        <span class="category-score">${score}%</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-fill ${getTier(score)}" style="width: ${score}%"></div>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('categoryBreakdown').innerHTML = categoryHtml;
+
+            // Update recommendations
+            const recs = recommendations[tier];
+            const recsHtml = recs.map(rec => `
+                <div class="recommendation">
+                    <div class="recommendation-title">${rec.title}</div>
+                    <p class="recommendation-text">${rec.text}</p>
+                </div>
+            `).join('');
+            document.getElementById('recommendationsList').innerHTML = recsHtml;
+
+            // Build enhanced mailto with full results
+            const ctaBtn = document.getElementById('ctaButton');
+            const emailBody = buildEmailBody(scores, tier, benchmark);
+            const mailto = `mailto:rome@thecroreport.com?subject=${encodeURIComponent('AI RevOps Teardown Request')}&body=${encodeURIComponent(emailBody)}`;
+            ctaBtn.setAttribute('href', mailto);
+
+            // Track completion in analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'assessment_complete', {
+                    'score': scores.total,
+                    'tier': tier
+                });
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function buildEmailBody(scores, tier, benchmark) {
+            let body = `Hi Rome,
+
+I just completed the AI Readiness Scorecard and I'm interested in the AI RevOps Teardown.
+
+=== MY RESULTS ===
+
+OVERALL SCORE: ${scores.total}/100 (${tier === 'high' ? 'AI Leader' : tier === 'medium' ? 'AI Explorer' : 'AI Beginner'})
+Ahead of ${benchmark}% of similar companies
+
+CATEGORY BREAKDOWN:
+`;
+            // Add category scores
+            for (const [name, score] of Object.entries(scores.categories)) {
+                body += `• ${name}: ${score}%\n`;
+            }
+
+            body += `
+=== MY ANSWERS ===
+`;
+            // Add all question answers
+            questions.forEach((q, i) => {
+                const answerValue = answers[i];
+                const selectedOption = q.options.find(opt => opt.value === answerValue);
+                body += `\n${q.category} - Q${i + 1}: ${q.question}\n`;
+                body += `Answer: ${selectedOption ? selectedOption.text : 'Not answered'}\n`;
+            });
+
+            body += `
+=== NEXT STEPS ===
+
+I'd like to learn more about the AI RevOps Teardown to identify specific AI opportunities for my team.
+
+Best,
+[Your Name]
+[Company]
+[Role]`;
+
+            return body;
+        }
+
+        function submitEmail(event) {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const scores = calculateScores();
+            const tier = getTier(scores.total);
+
+            // Send to Google Sheets
+            const SHEET_URL = 'https://script.google.com/macros/s/AKfycbx_hm_MivXF7qYwxeMQeQ5z3SgiZ0C84MR6UbD1pENw7sWKIWJufCQksvlDkv6A4xPWTA/exec';
+
+            fetch(SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    score: scores.total,
+                    tier: tier,
+                    categories: {
+                        dataReadiness: scores.categories['Data Readiness'],
+                        aiAdoption: scores.categories['AI Adoption'],
+                        teamCapability: scores.categories['Team Capability'],
+                        processMaturity: scores.categories['Process Maturity']
+                    }
+                })
+            });
+
+            // Track email capture in analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'email_capture', {
+                    'source': 'ai_readiness_scorecard'
+                });
+            }
+
+            // Show success message
+            document.getElementById('emailForm').style.display = 'none';
+            document.getElementById('emailSuccess').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
