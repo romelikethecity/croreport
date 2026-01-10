@@ -73,11 +73,39 @@
         a:hover { color: var(--gold); }
 
         /* Header */
-        .site-header { padding: 1rem 0; background: var(--white); border-bottom: 1px solid var(--gray-200); }
-        .site-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .site-header { padding: 1rem 0; background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header .container { max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 0.5rem; }
         .logo img { height: 36px; }
-        .back-link { font-size: 0.9rem; color: var(--gray-500); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--gray-600); }
+        .nav-links a:hover { color: var(--navy); }
+        .nav-links a.active { color: var(--navy); font-weight: 600; }
+        .btn--nav { background: var(--navy); color: var(--white) !important; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; }
+        .btn--nav:hover { background: var(--navy-light); color: var(--white) !important; }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--navy); padding: 0.5rem; }
+        .mobile-nav-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
+        .mobile-nav-overlay.active { opacity: 1; }
+        .mobile-nav { position: fixed; top: 0; right: -100%; width: 280px; max-width: 85%; height: 100vh; background: var(--white); z-index: 1000; padding: 1.5rem; box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15); transition: right 0.3s ease; overflow-y: auto; }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200); }
+        .mobile-nav-header .logo-text { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); }
+        .mobile-nav-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); padding: 0.25rem; }
+        .mobile-nav-close:hover { color: var(--navy); }
+        .mobile-nav-links { list-style: none; margin-bottom: 2rem; }
+        .mobile-nav-links li { border-bottom: 1px solid var(--gray-100); }
+        .mobile-nav-links a { display: block; padding: 1rem 0; font-size: 1rem; font-weight: 500; color: var(--gray-600); }
+        .mobile-nav-links a:hover { color: var(--navy); }
+        .mobile-nav-subscribe { display: block; width: 100%; padding: 1rem; background: var(--navy); color: var(--white); text-align: center; font-weight: 600; font-size: 1rem; border-radius: 8px; }
+        .mobile-nav-subscribe:hover { background: var(--navy-light); color: var(--white); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-nav-overlay { display: block; pointer-events: none; }
+            .mobile-nav-overlay.active { pointer-events: auto; }
+        }
 
         .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -204,9 +232,65 @@
                 <img src="/assets/logo.jpg" alt="The CRO Report">
                 The CRO Report
             </a>
-            <a href="/" class="back-link">← Back to Home</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/assessment/" class="active">AI Assessment</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="https://croreport.substack.com/subscribe" class="btn--nav">Subscribe</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/assessment/">AI Assessment</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <script>
+        (function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+        })();
+    </script>
 
     <div class="progress-container" id="progressContainer" style="display: none;">
         <div class="container">
@@ -293,8 +377,8 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container">
-            <p>© 2025 <a href="/">The CRO Report</a> · <a href="/assessment/">AI Readiness Scorecard</a></p>
+        <div class="container" style="max-width: 1200px;">
+            <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/assessment/">AI Assessment</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
         </div>
     </footer>
 
