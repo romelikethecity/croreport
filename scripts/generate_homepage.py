@@ -414,7 +414,7 @@ html = f'''<!DOCTYPE html>
                     <li><a href="/insights/">Market Intel</a></li>
                     <li><a href="/assessment/">AI Assessment</a></li>
                     <li><a href="/about/">About</a></li>
-                    <li><a href="#subscribe" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: white;">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: white;">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -436,7 +436,7 @@ html = f'''<!DOCTYPE html>
             <li><a href="/assessment/">AI Assessment</a></li>
             <li><a href="/about/">About</a></li>
         </ul>
-        <a href="#subscribe" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
     </nav>
 
     <script>
