@@ -651,9 +651,10 @@ def generate_category_page(slug, config, df):
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/assessment/">AI Assessment</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
-                    <li><a href="https://thecroreport.substack.com" class="btn-subscribe">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -672,10 +673,11 @@ def generate_category_page(slug, config, df):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/assessment/">AI Assessment</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
-        <a href="https://thecroreport.substack.com" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
     </nav>
 
     <script>

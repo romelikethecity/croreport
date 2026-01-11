@@ -507,9 +507,10 @@ def create_job_page(job, idx):
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/assessment/">AI Assessment</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
-                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -528,10 +529,11 @@ def create_job_page(job, idx):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/assessment/">AI Assessment</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
-        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
     </nav>
 
     <script>
@@ -612,18 +614,18 @@ def create_job_page(job, idx):
             <div class="cta-box">
                 <h2>Want the Full Analysis?</h2>
                 <p>Get red flags, predecessor intel, and "should you apply?" assessments for roles like this every week.</p>
-                <a href="https://croreport.substack.com/subscribe" class="cta-link">Subscribe to The CRO Report →</a>
+                <a href="/newsletter/" class="cta-link">Subscribe to The CRO Report →</a>
             </div>
         </div>
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/assessment/">AI Assessment</a> · <a href="/about/">About</a> · <a href="/newsletter/">Newsletter</a></p>
         <p style="margin-top: 8px; font-size: 0.85rem;">Updated {update_date}</p>
     </footer>
 </body>
 </html>'''
-    
+
     # Create directory and save
     page_dir = f'{JOBS_DIR}/{slug}'
     os.makedirs(page_dir, exist_ok=True)
@@ -850,7 +852,9 @@ def create_stale_job_page(stale_slug, similar_jobs):
         .expired-header .container {{ max-width: 800px; margin: 0 auto; }}
         .expired-badge {{
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: #d97706;
+            color: white;
+            font-weight: 600;
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -1080,9 +1084,10 @@ def create_stale_job_page(stale_slug, similar_jobs):
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/assessment/">AI Assessment</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/">Newsletter</a></li>
-                    <li><a href="https://croreport.substack.com/subscribe" class="btn-subscribe">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -1101,10 +1106,11 @@ def create_stale_job_page(stale_slug, similar_jobs):
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/assessment/">AI Assessment</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/newsletter/">Newsletter</a></li>
         </ul>
-        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
     </nav>
 
     <script>
@@ -1157,13 +1163,13 @@ def create_stale_job_page(stale_slug, similar_jobs):
             <div class="cta-box">
                 <h2>Get New Roles First</h2>
                 <p>Subscribe to The CRO Report for weekly job alerts, salary insights, and market intelligence.</p>
-                <a href="https://croreport.substack.com/subscribe" class="cta-link">Subscribe Free →</a>
+                <a href="/newsletter/" class="cta-link">Subscribe Free →</a>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/assessment/">AI Assessment</a> · <a href="/about/">About</a> · <a href="/newsletter/">Newsletter</a></p>
         <p style="margin-top: 8px; font-size: 0.85rem;">Updated {update_date}</p>
     </footer>
 </body>
