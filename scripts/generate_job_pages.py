@@ -842,7 +842,7 @@ def create_stale_job_page(stale_slug, similar_jobs):
         }}
 
         .expired-header {{
-            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
