@@ -22,6 +22,47 @@ try:
 except:
     TRACKING_CODE = ""
 
+try:
+    from nav_config import NAV_ITEMS, FOOTER_ITEMS, SUBSCRIBE_LINK, SUBSCRIBE_LABEL, SITE_NAME, COPYRIGHT_YEAR
+except:
+    NAV_ITEMS = [
+        {"href": "/jobs/", "label": "Jobs"},
+        {"href": "/salaries/", "label": "Salaries"},
+        {"href": "/tools/", "label": "Tools"},
+        {"href": "/insights/", "label": "Market Intel"},
+        {"href": "/assessment/", "label": "AI Assessment"},
+        {"href": "/about/", "label": "About"},
+    ]
+    FOOTER_ITEMS = NAV_ITEMS + [{"href": "/newsletter/", "label": "Newsletter"}]
+    SUBSCRIBE_LINK = "/newsletter/"
+    SUBSCRIBE_LABEL = "Subscribe"
+    SITE_NAME = "The CRO Report"
+    COPYRIGHT_YEAR = "2025"
+
+def build_nav_list_html():
+    items = [f'<li><a href="{item["href"]}">{item["label"]}</a></li>' for item in NAV_ITEMS]
+    items.append(f'<li><a href="{SUBSCRIBE_LINK}" class="btn-subscribe">{SUBSCRIBE_LABEL}</a></li>')
+    return '\n                    '.join(items)
+
+def build_nav_div_html():
+    items = [f'<a href="{item["href"]}">{item["label"]}</a>' for item in NAV_ITEMS]
+    items.append(f'<a href="{SUBSCRIBE_LINK}" class="btn-subscribe">{SUBSCRIBE_LABEL}</a>')
+    return '\n            '.join(items)
+
+def build_mobile_nav_html():
+    items = [f'<li><a href="{item["href"]}">{item["label"]}</a></li>' for item in NAV_ITEMS]
+    return '\n            '.join(items)
+
+def build_footer_links_html(separator=" | "):
+    links = [f'<a href="/">{SITE_NAME}</a>']
+    links.extend([f'<a href="{item["href"]}">{item["label"]}</a>' for item in FOOTER_ITEMS])
+    return f'© {COPYRIGHT_YEAR} ' + separator.join(links)
+
+NAV_LIST_HTML = build_nav_list_html()
+NAV_DIV_HTML = build_nav_div_html()
+MOBILE_NAV_HTML = build_mobile_nav_html()
+FOOTER_LINKS_HTML = build_footer_links_html()
+
 BASE_URL = 'https://thecroreport.com'
 
 def get_latest_jobs_file():
@@ -654,14 +695,7 @@ def generate_html(df, stats):
             The CRO Report
         </a>
         <div class="nav-links">
-            <a href="/jobs/">Jobs</a>
-            <a href="/salaries/">Salaries</a>
-            <a href="/tools/">Tools</a>
-            <a href="/insights/">Market Intel</a>
-            <a href="/assessment/">AI Assessment</a>
-            <a href="/about/">About</a>
-            <a href="/newsletter/">Newsletter</a>
-            <a href="/newsletter/" class="btn-subscribe">Subscribe</a>
+            {NAV_DIV_HTML}
         </div>
         <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
     </nav>
@@ -674,15 +708,9 @@ def generate_html(df, stats):
             <button class="mobile-nav-close" aria-label="Close menu">✕</button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="/jobs/">Jobs</a></li>
-            <li><a href="/salaries/">Salaries</a></li>
-            <li><a href="/tools/">Tools</a></li>
-            <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/newsletter/">Newsletter</a></li>
+            {MOBILE_NAV_HTML}
         </ul>
-        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="{SUBSCRIBE_LINK}" class="mobile-nav-subscribe">{SUBSCRIBE_LABEL}</a>
     </nav>
 
     <script>
@@ -747,7 +775,7 @@ def generate_html(df, stats):
     </main>
     
     <footer class="footer">
-        <p>&copy; {current_year} <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>{FOOTER_LINKS_HTML}</p>
         <p style="margin-top: 8px; font-size: 0.8rem; color: #94a3b8;">Updated {update_date}</p>
     </footer>
 </body>

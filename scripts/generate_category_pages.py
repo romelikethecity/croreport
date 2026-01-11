@@ -16,6 +16,47 @@ try:
 except:
     TRACKING_CODE = ""
 
+try:
+    from nav_config import NAV_ITEMS, FOOTER_ITEMS, SUBSCRIBE_LINK, SUBSCRIBE_LABEL, SITE_NAME, COPYRIGHT_YEAR
+except:
+    NAV_ITEMS = [
+        {"href": "/jobs/", "label": "Jobs"},
+        {"href": "/salaries/", "label": "Salaries"},
+        {"href": "/tools/", "label": "Tools"},
+        {"href": "/insights/", "label": "Market Intel"},
+        {"href": "/assessment/", "label": "AI Assessment"},
+        {"href": "/about/", "label": "About"},
+    ]
+    FOOTER_ITEMS = NAV_ITEMS + [{"href": "/newsletter/", "label": "Newsletter"}]
+    SUBSCRIBE_LINK = "/newsletter/"
+    SUBSCRIBE_LABEL = "Subscribe"
+    SITE_NAME = "The CRO Report"
+    COPYRIGHT_YEAR = "2025"
+
+def build_nav_list_html():
+    items = [f'<li><a href="{item["href"]}">{item["label"]}</a></li>' for item in NAV_ITEMS]
+    items.append(f'<li><a href="{SUBSCRIBE_LINK}" class="btn-subscribe">{SUBSCRIBE_LABEL}</a></li>')
+    return '\n                    '.join(items)
+
+def build_nav_div_html():
+    items = [f'<a href="{item["href"]}">{item["label"]}</a>' for item in NAV_ITEMS]
+    items.append(f'<a href="{SUBSCRIBE_LINK}" class="btn-subscribe">{SUBSCRIBE_LABEL}</a>')
+    return '\n            '.join(items)
+
+def build_mobile_nav_html():
+    items = [f'<li><a href="{item["href"]}">{item["label"]}</a></li>' for item in NAV_ITEMS]
+    return '\n            '.join(items)
+
+def build_footer_links_html(separator=" | "):
+    links = [f'<a href="/">{SITE_NAME}</a>']
+    links.extend([f'<a href="{item["href"]}">{item["label"]}</a>' for item in FOOTER_ITEMS])
+    return f'© {COPYRIGHT_YEAR} ' + separator.join(links)
+
+NAV_LIST_HTML = build_nav_list_html()
+NAV_DIV_HTML = build_nav_div_html()
+MOBILE_NAV_HTML = build_mobile_nav_html()
+FOOTER_LINKS_HTML = build_footer_links_html()
+
 DATA_DIR = 'data'
 SITE_DIR = 'site'
 JOBS_DIR = f'{SITE_DIR}/jobs'
@@ -647,14 +688,7 @@ def generate_category_page(slug, config, df):
             <a href="/" class="logo"><img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;"> The CRO Report</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="/jobs/">Jobs</a></li>
-                    <li><a href="/salaries/">Salaries</a></li>
-                    <li><a href="/tools/">Tools</a></li>
-                    <li><a href="/insights/">Market Intel</a></li>
-                    <li><a href="/assessment/">AI Assessment</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/newsletter/">Newsletter</a></li>
-                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
+                    {NAV_LIST_HTML}
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
@@ -669,15 +703,9 @@ def generate_category_page(slug, config, df):
             <button class="mobile-nav-close" aria-label="Close menu">✕</button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="/jobs/">Jobs</a></li>
-            <li><a href="/salaries/">Salaries</a></li>
-            <li><a href="/tools/">Tools</a></li>
-            <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/newsletter/">Newsletter</a></li>
+            {MOBILE_NAV_HTML}
         </ul>
-        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="{SUBSCRIBE_LINK}" class="mobile-nav-subscribe">{SUBSCRIBE_LABEL}</a>
     </nav>
 
     <script>
@@ -745,7 +773,7 @@ def generate_category_page(slug, config, df):
     </div>
     
     <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
+        <p>{FOOTER_LINKS_HTML}</p>
     </footer>
 </body>
 </html>'''

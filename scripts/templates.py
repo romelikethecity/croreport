@@ -17,6 +17,24 @@ try:
 except:
     TRACKING_CODE = ""
 
+try:
+    from nav_config import NAV_ITEMS, FOOTER_ITEMS, SUBSCRIBE_LINK, SUBSCRIBE_LABEL, SITE_NAME, COPYRIGHT_YEAR
+except:
+    # Fallback if nav_config not found
+    NAV_ITEMS = [
+        {"href": "/jobs/", "label": "Jobs"},
+        {"href": "/salaries/", "label": "Salaries"},
+        {"href": "/tools/", "label": "Tools"},
+        {"href": "/insights/", "label": "Market Intel"},
+        {"href": "/assessment/", "label": "AI Assessment"},
+        {"href": "/about/", "label": "About"},
+    ]
+    FOOTER_ITEMS = NAV_ITEMS + [{"href": "/newsletter/", "label": "Newsletter"}]
+    SUBSCRIBE_LINK = "/newsletter/"
+    SUBSCRIBE_LABEL = "Subscribe"
+    SITE_NAME = "The CRO Report"
+    COPYRIGHT_YEAR = "2025"
+
 # SEO: Always use thecroreport.com as canonical domain
 BASE_URL = 'https://thecroreport.com'
 
@@ -509,26 +527,35 @@ def get_html_head(title, description, page_path, include_styles=True):
 
 
 def get_nav_html(active_page=None):
-    """Generate site navigation including mobile nav and JS"""
-    def active_class(page):
-        return ' class="active"' if page == active_page else ''
+    """Generate site navigation including mobile nav and JS.
+
+    Uses NAV_ITEMS from nav_config.py for centralized nav management.
+    """
+    # Build desktop nav links
+    nav_links = []
+    for item in NAV_ITEMS:
+        page_id = item['href'].strip('/')
+        active = ' class="active"' if page_id == active_page else ''
+        nav_links.append(f'<a href="{item["href"]}"{active}>{item["label"]}</a>')
+    nav_links.append(f'<a href="{SUBSCRIBE_LINK}" class="nav-cta">{SUBSCRIBE_LABEL}</a>')
+    nav_html = '\n                '.join(nav_links)
+
+    # Build mobile nav links
+    mobile_links = []
+    for item in NAV_ITEMS:
+        mobile_links.append(f'<li><a href="{item["href"]}">{item["label"]}</a></li>')
+    mobile_nav_html = '\n            '.join(mobile_links)
 
     return f'''
 <body>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report">
-                The CRO Report
+                <img src="/assets/logo.jpg" alt="{SITE_NAME}">
+                {SITE_NAME}
             </a>
             <nav class="nav">
-                <a href="/jobs/"{active_class('jobs')}>Jobs</a>
-                <a href="/salaries/"{active_class('salaries')}>Salaries</a>
-                <a href="/tools/"{active_class('tools')}>Tools</a>
-                <a href="/insights/"{active_class('insights')}>Market Intel</a>
-                <a href="/assessment/"{active_class('assessment')}>AI Assessment</a>
-                <a href="/about/"{active_class('about')}>About</a>
-                <a href="/newsletter/" class="nav-cta">Subscribe</a>
+                {nav_html}
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
         </div>
@@ -538,18 +565,13 @@ def get_nav_html(active_page=None):
     <div class="mobile-nav-overlay"></div>
     <nav class="mobile-nav">
         <div class="mobile-nav-header">
-            <span class="logo-text">The CRO Report</span>
+            <span class="logo-text">{SITE_NAME}</span>
             <button class="mobile-nav-close" aria-label="Close menu">✕</button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="/jobs/">Jobs</a></li>
-            <li><a href="/salaries/">Salaries</a></li>
-            <li><a href="/tools/">Tools</a></li>
-            <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
-            <li><a href="/about/">About</a></li>
+            {mobile_nav_html}
         </ul>
-        <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
+        <a href="{SUBSCRIBE_LINK}" class="mobile-nav-subscribe">{SUBSCRIBE_LABEL}</a>
     </nav>
 
     <script>
@@ -579,19 +601,22 @@ def get_nav_html(active_page=None):
 
 
 def get_footer_html():
-    """Generate site footer"""
-    return '''
+    """Generate site footer.
+
+    Uses FOOTER_ITEMS from nav_config.py for centralized nav management.
+    """
+    # Build footer links
+    footer_links = []
+    for item in FOOTER_ITEMS:
+        footer_links.append(f'<a href="{item["href"]}">{item["label"]}</a>')
+    footer_html = '\n                '.join(footer_links)
+
+    return f'''
     <footer class="site-footer">
         <div class="footer-content">
-            <span>&copy; 2025 <a href="/">The CRO Report</a></span>
+            <span>&copy; {COPYRIGHT_YEAR} <a href="/">{SITE_NAME}</a></span>
             <div class="footer-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/assessment/">AI Assessment</a>
-                <a href="/about/">About</a>
-                <a href="https://croreport.substack.com">Newsletter</a>
+                {footer_html}
             </div>
         </div>
     </footer>
