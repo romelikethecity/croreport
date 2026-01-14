@@ -525,7 +525,7 @@ html = f'''<!DOCTYPE html>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img">
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img" width="32" height="32">
                 <span>The CRO Report</span>
             </a>
             <nav>

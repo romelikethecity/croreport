@@ -537,7 +537,7 @@ def create_job_page(job, idx):
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report">
+                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
                 <span>The CRO Report</span>
             </a>
             <nav>
@@ -1101,7 +1101,7 @@ def create_stale_job_page(stale_slug, similar_jobs):
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report">
+                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
                 <span>The CRO Report</span>
             </a>
             <nav>

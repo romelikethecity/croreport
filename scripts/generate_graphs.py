@@ -115,7 +115,7 @@ def create_graph(df_subset, title, filename, show_annotations=True):
     
     # Save to site/assets/
     output_path = f"{SITE_ASSETS}/{filename}"
-    plt.savefig(output_path, dpi=300, bbox_inches='tight', facecolor=colors['bg'], edgecolor='none')
+    plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor=colors['bg'], edgecolor='none')
     print(f"✅ Saved: {output_path}")
     plt.close()
 

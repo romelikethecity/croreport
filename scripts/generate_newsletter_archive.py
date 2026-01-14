@@ -497,7 +497,7 @@ html_content = f'''<!DOCTYPE html>
 <body>
     <header class="site-header">
         <div class="header-container">
-            <a href="/" class="logo"><img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;"> The CRO Report</a>
+            <a href="/" class="logo"><img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40" style="vertical-align: middle;"> The CRO Report</a>
             <nav>
                 <ul class="nav-links">
                     {NAV_LIST_HTML}

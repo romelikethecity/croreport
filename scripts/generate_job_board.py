@@ -691,7 +691,7 @@ def generate_html(df, stats):
 <body>
     <nav class="nav">
         <a href="/" class="nav-logo">
-            <img src="/assets/logo.jpg" alt="The CRO Report">
+            <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
             The CRO Report
         </a>
         <div class="nav-links">

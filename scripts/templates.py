@@ -551,7 +551,7 @@ def get_nav_html(active_page=None):
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="{SITE_NAME}">
+                <img src="/assets/logo.jpg" alt="{SITE_NAME}" width="40" height="40">
                 {SITE_NAME}
             </a>
             <nav class="nav">
