@@ -1,16 +1,16 @@
 # 💰 Compensation Benchmarking
 
-**Data as of January 14, 2026** | 567 executive roles with disclosed salary out of 1025 total (58.7% disclosure rate)
+**Data as of January 14, 2026** | 656 executive roles with disclosed salary out of 1160 total (59.6% disclosure rate)
 
 ## By Seniority Level
 
-**C-Level** (n=17): $216,941-$295,441 avg base
+**C-Level** (n=20): $250,445-$326,670 avg base
 
 **EVP** (n=4): $253,750-$302,500 avg base
 
-**SVP** (n=28): $203,523-$260,157 avg base
+**SVP** (n=35): $204,335-$265,188 avg base
 
-**VP** (n=518): $168,001-$253,152 avg base
+**VP** (n=597): $166,082-$251,568 avg base
 
 ## By Company Stage
 
@@ -56,25 +56,25 @@
 
 ## Tech vs. Non-Tech
 
-**Tech** (n=15): $158,688-$212,950 avg base
+**Tech** (n=21): $156,263-$208,788 avg base
 
-**Non-Tech** (n=552): $172,184-$256,260 avg base
+**Non-Tech** (n=635): $171,725-$256,420 avg base
 
 ## Highest Paying Roles This Week
 
-1. **$240,000-$765,000**: Regional Vice President of Sales @ IPS Energy Roofing and Solar
+1. **$30,000-$1,000,000**: SAAS Sales Associate/ Vice President @ Newly Created Application
 
-2. **$256,400-$529,000**: Vice President of Sales - Territory Ecosystem - Midwest @ SAP
+2. **$550,000-$600,000**: Chief Revenue Officer @ Augean Robotics
 
-3. **$300,000-$500,000**: VP of Sales @ Applause
+3. **$550,000-$600,000**: Chief Revenue Officer @ Burro
 
-4. **$230,000-$400,000**: Chief Revenue Officer (CRO) @ Undisclosed
+4. **$322,000-$598,000**: Vice President, Sales @ Thomson Reuters
 
-5. **$211,100-$358,900**: VP, Head of Global Sales, ServiceNow.org @ ServiceNow
+5. **$256,400-$529,000**: Vice President of Sales - Territory Ecosystem - Midwest @ SAP
 
 ## Trend Analysis
 
-Over 6 weeks of data, average max base is **down 6.7%** ($252,819 → $235,820).
+Over 7 weeks of data, average max base is **up 0.3%** ($252,819 → $253,500).
 
 ## What This Means for Negotiations
 

@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-01-14T15:56:00.833823",
-  "total_records": 1025,
-  "records_with_salary": 602,
-  "executive_records": 567,
-  "disclosure_rate": 58.7,
+  "generated_at": "2026-01-14T22:50:40.073245",
+  "total_records": 1160,
+  "records_with_salary": 691,
+  "executive_records": 656,
+  "disclosure_rate": 59.6,
   "date_range": {
     "earliest": "2025-01-21",
-    "latest": "2026-01-06"
+    "latest": "2026-01-13"
   },
   "by_seniority": {
     "C-Level": {
-      "count": 17,
-      "min_base_avg": 216941,
-      "max_base_avg": 295441,
-      "min_base_median": 220000,
-      "max_base_median": 260000,
+      "count": 20,
+      "min_base_avg": 250445,
+      "max_base_avg": 326670,
+      "min_base_median": 222950,
+      "max_base_median": 283750,
       "range_low": 50000,
-      "range_high": 500000
+      "range_high": 600000
     },
     "EVP": {
       "count": 4,
@@ -28,22 +28,22 @@
       "range_high": 350000
     },
     "SVP": {
-      "count": 28,
-      "min_base_avg": 203523,
-      "max_base_avg": 260157,
+      "count": 35,
+      "min_base_avg": 204335,
+      "max_base_avg": 265188,
       "min_base_median": 182400,
-      "max_base_median": 261800,
-      "range_low": 170000,
+      "max_base_median": 270000,
+      "range_low": 100000,
       "range_high": 450000
     },
     "VP": {
-      "count": 518,
-      "min_base_avg": 168001,
-      "max_base_avg": 253152,
-      "min_base_median": 157686,
-      "max_base_median": 225000,
+      "count": 597,
+      "min_base_avg": 166082,
+      "max_base_avg": 251568,
+      "min_base_median": 155000,
+      "max_base_median": 220000,
       "range_low": 200,
-      "range_high": 900000
+      "range_high": 1000000
     }
   },
   "by_company_stage": {
@@ -220,29 +220,37 @@
   },
   "by_tech": {
     "Tech": {
-      "count": 15,
-      "min_base_avg": 158688,
-      "max_base_avg": 212950
+      "count": 21,
+      "min_base_avg": 156263,
+      "max_base_avg": 208788
     },
     "Non-Tech": {
-      "count": 552,
-      "min_base_avg": 172184,
-      "max_base_avg": 256260
+      "count": 635,
+      "min_base_avg": 171725,
+      "max_base_avg": 256420
     }
   },
   "by_remote": {
     "Remote": {
-      "count": 256,
-      "min_base_avg": 181986,
-      "max_base_avg": 264174
+      "count": 291,
+      "min_base_avg": 175637,
+      "max_base_avg": 260190
     },
     "On-site": {
-      "count": 311,
-      "min_base_avg": 163465,
-      "max_base_avg": 247656
+      "count": 365,
+      "min_base_avg": 167716,
+      "max_base_avg": 250673
     }
   },
   "top_paying_roles": [
+    {
+      "title": "SAAS Sales Associate/ Vice President",
+      "company": "Newly Created Application",
+      "min_amount": 30000.0,
+      "max_amount": 1000000.0,
+      "seniority": "VP",
+      "company_stage": NaN
+    },
     {
       "title": "Vice President of Sales",
       "company": "Energy Harbor",
@@ -284,42 +292,34 @@
       "company_stage": "Seed/Series A"
     },
     {
-      "title": "Vice President, Sales Leader (North America Acceptance Solutions)",
-      "company": "Visa",
-      "min_amount": 321400.0,
-      "max_amount": 590900.0,
-      "seniority": "VP",
-      "company_stage": "Enterprise/Public"
+      "title": "Chief Revenue Officer",
+      "company": "Augean Robotics",
+      "min_amount": 550000.0,
+      "max_amount": 600000.0,
+      "seniority": "C-Level",
+      "company_stage": NaN
     },
     {
-      "title": "Vice President, Sales Leader (North America Issuing Solutions)",
-      "company": "Visa",
-      "min_amount": 321400.0,
-      "max_amount": 590900.0,
-      "seniority": "VP",
-      "company_stage": "Enterprise/Public"
+      "title": "Chief Revenue Officer",
+      "company": "Burro",
+      "min_amount": 550000.0,
+      "max_amount": 600000.0,
+      "seniority": "C-Level",
+      "company_stage": NaN
     },
     {
       "title": "Vice President, Sales",
       "company": "Thomson Reuters",
-      "min_amount": 315000.0,
-      "max_amount": 585000.0,
+      "min_amount": 322000.0,
+      "max_amount": 598000.0,
       "seniority": "VP",
-      "company_stage": "Enterprise/Public"
+      "company_stage": NaN
     },
     {
-      "title": "Vice President, Services Sales - West Market",
-      "company": "SAP",
-      "min_amount": 341600.0,
-      "max_amount": 580800.0,
-      "seniority": "VP",
-      "company_stage": "Enterprise/Public"
-    },
-    {
-      "title": "Regional Vice President, SASE Sales",
-      "company": "Palo Alto Networks",
-      "min_amount": 478800.0,
-      "max_amount": 558600.0,
+      "title": "Vice President, Sales Leader (North America Acceptance Solutions)",
+      "company": "Visa",
+      "min_amount": 321400.0,
+      "max_amount": 590900.0,
       "seniority": "VP",
       "company_stage": "Enterprise/Public"
     }
@@ -360,6 +360,12 @@
       "avg_min": 144741,
       "avg_max": 235820,
       "disclosure_rate": 72.3
+    },
+    "2026-W02": {
+      "count": 89,
+      "avg_min": 167426,
+      "avg_max": 253500,
+      "disclosure_rate": 65.9
     }
   }
 }
