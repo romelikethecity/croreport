@@ -92,3 +92,21 @@ site/
 - No AI tells (robust, leverage, navigate, cutting-edge)
 - Source every claim with links
 - Be honest about red flags even for tools with affiliate potential
+
+## Performance Optimization
+
+See `claude/PERFORMANCE-GUIDE.md` for comprehensive PageSpeed optimization guide.
+
+**Key optimizations implemented (Jan 2026):**
+
+| Optimization | Impact | File(s) Changed |
+|-------------|--------|-----------------|
+| Logo compression (1.4MB → 14KB) | LCP: 10.1s → 2.3s | `site/assets/logo.jpg` |
+| Async Google Fonts | FCP: 2.9s → 1.5s | All generators |
+| Chart DPI reduction (300 → 150) | -55% file size | `generate_graphs.py` |
+| Image dimensions (width/height) | Prevents CLS | All generators |
+| Lazy iframe loading | Reduces initial load | `generate_homepage.py` |
+
+**Current Performance (Jan 2026):** 77-80 on PageSpeed Insights (mobile)
+
+**Analytics placement:** Keep GA4 + Clarity in `<head>` per Google's recommendation. Moving to `</body>` improves PageSpeed but hurts tracking accuracy.
