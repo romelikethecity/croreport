@@ -63,17 +63,33 @@ print(f"\n✅ Master database saved: {len(combined_df)} total records")
 # Update historical tracking file for trend charts
 tracking_file = f"{DATA_DIR}/Sales_Exec_Openings.csv"
 if os.path.exists(tracking_file):
-    # Read existing data to check for duplicates
     tracking_df = pd.read_csv(tracking_file)
-    today = datetime.now().strftime('%Y-%m-%d')
     job_count = len(new_df)
 
-    # Only add if this date isn't already in the file
-    if today not in tracking_df['Date'].values:
-        with open(tracking_file, 'a') as f:
-            f.write(f"\n{today},{job_count}")
-        print(f"📈 Updated trend tracking: {today} → {job_count} jobs")
+    # Extract date from filename (executive_sales_jobs_YYYYMMDD.csv)
+    import re
+    filename = os.path.basename(latest_enriched)
+    date_match = re.search(r'(\d{8})', filename)
+    if date_match:
+        date_str = date_match.group(1)
+        file_date = f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}"
     else:
-        print(f"📈 Trend tracking already has entry for {today}")
+        file_date = datetime.now().strftime('%Y-%m-%d')
+
+    # Check if this date exists and needs updating
+    if file_date in tracking_df['Date'].values:
+        existing_count = tracking_df.loc[tracking_df['Date'] == file_date, 'Sales Exec Openings'].values[0]
+        if existing_count != job_count:
+            # Update existing entry with correct count
+            tracking_df.loc[tracking_df['Date'] == file_date, 'Sales Exec Openings'] = job_count
+            tracking_df.to_csv(tracking_file, index=False)
+            print(f"📈 Updated trend tracking: {file_date} → {job_count} jobs (was {existing_count})")
+        else:
+            print(f"📈 Trend tracking already correct for {file_date}: {job_count} jobs")
+    else:
+        # Add new entry
+        with open(tracking_file, 'a') as f:
+            f.write(f"\n{file_date},{job_count}")
+        print(f"📈 Added trend tracking: {file_date} → {job_count} jobs")
 
 print(f"{'='*70}")
