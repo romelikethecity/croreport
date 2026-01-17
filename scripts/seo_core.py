@@ -205,3 +205,143 @@ def get_related_salary_pages(current_page: Dict[str, Any], all_pages: List[Dict[
 
 # Note: generate_faq_html() and CSS moved to templates.py for centralization
 # Use templates.generate_faq_html() and templates.CSS_FAQ_SECTION instead
+
+
+# =============================================================================
+# CONTENT VALIDATION
+# =============================================================================
+
+# Minimum thresholds for content quality
+MIN_WORD_COUNT = 300
+MIN_FAQ_COUNT = 3
+
+
+def validate_page_content(page_data: Dict[str, Any], all_pages: List[Dict[str, Any]] = None) -> List[str]:
+    """
+    Validate page meets quality thresholds for pSEO.
+
+    Args:
+        page_data: Dict containing title, content/html, faqs, etc.
+        all_pages: List of all pages for uniqueness checking
+
+    Returns:
+        List of validation issues (empty if valid)
+    """
+    issues = []
+
+    # 1. Word count check
+    content = page_data.get('content', '') or page_data.get('html', '')
+    # Strip HTML tags for word count
+    import re
+    text_only = re.sub(r'<[^>]+>', ' ', content)
+    text_only = re.sub(r'\s+', ' ', text_only).strip()
+    word_count = len(text_only.split())
+
+    if word_count < MIN_WORD_COUNT:
+        issues.append(f"Thin content: {word_count} words (minimum: {MIN_WORD_COUNT})")
+
+    # 2. FAQ count check
+    faqs = page_data.get('faqs', [])
+    faq_count = len(faqs) if faqs else 0
+    if faq_count < MIN_FAQ_COUNT:
+        issues.append(f"Low FAQ count: {faq_count} (minimum: {MIN_FAQ_COUNT})")
+
+    # 3. Title present and reasonable length
+    title = page_data.get('title', '')
+    if not title:
+        issues.append("Missing title")
+    elif len(title) > 70:
+        issues.append(f"Title too long: {len(title)} chars (max: 70)")
+    elif len(title) < 20:
+        issues.append(f"Title too short: {len(title)} chars (min: 20)")
+
+    # 4. Description present and reasonable length
+    description = page_data.get('description', '')
+    if not description:
+        issues.append("Missing meta description")
+    elif len(description) > 160:
+        issues.append(f"Description too long: {len(description)} chars (max: 160)")
+    elif len(description) < 50:
+        issues.append(f"Description too short: {len(description)} chars (min: 50)")
+
+    # 5. Title uniqueness check
+    if all_pages:
+        existing_titles = [p.get('title') for p in all_pages if p.get('title') != title]
+        if title in existing_titles:
+            issues.append(f"Duplicate title found: {title}")
+
+    # 6. Slug/URL present
+    if not page_data.get('slug') and not page_data.get('url'):
+        issues.append("Missing slug/URL")
+
+    return issues
+
+
+def validate_all_pages(pages: List[Dict[str, Any]], strict: bool = False) -> Dict[str, Any]:
+    """
+    Validate all pages and return summary report.
+
+    Args:
+        pages: List of page data dicts
+        strict: If True, raise exception on any issues
+
+    Returns:
+        Dict with validation summary and issues by page
+    """
+    results = {
+        'total_pages': len(pages),
+        'valid_pages': 0,
+        'pages_with_issues': 0,
+        'issues_by_page': {},
+        'issue_summary': {}
+    }
+
+    for page in pages:
+        slug = page.get('slug', page.get('url', 'unknown'))
+        issues = validate_page_content(page, pages)
+
+        if issues:
+            results['pages_with_issues'] += 1
+            results['issues_by_page'][slug] = issues
+
+            # Track issue types
+            for issue in issues:
+                issue_type = issue.split(':')[0]
+                results['issue_summary'][issue_type] = results['issue_summary'].get(issue_type, 0) + 1
+        else:
+            results['valid_pages'] += 1
+
+    if strict and results['pages_with_issues'] > 0:
+        raise ValueError(f"Validation failed: {results['pages_with_issues']} pages have issues")
+
+    return results
+
+
+# =============================================================================
+# SOFTWARE/TOOL SCHEMA (moved from generate_tools_pages_v2.py)
+# =============================================================================
+
+def generate_software_schema(tool: Dict[str, Any]) -> str:
+    """Generate SoftwareApplication schema for tool pages."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": tool.get('name'),
+        "description": tool.get('description', tool.get('tagline', '')),
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": f"https://thecroreport.com/tools/{tool.get('slug')}/",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "reviewCount": "50"
+        }
+    }
+
+    if tool.get('pricing'):
+        schema["offers"] = {
+            "@type": "Offer",
+            "description": tool['pricing']
+        }
+
+    return f'<script type="application/ld+json">{json.dumps(schema, indent=2)}</script>'

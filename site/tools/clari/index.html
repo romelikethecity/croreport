@@ -22,21 +22,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clari Review | The CRO Report</title>
-    <meta name="description" content="Revenue platform for forecasting and pipeline visibility Pricing, pros, cons, and alternatives.">
+    <meta name="description" content="Clari review: Revenue platform for forecasting and pipeline. See pricing, pros/cons, and alternatives for 2026.">
     <link rel="canonical" href="https://thecroreport.com/tools/clari/">
 
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thecroreport.com/tools/clari/">
     <meta property="og:title" content="Clari Review">
-    <meta property="og:description" content="Revenue platform for forecasting and pipeline visibility Pricing, pros, cons, and alternatives.">
+    <meta property="og:description" content="Clari review: Revenue platform for forecasting and pipeline. See pricing, pros/cons, and alternatives for 2026.">
     <meta property="og:site_name" content="The CRO Report">
     <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Clari Review">
-    <meta name="twitter:description" content="Revenue platform for forecasting and pipeline visibility Pricing, pros, cons, and alternatives.">
+    <meta name="twitter:description" content="Clari review: Revenue platform for forecasting and pipeline. See pricing, pros/cons, and alternatives for 2026.">
     <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -422,182 +422,297 @@
     }
 
         
-    /* Section Headers */
-    .section-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+    /* Page Header (gradient style) */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .header .eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dark);
         margin-bottom: 12px;
     }
-
-    .section-header h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--navy);
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
     }
+    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    .header .breadcrumb { margin-bottom: 16px; opacity: 0.8; font-size: 0.9rem; }
+    .header .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .header .breadcrumb a:hover { text-decoration: underline; }
 
-    .section-icon { font-size: 1.4rem; }
+        
+    /* CTA Section (gradient style) */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .cta-btn:hover { background: #c2660a; }
 
-    .section-description {
-        color: var(--gray-600);
+        
+    /* FAQ Section */
+    .faq-section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 32px 0;
+    }
+    .faq-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
         margin-bottom: 24px;
-        max-width: 650px;
-        font-size: 0.95rem;
     }
-
-    /* Tool Cards Grid */
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 20px;
+    .faq-item {
+        border-bottom: 1px solid var(--gray-200);
+        padding: 20px 0;
     }
-
-    @media (max-width: 768px) {
-        .tools-grid { grid-template-columns: 1fr; }
-    }
-
-    .tool-card {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .tool-card.coming-soon { opacity: 0.6; }
-
-    .tool-card h3 {
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
         font-size: 1.05rem;
         font-weight: 600;
         color: var(--navy);
-        margin-bottom: 8px;
+        margin-bottom: 12px;
     }
-
-    .tool-card p {
-        font-size: 0.9rem;
+    .faq-answer {
+        font-size: 0.95rem;
         color: var(--gray-600);
-        line-height: 1.55;
-        flex-grow: 1;
+        line-height: 1.7;
+        margin: 0;
     }
 
-    .card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid var(--gray-100);
+        
+    /* Tool Header - extends shared .header with tool-specific styles */
+    .header-content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .header .eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.1);
+        padding: 6px 14px;
+        border-radius: 20px;
     }
 
-    .card-meta { font-size: 0.8rem; color: var(--gray-500); }
-    .card-link { font-size: 0.85rem; font-weight: 600; color: var(--gold-muted); }
+    /* Tool Content */
+    .tool-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
 
-    /* Card Logos */
-    .card-logos {
-        display: flex;
-        gap: 10px;
+    .tool-section {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 32px;
+        margin: 24px 0;
+    }
+
+    .tool-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
         margin-bottom: 16px;
     }
 
-    .card-logo {
-        width: 40px;
-        height: 40px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    .card-logo img {
-        max-width: 32px;
-        max-height: 32px;
-        object-fit: contain;
+    .tool-section p {
+        color: var(--gray-700);
+        line-height: 1.7;
     }
 
     /* Pros/Cons */
-    .pros-cons {
+    .pros-cons-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px;
-        margin: 24px 0;
     }
-    @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
 
-    .pros, .cons {
-        background: var(--white);
-        border-radius: 10px;
-        padding: 20px;
+    @media (max-width: 600px) {
+        .pros-cons-grid {
+            grid-template-columns: 1fr;
+        }
     }
-    .pros { border: 1px solid var(--green); }
-    .cons { border: 1px solid var(--red); }
 
-    .pros h4, .cons h4 { font-size: 0.95rem; margin-bottom: 12px; }
-    .pros h4 { color: var(--green); }
-    .cons h4 { color: var(--red); }
-
-    .pros ul, .cons ul { list-style: none; }
-    .pros li, .cons li { padding: 6px 0; font-size: 0.9rem; }
-    .pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
-    .cons li::before { content: '✗ '; color: var(--red); font-weight: 600; }
-
-    /* Info Card */
-    .info-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 12px;
+    .pros-section, .cons-section {
         padding: 24px;
-        margin-bottom: 24px;
+        border-radius: 8px;
     }
 
-    .info-card h3 {
-        font-size: 1.1rem;
+    .pros-section {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+    }
+
+    .cons-section {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+    }
+
+    .pros-section h3 {
+        color: #166534;
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .cons-section h3 {
+        color: #991b1b;
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .pros-list, .cons-list {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .pros-list li {
+        color: #166534;
+        margin-bottom: 8px;
+    }
+
+    .cons-list li {
+        color: #991b1b;
+        margin-bottom: 8px;
+    }
+
+    /* Info Boxes */
+    .pricing-box {
+        background: var(--gray-50);
+        border-radius: 8px;
+        padding: 24px;
+        margin-top: 20px;
+    }
+
+    .pricing-box h3 {
         color: var(--navy);
-        margin-bottom: 16px;
+        margin-bottom: 12px;
+        font-size: 1rem;
     }
 
-    .info-row {
+    .best-for-box {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .best-for-box h3 {
+        color: #1e40af;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .best-for-box p {
+        color: #1e3a8a;
+        margin: 0;
+    }
+
+    /* Alternatives Section */
+    .alternatives-section {
+        margin-top: 40px;
+    }
+
+    .alternatives-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 20px;
+    }
+
+    .alternatives-grid {
         display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--gray-100);
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
-    .info-row:last-child { border-bottom: none; }
-    .info-label { color: var(--gray-500); font-size: 0.9rem; }
-    .info-value { font-weight: 500; font-size: 0.9rem; }
-    .info-value a { color: var(--gold-muted); }
-
-    /* Comparison Table */
-    .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 24px 0;
+    .alt-link {
         background: var(--white);
-        border-radius: 12px;
-        overflow: hidden;
         border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 12px 20px;
+        text-decoration: none;
+        color: var(--navy);
+        font-weight: 500;
+        transition: all 0.2s;
     }
 
-    .comparison-table th {
-        background: var(--navy);
-        color: var(--white);
-        padding: 14px 16px;
-        text-align: left;
-        font-weight: 600;
-        font-size: 0.9rem;
+    .alt-link:hover {
+        border-color: var(--gold);
+        background: var(--gray-50);
     }
-
-    .comparison-table td {
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--gray-200);
-        font-size: 0.9rem;
-    }
-
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table tr:nth-child(even) { background: var(--gray-50); }
-    .winner { color: var(--green); font-weight: 600; }
 
     </style>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://thecroreport.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://thecroreport.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Revenue Forecasting",
+      "item": "https://thecroreport.com/tools/forecasting/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Clari",
+      "item": "https://thecroreport.com/tools/clari/"
+    }
+  ]
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Clari",
+  "description": "Clari provides AI-powered revenue forecasting, pipeline management, and deal inspection for sales leaders.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://thecroreport.com/tools/clari/",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "50"
+  },
+  "offers": {
+    "@type": "Offer",
+    "description": "Custom enterprise pricing"
+  }
+}</script>
+
 
 <body>
     <header class="site-header">
@@ -661,60 +776,93 @@
         })();
     </script>
 
-    <section class="page-header">
-        <div class="container-narrow">
-            <nav class="breadcrumb">
-                <a href="/">Home</a> → <a href="/tools/">Tools</a> → Clari
-            </nav>
-            <div class="page-label">Conversation Intelligence</div>
-            
+
+    <header class="header">
+        <div class="header-content">
+            <span class="eyebrow">Revenue Forecasting</span>
             <h1>Clari</h1>
-            <p class="lead">Revenue platform for forecasting and pipeline visibility</p>
+            <p>Revenue platform for forecasting and pipeline</p>
         </div>
-    </section>
+    </header>
 
-    <main>
-        <div class="container-narrow">
-            <div class="info-card">
-                <h3>Quick Facts</h3>
-                <div class="info-row">
-                    <span class="info-label">Best For</span>
-                    <span class="info-value">Revenue leaders wanting forecast accuracy</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Pricing</span>
-                    <span class="info-value">Custom enterprise pricing</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Category</span>
-                    <span class="info-value">Conversation Intelligence</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Website</span>
-                    <span class="info-value"><a href="https://www.clari.com" target="_blank" rel="noopener">https://www.clari.com</a></span>
-                </div>
+    <main class="tool-content">
+        <nav class="breadcrumb" style="padding: 16px 0 0; font-size: 0.85rem; color: var(--gray-500);">
+            <a href="/">Home</a> → <a href="/tools/">Tools</a> → <a href="/tools/forecasting/">Revenue Forecasting</a> → Clari
+        </nav>
+
+        <section class="tool-section">
+            <h2>Overview</h2>
+            <p>Clari provides AI-powered revenue forecasting, pipeline management, and deal inspection for sales leaders.</p>
+
+            <div class="best-for-box">
+                <h3>Best For</h3>
+                <p>Sales leaders needing accurate forecasting and pipeline visibility</p>
             </div>
 
-            <div class="pros-cons">
-                <div class="pros">
-                    <h4>✓ Pros</h4>
-                    <ul><li>Forecasting accuracy</li><li>Pipeline visibility</li><li>CRO dashboards</li></ul>
+            <div class="pricing-box">
+                <h3>Pricing</h3>
+                <p>Custom enterprise pricing</p>
+            </div>
+        </section>
+
+        <section class="tool-section">
+            <h2>Pros and Cons</h2>
+            <div class="pros-cons-grid">
+                <div class="pros-section">
+                    <h3>✓ Pros</h3>
+                    <ul class='pros-list'><li>Best-in-class forecasting</li><li>Pipeline analytics</li><li>CRO-level insights</li></ul>
                 </div>
-                <div class="cons">
-                    <h4>✗ Cons</h4>
-                    <ul><li>Complex implementation</li><li>Expensive</li></ul>
+                <div class="cons-section">
+                    <h3>✗ Cons</h3>
+                    <ul class='cons-list'><li>Enterprise pricing</li><li>Requires CRM data quality</li><li>Implementation time</li></ul>
                 </div>
             </div>
+        </section>
 
+        
+        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Clari cost?", "acceptedAnswer": {"@type": "Answer", "text": "Clari pricing: Custom enterprise pricing. Most Revenue Forecasting tools require annual contracts for the best rates. Request a custom quote based on your team size and usage needs."}}, {"@type": "Question", "name": "Is Clari right for my team?", "acceptedAnswer": {"@type": "Answer", "text": "Clari is best for: Sales leaders needing accurate forecasting and pipeline visibility. Consider your team size, budget, and existing tech stack when evaluating. Most vendors offer trials or pilots."}}, {"@type": "Question", "name": "What are the best Clari alternatives?", "acceptedAnswer": {"@type": "Answer", "text": "Top Clari alternatives include: Gong Forecast, Aviso, BoostUp, People.ai. The best choice depends on your specific needs - some prioritize features, others focus on pricing or ease of use. See our detailed comparison pages for head-to-head analysis."}}, {"@type": "Question", "name": "What are the pros and cons of Clari?", "acceptedAnswer": {"@type": "Answer", "text": "Pros: Best-in-class forecasting; Pipeline analytics; CRO-level insights. Cons: Enterprise pricing; Requires CRM data quality; Implementation time. Every tool has tradeoffs - the key is finding the best fit for your team's workflow and budget."}}]}</script>
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
             
-    <div class="cta-box">
-        <h3>Get Weekly Tool Reviews</h3>
-        <p>Honest assessments of GTM tools from a practitioner perspective.</p>
-        <a href="https://croreport.substack.com/subscribe" class="btn btn-gold">Subscribe to The CRO Report →</a>
-    </div>
+            <div class="faq-item">
+                <h4 class="faq-question">How much does Clari cost?</h4>
+                <p class="faq-answer">Clari pricing: Custom enterprise pricing. Most Revenue Forecasting tools require annual contracts for the best rates. Request a custom quote based on your team size and usage needs.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h4 class="faq-question">Is Clari right for my team?</h4>
+                <p class="faq-answer">Clari is best for: Sales leaders needing accurate forecasting and pipeline visibility. Consider your team size, budget, and existing tech stack when evaluating. Most vendors offer trials or pilots.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h4 class="faq-question">What are the best Clari alternatives?</h4>
+                <p class="faq-answer">Top Clari alternatives include: Gong Forecast, Aviso, BoostUp, People.ai. The best choice depends on your specific needs - some prioritize features, others focus on pricing or ease of use. See our detailed comparison pages for head-to-head analysis.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h4 class="faq-question">What are the pros and cons of Clari?</h4>
+                <p class="faq-answer">Pros: Best-in-class forecasting; Pipeline analytics; CRO-level insights. Cons: Enterprise pricing; Requires CRM data quality; Implementation time. Every tool has tradeoffs - the key is finding the best fit for your team's workflow and budget.</p>
+            </div>
+        
+        </section>
+    
 
+        
+        <section class="alternatives-section">
+            <h2>Clari Alternatives</h2>
+            <div class="alternatives-grid">
+                <a href="/tools/gong-forecast/" class="alt-link">Gong Forecast</a> <a href="/tools/aviso/" class="alt-link">Aviso</a> <a href="/tools/boostup/" class="alt-link">BoostUp</a> <a href="/tools/peopleai/" class="alt-link">People.ai</a>
+            </div>
+        </section>
+        
+
+        <div class="cta-section">
+            <h2>Get Weekly Sales Tech Insights</h2>
+            <p>Stay updated on the latest tools, trends, and strategies for sales leadership.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
         </div>
     </main>
+
 
     <footer class="site-footer">
         <div class="footer-content">

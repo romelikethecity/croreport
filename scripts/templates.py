@@ -165,6 +165,118 @@ def generate_cta_section(title="Get Full Compensation Intelligence",
     '''
 
 
+# =============================================================================
+# CONTEXTUAL INTERNAL LINKING
+# =============================================================================
+
+# Default link map for auto-linking locations and stages
+DEFAULT_LINK_MAP = {
+    # Locations
+    'San Francisco': '/salaries/vp-sales-salary-san-francisco/',
+    'New York': '/salaries/vp-sales-salary-new-york/',
+    'Boston': '/salaries/vp-sales-salary-boston/',
+    'Chicago': '/salaries/vp-sales-salary-chicago/',
+    'Seattle': '/salaries/vp-sales-salary-seattle/',
+    'Denver': '/salaries/vp-sales-salary-denver/',
+    'Atlanta': '/salaries/vp-sales-salary-atlanta/',
+    'Los Angeles': '/salaries/vp-sales-salary-los-angeles/',
+    'Texas': '/salaries/vp-sales-salary-texas/',
+    'Remote': '/salaries/vp-sales-salary-remote/',
+    # Company stages
+    'Series A': '/salaries/vp-sales-salary-series-a-b/',
+    'Series B': '/salaries/vp-sales-salary-series-b-c/',
+    'Series C': '/salaries/vp-sales-salary-series-c-d/',
+    'Seed': '/salaries/vp-sales-salary-seed-series-a/',
+    'Late Stage': '/salaries/vp-sales-salary-late-stage/',
+    'Enterprise': '/salaries/vp-sales-salary-enterprise-public/',
+    # Seniority
+    'SVP Sales': '/salaries/svp-sales-salary/',
+    'CRO': '/salaries/c-level-sales-salary/',
+    'VP Sales': '/salaries/vp-sales-salary/',
+}
+
+
+def auto_link_content(text, link_map=None, exclude_terms=None, max_links_per_term=1):
+    """
+    Auto-link mentions of terms to relevant internal pages.
+
+    Args:
+        text: HTML content string to process
+        link_map: Dict mapping terms to URLs (uses DEFAULT_LINK_MAP if None)
+        exclude_terms: List of terms to skip (e.g., current page's topic)
+        max_links_per_term: Max times to link each term (1 = first mention only)
+
+    Returns:
+        Text with auto-linked terms
+    """
+    if link_map is None:
+        link_map = DEFAULT_LINK_MAP
+
+    if exclude_terms is None:
+        exclude_terms = []
+
+    # Track how many times each term has been linked
+    link_counts = {term: 0 for term in link_map}
+
+    for term, url in link_map.items():
+        # Skip excluded terms
+        if term in exclude_terms:
+            continue
+
+        # Skip if max links reached
+        if link_counts[term] >= max_links_per_term:
+            continue
+
+        # Pattern: match term not already inside a tag or link
+        # Negative lookbehind for > (inside tag) and href=" (inside link)
+        pattern = rf'(?<![>"\'/])(\b{re.escape(term)}\b)(?![^<]*>)(?![^<]*</a>)'
+
+        def replace_match(match):
+            if link_counts[term] < max_links_per_term:
+                link_counts[term] += 1
+                return f'<a href="{url}" class="auto-link">{match.group(1)}</a>'
+            return match.group(0)
+
+        text = re.sub(pattern, replace_match, text, count=max_links_per_term)
+
+    return text
+
+
+def get_link_map_for_page(current_page_type, current_identifier):
+    """
+    Get a link map excluding the current page's terms.
+
+    Args:
+        current_page_type: 'location', 'stage', or 'seniority'
+        current_identifier: The specific value (e.g., 'San Francisco')
+
+    Returns:
+        Filtered link map excluding current page
+    """
+    exclude = [current_identifier]
+
+    # Add related exclusions based on page type
+    if current_page_type == 'location':
+        # Exclude the current location
+        pass
+    elif current_page_type == 'stage':
+        # Exclude partial matches for stage names (e.g., "Series A/B" should exclude "Series A")
+        for part in current_identifier.replace('/', ' ').split():
+            if part not in ['Stage', 'Late', 'Enterprise', 'Public']:
+                # Add common Series combinations
+                if part in ['A', 'B', 'C', 'D']:
+                    exclude.append(f'Series {part}')
+        # Special cases
+        if 'Enterprise' in current_identifier or 'Public' in current_identifier:
+            exclude.extend(['Enterprise', 'Public'])
+        if 'Late Stage' in current_identifier:
+            exclude.append('Late Stage')
+        if 'Seed' in current_identifier:
+            exclude.append('Seed')
+
+    return {k: v for k, v in DEFAULT_LINK_MAP.items() if k not in exclude}
+
+
 def is_remote(job_data):
     """Check if job is remote based on job data dict or series"""
     if isinstance(job_data, dict):

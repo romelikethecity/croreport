@@ -34,6 +34,7 @@ from templates import (
 from seo_core import (
     generate_breadcrumb_schema,
     generate_tool_faqs,
+    generate_software_schema,
 )
 
 # Tool categories for hub pages
@@ -171,26 +172,6 @@ def load_tools_data():
         }
     ]
     return tools
-
-def generate_software_schema(tool):
-    """Generate SoftwareApplication schema for a tool."""
-    schema = {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": tool['name'],
-        "description": tool['description'],
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "url": f"https://thecroreport.com/tools/{tool['slug']}/"
-    }
-
-    if tool.get('pricing'):
-        schema["offers"] = {
-            "@type": "Offer",
-            "description": tool['pricing']
-        }
-
-    return f'<script type="application/ld+json">{json.dumps(schema, indent=2)}</script>'
 
 # Tool page specific CSS (unique parts - uses shared CSS from templates.py)
 TOOL_PAGE_CSS = '''

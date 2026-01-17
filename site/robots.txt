@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Category-indexed sitemaps for better crawlability
+Sitemap: https://thecroreport.com/sitemap_index.xml
+
+# Flat sitemap for backwards compatibility
 Sitemap: https://thecroreport.com/sitemap.xml

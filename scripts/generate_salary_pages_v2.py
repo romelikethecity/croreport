@@ -23,6 +23,8 @@ from templates import (
     fmt_salary,
     load_json_data,
     write_page,
+    auto_link_content,
+    get_link_map_for_page,
     CSS_VARIABLES,
     CSS_NAV,
     CSS_LAYOUT,
@@ -258,6 +260,9 @@ def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
     avg_max = stats.get('max_base_avg')
     midpoint = (avg_min + avg_max) / 2 if avg_min and avg_max else 0
 
+    # Initialize context_extra (only used for stage pages)
+    context_extra = ""
+
     # Determine page title, slug, and content
     if page_type == 'location':
         title = f"VP Sales {identifier} Salary"
@@ -364,12 +369,17 @@ def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
         </section>
     ''' if related_pages else ''
 
+    # Apply contextual auto-linking to context text
+    link_map = get_link_map_for_page(page_type, identifier)
+    linked_context_text = auto_link_content(context_text, link_map)
+    linked_context_extra = auto_link_content(context_extra, link_map) if context_extra else ""
+
     # Build context section
     context_html = f'''
         <div class="context-box">
             <h2>{context_title}</h2>
-            <p>{context_text}</p>
-            {"<p><strong>Key considerations:</strong> " + context_extra + "</p>" if page_type == 'stage' and 'context_extra' in dir() and context_extra else ""}
+            <p>{linked_context_text}</p>
+            {"<p><strong>Key considerations:</strong> " + linked_context_extra + "</p>" if linked_context_extra else ""}
         </div>
     '''
 
