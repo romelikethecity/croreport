@@ -5,17 +5,30 @@ Enhanced Tools Page Generator v2 with pSEO optimizations:
 - Data-driven FAQ sections
 - Category hub pages
 - Internal linking
+
+Uses templates.py for consistent site design.
 """
 
 import json
 import os
 from datetime import datetime
+
+# Import shared templates
+from templates import (
+    get_html_head,
+    get_nav_html,
+    get_footer_html,
+    CSS_VARIABLES,
+    CSS_NAV,
+    CSS_LAYOUT,
+    CSS_CARDS,
+    CSS_CTA,
+    CSS_FOOTER
+)
 from seo_core import (
     generate_breadcrumb_schema,
     generate_faq_schema,
     generate_tool_faqs,
-    generate_faq_html,
-    get_seo_styles
 )
 
 # Tool categories for hub pages
@@ -53,8 +66,7 @@ TOOL_CATEGORIES = {
 }
 
 def load_tools_data():
-    """Load tools data. In production, this would come from a database or JSON file."""
-    # Sample tools data - in production, load from data/tools.json
+    """Load tools data."""
     tools = [
         {
             'slug': '11x',
@@ -175,6 +187,341 @@ def generate_software_schema(tool):
 
     return f'<script type="application/ld+json">{json.dumps(schema, indent=2)}</script>'
 
+# Tool page specific CSS
+TOOL_PAGE_CSS = '''
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+    }
+    .header-content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .header .eyebrow {
+        display: inline-block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dark);
+        background: rgba(255,255,255,0.1);
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 16px;
+    }
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    .header p { opacity: 0.9; max-width: 600px; }
+
+    /* Tool Content */
+    .tool-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .tool-section {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 32px;
+        margin: 24px 0;
+    }
+
+    .tool-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 16px;
+    }
+
+    .tool-section p {
+        color: var(--gray-700);
+        line-height: 1.7;
+    }
+
+    /* Pros/Cons */
+    .pros-cons-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+        .pros-cons-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .pros-section, .cons-section {
+        padding: 24px;
+        border-radius: 8px;
+    }
+
+    .pros-section {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+    }
+
+    .cons-section {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+    }
+
+    .pros-section h3 {
+        color: #166534;
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .cons-section h3 {
+        color: #991b1b;
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .pros-list, .cons-list {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .pros-list li {
+        color: #166534;
+        margin-bottom: 8px;
+    }
+
+    .cons-list li {
+        color: #991b1b;
+        margin-bottom: 8px;
+    }
+
+    /* Info Boxes */
+    .pricing-box {
+        background: var(--gray-50);
+        border-radius: 8px;
+        padding: 24px;
+        margin-top: 20px;
+    }
+
+    .pricing-box h3 {
+        color: var(--navy);
+        margin-bottom: 12px;
+        font-size: 1rem;
+    }
+
+    .best-for-box {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .best-for-box h3 {
+        color: #1e40af;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    .best-for-box p {
+        color: #1e3a8a;
+        margin: 0;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 32px 0;
+    }
+    .faq-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 24px;
+    }
+    .faq-item {
+        border-bottom: 1px solid var(--gray-200);
+        padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 12px;
+    }
+    .faq-answer {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* Alternatives Section */
+    .alternatives-section {
+        margin-top: 40px;
+    }
+
+    .alternatives-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 20px;
+    }
+
+    .alternatives-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .alt-link {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 12px 20px;
+        text-decoration: none;
+        color: var(--navy);
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .alt-link:hover {
+        border-color: var(--gold);
+        background: var(--gray-50);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+'''
+
+# Category hub page CSS
+CATEGORY_PAGE_CSS = '''
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+    /* Category Content */
+    .category-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .category-intro {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 40px;
+    }
+
+    .category-intro h2 {
+        font-family: 'Fraunces', serif;
+        color: var(--navy-medium);
+        margin-bottom: 16px;
+    }
+
+    .category-intro p {
+        color: var(--gray-700);
+        line-height: 1.7;
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+    }
+
+    .tool-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 24px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .tool-card:hover {
+        border-color: var(--gold);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .tool-card h3 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        color: var(--navy);
+        margin-bottom: 8px;
+    }
+
+    .tool-card .tool-tagline {
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .tool-card .tool-pricing {
+        color: var(--gray-500);
+        font-size: 0.85rem;
+        margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+'''
+
 def generate_tool_page_v2(tool):
     """Generate an enhanced tool page with full pSEO optimization."""
 
@@ -199,7 +546,25 @@ def generate_tool_page_v2(tool):
         best_for=tool.get('best_for'),
         alternatives=tool.get('alternatives')
     )
-    faq_html = generate_faq_html(faqs, include_schema=True)
+    faq_schema = generate_faq_schema(faqs) if faqs else ''
+
+    # Build FAQ HTML
+    faq_items_html = ''
+    for faq in faqs:
+        faq_items_html += f'''
+            <div class="faq-item">
+                <h4 class="faq-question">{faq['question']}</h4>
+                <p class="faq-answer">{faq['answer']}</p>
+            </div>
+        '''
+
+    faq_section_html = f'''
+        {faq_schema}
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            {faq_items_html}
+        </section>
+    ''' if faqs else ''
 
     # Build pros/cons HTML
     pros_html = ""
@@ -226,218 +591,43 @@ def generate_tool_page_v2(tool):
         </section>
         """
 
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{tool['name']} Review: Pricing, Pros & Cons | The CRO Report</title>
-    <meta name="description" content="{tool['name']} review: {tool['tagline']}. See pricing, pros/cons, and alternatives for {datetime.now().year}.">
-    <link rel="canonical" href="https://thecroreport.com/tools/{tool['slug']}/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    title = f"{tool['name']} Review"
+    description = f"{tool['name']} review: {tool['tagline']}. See pricing, pros/cons, and alternatives for {datetime.now().year}."
+    page_path = f"tools/{tool['slug']}/"
+
+    # Build breadcrumb HTML for display
+    breadcrumb_html = f'<a href="/">Home</a> → <a href="/tools/">Tools</a> → <a href="/tools/{tool["category"]}/">{TOOL_CATEGORIES.get(tool["category"], {}).get("name", "Tools")}</a> → {tool["name"]}'
+
+    html_head = get_html_head(title, description, page_path, include_styles=False)
+
+    html = f'''{html_head}
+    <style>
+        {CSS_VARIABLES}
+        {CSS_NAV}
+        {CSS_LAYOUT}
+        {CSS_CARDS}
+        {CSS_CTA}
+        {CSS_FOOTER}
+        {TOOL_PAGE_CSS}
+    </style>
     {breadcrumb_schema}
     {software_schema}
-    <style>
-        {get_seo_styles()}
 
-        .tool-hero {{
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
-            color: white;
-            padding: 60px 20px;
-        }}
+{get_nav_html('tools')}
 
-        .tool-hero-content {{
-            max-width: 900px;
-            margin: 0 auto;
-        }}
-
-        .tool-hero h1 {{
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }}
-
-        .tool-tagline {{
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }}
-
-        .tool-category-badge {{
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }}
-
-        .tool-content {{
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }}
-
-        .tool-section {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 32px;
-            margin: 24px 0;
-        }}
-
-        .tool-section h2 {{
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy-medium);
-            margin-bottom: 16px;
-        }}
-
-        .tool-section p {{
-            color: var(--gray-700);
-            line-height: 1.7;
-        }}
-
-        .pros-cons-grid {{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }}
-
-        @media (max-width: 600px) {{
-            .pros-cons-grid {{
-                grid-template-columns: 1fr;
-            }}
-        }}
-
-        .pros-section, .cons-section {{
-            padding: 24px;
-            border-radius: 8px;
-        }}
-
-        .pros-section {{
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-        }}
-
-        .cons-section {{
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-        }}
-
-        .pros-section h3 {{
-            color: #166534;
-            margin-bottom: 12px;
-        }}
-
-        .cons-section h3 {{
-            color: #991b1b;
-            margin-bottom: 12px;
-        }}
-
-        .pros-list, .cons-list {{
-            margin: 0;
-            padding-left: 20px;
-        }}
-
-        .pros-list li {{
-            color: #166534;
-            margin-bottom: 8px;
-        }}
-
-        .cons-list li {{
-            color: #991b1b;
-            margin-bottom: 8px;
-        }}
-
-        .pricing-box {{
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: 24px;
-            margin-top: 20px;
-        }}
-
-        .pricing-box h3 {{
-            color: var(--navy);
-            margin-bottom: 12px;
-        }}
-
-        .alternatives-section {{
-            margin-top: 40px;
-        }}
-
-        .alternatives-section h2 {{
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy-medium);
-            margin-bottom: 20px;
-        }}
-
-        .alternatives-grid {{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }}
-
-        .alt-link {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            padding: 12px 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-weight: 500;
-            transition: all 0.2s;
-        }}
-
-        .alt-link:hover {{
-            border-color: var(--navy-medium);
-            background: var(--gray-50);
-        }}
-
-        .best-for-box {{
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-        }}
-
-        .best-for-box h3 {{
-            color: #1e40af;
-            margin-bottom: 8px;
-        }}
-
-        .best-for-box p {{
-            color: #1e3a8a;
-            margin: 0;
-        }}
-    </style>
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">The CRO Report</a>
-            <div class="nav-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/companies/">Companies</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="tool-hero">
-        <div class="tool-hero-content">
-            <span class="tool-category-badge">{TOOL_CATEGORIES.get(tool['category'], {}).get('name', 'Sales Tool')}</span>
+    <header class="header">
+        <div class="header-content">
+            <span class="eyebrow">{TOOL_CATEGORIES.get(tool['category'], {}).get('name', 'Sales Tool')}</span>
             <h1>{tool['name']}</h1>
-            <p class="tool-tagline">{tool['tagline']}</p>
+            <p>{tool['tagline']}</p>
         </div>
     </header>
 
     <main class="tool-content">
+        <nav class="breadcrumb" style="padding: 16px 0 0; font-size: 0.85rem; color: var(--gray-500);">
+            {breadcrumb_html}
+        </nav>
+
         <section class="tool-section">
             <h2>Overview</h2>
             <p>{tool['description']}</p>
@@ -467,18 +657,18 @@ def generate_tool_page_v2(tool):
             </div>
         </section>
 
-        {faq_html}
+        {faq_section_html}
 
         {alternatives_html}
+
+        <div class="cta-section">
+            <h2>Get Weekly Sales Tech Insights</h2>
+            <p>Stay updated on the latest tools, trends, and strategies for sales leadership.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+        </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; {datetime.now().year} The CRO Report. Tool information updated regularly.</p>
-        </div>
-    </footer>
-</body>
-</html>"""
+{get_footer_html()}'''
 
     return html
 
@@ -523,127 +713,40 @@ def generate_category_hub(category_slug, category_info, tools):
     }
     itemlist_json = f'<script type="application/ld+json">{json.dumps(itemlist_schema, indent=2)}</script>'
 
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{category_info['name']} - Best Tools for {datetime.now().year} | The CRO Report</title>
-    <meta name="description" content="{category_info['description']} Compare {len(category_tools)}+ tools with pricing, pros/cons, and reviews.">
-    <link rel="canonical" href="https://thecroreport.com/tools/{category_slug}/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    title = f"{category_info['name']} - Best Tools for {datetime.now().year}"
+    description = f"{category_info['description']} Compare {len(category_tools)}+ tools with pricing, pros/cons, and reviews."
+    page_path = f"tools/{category_slug}/"
+
+    # Build breadcrumb HTML for display
+    breadcrumb_html = f'<a href="/">Home</a> → <a href="/tools/">Tools</a> → {category_info["name"]}'
+
+    html_head = get_html_head(title, description, page_path, include_styles=False)
+
+    html = f'''{html_head}
+    <style>
+        {CSS_VARIABLES}
+        {CSS_NAV}
+        {CSS_LAYOUT}
+        {CSS_CARDS}
+        {CSS_CTA}
+        {CSS_FOOTER}
+        {CATEGORY_PAGE_CSS}
+    </style>
     {breadcrumb_schema}
     {itemlist_json}
-    <style>
-        {get_seo_styles()}
 
-        .category-hero {{
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }}
+{get_nav_html('tools')}
 
-        .category-hero h1 {{
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }}
-
-        .category-hero p {{
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }}
-
-        .category-content {{
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }}
-
-        .tools-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-        }}
-
-        .tool-card {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }}
-
-        .tool-card:hover {{
-            border-color: var(--navy-medium);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }}
-
-        .tool-card h3 {{
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }}
-
-        .tool-card .tool-tagline {{
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }}
-
-        .tool-card .tool-pricing {{
-            color: var(--gray-500);
-            font-size: 0.85rem;
-            margin: 0;
-        }}
-
-        .category-intro {{
-            background: var(--gray-50);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 40px;
-        }}
-
-        .category-intro h2 {{
-            font-family: 'Fraunces', serif;
-            color: var(--navy-medium);
-            margin-bottom: 16px;
-        }}
-
-        .category-intro p {{
-            color: var(--gray-700);
-            line-height: 1.7;
-        }}
-    </style>
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">The CRO Report</a>
-            <div class="nav-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/companies/">Companies</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="category-hero">
+    <header class="header">
         <h1>{category_info['name']}</h1>
         <p>{category_info['description']}</p>
     </header>
 
     <main class="category-content">
+        <nav class="breadcrumb" style="padding: 16px 0 0; font-size: 0.85rem; color: var(--gray-500);">
+            {breadcrumb_html}
+        </nav>
+
         <div class="category-intro">
             <h2>About {category_info['name']}</h2>
             <p>{category_info['description']} Below you'll find our reviews of the top tools in this category, including pricing information, pros and cons, and recommendations for different team sizes and use cases.</p>
@@ -652,15 +755,15 @@ def generate_category_hub(category_slug, category_info, tools):
         <div class="tools-grid">
             {tools_html}
         </div>
+
+        <div class="cta-section">
+            <h2>Get Weekly Sales Tech Insights</h2>
+            <p>Stay updated on the latest tools, trends, and strategies for sales leadership.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+        </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; {datetime.now().year} The CRO Report. Tool information updated regularly.</p>
-        </div>
-    </footer>
-</body>
-</html>"""
+{get_footer_html()}'''
 
     return html
 

@@ -7,12 +7,27 @@ Creates hub/index pages that serve as entry points to salary data categories:
 - /salaries/by-seniority/ - All seniority-level pages
 - /salaries/by-stage/ - All company stage pages
 - /trends/ - Salary trends over time
+
+Uses templates.py for consistent site design.
 """
 
 import json
 import os
 from datetime import datetime
-from seo_core import generate_breadcrumb_schema, get_seo_styles
+
+# Import shared templates
+from templates import (
+    get_html_head,
+    get_nav_html,
+    get_footer_html,
+    CSS_VARIABLES,
+    CSS_NAV,
+    CSS_LAYOUT,
+    CSS_CARDS,
+    CSS_CTA,
+    CSS_FOOTER
+)
+from seo_core import generate_breadcrumb_schema
 
 MIN_JOBS_FOR_LISTING = 5
 
@@ -27,7 +42,258 @@ def fmt_salary(amount):
         return "N/A"
     return f"${int(amount/1000)}K"
 
-def generate_hub_page(hub_type, title, description, items, breadcrumbs):
+# Hub page specific CSS
+HUB_PAGE_CSS = '''
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .header .eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dark);
+        margin-bottom: 12px;
+    }
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+    /* Hub Content */
+    .hub-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .hub-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 30px;
+    }
+
+    .hub-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 24px;
+        text-decoration: none;
+        transition: all 0.2s;
+        display: block;
+    }
+
+    .hub-card:hover {
+        border-color: var(--gold);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+
+    .hub-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+    }
+
+    .hub-card h3 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        color: var(--navy);
+        margin: 0;
+    }
+
+    .job-count {
+        background: var(--gray-100);
+        color: var(--gray-700);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .salary-range {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--green-dark);
+        margin-bottom: 8px;
+    }
+
+    .card-meta {
+        font-size: 0.85rem;
+        color: var(--gray-500);
+    }
+
+    .hub-intro {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 40px;
+    }
+
+    .hub-intro h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 16px;
+    }
+
+    .hub-intro p {
+        color: var(--gray-700);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .cta-btn:hover { background: #c2660a; }
+'''
+
+# Trends page specific CSS
+TRENDS_PAGE_CSS = '''
+    /* Header */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+    .trends-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .stat-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .stat-value {
+        font-family: 'Fraunces', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--navy);
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: var(--gray-600);
+        margin-top: 8px;
+    }
+
+    .chart-container {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 30px 0;
+    }
+
+    .trends-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 30px;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .trends-table th, .trends-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .trends-table th {
+        background: var(--gray-50);
+        font-weight: 600;
+        color: var(--navy);
+    }
+
+    .methodology {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 32px;
+        margin-top: 40px;
+    }
+
+    .methodology h2 {
+        font-family: 'Fraunces', serif;
+        color: var(--navy-medium);
+        margin-bottom: 16px;
+    }
+
+    .methodology p {
+        color: var(--gray-700);
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+'''
+
+def generate_hub_page(hub_type, title, description, intro_text, items, page_path, breadcrumbs):
     """Generate a hub page with links to all child pages."""
 
     breadcrumb_schema = generate_breadcrumb_schema(breadcrumbs)
@@ -50,158 +316,53 @@ def generate_hub_page(hub_type, title, description, items, breadcrumbs):
         </a>
         """
 
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} | The CRO Report</title>
-    <meta name="description" content="{description}">
-    <link rel="canonical" href="https://thecroreport.com{breadcrumbs[-1]['url']}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-    {breadcrumb_schema}
+    # Build breadcrumb HTML for display
+    breadcrumb_html = ' → '.join([f'<a href="{b["url"]}">{b["name"]}</a>' for b in breadcrumbs[:-1]]) + f' → {breadcrumbs[-1]["name"]}'
+
+    html_head = get_html_head(title, description, page_path, include_styles=False)
+
+    html = f'''{html_head}
     <style>
-        {get_seo_styles()}
-
-        .hub-hero {{
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }}
-
-        .hub-hero h1 {{
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }}
-
-        .hub-hero p {{
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }}
-
-        .hub-content {{
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }}
-
-        .hub-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }}
-
-        .hub-card {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: block;
-        }}
-
-        .hub-card:hover {{
-            border-color: var(--navy-medium);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }}
-
-        .hub-card-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }}
-
-        .hub-card h3 {{
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            color: var(--navy);
-            margin: 0;
-        }}
-
-        .job-count {{
-            background: var(--gray-100);
-            color: var(--gray-700);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }}
-
-        .salary-range {{
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--navy-medium);
-            margin-bottom: 8px;
-        }}
-
-        .card-meta {{
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }}
-
-        .hub-intro {{
-            background: var(--gray-50);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 40px;
-        }}
-
-        .hub-intro h2 {{
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            color: var(--navy-medium);
-            margin-bottom: 16px;
-        }}
-
-        .hub-intro p {{
-            color: var(--gray-700);
-            line-height: 1.7;
-            margin: 0;
-        }}
+        {CSS_VARIABLES}
+        {CSS_NAV}
+        {CSS_LAYOUT}
+        {CSS_CARDS}
+        {CSS_CTA}
+        {CSS_FOOTER}
+        {HUB_PAGE_CSS}
     </style>
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">The CRO Report</a>
-            <div class="nav-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/companies/">Companies</a>
-            </div>
-        </div>
-    </nav>
+    {breadcrumb_schema}
 
-    <header class="hub-hero">
+{get_nav_html('salaries')}
+
+    <div class="header">
+        <div class="eyebrow">Salary Benchmarks</div>
         <h1>{title}</h1>
         <p>{description}</p>
-    </header>
+    </div>
 
     <main class="hub-content">
+        <nav class="breadcrumb" style="padding: 16px 0 0; font-size: 0.85rem; color: var(--gray-500);">
+            {breadcrumb_html}
+        </nav>
+
+        <div class="hub-intro">
+            <h2>About This Data</h2>
+            <p>{intro_text}</p>
+        </div>
+
         <div class="hub-grid">
             {items_html}
         </div>
+
+        <div class="cta-section">
+            <h2>Get Full Compensation Intelligence</h2>
+            <p>Weekly analysis of compensation trends, red flags, and negotiation insights for VP Sales and CRO roles.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+        </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; {datetime.now().year} The CRO Report. Data updated weekly from job postings with disclosed compensation.</p>
-        </div>
-    </footer>
-</body>
-</html>"""
+{get_footer_html()}'''
 
     return html
 
@@ -223,7 +384,6 @@ def generate_trends_page(data):
 
     for week in sorted_weeks:
         stats = weekly_data[week]
-        # Convert week format to readable
         label = week.replace('-W', ' Week ')
         chart_labels.append(f'"{label}"')
         chart_data_min.append(str(int(stats.get('avg_min', 0) / 1000)))
@@ -233,132 +393,43 @@ def generate_trends_page(data):
     total_count = sum(w.get('count', 0) for w in weekly_data.values())
     avg_disclosure = sum(w.get('disclosure_rate', 0) for w in weekly_data.values()) / len(weekly_data) if weekly_data else 0
 
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VP Sales Salary Trends | The CRO Report</title>
-    <meta name="description" content="Track weekly VP Sales and CRO salary trends. See how executive compensation is changing over time based on {total_count}+ job postings.">
-    <link rel="canonical" href="https://thecroreport.com/trends/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    title = "VP Sales Salary Trends"
+    description = f"Track weekly VP Sales and CRO salary trends. See how executive compensation is changing over time based on {total_count}+ job postings."
+    page_path = "trends/"
+
+    # Build table rows
+    table_rows = ""
+    for week in sorted_weeks:
+        w = weekly_data[week]
+        table_rows += f'''<tr>
+            <td>{week.replace("-W", " Week ")}</td>
+            <td>{w.get("count", 0)}</td>
+            <td>{fmt_salary(w.get("avg_min"))}</td>
+            <td>{fmt_salary(w.get("avg_max"))}</td>
+            <td>{w.get("disclosure_rate", 0):.1f}%</td>
+        </tr>'''
+
+    html_head = get_html_head(title, description, page_path, include_styles=False)
+
+    html = f'''{html_head}
+    <style>
+        {CSS_VARIABLES}
+        {CSS_NAV}
+        {CSS_LAYOUT}
+        {CSS_CARDS}
+        {CSS_CTA}
+        {CSS_FOOTER}
+        {TRENDS_PAGE_CSS}
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {breadcrumb_schema}
-    <style>
-        {get_seo_styles()}
 
-        .trends-hero {{
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }}
+{get_nav_html('salaries')}
 
-        .trends-hero h1 {{
-            font-family: 'Fraunces', serif;
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }}
-
-        .trends-content {{
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }}
-
-        .chart-container {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 30px;
-            margin: 30px 0;
-        }}
-
-        .stats-row {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }}
-
-        .stat-card {{
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-        }}
-
-        .stat-value {{
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--navy);
-        }}
-
-        .stat-label {{
-            font-size: 0.85rem;
-            color: var(--gray-600);
-            margin-top: 8px;
-        }}
-
-        .trends-table {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
-        }}
-
-        .trends-table th, .trends-table td {{
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--gray-200);
-        }}
-
-        .trends-table th {{
-            background: var(--gray-50);
-            font-weight: 600;
-            color: var(--navy);
-        }}
-
-        .methodology {{
-            background: var(--gray-50);
-            border-radius: 12px;
-            padding: 32px;
-            margin-top: 40px;
-        }}
-
-        .methodology h2 {{
-            font-family: 'Fraunces', serif;
-            color: var(--navy-medium);
-            margin-bottom: 16px;
-        }}
-
-        .methodology p {{
-            color: var(--gray-700);
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }}
-    </style>
-</head>
-<body>
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">The CRO Report</a>
-            <div class="nav-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/companies/">Companies</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="trends-hero">
+    <div class="header">
         <h1>VP Sales Salary Trends</h1>
         <p>Weekly compensation data from executive sales job postings</p>
-    </header>
+    </div>
 
     <main class="trends-content">
         <div class="stats-row">
@@ -391,13 +462,7 @@ def generate_trends_page(data):
                 </tr>
             </thead>
             <tbody>
-                {"".join(f'''<tr>
-                    <td>{week.replace("-W", " Week ")}</td>
-                    <td>{weekly_data[week].get("count", 0)}</td>
-                    <td>{fmt_salary(weekly_data[week].get("avg_min"))}</td>
-                    <td>{fmt_salary(weekly_data[week].get("avg_max"))}</td>
-                    <td>{weekly_data[week].get("disclosure_rate", 0):.1f}%</td>
-                </tr>''' for week in sorted_weeks)}
+                {table_rows}
             </tbody>
         </table>
 
@@ -407,13 +472,15 @@ def generate_trends_page(data):
             <p>Unlike self-reported salary surveys, our data reflects what companies are actually offering in the market. This tends to be 10-15% lower than self-reported figures, as employees often round up or include bonuses in their reported base salary.</p>
             <p>Data is updated weekly, with each data point representing the average of all disclosed salary ranges for that period.</p>
         </div>
+
+        <div class="cta-section">
+            <h2>Get Weekly Trends in Your Inbox</h2>
+            <p>Subscribe for weekly analysis of compensation trends, executive movements, and market intelligence.</p>
+            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
+        </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; {datetime.now().year} The CRO Report. Data updated weekly from job postings with disclosed compensation.</p>
-        </div>
-    </footer>
+{get_footer_html()}
 
     <script>
         const ctx = document.getElementById('trendsChart').getContext('2d');
@@ -461,7 +528,7 @@ def generate_trends_page(data):
         }});
     </script>
 </body>
-</html>"""
+</html>'''
 
     return html
 
@@ -486,8 +553,10 @@ def main():
         html = generate_hub_page(
             'location',
             'VP Sales Salary by Location',
-            'Compare VP Sales and CRO salaries across major US metros. See how compensation varies by geography.',
+            'Compare VP Sales and CRO salaries across major US metros.',
+            'Our location-based salary data shows how VP Sales compensation varies by geography. Major tech hubs like San Francisco and New York typically pay premium rates, while markets like Chicago and Denver offer competitive compensation with better cost-of-living ratios. Remote roles have become increasingly common, with varying approaches to geographic pay adjustment.',
             location_items,
+            'salaries/by-location/',
             [{'name': 'Home', 'url': '/'}, {'name': 'Salaries', 'url': '/salaries/'}, {'name': 'By Location', 'url': '/salaries/by-location/'}]
         )
         os.makedirs('site/salaries/by-location', exist_ok=True)
@@ -512,8 +581,10 @@ def main():
         html = generate_hub_page(
             'stage',
             'VP Sales Salary by Company Stage',
-            'Compare VP Sales compensation at startups vs. enterprises. See how company stage affects base salary and equity.',
+            'Compare VP Sales compensation at startups vs. enterprises.',
+            'Company stage significantly impacts VP Sales compensation structure. Early-stage startups (Seed through Series B) typically offer lower base salaries but compensate with meaningful equity. Growth-stage companies (Series C/D) often pay competitive base with moderate equity. Public companies offer the highest base salaries with RSU grants and comprehensive benefits.',
             stage_items,
+            'salaries/by-stage/',
             [{'name': 'Home', 'url': '/'}, {'name': 'Salaries', 'url': '/salaries/'}, {'name': 'By Company Stage', 'url': '/salaries/by-stage/'}]
         )
         os.makedirs('site/salaries/by-stage', exist_ok=True)
@@ -538,8 +609,10 @@ def main():
         html = generate_hub_page(
             'seniority',
             'Sales Salary by Seniority Level',
-            'Compare compensation across VP, SVP, EVP, and C-level sales roles. Understand the pay progression in sales leadership.',
+            'Compare compensation across VP, SVP, EVP, and C-level sales roles.',
+            'Seniority level is one of the strongest predictors of sales leadership compensation. VP roles show the widest range due to varying scope definitions. SVP roles typically manage multiple teams or larger organizations. C-level roles (CRO, Chief Commercial Officer) carry full revenue responsibility and command premium compensation.',
             seniority_items,
+            'salaries/by-seniority/',
             [{'name': 'Home', 'url': '/'}, {'name': 'Salaries', 'url': '/salaries/'}, {'name': 'By Seniority', 'url': '/salaries/by-seniority/'}]
         )
         os.makedirs('site/salaries/by-seniority', exist_ok=True)
