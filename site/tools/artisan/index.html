@@ -22,21 +22,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisan Review | The CRO Report</title>
-    <meta name="description" content="Artisan review: AI employees for outbound sales. See pricing, pros/cons, and alternatives for 2026.">
+    <meta name="description" content="AI BDR platform with 'Ava' assistant, Y Combinator backed Pricing, pros, cons, and alternatives.">
     <link rel="canonical" href="https://thecroreport.com/tools/artisan/">
 
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thecroreport.com/tools/artisan/">
     <meta property="og:title" content="Artisan Review">
-    <meta property="og:description" content="Artisan review: AI employees for outbound sales. See pricing, pros/cons, and alternatives for 2026.">
+    <meta property="og:description" content="AI BDR platform with 'Ava' assistant, Y Combinator backed Pricing, pros, cons, and alternatives.">
     <meta property="og:site_name" content="The CRO Report">
     <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Artisan Review">
-    <meta name="twitter:description" content="Artisan review: AI employees for outbound sales. See pricing, pros/cons, and alternatives for 2026.">
+    <meta name="twitter:description" content="AI BDR platform with 'Ava' assistant, Y Combinator backed Pricing, pros, cons, and alternatives.">
     <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -422,280 +422,182 @@
     }
 
         
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-    }
-    .header-content {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    .header .eyebrow {
-        display: inline-block;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--gold-dark);
-        background: rgba(255,255,255,0.1);
-        padding: 6px 14px;
-        border-radius: 20px;
-        margin-bottom: 16px;
-    }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
+    /* Section Headers */
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         margin-bottom: 12px;
     }
-    .header p { opacity: 0.9; max-width: 600px; }
 
-    /* Tool Content */
-    .tool-content {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 40px 20px;
-    }
-
-    .tool-section {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 12px;
-        padding: 32px;
-        margin: 24px 0;
-    }
-
-    .tool-section h2 {
-        font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
-        color: var(--navy-medium);
-        margin-bottom: 16px;
-    }
-
-    .tool-section p {
-        color: var(--gray-700);
-        line-height: 1.7;
-    }
-
-    /* Pros/Cons */
-    .pros-cons-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-    }
-
-    @media (max-width: 600px) {
-        .pros-cons-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .pros-section, .cons-section {
-        padding: 24px;
-        border-radius: 8px;
-    }
-
-    .pros-section {
-        background: #f0fdf4;
-        border: 1px solid #bbf7d0;
-    }
-
-    .cons-section {
-        background: #fef2f2;
-        border: 1px solid #fecaca;
-    }
-
-    .pros-section h3 {
-        color: #166534;
-        margin-bottom: 12px;
-        font-size: 1rem;
-    }
-
-    .cons-section h3 {
-        color: #991b1b;
-        margin-bottom: 12px;
-        font-size: 1rem;
-    }
-
-    .pros-list, .cons-list {
-        margin: 0;
-        padding-left: 20px;
-    }
-
-    .pros-list li {
-        color: #166534;
-        margin-bottom: 8px;
-    }
-
-    .cons-list li {
-        color: #991b1b;
-        margin-bottom: 8px;
-    }
-
-    /* Info Boxes */
-    .pricing-box {
-        background: var(--gray-50);
-        border-radius: 8px;
-        padding: 24px;
-        margin-top: 20px;
-    }
-
-    .pricing-box h3 {
+    .section-header h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
         color: var(--navy);
-        margin-bottom: 12px;
-        font-size: 1rem;
     }
 
-    .best-for-box {
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
-        border-radius: 8px;
-        padding: 20px;
-        margin-top: 20px;
-    }
+    .section-icon { font-size: 1.4rem; }
 
-    .best-for-box h3 {
-        color: #1e40af;
-        margin-bottom: 8px;
-        font-size: 1rem;
-    }
-
-    .best-for-box p {
-        color: #1e3a8a;
-        margin: 0;
-    }
-
-    /* FAQ Section */
-    .faq-section {
-        background: white;
-        border-radius: 12px;
-        padding: 32px;
-        margin: 32px 0;
-    }
-    .faq-section h2 {
-        font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
-        color: var(--navy-medium);
+    .section-description {
+        color: var(--gray-600);
         margin-bottom: 24px;
+        max-width: 650px;
+        font-size: 0.95rem;
     }
-    .faq-item {
-        border-bottom: 1px solid var(--gray-200);
-        padding: 20px 0;
+
+    /* Tool Cards Grid */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
     }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-question {
+
+    @media (max-width: 768px) {
+        .tools-grid { grid-template-columns: 1fr; }
+    }
+
+    .tool-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tool-card.coming-soon { opacity: 0.6; }
+
+    .tool-card h3 {
         font-size: 1.05rem;
         font-weight: 600;
         color: var(--navy);
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
-    .faq-answer {
-        font-size: 0.95rem;
+
+    .tool-card p {
+        font-size: 0.9rem;
         color: var(--gray-600);
-        line-height: 1.7;
-        margin: 0;
+        line-height: 1.55;
+        flex-grow: 1;
     }
 
-    /* Alternatives Section */
-    .alternatives-section {
-        margin-top: 40px;
-    }
-
-    .alternatives-section h2 {
-        font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
-        color: var(--navy-medium);
-        margin-bottom: 20px;
-    }
-
-    .alternatives-grid {
+    .card-footer {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--gray-100);
     }
 
-    .alt-link {
+    .card-meta { font-size: 0.8rem; color: var(--gray-500); }
+    .card-link { font-size: 0.85rem; font-weight: 600; color: var(--gold-muted); }
+
+    /* Card Logos */
+    .card-logos {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .card-logo {
+        width: 40px;
+        height: 40px;
         background: var(--white);
         border: 1px solid var(--gray-200);
         border-radius: 8px;
-        padding: 12px 20px;
-        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .card-logo img {
+        max-width: 32px;
+        max-height: 32px;
+        object-fit: contain;
+    }
+
+    /* Pros/Cons */
+    .pros-cons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin: 24px 0;
+    }
+    @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
+
+    .pros, .cons {
+        background: var(--white);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .pros { border: 1px solid var(--green); }
+    .cons { border: 1px solid var(--red); }
+
+    .pros h4, .cons h4 { font-size: 0.95rem; margin-bottom: 12px; }
+    .pros h4 { color: var(--green); }
+    .cons h4 { color: var(--red); }
+
+    .pros ul, .cons ul { list-style: none; }
+    .pros li, .cons li { padding: 6px 0; font-size: 0.9rem; }
+    .pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
+    .cons li::before { content: '✗ '; color: var(--red); font-weight: 600; }
+
+    /* Info Card */
+    .info-card {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+    }
+
+    .info-card h3 {
+        font-size: 1.1rem;
         color: var(--navy);
-        font-weight: 500;
-        transition: all 0.2s;
+        margin-bottom: 16px;
     }
 
-    .alt-link:hover {
-        border-color: var(--gold);
-        background: var(--gray-50);
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--gray-100);
     }
 
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
+    .info-row:last-child { border-bottom: none; }
+    .info-label { color: var(--gray-500); font-size: 0.9rem; }
+    .info-value { font-weight: 500; font-size: 0.9rem; }
+    .info-value a { color: var(--gold-muted); }
+
+    /* Comparison Table */
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 24px 0;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
     }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
+
+    .comparison-table th {
+        background: var(--navy);
+        color: var(--white);
+        padding: 14px 16px;
+        text-align: left;
         font-weight: 600;
+        font-size: 0.9rem;
     }
+
+    .comparison-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--gray-200);
+        font-size: 0.9rem;
+    }
+
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) { background: var(--gray-50); }
+    .winner { color: var(--green); font-weight: 600; }
 
     </style>
-    <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://thecroreport.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Tools",
-      "item": "https://thecroreport.com/tools/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "AI SDR Tools",
-      "item": "https://thecroreport.com/tools/ai-sdr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Artisan",
-      "item": "https://thecroreport.com/tools/artisan/"
-    }
-  ]
-}</script>
-    <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Artisan",
-  "description": "Artisan creates AI employees (like Ava the AI BDR) that autonomously run outbound sales campaigns.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "url": "https://thecroreport.com/tools/artisan/",
-  "offers": {
-    "@type": "Offer",
-    "description": "Starting around $2,000/month for AI BDR"
-  }
-}</script>
-
 
 <body>
     <header class="site-header">
@@ -759,130 +661,60 @@
         })();
     </script>
 
-
-    <header class="header">
-        <div class="header-content">
-            <span class="eyebrow">AI SDR Tools</span>
+    <section class="page-header">
+        <div class="container-narrow">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> → <a href="/tools/">Tools</a> → Artisan
+            </nav>
+            <div class="page-label">AI SDR</div>
+            <img src="/assets/logos/artisan_Logo.webp" alt="Artisan" style="width: 64px; height: 64px; border-radius: 12px; margin-bottom: 16px;">
             <h1>Artisan</h1>
-            <p>AI employees for outbound sales</p>
+            <p class="lead">AI BDR platform with 'Ava' assistant, Y Combinator backed</p>
         </div>
-    </header>
+    </section>
 
-    <main class="tool-content">
-        <nav class="breadcrumb" style="padding: 16px 0 0; font-size: 0.85rem; color: var(--gray-500);">
-            <a href="/">Home</a> → <a href="/tools/">Tools</a> → <a href="/tools/ai-sdr/">AI SDR Tools</a> → Artisan
-        </nav>
-
-        <section class="tool-section">
-            <h2>Overview</h2>
-            <p>Artisan creates AI employees (like Ava the AI BDR) that autonomously run outbound sales campaigns.</p>
-
-            <div class="best-for-box">
-                <h3>Best For</h3>
-                <p>Startups and SMBs wanting turnkey outbound automation</p>
-            </div>
-
-            <div class="pricing-box">
-                <h3>Pricing</h3>
-                <p>Starting around $2,000/month for AI BDR</p>
-            </div>
-        </section>
-
-        <section class="tool-section">
-            <h2>Pros and Cons</h2>
-            <div class="pros-cons-grid">
-                <div class="pros-section">
-                    <h3>✓ Pros</h3>
-                    <ul class='pros-list'><li>Named AI persona (Ava)</li><li>End-to-end automation</li><li>Built-in data enrichment</li></ul>
+    <main>
+        <div class="container-narrow">
+            <div class="info-card">
+                <h3>Quick Facts</h3>
+                <div class="info-row">
+                    <span class="info-label">Best For</span>
+                    <span class="info-value">Teams wanting all-in-one platform with tool consolidation</span>
                 </div>
-                <div class="cons-section">
-                    <h3>✗ Cons</h3>
-                    <ul class='cons-list'><li>Newer company</li><li>May need tuning for complex ICPs</li></ul>
+                <div class="info-row">
+                    <span class="info-label">Pricing</span>
+                    <span class="info-value">~$1,500-2,000/month, annual contract required</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Category</span>
+                    <span class="info-value">AI SDR</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Website</span>
+                    <span class="info-value"><a href="https://www.artisan.co" target="_blank" rel="noopener">https://www.artisan.co</a></span>
                 </div>
             </div>
-        </section>
 
-        
-        <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does Artisan cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Artisan pricing: Starting around $2,000/month for AI BDR. Most AI SDR Tools tools require annual contracts for the best rates. Request a custom quote based on your team size and usage needs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Artisan right for my team?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Artisan is best for: Startups and SMBs wanting turnkey outbound automation. Consider your team size, budget, and existing tech stack when evaluating. Most vendors offer trials or pilots."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the best Artisan alternatives?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Top Artisan alternatives include: 11x, Relevance AI, Apollo, Instantly. The best choice depends on your specific needs - some prioritize features, others focus on pricing or ease of use. See our detailed comparison pages for head-to-head analysis."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the pros and cons of Artisan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Pros: Named AI persona (Ava); End-to-end automation; Built-in data enrichment. Cons: Newer company; May need tuning for complex ICPs. Every tool has tradeoffs - the key is finding the best fit for your team's workflow and budget."
-      }
-    }
-  ]
-}</script>
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✓ Pros</h4>
+                    <ul><li>All-in-one platform</li><li>300M+ contact database</li><li>Active development</li></ul>
+                </div>
+                <div class="cons">
+                    <h4>✗ Cons</h4>
+                    <ul><li>Annual contract required</li><li>Inconsistent results reported</li><li>UI issues noted in reviews</li></ul>
+                </div>
+            </div>
+
             
-            <div class="faq-item">
-                <h4 class="faq-question">How much does Artisan cost?</h4>
-                <p class="faq-answer">Artisan pricing: Starting around $2,000/month for AI BDR. Most AI SDR Tools tools require annual contracts for the best rates. Request a custom quote based on your team size and usage needs.</p>
-            </div>
-        
-            <div class="faq-item">
-                <h4 class="faq-question">Is Artisan right for my team?</h4>
-                <p class="faq-answer">Artisan is best for: Startups and SMBs wanting turnkey outbound automation. Consider your team size, budget, and existing tech stack when evaluating. Most vendors offer trials or pilots.</p>
-            </div>
-        
-            <div class="faq-item">
-                <h4 class="faq-question">What are the best Artisan alternatives?</h4>
-                <p class="faq-answer">Top Artisan alternatives include: 11x, Relevance AI, Apollo, Instantly. The best choice depends on your specific needs - some prioritize features, others focus on pricing or ease of use. See our detailed comparison pages for head-to-head analysis.</p>
-            </div>
-        
-            <div class="faq-item">
-                <h4 class="faq-question">What are the pros and cons of Artisan?</h4>
-                <p class="faq-answer">Pros: Named AI persona (Ava); End-to-end automation; Built-in data enrichment. Cons: Newer company; May need tuning for complex ICPs. Every tool has tradeoffs - the key is finding the best fit for your team's workflow and budget.</p>
-            </div>
-        
-        </section>
-    
+    <div class="cta-box">
+        <h3>Get Weekly Tool Reviews</h3>
+        <p>Honest assessments of GTM tools from a practitioner perspective.</p>
+        <a href="https://croreport.substack.com/subscribe" class="btn btn-gold">Subscribe to The CRO Report →</a>
+    </div>
 
-        
-        <section class="alternatives-section">
-            <h2>Artisan Alternatives</h2>
-            <div class="alternatives-grid">
-                <a href="/tools/11x/" class="alt-link">11x</a> <a href="/tools/relevance-ai/" class="alt-link">Relevance AI</a> <a href="/tools/apollo/" class="alt-link">Apollo</a> <a href="/tools/instantly/" class="alt-link">Instantly</a>
-            </div>
-        </section>
-        
-
-        <div class="cta-section">
-            <h2>Get Weekly Sales Tech Insights</h2>
-            <p>Stay updated on the latest tools, trends, and strategies for sales leadership.</p>
-            <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
         </div>
     </main>
-
 
     <footer class="site-footer">
         <div class="footer-content">
