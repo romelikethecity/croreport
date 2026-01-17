@@ -215,6 +215,11 @@ TRENDS_PAGE_CSS = '''
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--navy);
+        white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+        .stat-value { font-size: 1.3rem; }
     }
 
     .stat-label {
