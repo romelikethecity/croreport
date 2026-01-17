@@ -72,6 +72,99 @@ def format_salary(min_amount, max_amount):
     return ""
 
 
+def fmt_salary(amount):
+    """Format single salary amount as $XXXk."""
+    if not amount:
+        return "N/A"
+    return f"${int(amount/1000)}K"
+
+
+def load_json_data(filename):
+    """Load JSON data file from data directory."""
+    import json
+    with open(f'data/{filename}', 'r') as f:
+        return json.load(f)
+
+
+def write_page(base_path, slug, html, log_extra=""):
+    """Write an HTML page to disk and return the path."""
+    import os
+    output_dir = f"site/{base_path}/{slug}" if slug else f"site/{base_path}"
+    os.makedirs(output_dir, exist_ok=True)
+    with open(f"{output_dir}/index.html", 'w') as f:
+        f.write(html)
+    path = f"/{base_path}/{slug}/" if slug else f"/{base_path}/"
+    print(f"Generated: {path}{log_extra}")
+    return path
+
+
+def generate_faq_html(faqs, include_schema=True):
+    """Generate FAQ section HTML with optional schema markup.
+
+    Args:
+        faqs: List of dicts with 'question' and 'answer' keys
+        include_schema: Whether to include FAQPage schema markup
+
+    Returns:
+        HTML string for FAQ section, or empty string if no FAQs
+    """
+    if not faqs:
+        return ''
+
+    # Build FAQ items HTML
+    faq_items_html = ''
+    for faq in faqs:
+        faq_items_html += f'''
+            <div class="faq-item">
+                <h4 class="faq-question">{faq['question']}</h4>
+                <p class="faq-answer">{faq['answer']}</p>
+            </div>
+        '''
+
+    # Build schema if requested
+    schema_html = ''
+    if include_schema:
+        import json
+        faq_schema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": faq['question'],
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq['answer']
+                    }
+                }
+                for faq in faqs
+            ]
+        }
+        schema_html = f'<script type="application/ld+json">{json.dumps(faq_schema)}</script>'
+
+    return f'''
+        {schema_html}
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            {faq_items_html}
+        </section>
+    '''
+
+
+def generate_cta_section(title="Get Full Compensation Intelligence",
+                         description="Weekly analysis of compensation trends, equity data, and executive movements from 500+ sales leadership roles.",
+                         button_text="Subscribe to The CRO Report",
+                         button_url="https://croreport.substack.com/subscribe"):
+    """Generate a CTA section with gradient background."""
+    return f'''
+        <div class="cta-section">
+            <h2>{title}</h2>
+            <p>{description}</p>
+            <a href="{button_url}" class="cta-btn">{button_text}</a>
+        </div>
+    '''
+
+
 def is_remote(job_data):
     """Check if job is remote based on job data dict or series"""
     if isinstance(job_data, dict):
@@ -463,6 +556,133 @@ CSS_FOOTER = '''
     @media (max-width: 768px) {
         .footer-content { flex-direction: column; gap: 12px; text-align: center; }
         .footer-links a { margin: 0 12px; }
+    }
+'''
+
+# Shared page-specific CSS components (used across multiple generators)
+CSS_PAGE_HEADER = '''
+    /* Page Header (gradient style) */
+    .header {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    .header .eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dark);
+        margin-bottom: 12px;
+    }
+    .header h1 {
+        font-family: 'Fraunces', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    .header .breadcrumb { margin-bottom: 16px; opacity: 0.8; font-size: 0.9rem; }
+    .header .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .header .breadcrumb a:hover { text-decoration: underline; }
+'''
+
+CSS_CTA_SECTION = '''
+    /* CTA Section (gradient style) */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .cta-btn:hover { background: #c2660a; }
+'''
+
+CSS_FAQ_SECTION = '''
+    /* FAQ Section */
+    .faq-section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin: 32px 0;
+    }
+    .faq-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 24px;
+    }
+    .faq-item {
+        border-bottom: 1px solid var(--gray-200);
+        padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 12px;
+    }
+    .faq-answer {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        line-height: 1.7;
+        margin: 0;
+    }
+'''
+
+CSS_STAT_CARDS = '''
+    /* Stat Cards */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+    .stat-card {
+        background: white;
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .stat-card .label { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 8px; }
+    .stat-card .value {
+        font-family: 'Fraunces', serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--navy-medium);
+        white-space: nowrap;
+    }
+    .stat-card .sublabel { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+    .stat-value {
+        font-family: 'Fraunces', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--navy);
+        white-space: nowrap;
+    }
+    .stat-label {
+        font-size: 0.85rem;
+        color: var(--gray-600);
+        margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+        .stat-card .value { font-size: 1.5rem; }
+        .stat-value { font-size: 1.3rem; }
     }
 '''
 

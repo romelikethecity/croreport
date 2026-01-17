@@ -422,7 +422,7 @@
     }
 
         
-    /* Header */
+    /* Page Header (gradient style) */
     .header {
         background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
         color: white;
@@ -442,7 +442,34 @@
         margin-bottom: 12px;
     }
     .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
+    .header .breadcrumb { margin-bottom: 16px; opacity: 0.8; font-size: 0.9rem; }
+    .header .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .header .breadcrumb a:hover { text-decoration: underline; }
 
+        
+    /* CTA Section (gradient style) */
+    .cta-section {
+        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
+        color: white;
+        padding: 48px;
+        border-radius: 16px;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
+    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+    .cta-btn {
+        display: inline-block;
+        background: var(--gold-dark);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .cta-btn:hover { background: #c2660a; }
+
+        
     /* Hub Content */
     .hub-content {
         max-width: 1100px;
@@ -527,28 +554,6 @@
         line-height: 1.7;
         margin: 0;
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    .cta-btn:hover { background: #c2660a; }
 
     </style>
     <script type="application/ld+json">{

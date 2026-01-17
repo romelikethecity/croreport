@@ -15,56 +15,36 @@ import json
 import os
 from datetime import datetime
 
-# Import shared templates
+# Import shared templates and utilities
 from templates import (
     get_html_head,
     get_nav_html,
     get_footer_html,
+    generate_cta_section,
+    fmt_salary,
+    load_json_data,
+    write_page,
     CSS_VARIABLES,
     CSS_NAV,
     CSS_LAYOUT,
     CSS_CARDS,
     CSS_CTA,
-    CSS_FOOTER
+    CSS_FOOTER,
+    CSS_PAGE_HEADER,
+    CSS_CTA_SECTION,
+    CSS_STAT_CARDS,
 )
 from seo_core import generate_breadcrumb_schema
 
 MIN_JOBS_FOR_LISTING = 5
 
+
 def load_comp_data():
     """Load compensation analysis data."""
-    with open('data/comp_analysis.json', 'r') as f:
-        return json.load(f)
+    return load_json_data('comp_analysis.json')
 
-def fmt_salary(amount):
-    """Format salary as $XXXk."""
-    if not amount:
-        return "N/A"
-    return f"${int(amount/1000)}K"
-
-# Hub page specific CSS
+# Hub page specific CSS (unique parts - uses shared CSS from templates.py)
 HUB_PAGE_CSS = '''
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    .header .eyebrow {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--gold-dark);
-        margin-bottom: 12px;
-    }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-    }
-    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
-
     /* Hub Content */
     .hub-content {
         max-width: 1100px;
@@ -149,46 +129,10 @@ HUB_PAGE_CSS = '''
         line-height: 1.7;
         margin: 0;
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    .cta-btn:hover { background: #c2660a; }
 '''
 
-# Trends page specific CSS
+# Trends page specific CSS (unique parts - uses shared CSS from templates.py)
 TRENDS_PAGE_CSS = '''
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-    }
-    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
-
     .trends-content {
         max-width: 1000px;
         margin: 0 auto;
@@ -200,32 +144,6 @@ TRENDS_PAGE_CSS = '''
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
         margin: 30px 0;
-    }
-
-    .stat-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 12px;
-        padding: 24px;
-        text-align: center;
-    }
-
-    .stat-value {
-        font-family: 'Fraunces', serif;
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--navy);
-        white-space: nowrap;
-    }
-
-    @media (max-width: 600px) {
-        .stat-value { font-size: 1.3rem; }
-    }
-
-    .stat-label {
-        font-size: 0.85rem;
-        color: var(--gray-600);
-        margin-top: 8px;
     }
 
     .chart-container {
@@ -275,27 +193,6 @@ TRENDS_PAGE_CSS = '''
         line-height: 1.7;
         margin-bottom: 12px;
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
 '''
 
 def generate_hub_page(hub_type, title, description, intro_text, items, page_path, breadcrumbs):
@@ -334,6 +231,8 @@ def generate_hub_page(hub_type, title, description, intro_text, items, page_path
         {CSS_CARDS}
         {CSS_CTA}
         {CSS_FOOTER}
+        {CSS_PAGE_HEADER}
+        {CSS_CTA_SECTION}
         {HUB_PAGE_CSS}
     </style>
     {breadcrumb_schema}
@@ -424,6 +323,9 @@ def generate_trends_page(data):
         {CSS_CARDS}
         {CSS_CTA}
         {CSS_FOOTER}
+        {CSS_PAGE_HEADER}
+        {CSS_CTA_SECTION}
+        {CSS_STAT_CARDS}
         {TRENDS_PAGE_CSS}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

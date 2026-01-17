@@ -13,22 +13,29 @@ import json
 import os
 from datetime import datetime
 
-# Import shared templates
+# Import shared templates and utilities
 from templates import (
     get_html_head,
     get_nav_html,
     get_footer_html,
-    get_cta_box,
+    generate_cta_section,
+    generate_faq_html,
+    fmt_salary,
+    load_json_data,
+    write_page,
     CSS_VARIABLES,
     CSS_NAV,
     CSS_LAYOUT,
     CSS_CARDS,
     CSS_CTA,
-    CSS_FOOTER
+    CSS_FOOTER,
+    CSS_PAGE_HEADER,
+    CSS_CTA_SECTION,
+    CSS_FAQ_SECTION,
+    CSS_STAT_CARDS,
 )
 from seo_core import (
     generate_breadcrumb_schema,
-    generate_faq_schema,
     generate_salary_dataset_schema,
     generate_salary_faqs,
     get_related_salary_pages,
@@ -37,16 +44,10 @@ from seo_core import (
 # Minimum jobs required to create a page (avoid thin content)
 MIN_JOBS_FOR_PAGE = 5
 
+
 def load_comp_data():
     """Load compensation analysis data."""
-    with open('data/comp_analysis.json', 'r') as f:
-        return json.load(f)
-
-def fmt_salary(amount):
-    """Format salary as $XXXk."""
-    if not amount:
-        return "N/A"
-    return f"${int(amount/1000)}K"
+    return load_json_data('comp_analysis.json')
 
 def get_national_averages(data):
     """Calculate national averages for comparison."""
@@ -163,30 +164,9 @@ def generate_seniority_context(seniority, data):
         "Career progression depends on individual goals and market opportunities."
     ))
 
-# Page-specific CSS that builds on the existing design system
+# Page-specific CSS (unique to salary pages, uses shared components from templates.py)
 SALARY_PAGE_CSS = '''
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    .header .eyebrow {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--gold-dark);
-        margin-bottom: 12px;
-    }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-    }
-    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
-
-    /* Stats Grid */
+    /* Stats Grid - specific layout for salary pages */
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -198,18 +178,6 @@ SALARY_PAGE_CSS = '''
         z-index: 10;
     }
     @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
-
-    .stat-card {
-        background: white;
-        border-radius: 12px;
-        padding: 24px;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    .stat-card .label { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 8px; }
-    .stat-card .value { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; color: var(--navy-medium); white-space: nowrap; }
-    @media (max-width: 600px) { .stat-card .value { font-size: 1.5rem; } }
-    .stat-card .sublabel { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
 
     /* Section */
     .section { padding: 40px 0; }
@@ -234,37 +202,6 @@ SALARY_PAGE_CSS = '''
         margin-bottom: 12px;
     }
     .context-box p:last-child { margin-bottom: 0; }
-
-    /* FAQ Section */
-    .faq-section {
-        background: white;
-        border-radius: 12px;
-        padding: 32px;
-        margin: 32px 0;
-    }
-    .faq-section h2 {
-        font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
-        color: var(--navy-medium);
-        margin-bottom: 24px;
-    }
-    .faq-item {
-        border-bottom: 1px solid var(--gray-200);
-        padding: 20px 0;
-    }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-question {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 12px;
-    }
-    .faq-answer {
-        font-size: 0.95rem;
-        color: var(--gray-600);
-        line-height: 1.7;
-        margin: 0;
-    }
 
     /* Related Pages */
     .related-section {
@@ -308,28 +245,6 @@ SALARY_PAGE_CSS = '''
         color: var(--gray-500);
         margin-top: 4px;
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    .cta-btn:hover { background: #c2660a; }
 '''
 
 def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
@@ -426,25 +341,9 @@ def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
         record_count=count,
         url=f"/salaries/{slug}/"
     )
-    faq_schema = generate_faq_schema(faqs) if faqs else ''
 
-    # Build FAQ HTML
-    faq_items_html = ''
-    for faq in faqs:
-        faq_items_html += f'''
-            <div class="faq-item">
-                <h4 class="faq-question">{faq['question']}</h4>
-                <p class="faq-answer">{faq['answer']}</p>
-            </div>
-        '''
-
-    faq_section_html = f'''
-        {faq_schema}
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            {faq_items_html}
-        </section>
-    ''' if faqs else ''
+    # Build FAQ HTML using shared utility
+    faq_section_html = generate_faq_html(faqs, include_schema=True)
 
     # Build related pages HTML
     related_links_html = ''
@@ -477,7 +376,7 @@ def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
     # Use templates.py for head (but we need custom styles, so include_styles=False and add our own)
     html_head = get_html_head(title, description, page_path, include_styles=False)
 
-    # Build full HTML
+    # Build full HTML using shared CSS constants
     html = f'''{html_head}
     <style>
         {CSS_VARIABLES}
@@ -486,6 +385,10 @@ def generate_salary_page_v2(page_type, identifier, stats, all_pages, data):
         {CSS_CARDS}
         {CSS_CTA}
         {CSS_FOOTER}
+        {CSS_PAGE_HEADER}
+        {CSS_CTA_SECTION}
+        {CSS_FAQ_SECTION}
+        {CSS_STAT_CARDS}
         {SALARY_PAGE_CSS}
     </style>
     {breadcrumb_schema}

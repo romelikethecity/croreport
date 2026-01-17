@@ -13,21 +13,26 @@ import json
 import os
 from datetime import datetime
 
-# Import shared templates
+# Import shared templates and utilities
 from templates import (
     get_html_head,
     get_nav_html,
     get_footer_html,
+    generate_faq_html,
+    generate_cta_section,
+    write_page,
     CSS_VARIABLES,
     CSS_NAV,
     CSS_LAYOUT,
     CSS_CARDS,
     CSS_CTA,
-    CSS_FOOTER
+    CSS_FOOTER,
+    CSS_PAGE_HEADER,
+    CSS_CTA_SECTION,
+    CSS_FAQ_SECTION,
 )
 from seo_core import (
     generate_breadcrumb_schema,
-    generate_faq_schema,
     generate_tool_faqs,
 )
 
@@ -187,35 +192,19 @@ def generate_software_schema(tool):
 
     return f'<script type="application/ld+json">{json.dumps(schema, indent=2)}</script>'
 
-# Tool page specific CSS
+# Tool page specific CSS (unique parts - uses shared CSS from templates.py)
 TOOL_PAGE_CSS = '''
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-    }
+    /* Tool Header - extends shared .header with tool-specific styles */
     .header-content {
         max-width: 900px;
         margin: 0 auto;
     }
     .header .eyebrow {
         display: inline-block;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--gold-dark);
         background: rgba(255,255,255,0.1);
         padding: 6px 14px;
         border-radius: 20px;
-        margin-bottom: 16px;
     }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-    }
-    .header p { opacity: 0.9; max-width: 600px; }
 
     /* Tool Content */
     .tool-content {
@@ -332,37 +321,6 @@ TOOL_PAGE_CSS = '''
         margin: 0;
     }
 
-    /* FAQ Section */
-    .faq-section {
-        background: white;
-        border-radius: 12px;
-        padding: 32px;
-        margin: 32px 0;
-    }
-    .faq-section h2 {
-        font-family: 'Fraunces', serif;
-        font-size: 1.5rem;
-        color: var(--navy-medium);
-        margin-bottom: 24px;
-    }
-    .faq-item {
-        border-bottom: 1px solid var(--gray-200);
-        padding: 20px 0;
-    }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-question {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: var(--navy);
-        margin-bottom: 12px;
-    }
-    .faq-answer {
-        font-size: 0.95rem;
-        color: var(--gray-600);
-        line-height: 1.7;
-        margin: 0;
-    }
-
     /* Alternatives Section */
     .alternatives-section {
         margin-top: 40px;
@@ -396,45 +354,10 @@ TOOL_PAGE_CSS = '''
         border-color: var(--gold);
         background: var(--gray-50);
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
 '''
 
-# Category hub page CSS
+# Category hub page CSS (unique parts - uses shared CSS from templates.py)
 CATEGORY_PAGE_CSS = '''
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
-    .header h1 {
-        font-family: 'Fraunces', serif;
-        font-size: 2.5rem;
-        margin-bottom: 12px;
-    }
-    .header p { opacity: 0.9; max-width: 600px; margin: 0 auto; }
-
     /* Category Content */
     .category-content {
         max-width: 1100px;
@@ -499,27 +422,6 @@ CATEGORY_PAGE_CSS = '''
         font-size: 0.85rem;
         margin: 0;
     }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--navy-medium) 0%, var(--navy-hover) 100%);
-        color: white;
-        padding: 48px;
-        border-radius: 16px;
-        text-align: center;
-        margin: 40px 0;
-    }
-    .cta-section h2 { color: white; margin-bottom: 12px; font-family: 'Fraunces', serif; }
-    .cta-section p { opacity: 0.9; margin-bottom: 24px; }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gold-dark);
-        color: white;
-        padding: 14px 32px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-    }
 '''
 
 def generate_tool_page_v2(tool):
@@ -546,25 +448,9 @@ def generate_tool_page_v2(tool):
         best_for=tool.get('best_for'),
         alternatives=tool.get('alternatives')
     )
-    faq_schema = generate_faq_schema(faqs) if faqs else ''
 
-    # Build FAQ HTML
-    faq_items_html = ''
-    for faq in faqs:
-        faq_items_html += f'''
-            <div class="faq-item">
-                <h4 class="faq-question">{faq['question']}</h4>
-                <p class="faq-answer">{faq['answer']}</p>
-            </div>
-        '''
-
-    faq_section_html = f'''
-        {faq_schema}
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            {faq_items_html}
-        </section>
-    ''' if faqs else ''
+    # Build FAQ HTML using shared utility
+    faq_section_html = generate_faq_html(faqs, include_schema=True)
 
     # Build pros/cons HTML
     pros_html = ""
@@ -608,6 +494,9 @@ def generate_tool_page_v2(tool):
         {CSS_CARDS}
         {CSS_CTA}
         {CSS_FOOTER}
+        {CSS_PAGE_HEADER}
+        {CSS_CTA_SECTION}
+        {CSS_FAQ_SECTION}
         {TOOL_PAGE_CSS}
     </style>
     {breadcrumb_schema}
@@ -730,6 +619,8 @@ def generate_category_hub(category_slug, category_info, tools):
         {CSS_CARDS}
         {CSS_CTA}
         {CSS_FOOTER}
+        {CSS_PAGE_HEADER}
+        {CSS_CTA_SECTION}
         {CATEGORY_PAGE_CSS}
     </style>
     {breadcrumb_schema}
