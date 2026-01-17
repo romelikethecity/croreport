@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VP Sales Salary by Company Stage | The CRO Report</title>
+    <meta name="description" content="Compare VP Sales compensation at startups vs. enterprises. See how company stage affects base salary and equity.">
+    <link rel="canonical" href="https://thecroreport.com/salaries/by-stage/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://thecroreport.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Salaries",
+      "item": "https://thecroreport.com/salaries/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "By Company Stage",
+      "item": "https://thecroreport.com/salaries/by-stage/"
+    }
+  ]
+}</script>
+    <style>
+        
+    /* FAQ Section */
+    .faq-section {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 32px;
+        margin: 40px 0;
+    }
+
+    .faq-section h2 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.5rem;
+        color: var(--navy-medium);
+        margin-bottom: 24px;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid var(--gray-200);
+        padding: 20px 0;
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 12px;
+    }
+
+    .faq-answer {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* Related Pages Section */
+    .related-pages {
+        background: var(--gray-50);
+        border-radius: 12px;
+        padding: 32px;
+        margin: 40px 0;
+    }
+
+    .related-pages h3 {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        color: var(--navy-medium);
+        margin-bottom: 20px;
+    }
+
+    .related-links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .related-link {
+        display: flex;
+        flex-direction: column;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 16px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .related-link:hover {
+        border-color: var(--navy-medium);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .related-title {
+        font-weight: 600;
+        color: var(--navy);
+        font-size: 0.95rem;
+    }
+
+    .related-context {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+        margin-top: 4px;
+    }
+
+
+        .hub-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hub-hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hub-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hub-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .hub-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .hub-card:hover {
+            border-color: var(--navy-medium);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .hub-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .hub-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .job-count {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .salary-range {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy-medium);
+            margin-bottom: 8px;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .hub-intro {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .hub-intro h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: var(--navy-medium);
+            margin-bottom: 16px;
+        }
+
+        .hub-intro p {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">The CRO Report</a>
+            <div class="nav-links">
+                <a href="/jobs/">Jobs</a>
+                <a href="/salaries/">Salaries</a>
+                <a href="/tools/">Tools</a>
+                <a href="/companies/">Companies</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hub-hero">
+        <h1>VP Sales Salary by Company Stage</h1>
+        <p>Compare VP Sales compensation at startups vs. enterprises. See how company stage affects base salary and equity.</p>
+    </header>
+
+    <main class="hub-content">
+        <div class="hub-grid">
+            
+        <a href="/salaries/vp-sales-salary-enterprise-public/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Enterprise/Public</h3>
+                <span class="job-count">188 roles</span>
+            </div>
+            <div class="salary-range">
+                $171K - $265K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        <a href="/salaries/vp-sales-salary-series-c-d/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Series C/D</h3>
+                <span class="job-count">79 roles</span>
+            </div>
+            <div class="salary-range">
+                $222K - $314K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        <a href="/salaries/vp-sales-salary-series-a-b/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Series A/B</h3>
+                <span class="job-count">38 roles</span>
+            </div>
+            <div class="salary-range">
+                $147K - $183K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        <a href="/salaries/vp-sales-salary-series-b-c/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Series B/C</h3>
+                <span class="job-count">30 roles</span>
+            </div>
+            <div class="salary-range">
+                $164K - $226K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        <a href="/salaries/vp-sales-salary-late-stage/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Late Stage</h3>
+                <span class="job-count">27 roles</span>
+            </div>
+            <div class="salary-range">
+                $224K - $318K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        <a href="/salaries/vp-sales-salary-seed-series-a/" class="hub-card">
+            <div class="hub-card-header">
+                <h3>Seed/Series A</h3>
+                <span class="job-count">14 roles</span>
+            </div>
+            <div class="salary-range">
+                $192K - $257K
+            </div>
+            <div class="card-meta">Average base salary range</div>
+        </a>
+        
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 The CRO Report. Data updated weekly from job postings with disclosed compensation.</p>
+        </div>
+    </footer>
+</body>
+</html>
