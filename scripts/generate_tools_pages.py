@@ -283,6 +283,9 @@ def generate_tool_card(tool, badge_type='soon', badge_text='Tool Review'):
                 <div class="card-logo"><img src="{tool['logo']}" alt="{tool['name']}"></div>
             </div>'''
 
+    # Use different link text for in-depth reviews
+    link_text = 'Read Analysis →' if badge_type == 'live' else 'View Details →'
+
     return f'''
         <a href="/tools/{tool['slug']}/" class="tool-card">
             <span class="card-badge badge-{badge_type}">{badge_text}</span>
@@ -291,7 +294,7 @@ def generate_tool_card(tool, badge_type='soon', badge_text='Tool Review'):
             <p>{tool['description']}</p>
             <div class="card-footer">
                 <span class="card-meta">{tool['pricing'][:30]}...</span>
-                <span class="card-link">View Details →</span>
+                <span class="card-link">{link_text}</span>
             </div>
         </a>
 '''
@@ -347,7 +350,11 @@ def generate_category_section(cat, cat_tools, cat_comparisons, tools_dict, updat
     # Add individual tool cards if few comparisons
     if len(cat_comparisons) < 2:
         for tool in cat_tools[:3]:
-            cards_html += generate_tool_card(tool)
+            # Use 'live' badge and 'In-Depth' text for tools with custom pages
+            if tool.get('custom_page'):
+                cards_html += generate_tool_card(tool, badge_type='live', badge_text='In-Depth')
+            else:
+                cards_html += generate_tool_card(tool)
 
     return f'''
         <div class="section">
@@ -575,15 +582,25 @@ for alt in alternatives:
             if alt_tool.get('logo'):
                 logo_html = f'<div class="card-logo"><img src="{alt_tool["logo"]}" alt="{alt_name}"></div>'
 
+            # Use 'live' badge for tools with custom pages
+            if alt_tool.get('custom_page'):
+                badge_class = 'badge-live'
+                badge_text = 'In-Depth'
+                link_text = 'Read Analysis →'
+            else:
+                badge_class = 'badge-soon'
+                badge_text = 'Alternative'
+                link_text = 'View Details →'
+
             alts_html += f'''
                 <a href="/tools/{alt_slug}/" class="tool-card">
-                    <span class="card-badge badge-soon">Alternative</span>
+                    <span class="card-badge {badge_class}">{badge_text}</span>
                     {f'<div class="card-logos">{logo_html}</div>' if logo_html else ''}
                     <h3>{alt_name}</h3>
                     <p>{alt_tool.get('description', '')}</p>
                     <div class="card-footer">
                         <span class="card-meta">{alt_tool.get('pricing', 'Contact for pricing')[:30]}...</span>
-                        <span class="card-link">View Details →</span>
+                        <span class="card-link">{link_text}</span>
                     </div>
                 </a>
 '''
