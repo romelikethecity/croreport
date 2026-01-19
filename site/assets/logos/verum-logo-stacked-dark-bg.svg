@@ -1,0 +1,14 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="120" height="120" rx="12" fill="#2d3436"/>
+    <!-- Connection lines -->
+    <line x1="60" y1="24" x2="36" y2="64" stroke="#00b894" stroke-width="2.5"/>
+    <line x1="60" y1="24" x2="84" y2="64" stroke="#00b894" stroke-width="2.5"/>
+    <line x1="36" y1="64" x2="84" y2="64" stroke="#00b894" stroke-width="2.5"/>
+    <!-- Nodes -->
+    <circle cx="60" cy="24" r="6" fill="#00b894"/>
+    <circle cx="36" cy="64" r="6" fill="#00b894"/>
+    <circle cx="84" cy="64" r="6" fill="#00b894"/>
+    <!-- Wordmark -->
+    <text x="60" y="100" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="#ffffff" letter-spacing="4" text-anchor="middle">VERUM</text>
+</svg>
