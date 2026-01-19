@@ -42,7 +42,8 @@
       "website": "https://www.11x.ai",
       "logo": "/assets/logos/11x_logo.jpeg",
       "pros": ["High-volume automation", "Done-for-you approach", "VC-backed development"],
-      "cons": ["$60K+ annual commitment", "Can't handle replies", "TechCrunch exposed fake customers", "75% reported 3-month churn"]
+      "cons": ["$60K+ annual commitment", "Can't handle replies", "TechCrunch exposed fake customers", "75% reported 3-month churn"],
+      "custom_page": true
     },
     {
       "name": "Artisan",
@@ -54,7 +55,8 @@
       "website": "https://www.artisan.co",
       "logo": "/assets/logos/artisan_Logo.webp",
       "pros": ["All-in-one platform", "300M+ contact database", "Active development"],
-      "cons": ["Annual contract required", "Inconsistent results reported", "UI issues noted in reviews"]
+      "cons": ["Annual contract required", "Inconsistent results reported", "UI issues noted in reviews"],
+      "custom_page": true
     },
     {
       "name": "AiSDR",
@@ -66,7 +68,8 @@
       "website": "https://www.aisdr.com",
       "logo": "/assets/logos/AiSDR_logo.png",
       "pros": ["Quarterly contracts", "Transparent pricing", "Replies in under 10 min", "700M+ contacts", "Unused messages roll over"],
-      "cons": ["HubSpot only (Salesforce coming)", "Limited signal customization", "$0.75/message adds up at scale"]
+      "cons": ["HubSpot only (Salesforce coming)", "Limited signal customization", "$0.75/message adds up at scale"],
+      "custom_page": true
     },
     {
       "name": "Clay",
@@ -78,7 +81,8 @@
       "website": "https://www.clay.com",
       "logo": "/assets/logos/Clay%20Logo%20Dark.png",
       "pros": ["Waterfall enrichment", "75+ data providers", "Highly flexible"],
-      "cons": ["Learning curve", "Can get expensive at scale"]
+      "cons": ["Learning curve", "Can get expensive at scale"],
+      "custom_page": true
     },
     {
       "name": "Apollo.io",
@@ -90,7 +94,8 @@
       "website": "https://www.apollo.io",
       "logo": "/assets/logos/Apollo.io_logo.png",
       "pros": ["Built-in data", "Affordable", "Easy to use", "Sequences included"],
-      "cons": ["Data quality varies", "Less enterprise features"]
+      "cons": ["Data quality varies", "Less enterprise features"],
+      "custom_page": true
     },
     {
       "name": "ZoomInfo",
@@ -100,8 +105,10 @@
       "pricing": "Custom pricing, typically $15K-50K+/year",
       "best_for": "Enterprise teams needing comprehensive B2B data",
       "website": "https://www.zoominfo.com",
+      "logo": "/assets/logos/ZoomInfo_idtuqxiPZw_1.png",
       "pros": ["Largest database", "Intent data", "Enterprise integrations"],
-      "cons": ["Expensive", "Data decay", "Aggressive sales tactics", "Long contracts"]
+      "cons": ["Expensive", "Data decay", "Aggressive sales tactics", "Long contracts"],
+      "custom_page": true
     },
     {
       "name": "Gong",
