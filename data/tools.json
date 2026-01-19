@@ -41,6 +41,12 @@
       "slug": "cpq",
       "icon": "📝",
       "description": "Configure-price-quote, proposals, and deal room software"
+    },
+    {
+      "name": "Data Operations & Intelligence",
+      "slug": "data-ops",
+      "icon": "🔧",
+      "description": "Data cleaning, enrichment, routing, and managed data services"
     }
   ],
   "tools": [
@@ -314,6 +320,71 @@
       "logo": "/assets/logos/pandadoc_logo.svg",
       "pros": ["Free e-sign tier", "Beautiful templates", "Fast implementation", "Affordable CPQ"],
       "cons": ["CPQ less robust than DealHub", "Limited complex pricing", "Better for docs than quotes"],
+      "custom_page": true
+    },
+    {
+      "name": "Openprise",
+      "slug": "openprise",
+      "category": "Data Operations & Intelligence",
+      "description": "Enterprise no-code data orchestration and automation platform",
+      "pricing": "Starting at $35K/year, enterprise contracts",
+      "best_for": "Enterprise RevOps teams with complex data orchestration needs",
+      "website": "https://www.openprisetech.com",
+      "logo": "/assets/logos/openprise_logo.png",
+      "pros": ["300+ pre-built integrations", "Full-stack data orchestration", "No-code automation", "ETL/ELT/reverse ETL capabilities"],
+      "cons": ["Expensive ($35K+ minimum)", "Steep learning curve", "Requires technical resources", "Not user-friendly for non-technical users"],
+      "custom_page": true
+    },
+    {
+      "name": "Cloudingo",
+      "slug": "cloudingo",
+      "category": "Data Operations & Intelligence",
+      "description": "Salesforce-native data deduplication and cleansing tool",
+      "pricing": "$1,096-$10,000/year based on tier and record count",
+      "best_for": "Salesforce-only teams with duplicate record problems",
+      "website": "https://cloudingo.com",
+      "logo": "/assets/logos/cloudingo_logo.jpeg",
+      "pros": ["Salesforce-native", "Undo/restore merged records", "10+ matching algorithms", "SOC 2 Type II compliant"],
+      "cons": ["Salesforce only", "Record count fees above 300K", "Limited to deduplication use case", "No multi-CRM support"],
+      "custom_page": true
+    },
+    {
+      "name": "LeanData",
+      "slug": "leandata",
+      "category": "Data Operations & Intelligence",
+      "description": "Lead routing and GTM orchestration platform",
+      "pricing": "Starting at $39/user/month",
+      "best_for": "Teams needing sophisticated lead routing and matching",
+      "website": "https://www.leandata.com",
+      "logo": "/assets/logos/leandata_logo.svg",
+      "pros": ["95%+ matching accuracy", "Visual drag-and-drop workflows", "BookIt scheduling integration", "Strong Salesforce integration"],
+      "cons": ["Per-user pricing adds up", "Primarily routing-focused", "Can get backed up with high volume", "Learning curve for complex flows"],
+      "custom_page": true
+    },
+    {
+      "name": "Demandbase",
+      "slug": "demandbase",
+      "category": "Data Operations & Intelligence",
+      "description": "Enterprise ABM platform with account intelligence and data enrichment",
+      "pricing": "Custom pricing, typically $30K-$200K+/year",
+      "best_for": "Enterprise ABM teams with large deal sizes and complex buying journeys",
+      "website": "https://www.demandbase.com",
+      "logo": "/assets/logos/demandbase_Logo.svg",
+      "pros": ["Best-in-class intent data", "Account intelligence", "85+ integrations", "Unified ABM platform"],
+      "cons": ["Very expensive", "Complex implementation", "Steep learning curve", "Not for SMBs or simple use cases"],
+      "custom_page": true
+    },
+    {
+      "name": "Verum",
+      "slug": "verum",
+      "category": "Data Operations & Intelligence",
+      "description": "AI-powered managed data cleaning, enrichment, and analysis services",
+      "pricing": "Fixed per-record pricing, no hourly fees",
+      "best_for": "Teams wanting data ops done for them without DIY tool overhead",
+      "website": "https://veruminc.com",
+      "logo": "/assets/logos/verum-logo-stacked-dark-bg.svg",
+      "pros": ["10x faster than agencies", "70% cost reduction vs agencies", "24-48 hour turnaround", "Human QA on every project", "No tool setup required"],
+      "cons": ["Managed service (not self-serve)", "Requires data export/import", "Less control than DIY tools", "Newer player in market"],
       "custom_page": true
     }
   ],
