@@ -13,6 +13,12 @@
       "description": "Contact data, company intel, and prospecting tools"
     },
     {
+      "name": "Website Visitor Intelligence",
+      "slug": "visitor-intelligence",
+      "icon": "🔍",
+      "description": "Identify anonymous website visitors and trigger sales follow-up"
+    },
+    {
       "name": "Conversation Intelligence",
       "slug": "conversation-intelligence",
       "icon": "🎙️",
@@ -72,6 +78,19 @@
       "custom_page": true
     },
     {
+      "name": "Regie.ai",
+      "slug": "regie",
+      "category": "AI SDR",
+      "description": "AI-powered sales engagement with parallel dialer and AI agents",
+      "pricing": "From $35,000/year + $150/rep/month for dialer",
+      "best_for": "Enterprise teams wanting AI + human SDR hybrid approach",
+      "website": "https://www.regie.ai",
+      "logo": "/assets/logos/regie_logos.svg",
+      "pros": ["Built-in parallel dialer", "AI + human workflow", "Enrichment included", "Sequence automation"],
+      "cons": ["$35K minimum commitment", "No pricing transparency", "AI copy sounds robotic", "Complex implementation"],
+      "custom_page": true
+    },
+    {
       "name": "Clay",
       "slug": "clay",
       "category": "Data Enrichment",
@@ -111,6 +130,32 @@
       "custom_page": true
     },
     {
+      "name": "Warmly",
+      "slug": "warmly",
+      "category": "Website Visitor Intelligence",
+      "description": "Website visitor identification with AI-powered outbound automation",
+      "pricing": "Free tier (500 visitors), paid from $499/month to $30K+/year",
+      "best_for": "Teams wanting to convert website traffic into pipeline",
+      "website": "https://www.warmly.ai",
+      "logo": "/assets/logos/warmly_logo.png",
+      "pros": ["Multiple de-anonymization sources", "AI SDR built-in", "Live chat integration", "Free tier available"],
+      "cons": ["Identification accuracy varies", "Gets expensive fast", "Limited CRM integrations", "Person-level ID unreliable"],
+      "custom_page": true
+    },
+    {
+      "name": "Unify",
+      "slug": "unify",
+      "category": "Website Visitor Intelligence",
+      "description": "Intent-driven outbound platform combining signals with execution",
+      "pricing": "From $700/month (Growth), Enterprise from $30K/year",
+      "best_for": "Teams wanting signal-based outbound orchestration",
+      "website": "https://www.unifygtm.com",
+      "logo": "/assets/logos/unify_logo.svg",
+      "pros": ["25+ intent signals", "Plays workflow automation", "AI agents for research", "Strong UX"],
+      "cons": ["Credit-based pricing adds up", "No free tier", "Complex workflow setup", "Limited pricing transparency"],
+      "custom_page": true
+    },
+    {
       "name": "Gong",
       "slug": "gong",
       "category": "Conversation Intelligence",
@@ -147,6 +192,19 @@
       "logo": "/assets/logos/Chorus.ai_idaSJPpfn1_1.png",
       "pros": ["ZoomInfo integration", "Good transcription"],
       "cons": ["Less standalone value post-acquisition"],
+      "custom_page": true
+    },
+    {
+      "name": "Sybill",
+      "slug": "sybill",
+      "category": "Conversation Intelligence",
+      "description": "AI sales assistant for CRM automation and deal execution",
+      "pricing": "14-day free trial, custom pricing",
+      "best_for": "AEs wanting automated CRM updates and follow-up emails",
+      "website": "https://www.sybill.ai",
+      "logo": "/assets/logos/sybill_logo.svg",
+      "pros": ["Auto-fills CRM fields", "AI follow-up emails", "Deal summaries", "Multi-source context"],
+      "cons": ["Less call coaching than Gong", "Newer platform", "Pricing not transparent"],
       "custom_page": true
     },
     {
@@ -192,12 +250,13 @@
       "slug": "instantly",
       "category": "Sales Engagement",
       "description": "Cold email platform with unlimited sending accounts",
-      "pricing": "From $37/month",
-      "best_for": "Teams focused on high-volume cold email",
+      "pricing": "From $30/month, scales to $358/month for full features",
+      "best_for": "Agencies and teams focused on high-volume cold email",
       "website": "https://instantly.ai",
       "logo": "/assets/logos/Instantly.ai_logo.png",
-      "pros": ["Unlimited email accounts", "Affordable", "Good deliverability tools"],
-      "cons": ["Email only", "Less features than full platforms"]
+      "pros": ["Unlimited email accounts", "Built-in warmup", "Affordable entry point", "Strong deliverability"],
+      "cons": ["Email only", "Lead database costs extra", "Advanced features locked to high tiers", "Basic CRM"],
+      "custom_page": true
     },
     {
       "name": "Salesforce",
