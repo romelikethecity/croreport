@@ -613,6 +613,93 @@
         margin-top: 0;
     }
 
+    /* Category Filter */
+    .category-filter {
+        background: var(--white);
+        border-bottom: 1px solid var(--gray-200);
+        padding: 16px 0;
+        position: sticky;
+        top: 73px;
+        z-index: 90;
+    }
+
+    .category-filter .container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .filter-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--gray-500);
+        white-space: nowrap;
+    }
+
+    .filter-chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .filter-chips::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        background: var(--gray-100);
+        border: 1px solid var(--gray-200);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--gray-700);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+    }
+
+    .filter-chip:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--navy);
+    }
+
+    .filter-chip.active {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+        .category-filter {
+            top: 73px;
+        }
+        .filter-label {
+            display: none;
+        }
+        .filter-chip {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Offset for anchor links to account for sticky headers */
+    .section[id] {
+        scroll-margin-top: 140px;
+    }
+
     </style>
 
 <body>
@@ -704,10 +791,26 @@
         </div>
     </section>
 
+    <nav class="category-filter">
+        <div class="container">
+            <div class="filter-label">Jump to:</div>
+            <div class="filter-chips">
+                <a href="#ai-sdr" class="filter-chip">🤖 AI SDR</a>
+                <a href="#data-enrichment" class="filter-chip">📊 Data Enrichment</a>
+                <a href="#visitor-intelligence" class="filter-chip">🔍 Visitor Intel</a>
+                <a href="#conversation-intelligence" class="filter-chip">🎙️ Conversation Intel</a>
+                <a href="#sales-engagement" class="filter-chip">📧 Sales Engagement</a>
+                <a href="#crm-revops" class="filter-chip">🗄️ CRM & RevOps</a>
+                <a href="#cpq-deals" class="filter-chip">📝 CPQ & Deals</a>
+                <a href="#data-operations" class="filter-chip">🔧 Data Operations</a>
+            </div>
+        </div>
+    </nav>
+
     <main>
         <div class="container">
 
-        <div class="section">
+        <div class="section" id="ai-sdr">
             <div class="section-header">
                 <span class="section-icon">🤖</span>
                 <h2>AI SDR</h2>
@@ -815,7 +918,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="data-enrichment">
             <div class="section-header">
                 <span class="section-icon">📊</span>
                 <h2>Data Enrichment</h2>
@@ -898,7 +1001,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="visitor-intelligence">
             <div class="section-header">
                 <span class="section-icon">🔍</span>
                 <h2>Website Visitor Intelligence</h2>
@@ -956,7 +1059,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="conversation-intelligence">
             <div class="section-header">
                 <span class="section-icon">🎙️</span>
                 <h2>Conversation Intelligence</h2>
@@ -1053,7 +1156,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="sales-engagement">
             <div class="section-header">
                 <span class="section-icon">📧</span>
                 <h2>Sales Engagement</h2>
@@ -1147,7 +1250,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="crm-revops">
             <div class="section-header">
                 <span class="section-icon">🗄️</span>
                 <h2>CRM & RevOps</h2>
@@ -1189,7 +1292,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="cpq-deals">
             <div class="section-header">
                 <span class="section-icon">📝</span>
                 <h2>CPQ & Deal Management</h2>
@@ -1247,7 +1350,7 @@
 
         </div>
 
-        <div class="section">
+        <div class="section" id="data-operations">
             <div class="section-header">
                 <span class="section-icon">🔧</span>
                 <h2>Data Operations & Intelligence</h2>
