@@ -471,7 +471,14 @@ print("  Created tools index page")
 
 print("\n2. Generating individual tool pages...")
 
+skipped_tools = 0
 for tool in tools_list:
+    # Skip if this tool has a custom (manually created) page
+    if tool.get('custom_page'):
+        print(f"   Skipping {tool['slug']} (has custom page)")
+        skipped_tools += 1
+        continue
+
     tool_dir = f"{TOOLS_DIR}/{tool['slug']}"
     os.makedirs(tool_dir, exist_ok=True)
 
@@ -546,7 +553,7 @@ for tool in tools_list:
     with open(f'{tool_dir}/index.html', 'w') as f:
         f.write(html)
 
-print(f"  Created {len(tools_list)} individual tool pages")
+print(f"  Created {len(tools_list) - skipped_tools} individual tool pages (skipped {skipped_tools} with custom pages)")
 
 
 # ============================================================
@@ -748,12 +755,13 @@ print(f"  Created {generated_comparisons} comparison pages (skipped {skipped_com
 # SUMMARY
 # ============================================================
 
-total_pages = 1 + len(tools_list) + len(alternatives) + generated_comparisons
+generated_tools = len(tools_list) - skipped_tools
+total_pages = 1 + generated_tools + len(alternatives) + generated_comparisons
 print(f"\n{'='*70}")
 print(f"TOOLS SECTION COMPLETE")
 print(f"Generated {total_pages} tool pages:")
 print(f"   - 1 index page (5 categories)")
-print(f"   - {len(tools_list)} individual tool pages")
+print(f"   - {generated_tools} individual tool pages ({skipped_tools} skipped - using custom pages)")
 print(f"   - {len(alternatives)} alternatives pages")
 print(f"   - {generated_comparisons} comparison pages")
 print(f"   - {skipped_comparisons} comparisons skipped (using custom pages)")

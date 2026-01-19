@@ -112,7 +112,8 @@
       "best_for": "Sales teams wanting call coaching and deal insights",
       "website": "https://www.gong.io",
       "pros": ["Best-in-class transcription", "Deal intelligence", "Coaching tools"],
-      "cons": ["Expensive", "Requires call volume for insights"]
+      "cons": ["Expensive", "Requires call volume for insights"],
+      "custom_page": true
     },
     {
       "name": "Clari",
@@ -123,7 +124,8 @@
       "best_for": "Revenue leaders wanting forecast accuracy",
       "website": "https://www.clari.com",
       "pros": ["Forecasting accuracy", "Pipeline visibility", "CRO dashboards"],
-      "cons": ["Complex implementation", "Expensive"]
+      "cons": ["Complex implementation", "Expensive"],
+      "custom_page": true
     },
     {
       "name": "Chorus.ai",
@@ -134,7 +136,8 @@
       "best_for": "Teams already using ZoomInfo",
       "website": "https://www.chorus.ai",
       "pros": ["ZoomInfo integration", "Good transcription"],
-      "cons": ["Less standalone value post-acquisition"]
+      "cons": ["Less standalone value post-acquisition"],
+      "custom_page": true
     },
     {
       "name": "Outreach",
@@ -145,7 +148,8 @@
       "best_for": "Enterprise sales teams with complex workflows",
       "website": "https://www.outreach.io",
       "pros": ["Robust automation", "Enterprise integrations", "Advanced analytics"],
-      "cons": ["Expensive", "Complex setup", "Steep learning curve"]
+      "cons": ["Expensive", "Complex setup", "Steep learning curve"],
+      "custom_page": true
     },
     {
       "name": "Salesloft",
@@ -156,7 +160,8 @@
       "best_for": "Mid-market to enterprise B2B sales teams",
       "website": "https://www.salesloft.com",
       "pros": ["User-friendly interface", "Strong cadence builder", "Good support"],
-      "cons": ["Limited customization", "Reporting could be better"]
+      "cons": ["Limited customization", "Reporting could be better"],
+      "custom_page": true
     },
     {
       "name": "Reply.io",
@@ -191,7 +196,8 @@
       "best_for": "Mid-market to enterprise with complex needs",
       "website": "https://www.salesforce.com",
       "pros": ["Ecosystem", "Customization", "Enterprise features"],
-      "cons": ["Complexity", "Cost", "Admin overhead"]
+      "cons": ["Complexity", "Cost", "Admin overhead"],
+      "custom_page": true
     },
     {
       "name": "HubSpot",
@@ -202,7 +208,8 @@
       "best_for": "SMB and mid-market with marketing alignment",
       "website": "https://www.hubspot.com",
       "pros": ["Free tier", "Easy to use", "Marketing integration"],
-      "cons": ["Gets expensive at scale", "Less customizable"]
+      "cons": ["Gets expensive at scale", "Less customizable"],
+      "custom_page": true
     }
   ],
   "alternatives": [
