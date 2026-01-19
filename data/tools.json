@@ -111,6 +111,7 @@
       "pricing": "Custom pricing, typically $100-150/user/month",
       "best_for": "Sales teams wanting call coaching and deal insights",
       "website": "https://www.gong.io",
+      "logo": "/assets/logos/Gong_idbake_GIv_1.png",
       "pros": ["Best-in-class transcription", "Deal intelligence", "Coaching tools"],
       "cons": ["Expensive", "Requires call volume for insights"],
       "custom_page": true
@@ -123,6 +124,7 @@
       "pricing": "Custom enterprise pricing",
       "best_for": "Revenue leaders wanting forecast accuracy",
       "website": "https://www.clari.com",
+      "logo": "/assets/logos/Clari_idsDWBhbiV_1.png",
       "pros": ["Forecasting accuracy", "Pipeline visibility", "CRO dashboards"],
       "cons": ["Complex implementation", "Expensive"],
       "custom_page": true
@@ -135,6 +137,7 @@
       "pricing": "Bundled with ZoomInfo or standalone",
       "best_for": "Teams already using ZoomInfo",
       "website": "https://www.chorus.ai",
+      "logo": "/assets/logos/Chorus.ai_idaSJPpfn1_1.png",
       "pros": ["ZoomInfo integration", "Good transcription"],
       "cons": ["Less standalone value post-acquisition"],
       "custom_page": true
@@ -147,6 +150,7 @@
       "pricing": "Custom pricing, typically $100-150/user/month",
       "best_for": "Enterprise sales teams with complex workflows",
       "website": "https://www.outreach.io",
+      "logo": "/assets/logos/Outreach_id9Hkp4Y8J_1.png",
       "pros": ["Robust automation", "Enterprise integrations", "Advanced analytics"],
       "cons": ["Expensive", "Complex setup", "Steep learning curve"],
       "custom_page": true
@@ -159,6 +163,7 @@
       "pricing": "Custom pricing, typically $75-125/user/month",
       "best_for": "Mid-market to enterprise B2B sales teams",
       "website": "https://www.salesloft.com",
+      "logo": "/assets/logos/Salesloft_id-kieD7eR_1.png",
       "pros": ["User-friendly interface", "Strong cadence builder", "Good support"],
       "cons": ["Limited customization", "Reporting could be better"],
       "custom_page": true
@@ -195,6 +200,7 @@
       "pricing": "$25-300/user/month depending on edition",
       "best_for": "Mid-market to enterprise with complex needs",
       "website": "https://www.salesforce.com",
+      "logo": "/assets/logos/Salesforce_idN3OdcTG__1.png",
       "pros": ["Ecosystem", "Customization", "Enterprise features"],
       "cons": ["Complexity", "Cost", "Admin overhead"],
       "custom_page": true
@@ -207,6 +213,7 @@
       "pricing": "Free tier, paid from $45/month",
       "best_for": "SMB and mid-market with marketing alignment",
       "website": "https://www.hubspot.com",
+      "logo": "/assets/logos/HubSpot_idPJcOROpd_1.png",
       "pros": ["Free tier", "Easy to use", "Marketing integration"],
       "cons": ["Gets expensive at scale", "Less customizable"],
       "custom_page": true
