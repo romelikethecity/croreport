@@ -256,6 +256,22 @@ TOOLS_CSS = '''
     .comparison-table tr:last-child td { border-bottom: none; }
     .comparison-table tr:nth-child(even) { background: var(--gray-50); }
     .winner { color: var(--green); font-weight: 600; }
+
+    /* Subsection Headers */
+    .subsection-header {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 24px 0 16px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .subsection-header:first-of-type {
+        margin-top: 0;
+    }
 '''
 
 
@@ -304,8 +320,9 @@ def generate_comparison_card(comp, tools_dict, update_date):
     """Generate a comparison card"""
     has_custom = comp.get('custom_url')
     url = comp['custom_url'] if has_custom else f"/tools/{comp['slug']}/"
-    badge = 'live' if has_custom else 'comparison'
-    badge_text = 'In-Depth' if has_custom else 'Comparison'
+    # Use 'comparison' badge style for all comparisons
+    badge = 'comparison'
+    badge_text = 'Comparison'
 
     # Get logos for the tools
     tool_a_slug = comp['tool_a'].lower().replace(' ', '-').replace('.', '')
@@ -340,35 +357,58 @@ def generate_comparison_card(comp, tools_dict, update_date):
 
 
 def generate_category_section(cat, cat_tools, cat_comparisons, tools_dict, update_date):
-    """Generate a category section with tools and comparisons"""
-    cards_html = ''
+    """Generate a category section with Reviews and Comparisons subsections"""
 
-    # Add comparison cards for this category
+    # Generate Reviews subsection (individual tool cards with custom pages)
+    reviews_html = ''
+    for tool in cat_tools:
+        if tool.get('custom_page'):
+            reviews_html += generate_tool_card(tool, badge_type='live', badge_text='In-Depth')
+
+    # Also add tools without custom pages if there are few reviews
+    tools_without_custom = [t for t in cat_tools if not t.get('custom_page')]
+    if len([t for t in cat_tools if t.get('custom_page')]) < 2:
+        for tool in tools_without_custom[:2]:
+            reviews_html += generate_tool_card(tool, badge_type='soon', badge_text='Tool Review')
+
+    # Generate Comparisons subsection
+    comparisons_html = ''
     for comp in cat_comparisons:
-        cards_html += generate_comparison_card(comp, tools_dict, update_date)
+        comparisons_html += generate_comparison_card(comp, tools_dict, update_date)
 
-    # Add individual tool cards if few comparisons
-    if len(cat_comparisons) < 2:
-        for tool in cat_tools[:3]:
-            # Use 'live' badge and 'In-Depth' text for tools with custom pages
-            if tool.get('custom_page'):
-                cards_html += generate_tool_card(tool, badge_type='live', badge_text='In-Depth')
-            else:
-                cards_html += generate_tool_card(tool)
-
-    return f'''
+    # Build the section HTML
+    section_html = f'''
         <div class="section">
             <div class="section-header">
                 <span class="section-icon">{cat.get('icon', '')}</span>
                 <h2>{cat['name']}</h2>
             </div>
             <p class="section-description">{cat['description']}</p>
+'''
 
+    # Add Reviews subsection if there are any reviews
+    if reviews_html:
+        section_html += f'''
+            <h3 class="subsection-header">Reviews</h3>
             <div class="tools-grid">
-{cards_html}
+{reviews_html}
             </div>
+'''
+
+    # Add Comparisons subsection if there are any comparisons
+    if comparisons_html:
+        section_html += f'''
+            <h3 class="subsection-header">Comparisons</h3>
+            <div class="tools-grid">
+{comparisons_html}
+            </div>
+'''
+
+    section_html += '''
         </div>
 '''
+
+    return section_html
 
 
 # ============================================================
@@ -380,7 +420,8 @@ print("\n1. Generating tools index page...")
 # Count stats
 total_tools = len(tools_list)
 total_comparisons = len(comparisons)
-live_comparisons = len([c for c in comparisons if c.get('custom_url')])
+in_depth_reviews = len([t for t in tools_list if t.get('custom_page')])
+total_analyses = in_depth_reviews + total_comparisons
 num_categories = len(categories)
 
 index_html = get_html_head(
@@ -401,16 +442,16 @@ index_html += f'''
 
             <div class="stats-row">
                 <div class="stat-box">
-                    <div class="stat-number">{total_tools}</div>
-                    <div class="stat-label">Tools Reviewed</div>
+                    <div class="stat-number">{in_depth_reviews}</div>
+                    <div class="stat-label">In-Depth Reviews</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">{total_comparisons}</div>
                     <div class="stat-label">Comparisons</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number green">{live_comparisons}</div>
-                    <div class="stat-label">In-Depth Analyses</div>
+                    <div class="stat-number green">{total_analyses}</div>
+                    <div class="stat-label">Total Analyses</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number gold">{num_categories}</div>
