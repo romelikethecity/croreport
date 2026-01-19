@@ -35,6 +35,12 @@
       "slug": "crm-revops",
       "icon": "🗄️",
       "description": "Customer relationship management and revenue operations"
+    },
+    {
+      "name": "CPQ & Deal Management",
+      "slug": "cpq",
+      "icon": "📝",
+      "description": "Configure-price-quote, proposals, and deal room software"
     }
   ],
   "tools": [
@@ -282,6 +288,32 @@
       "logo": "/assets/logos/HubSpot_idPJcOROpd_1.png",
       "pros": ["Free tier", "Easy to use", "Marketing integration"],
       "cons": ["Gets expensive at scale", "Less customizable"],
+      "custom_page": true
+    },
+    {
+      "name": "DealHub",
+      "slug": "dealhub",
+      "category": "CPQ & Deal Management",
+      "description": "Agentic CPQ platform with deal rooms and subscription billing",
+      "pricing": "Custom pricing, typically $50-100/user/month",
+      "best_for": "B2B SaaS teams with complex pricing and subscription models",
+      "website": "https://dealhub.io",
+      "logo": "/assets/logos/dealhub_logo.svg",
+      "pros": ["No-code CPQ builder", "Deal rooms included", "Subscription billing", "Strong Salesforce/HubSpot integration"],
+      "cons": ["Pricing not transparent", "Can be overkill for simple deals", "Learning curve for admins"],
+      "custom_page": true
+    },
+    {
+      "name": "PandaDoc",
+      "slug": "pandadoc",
+      "category": "CPQ & Deal Management",
+      "description": "Document automation and e-signature with CPQ capabilities",
+      "pricing": "Free eSign tier, CPQ from $49/user/month",
+      "best_for": "Teams wanting fast proposal generation with e-signatures",
+      "website": "https://www.pandadoc.com",
+      "logo": "/assets/logos/pandadoc_logo.svg",
+      "pros": ["Free e-sign tier", "Beautiful templates", "Fast implementation", "Affordable CPQ"],
+      "cons": ["CPQ less robust than DealHub", "Limited complex pricing", "Better for docs than quotes"],
       "custom_page": true
     }
   ],
