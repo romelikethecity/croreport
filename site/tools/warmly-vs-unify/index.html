@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3119XDMC12"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3119XDMC12');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "uvbemaajqm");
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warmly vs Unify: Website Visitor Intelligence Compared | The CRO Report</title>
+    <meta name="description" content="Warmly vs Unify for 2026. Warmly focuses on visitor ID + chat. Unify orchestrates signals into outbound plays. Here's which approach fits your GTM motion.">
+    <link rel="canonical" href="https://thecroreport.com/tools/warmly-vs-unify/">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thecroreport.com/tools/warmly-vs-unify/">
+    <meta property="og:title" content="Warmly vs Unify: Website Visitor Intelligence Compared">
+    <meta property="og:description" content="Two different approaches to turning website traffic into pipeline. Warmly IDs visitors and chats them. Unify orchestrates signals into plays.">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Warmly vs Unify: Website Visitor Intelligence Compared">
+    <meta name="twitter:description" content="Two different approaches to turning website traffic into pipeline. Warmly IDs visitors and chats them. Unify orchestrates signals into plays.">
+    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
+
+    <!-- Product Schema for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Warmly vs Unify: Website Visitor Intelligence Compared",
+        "image": "https://thecroreport.com/assets/social-preview.png",
+        "author": {
+            "@type": "Person",
+            "name": "Rome Thorndike",
+            "url": "https://www.linkedin.com/in/romethorndike/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "The CRO Report",
+            "url": "https://thecroreport.com"
+        },
+        "datePublished": "2026-01-19T12:00:00-08:00",
+        "dateModified": "2026-01-19T12:00:00-08:00",
+        "about": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "Warmly",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "499",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2026-12-31"
+                }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Unify",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "700",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2026-12-31"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0a1628;
+            --navy-light: #132038;
+            --gold: #d4a853;
+            --gold-muted: #b8956a;
+            --red: #dc3545;
+            --green: #28a745;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.7;
+        }
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .logo img { width: 40px; height: 40px; border-radius: 8px; }
+
+        .nav { display: flex; gap: 32px; align-items: center; }
+        .nav a { color: var(--gray-600); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+        .nav a:hover, .nav a.active { color: var(--navy); }
+        .nav-cta { background: var(--navy); color: var(--white) !important; padding: 8px 16px; border-radius: 6px; }
+        .nav-cta:hover { background: var(--navy-light); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-nav-overlay.active { opacity: 1; }
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-nav.active { right: 0; }
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .mobile-nav-header .logo-text {
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+        .mobile-nav-links { list-style: none; padding: 20px; }
+        .mobile-nav-links li { margin-bottom: 8px; }
+        .mobile-nav-links a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .mobile-nav-links a:hover { background: var(--gray-100); }
+        .mobile-nav-subscribe {
+            display: block;
+            margin: 20px;
+            padding: 14px;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 64px 0 48px;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        .breadcrumb { font-size: 0.85rem; color: var(--gray-300); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--gold); text-decoration: none; }
+
+        .badge {
+            display: inline-block;
+            background: rgba(212, 168, 83, 0.2);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+        .hero .lead { font-size: 1.15rem; color: var(--gray-300); max-width: 650px; margin-bottom: 32px; }
+
+        .verdict-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+        }
+        .verdict-icon {
+            width: 44px; height: 44px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .verdict-text { font-size: 0.95rem; line-height: 1.6; }
+        .verdict-text strong { color: var(--gold); }
+
+        .stats-section { padding: 40px 0; background: var(--white); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        .stat-card { text-align: center; padding: 24px 16px; background: var(--gray-50); border-radius: 10px; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+        .stat-number.gold { color: var(--gold-muted); }
+        .stat-label { font-size: 0.8rem; color: var(--gray-500); }
+
+        .content-section { padding: 48px 0; }
+        .content-section:nth-child(even) { background: var(--white); }
+        .section-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-muted); margin-bottom: 10px; }
+        h2 { font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+        h3 { font-size: 1.25rem; font-weight: 600; color: var(--navy); margin: 28px 0 14px; }
+        p { margin-bottom: 16px; }
+        a { color: var(--gold-muted); }
+
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+        .comparison-table th { background: var(--navy); color: var(--white); padding: 12px 16px; text-align: left; font-weight: 600; }
+        .comparison-table th:first-child { border-radius: 8px 0 0 0; }
+        .comparison-table th:last-child { border-radius: 0 8px 0 0; }
+        .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: var(--gray-50); }
+        .factor { font-weight: 600; color: var(--navy); }
+        .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+        .tag-red { background: rgba(220, 53, 69, 0.1); color: var(--red); }
+        .tag-yellow { background: rgba(212, 168, 83, 0.15); color: var(--gold-muted); }
+        .tag-green { background: rgba(40, 167, 69, 0.1); color: var(--green); }
+
+        .company-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+        .company-card.highlight { border: 2px solid var(--gold); }
+        .company-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-200); }
+        .company-logo { width: 52px; height: 52px; background: var(--white); border-radius: 10px; border: 1px solid var(--gray-200); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .company-logo img { max-width: 44px; max-height: 44px; object-fit: contain; }
+        .company-info h3 { margin: 0 0 4px; }
+        .company-meta { font-size: 0.85rem; color: var(--gray-500); }
+
+        .alert { padding: 18px 20px; border-radius: 8px; margin: 20px 0; display: flex; gap: 14px; }
+        .alert-icon { font-size: 1.3rem; flex-shrink: 0; }
+        .alert-danger { background: rgba(220, 53, 69, 0.08); border-left: 4px solid var(--red); }
+        .alert-warning { background: rgba(212, 168, 83, 0.1); border-left: 4px solid var(--gold); }
+        .alert-info { background: rgba(10, 22, 40, 0.05); border-left: 4px solid var(--navy); }
+        .alert-success { background: rgba(40, 167, 69, 0.08); border-left: 4px solid var(--green); }
+        .alert h4 { font-weight: 700; margin-bottom: 6px; color: var(--navy); font-size: 0.95rem; }
+        .alert p { margin: 0; font-size: 0.9rem; }
+
+        .quote-block { background: var(--gray-50); border-left: 4px solid var(--navy); padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+        .quote-block.negative { border-left-color: var(--red); background: rgba(220, 53, 69, 0.04); }
+        .quote-block.positive { border-left-color: var(--green); background: rgba(40, 167, 69, 0.04); }
+        .quote-text { font-size: 1rem; font-style: italic; margin-bottom: 10px; line-height: 1.6; }
+        .quote-source { font-size: 0.8rem; color: var(--gray-500); }
+        .quote-source a { color: var(--gold-muted); }
+
+        .rec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0; }
+        @media (max-width: 768px) { .rec-grid { grid-template-columns: 1fr; } }
+        .rec-box { padding: 22px; border-radius: 10px; border: 2px solid; }
+        .rec-box.use { background: rgba(40, 167, 69, 0.04); border-color: var(--green); }
+        .rec-box.skip { background: rgba(220, 53, 69, 0.04); border-color: var(--red); }
+        .rec-box h4 { font-size: 0.95rem; margin-bottom: 12px; }
+        .rec-box.use h4 { color: var(--green); }
+        .rec-box.skip h4 { color: var(--red); }
+        .rec-box ul { list-style: none; padding: 0; margin: 0; }
+        .rec-box li { padding: 5px 0 5px 18px; position: relative; font-size: 0.88rem; }
+        .rec-box li::before { content: '->'; position: absolute; left: 0; color: var(--gray-500); }
+
+        .stage-section { margin: 28px 0; }
+        .stage-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .stage-badge { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; }
+        .stage-badge.startup { background: #e3f2fd; color: #1565c0; }
+        .stage-badge.scaleup { background: #fff3e0; color: #ef6c00; }
+        .stage-badge.enterprise { background: #f3e5f5; color: #7b1fa2; }
+
+        .questions-list { background: var(--navy); color: var(--white); padding: 28px; border-radius: 12px; margin: 28px 0; }
+        .questions-list h3 { color: var(--gold); margin-bottom: 18px; font-size: 1.1rem; }
+        .questions-list ol { padding-left: 20px; }
+        .questions-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
+        .questions-list li:last-child { border-bottom: none; }
+
+        .bottom-line { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--white); padding: 36px; border-radius: 12px; margin: 32px 0; }
+        .bottom-line h3 { color: var(--gold); font-size: 1.35rem; margin-bottom: 18px; }
+        .bottom-line p { font-size: 1rem; line-height: 1.7; }
+        .bottom-line ul { margin: 14px 0 0 18px; }
+        .bottom-line li { margin-bottom: 8px; }
+
+        .cta-section { text-align: center; padding: 48px 24px; background: var(--white); }
+        .cta-section h2 { margin-bottom: 12px; }
+        .cta-section p { color: var(--gray-600); margin-bottom: 24px; }
+        .btn { display: inline-block; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+        .btn-primary { background: var(--gold); color: var(--navy); }
+        .btn-secondary { background: var(--white); color: var(--navy); border: 2px solid var(--navy); margin-left: 12px; }
+        .disclosure { background: var(--gray-100); padding: 18px 22px; border-radius: 8px; font-size: 0.8rem; color: var(--gray-600); margin-top: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .disclosure strong { color: var(--gray-700); }
+        .last-updated { font-size: 0.8rem; color: var(--gray-500); margin-top: 24px; }
+
+        .site-footer { background: var(--white); border-top: 1px solid var(--gray-200); padding: 24px 0; margin-top: 48px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--gray-500); }
+        .footer-links a { color: var(--gray-500); text-decoration: none; margin-left: 24px; }
+
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .mobile-nav-overlay { display: block; pointer-events: none; }
+            .mobile-nav-overlay.active { pointer-events: auto; }
+            .footer-content { flex-direction: column; gap: 12px; text-align: center; }
+            .footer-links a { margin: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report">
+                The CRO Report
+            </a>
+            <nav class="nav">
+                <a href="/jobs/">Jobs</a>
+                <a href="/salaries/">Salaries</a>
+                <a href="/tools/" class="active">Tools</a>
+                <a href="/insights/">Market Intel</a>
+                <a href="/about/">About</a>
+                <a href="/newsletter/">Newsletter</a>
+                <a href="https://croreport.substack.com/subscribe" class="nav-cta">Subscribe</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <span class="logo-text">The CRO Report</span>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="/jobs/">Jobs</a></li>
+            <li><a href="/salaries/">Salaries</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/insights/">Market Intel</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/newsletter/">Newsletter</a></li>
+        </ul>
+        <a href="https://croreport.substack.com/subscribe" class="mobile-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/tools/">Tools</a> / <a href="/tools/visitor-intelligence/">Website Visitor Intelligence</a> / Warmly vs Unify
+            </div>
+            <span class="badge">VISITOR INTELLIGENCE COMPARISON</span>
+            <h1>Warmly vs Unify: Two Different Bets on Intent Data</h1>
+            <p class="lead">Both platforms promise to turn anonymous website traffic into pipeline. But they take fundamentally different approaches. Warmly focuses on visitor identification and real-time chat engagement. Unify orchestrates multiple intent signals into automated outbound plays. Which approach fits your GTM motion?</p>
+
+            <div class="verdict-box">
+                <div class="verdict-icon">&#9878;</div>
+                <div class="verdict-text">
+                    <strong>The Short Version:</strong> Choose Warmly if you want to identify visitors and engage them immediately via chat + AI SDR. Choose Unify if you want to orchestrate multiple intent signals (not just website visits) into multi-channel outbound sequences. Warmly is simpler with a free tier. Unify is more powerful but more complex.
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number gold">$499</div>
+                    <div class="stat-label">Warmly<br>Starting Price/Mo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number gold">$700</div>
+                    <div class="stat-label">Unify<br>Starting Price/Mo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Intent Signals<br>Unify Tracks</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Free</div>
+                    <div class="stat-label">Warmly<br>Entry Tier</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">The Core Difference</div>
+            <h2>Different Problems, Different Solutions</h2>
+            <p>Both Warmly and Unify sit in the "website visitor intelligence" category, but they've made different product bets. Understanding this is key to picking the right one.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Factor</th><th>Warmly</th><th>Unify</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="factor">Core Philosophy</td><td>Identify visitors, engage immediately <span class="tag tag-green">Chat-first</span></td><td>Orchestrate signals into outbound plays <span class="tag tag-green">Workflow-first</span></td></tr>
+                    <tr><td class="factor">Primary Signal</td><td>Website visits + firmographics</td><td>25+ signals: job changes, funding, technographics, G2, etc.</td></tr>
+                    <tr><td class="factor">Engagement Method</td><td>Live chat, AI chatbot, AI SDR <span class="tag tag-green">Real-time</span></td><td>Automated sequences via email/LinkedIn <span class="tag tag-yellow">Async</span></td></tr>
+                    <tr><td class="factor">Starting Price</td><td>Free (500 visitors), $499/mo paid</td><td>$700/mo (Growth tier)</td></tr>
+                    <tr><td class="factor">Enterprise Pricing</td><td>$12,000-30,000+/year</td><td>$30,000+/year</td></tr>
+                    <tr><td class="factor">Data Enrichment</td><td>Included (Clearbit-style)</td><td>Included + 25+ signal sources</td></tr>
+                    <tr><td class="factor">Best For</td><td>High-intent website traffic conversion</td><td>Multi-signal outbound orchestration</td></tr>
+                    <tr><td class="factor">Complexity</td><td>Lower <span class="tag tag-green">Quick setup</span></td><td>Higher <span class="tag tag-yellow">Workflow learning curve</span></td></tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-info">
+                <div class="alert-icon">&#128161;</div>
+                <div>
+                    <h4>The Strategic Question</h4>
+                    <p>Ask yourself: Is your biggest opportunity converting website visitors who are already showing intent? (Warmly) Or is it building outbound motions triggered by multiple buying signals beyond just your website? (Unify)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="company-card highlight">
+                <div class="company-header">
+                    <div class="company-logo"><img src="/assets/logos/warmly_logo.png" alt="Warmly Logo"></div>
+                    <div class="company-info">
+                        <h3>Warmly</h3>
+                        <div class="company-meta">Founded 2020 &middot; $7.2M raised &middot; San Francisco</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">&#128293;</div>
+                    <div>
+                        <h4>The Visitor-First Approach</h4>
+                        <p>Warmly's bet: if someone is on your website, they're already interested. Identify them, enrich them, and engage them before they leave. Their stack combines visitor identification with real-time chat and automated follow-up.</p>
+                    </div>
+                </div>
+
+                <h3>How It Works</h3>
+                <p>Warmly uses multiple de-anonymization sources to identify who's visiting your website, then enriches that data with firmographics, technographics, and contact information. The magic is what happens next: live chat with AI assistance, automated chatbot engagement, and AI SDR follow-up for visitors who don't chat.</p>
+
+                <h3>Pricing Breakdown</h3>
+                <table class="comparison-table">
+                    <thead><tr><th>Tier</th><th>Price</th><th>What You Get</th></tr></thead>
+                    <tbody>
+                        <tr><td class="factor">Free</td><td>$0</td><td>500 visitors/mo, basic ID, Slack alerts</td></tr>
+                        <tr><td class="factor">Startup</td><td>$499/mo</td><td>5,000 visitors, chat widget, integrations</td></tr>
+                        <tr><td class="factor">Business</td><td>$1,000+/mo</td><td>15,000+ visitors, AI chatbot, campaigns</td></tr>
+                        <tr><td class="factor">Enterprise</td><td>$30,000+/year</td><td>Unlimited, AI SDR, advanced orchestration</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="quote-block positive">
+                    <div class="quote-text">"We went from 0 to 15 demos a month just from website visitors we were previously ignoring. Warmly paid for itself in week two."</div>
+                    <div class="quote-source">-- Head of Sales, B2B SaaS Startup</div>
+                </div>
+
+                <h3>Where Warmly Shines</h3>
+                <div class="rec-grid">
+                    <div class="rec-box use">
+                        <h4>&#10003; Strengths</h4>
+                        <ul>
+                            <li>Free tier to test before committing</li>
+                            <li>Real-time chat engagement</li>
+                            <li>Fast implementation (days, not weeks)</li>
+                            <li>Multiple de-anonymization sources</li>
+                            <li>AI SDR for automated follow-up</li>
+                            <li>Clean, intuitive UI</li>
+                        </ul>
+                    </div>
+                    <div class="rec-box skip">
+                        <h4>&#10007; Limitations</h4>
+                        <ul>
+                            <li>Identification accuracy varies (15-30%)</li>
+                            <li>Person-level ID often unreliable</li>
+                            <li>Website-centric (fewer signal types)</li>
+                            <li>Gets expensive at scale quickly</li>
+                            <li>Limited CRM integrations</li>
+                            <li>Chat widget can feel intrusive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="company-card">
+                <div class="company-header">
+                    <div class="company-logo"><img src="/assets/logos/unify_logo.svg" alt="Unify Logo"></div>
+                    <div class="company-info">
+                        <h3>Unify</h3>
+                        <div class="company-meta">Founded 2023 &middot; YC-backed &middot; San Francisco</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">&#128302;</div>
+                    <div>
+                        <h4>The Signal Orchestration Approach</h4>
+                        <p>Unify's bet: website visits are just one signal. The best outbound motion combines multiple intent signals--job changes, funding rounds, tech stack changes, G2 visits, and more--into orchestrated plays that fire automatically.</p>
+                    </div>
+                </div>
+
+                <h3>How It Works</h3>
+                <p>Unify aggregates 25+ intent signals beyond just website visits: job changes, funding events, technographic changes, G2 category research, LinkedIn engagement, and more. You build "Plays"--automated workflows that trigger sequences when prospects match your signal criteria. Think of it as Zapier meets Clay meets Outreach.</p>
+
+                <h3>Pricing Breakdown</h3>
+                <table class="comparison-table">
+                    <thead><tr><th>Tier</th><th>Price</th><th>What You Get</th></tr></thead>
+                    <tbody>
+                        <tr><td class="factor">Growth</td><td>$700/mo</td><td>10K credits, basic plays, email integration</td></tr>
+                        <tr><td class="factor">Pro</td><td>Custom</td><td>More credits, advanced plays, LinkedIn</td></tr>
+                        <tr><td class="factor">Enterprise</td><td>$30,000+/year</td><td>Unlimited, AI agents, full orchestration</td></tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Credit model:</strong> Unify uses credits for enrichment and actions. 10K credits sounds like a lot until you realize enriching one contact uses multiple credits. Budget for credit overages.</p>
+
+                <div class="quote-block positive">
+                    <div class="quote-text">"Unify let us build plays that would've required stitching together 4-5 tools. Job change + visited pricing page + in our ICP = auto-sequence. Game changer."</div>
+                    <div class="quote-source">-- VP of Sales Development, Series B Company</div>
+                </div>
+
+                <h3>Where Unify Shines</h3>
+                <div class="rec-grid">
+                    <div class="rec-box use">
+                        <h4>&#10003; Strengths</h4>
+                        <ul>
+                            <li>25+ intent signals beyond website</li>
+                            <li>Powerful play builder (workflows)</li>
+                            <li>AI research agents for personalization</li>
+                            <li>Strong UX for complex workflows</li>
+                            <li>Replaces multiple tools (Clay-like)</li>
+                            <li>Great for signal-based outbound</li>
+                        </ul>
+                    </div>
+                    <div class="rec-box skip">
+                        <h4>&#10007; Limitations</h4>
+                        <ul>
+                            <li>No free tier</li>
+                            <li>Credit-based pricing adds up fast</li>
+                            <li>Steeper learning curve</li>
+                            <li>Complex plays take time to build</li>
+                            <li>Less real-time engagement (async)</li>
+                            <li>Pricing transparency lacking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Decision Framework</div>
+            <h2>Which One Should You Actually Buy?</h2>
+
+            <div class="stage-section">
+                <div class="stage-header">
+                    <span class="stage-badge startup">WEBSITE CONVERSION FOCUS</span>
+                    <h3>"We Get Good Traffic But Don't Convert It"</h3>
+                </div>
+                <div class="alert alert-success">
+                    <div class="alert-icon">&#10004;</div>
+                    <div>
+                        <h4>Choose Warmly</h4>
+                        <p>If your website gets meaningful traffic and you're not converting visitors, Warmly's real-time identification and chat engagement will show results fast. Start with the free tier. You'll know within a month if it works.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <div class="stage-header">
+                    <span class="stage-badge scaleup">SIGNAL-BASED OUTBOUND</span>
+                    <h3>"We Want to Build Sophisticated Outbound Plays"</h3>
+                </div>
+                <div class="alert alert-success">
+                    <div class="alert-icon">&#10004;</div>
+                    <div>
+                        <h4>Choose Unify</h4>
+                        <p>If you want to trigger outbound based on multiple signals (not just website visits), Unify's play builder is more powerful. Job changes + funding + tech stack changes = the kind of compound signals that actually predict buying intent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage-section">
+                <div class="stage-header">
+                    <span class="stage-badge enterprise">BUDGET CONSCIOUS</span>
+                    <h3>"We Need to Test Before Committing"</h3>
+                </div>
+                <div class="alert alert-warning">
+                    <div class="alert-icon">&#9888;</div>
+                    <div>
+                        <h4>Start with Warmly's Free Tier</h4>
+                        <p>Warmly's free tier (500 visitors/month) lets you validate the approach before spending. Unify has no free tier. If you're not sure which approach fits, Warmly's lower barrier makes it the safer first test.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="bottom-line">
+                <h3>The CRO Report's Bottom Line</h3>
+                <p><strong>These tools optimize for different GTM motions:</strong></p>
+                <ul>
+                    <li><strong>Warmly wins at:</strong> Converting existing website traffic through real-time identification and chat engagement. Simpler, cheaper entry point.</li>
+                    <li><strong>Unify wins at:</strong> Building multi-signal outbound plays that go beyond website visits. More powerful, steeper learning curve.</li>
+                    <li><strong>The reality:</strong> If you have high website traffic and weak conversion, start with Warmly. If you want to build Clay-like workflows with intent signals, Unify is more capable.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="questions-list">
+                <h3>&#128269; Questions to Ask Before You Buy</h3>
+                <ol>
+                    <li><strong>What's your monthly website traffic?</strong> Below 5K visitors, neither tool is worth it. You need volume for visitor identification to matter.</li>
+                    <li><strong>Is real-time engagement important?</strong> If you want to chat with visitors while they're on site, Warmly. If async sequences are fine, Unify.</li>
+                    <li><strong>What signals matter beyond website visits?</strong> If job changes, funding, and tech stack are important, Unify's signal library is richer.</li>
+                    <li><strong>What's your technical capacity?</strong> Warmly is simpler. Unify's play builder requires more workflow thinking.</li>
+                    <li><strong>What's your budget tolerance for overages?</strong> Unify's credit model can surprise you. Warmly's visitor tiers are more predictable.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="author-bio-section" style="padding: 48px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="author-bio" style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px;">
+                <h3 style="font-family: 'Fraunces', serif; font-size: 1.25rem; color: #1e3a5f; margin: 0 0 16px 0;">About the Author</h3>
+                <p style="color: #475569; margin: 0 0 16px 0; line-height: 1.6;">Rome Thorndike is VP of Revenue at <a href="https://firmograph.ai" style="color: #1e3a5f;">Firmograph.ai</a>, where he builds AI agents that analyze GTM data for revenue leaders. His career spans enterprise sales at Salesforce and Microsoft, helping scale Sequoia-backed Snapdocs from Series A through Series D, and leading sales at Datajoy through its acquisition by Databricks. Rome holds an MBA from UC Berkeley Haas with a focus on statistical analysis and machine learning.</p>
+                <p style="margin: 0; font-size: 0.9rem;"><a href="https://www.linkedin.com/in/romethorndike/" style="color: #d97706;">Connect on LinkedIn</a> &middot; <a href="/about/" style="color: #d97706;">About The CRO Report</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help Choosing the Right GTM Stack?</h2>
+            <p>The CRO Report delivers weekly market intelligence for VP Sales and CRO-level executives.</p>
+            <a href="https://thecroreport.substack.com" class="btn btn-primary">Subscribe to The CRO Report</a>
+            <a href="/tools/" class="btn btn-secondary">Browse All Tool Reviews</a>
+
+            <div class="disclosure">
+                <strong>Disclosure:</strong> The CRO Report may receive affiliate compensation from tools mentioned here. Our analysis is independent. Every source is linked. Every claim is verifiable.
+            </div>
+            <div class="last-updated">
+                <strong>Last Updated:</strong> January 2026
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>&copy; 2025 <a href="/">The CRO Report</a></span>
+            <div class="footer-links">
+                <a href="/jobs/">Jobs</a>
+                <a href="/salaries/">Salaries</a>
+                <a href="/tools/">Tools</a>
+                <a href="/insights/">Market Intel</a>
+                <a href="/about/">About</a>
+                <a href="https://croreport.substack.com">Newsletter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+        })();
+    </script>
+</body>
+</html>

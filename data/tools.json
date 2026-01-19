@@ -486,6 +486,76 @@
         "smb": "Apollo",
         "enterprise": "ZoomInfo"
       }
+    },
+    {
+      "tool_a": "Warmly",
+      "tool_b": "Unify",
+      "slug": "warmly-vs-unify",
+      "title": "Warmly vs Unify",
+      "description": "Two approaches to website visitor intelligence. Warmly focuses on chat engagement. Unify orchestrates multi-signal outbound plays.",
+      "custom_url": "/tools/warmly-vs-unify/",
+      "winner_for": {
+        "real_time_engagement": "Warmly",
+        "signal_orchestration": "Unify",
+        "free_tier": "Warmly",
+        "signal_variety": "Unify"
+      }
+    },
+    {
+      "tool_a": "DealHub",
+      "tool_b": "PandaDoc",
+      "slug": "dealhub-vs-pandadoc",
+      "title": "DealHub vs PandaDoc",
+      "description": "Full CPQ platform vs document automation with e-sign. Different tools for different quoting complexity.",
+      "custom_url": "/tools/dealhub-vs-pandadoc/",
+      "winner_for": {
+        "complex_pricing": "DealHub",
+        "simple_proposals": "PandaDoc",
+        "deal_rooms": "DealHub",
+        "e_signatures": "PandaDoc"
+      }
+    },
+    {
+      "tool_a": "Gong",
+      "tool_b": "Sybill",
+      "slug": "gong-vs-sybill",
+      "title": "Gong vs Sybill",
+      "description": "Enterprise CI leader vs AI-first CRM automation. Different priorities, different price points.",
+      "custom_url": "/tools/gong-vs-sybill/",
+      "winner_for": {
+        "call_coaching": "Gong",
+        "crm_automation": "Sybill",
+        "value": "Sybill",
+        "enterprise": "Gong"
+      }
+    },
+    {
+      "tool_a": "Instantly",
+      "tool_b": "Reply.io",
+      "slug": "instantly-vs-reply",
+      "title": "Instantly vs Reply.io",
+      "description": "Email-only specialist vs multichannel platform. Pick based on your outbound motion.",
+      "custom_url": "/tools/instantly-vs-reply/",
+      "winner_for": {
+        "cold_email": "Instantly",
+        "multichannel": "Reply.io",
+        "unlimited_accounts": "Instantly",
+        "linkedin": "Reply.io"
+      }
+    },
+    {
+      "tool_a": "Outreach",
+      "tool_b": "Apollo",
+      "slug": "outreach-vs-apollo",
+      "title": "Outreach vs Apollo",
+      "description": "Enterprise SEP leader vs all-in-one challenger. Complexity vs accessibility.",
+      "custom_url": "/tools/outreach-vs-apollo/",
+      "winner_for": {
+        "enterprise_workflows": "Outreach",
+        "bundled_data": "Apollo",
+        "value": "Apollo",
+        "salesforce_integration": "Outreach"
+      }
     }
   ]
 }
