@@ -97,6 +97,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/dealhub-vs-pandadoc/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/dealhub/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -127,6 +133,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://thecroreport.com/tools/gong-vs-sybill/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://thecroreport.com/tools/gong/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -134,6 +146,12 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/hubspot/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/instantly-vs-reply/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -152,6 +170,12 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/outreach-alternatives/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/outreach-vs-apollo/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -224,6 +248,12 @@
   </url>
   <url>
     <loc>https://thecroreport.com/tools/unify/</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://thecroreport.com/tools/warmly-vs-unify/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
