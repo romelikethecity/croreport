@@ -16,6 +16,15 @@ import glob
 SITE_DIR = 'site'
 TEMPLATES_DIR = 'templates/includes'
 
+# CSS that must exist for the nav to work correctly
+NAV_CSS_REQUIRED = '''
+        /* Standard Nav Styles */
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 32px; width: auto; border-radius: 8px; }
+        .btn-subscribe { background: var(--navy, #1e3a5f); color: var(--white, #ffffff) !important; padding: 8px 16px; border-radius: 6px; font-weight: 600; }
+        .btn-subscribe:hover { background: var(--navy-light, #2d4a6f); }
+'''
+
 def read_include(filename):
     """Read an include file."""
     filepath = os.path.join(TEMPLATES_DIR, filename)
@@ -25,12 +34,42 @@ def read_include(filename):
     print(f"Warning: Include not found: {filepath}")
     return None
 
+def update_nav_css(content):
+    """Ensure the page has the required CSS classes for the nav to work."""
+    # Check if .header-container already exists
+    if '.header-container' in content and '.btn-subscribe' in content and '.logo-img' in content:
+        return content  # Already has the styles
+
+    # Build the CSS to add
+    css_to_add = ''
+    if '.header-container' not in content:
+        css_to_add += '\n        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }'
+    if '.logo-img' not in content:
+        css_to_add += '\n        .logo-img { height: 32px; width: auto; border-radius: 8px; }'
+    if '.btn-subscribe' not in content:
+        css_to_add += '\n        .btn-subscribe { background: var(--navy, #1e3a5f); color: var(--white, #ffffff) !important; padding: 8px 16px; border-radius: 6px; font-weight: 600; }'
+        css_to_add += '\n        .btn-subscribe:hover { background: var(--navy-light, #2d4a6f); }'
+
+    if not css_to_add:
+        return content
+
+    # Find the first </style> tag and insert CSS before it
+    style_close_match = re.search(r'(</style>)', content)
+    if style_close_match:
+        insert_pos = style_close_match.start()
+        content = content[:insert_pos] + css_to_add + '\n    ' + content[insert_pos:]
+
+    return content
+
 def update_html_file(filepath, nav_html, footer_html):
     """Update nav and footer in a single HTML file."""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
     original_content = content
+
+    # First, ensure the required CSS classes exist
+    content = update_nav_css(content)
 
     # Check if the file has the expected structure
     if '<header class="site-header">' in content:
