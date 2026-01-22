@@ -587,19 +587,21 @@
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
-                The CRO Report
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img" width="40" height="40">
+                <span>The CRO Report</span>
             </a>
-            <nav class="nav">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/" class="active">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/consulting/">GTM Consulting</a>
-                <a href="/about/">About</a>
-                <a href="/newsletter/" class="nav-cta">Subscribe</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/consulting/">GTM Consulting</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
+                </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </header>
 
@@ -608,7 +610,7 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-header">
             <span class="logo-text">The CRO Report</span>
-            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="/jobs/">Jobs</a></li>
@@ -628,23 +630,25 @@
             const overlay = document.querySelector('.mobile-nav-overlay');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
             function openMenu() {
                 mobileNav.classList.add('active');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+
             function closeMenu() {
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
-
 
     <header class="header">
         <h1>Sales Engagement Platforms</h1>

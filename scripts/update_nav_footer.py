@@ -32,19 +32,37 @@ def update_html_file(filepath, nav_html, footer_html):
 
     original_content = content
 
-    # Pattern to match the header section (from <header to the mobile nav script closing)
-    # This captures the entire navigation block including mobile nav
-    header_pattern = r'<header class="site-header">.*?</script>\s*(?=<main|<section|<div class="container">|<div class="page-|<article)'
-
     # Check if the file has the expected structure
     if '<header class="site-header">' in content:
-        # Replace the header/nav block
-        content = re.sub(header_pattern, nav_html.strip() + '\n\n    ', content, flags=re.DOTALL)
+        # Pattern: Match from <header class="site-header"> through the mobile nav script
+        # The mobile nav script always ends with })(); </script>
+        # This pattern captures the entire nav section regardless of what follows
+        header_pattern_with_script = r'<header class="site-header">.*?\}\)\(\);\s*</script>'
 
-    # Pattern to match footer
-    footer_pattern = r'<footer class="site-footer">.*?</footer>'
+        # Try pattern with script first (most common)
+        match = re.search(header_pattern_with_script, content, flags=re.DOTALL)
+        if match:
+            content = content[:match.start()] + nav_html.strip() + content[match.end():]
+        else:
+            # Pattern 2: Pages without inline script (nav ends with </nav>)
+            # Content markers that indicate where nav section ends
+            content_markers = r'<main|<section|<div class="container|<div class="page-|<article|<div class="hero|<header class="(?!site-header)'
+            header_pattern_no_script = rf'<header class="site-header">.*?</nav>\s*(?={content_markers})'
+            content = re.sub(header_pattern_no_script, nav_html.strip() + '\n\n    ', content, flags=re.DOTALL)
 
-    if '<footer class="site-footer">' in content:
+    # Alternative structure: pages using <nav class="nav"> as top-level nav (not inside header)
+    elif '<nav class="nav">' in content and '<header class="site-header">' not in content:
+        # These pages use <nav class="nav"> with nested nav-links div
+        # Pattern: Match through the mobile nav script ending with })();
+        alt_nav_pattern = r'<nav class="nav">.*?\}\)\(\);\s*</script>'
+        match = re.search(alt_nav_pattern, content, flags=re.DOTALL)
+        if match:
+            content = content[:match.start()] + nav_html.strip() + content[match.end():]
+
+    # Pattern to match footer - support both .site-footer and .footer classes
+    footer_pattern = r'<footer class="(?:site-footer|footer)">.*?</footer>'
+
+    if '<footer class="site-footer">' in content or '<footer class="footer">' in content:
         content = re.sub(footer_pattern, footer_html.strip(), content, flags=re.DOTALL)
 
     # Only write if content changed

@@ -18,14 +18,23 @@
 
 /* Header */
 .site-header {
-    padding: 1rem 0;
     background: var(--white);
+    padding: 12px 20px;
     border-bottom: 1px solid var(--gray-200);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Also support .container inside header for backwards compat */
 .site-header .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -36,24 +45,31 @@
 }
 
 .logo {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--navy);
-    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 10px;
+    text-decoration: none;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    border-radius: 8px;
 }
 
 .logo img {
     height: 40px;
     vertical-align: middle;
+    border-radius: 8px;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 24px;
     list-style: none;
     align-items: center;
     margin: 0;
@@ -61,10 +77,10 @@
 }
 
 .nav-links a {
+    text-decoration: none;
+    color: var(--gray-600);
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--gray-600);
-    text-decoration: none;
     transition: color 0.2s;
 }
 
@@ -77,14 +93,17 @@
     font-weight: 600;
 }
 
+/* Subscribe button - support both class names */
+.btn-subscribe,
 .btn--nav {
     background: var(--navy);
     color: var(--white) !important;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    padding: 8px 16px;
     border-radius: 6px;
+    font-weight: 600;
 }
 
+.btn-subscribe:hover,
 .btn--nav:hover {
     background: var(--navy-light);
 }

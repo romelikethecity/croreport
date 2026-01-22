@@ -619,19 +619,21 @@
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
-                The CRO Report
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img" width="40" height="40">
+                <span>The CRO Report</span>
             </a>
-            <nav class="nav">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/" class="active">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/assessment/">AI Assessment</a>
-                <a href="/about/">About</a>
-                <a href="/newsletter/" class="nav-cta">Subscribe</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/consulting/">GTM Consulting</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
+                </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </header>
 
@@ -640,14 +642,14 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-header">
             <span class="logo-text">The CRO Report</span>
-            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="/jobs/">Jobs</a></li>
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
+            <li><a href="/consulting/">GTM Consulting</a></li>
             <li><a href="/about/">About</a></li>
         </ul>
         <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
@@ -660,56 +662,27 @@
             const overlay = document.querySelector('.mobile-nav-overlay');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
             function openMenu() {
                 mobileNav.classList.add('active');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+
             function closeMenu() {
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
 
-    <div class="header">
-        <div class="eyebrow">Salary Benchmarks</div>
-        <h1>VP Sales Remote Salary</h1>
-        <p>Current VP Sales and CRO salary data for Remote.</p>
-    </div>
-
-    <div class="container" style="max-width: 900px; padding: 0 20px;">
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="label">Average Range</div>
-                <div class="value">$149K - $219K</div>
-                <div class="sublabel">Base salary</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Median</div>
-                <div class="value">$185K</div>
-                <div class="sublabel">Maximum base</div>
-            </div>
-            <div class="stat-card">
-                <div class="label">Sample Size</div>
-                <div class="value">73</div>
-                <div class="sublabel">Job postings</div>
-            </div>
-        </div>
-    
-
-        <nav class="breadcrumb" style="padding: 16px 0; font-size: 0.85rem; color: var(--gray-500);">
-            <a href="/" style="color: var(--navy-medium); text-decoration: none;">Home</a> →
-            <a href="/salaries/" style="color: var(--navy-medium); text-decoration: none;">Salaries</a> → VP Sales Remote
-        </nav>
-
-        <section class="section">
+    <section class="section">
             <h2>Salary Range</h2>
             <div class="range-visual">
                 <div class="range-labels">
@@ -779,8 +752,10 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+    <footer class="site-footer">
+        <div class="container" style="max-width: 1200px;">
+            <p>&copy; 2026 <a href="/">The CRO Report</a> &middot; <a href="/jobs/">Jobs</a> &middot; <a href="/salaries/">Salaries</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/insights/">Market Intel</a> &middot; <a href="/consulting/">GTM Consulting</a> &middot; <a href="/about/">About</a> &middot; <a href="https://croreport.substack.com">Newsletter</a></p>
+        </div>
     </footer>
 </body>
 </html>
