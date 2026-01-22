@@ -1,47 +1,47 @@
 {
-  "generated_at": "2026-01-22T21:34:06.391373",
-  "total_records": 1160,
-  "records_with_salary": 691,
-  "executive_records": 656,
-  "disclosure_rate": 59.6,
+  "generated_at": "2026-01-22T21:38:43.874718",
+  "total_records": 1319,
+  "records_with_salary": 728,
+  "executive_records": 693,
+  "disclosure_rate": 55.2,
   "date_range": {
     "earliest": "2025-01-21",
-    "latest": "2026-01-13"
+    "latest": "2026-01-21"
   },
   "by_seniority": {
     "C-Level": {
-      "count": 20,
-      "min_base_avg": 250445,
-      "max_base_avg": 326670,
-      "min_base_median": 222950,
-      "max_base_median": 283750,
+      "count": 21,
+      "min_base_avg": 243757,
+      "max_base_avg": 317304,
+      "min_base_median": 220900,
+      "max_base_median": 267500,
       "range_low": 50000,
       "range_high": 600000
     },
     "EVP": {
-      "count": 4,
-      "min_base_avg": 253750,
-      "max_base_avg": 302500,
-      "min_base_median": 257500,
+      "count": 5,
+      "min_base_avg": 248000,
+      "max_base_avg": 292000,
+      "min_base_median": 240000,
       "max_base_median": 300000,
       "range_low": 220000,
       "range_high": 350000
     },
     "SVP": {
-      "count": 35,
-      "min_base_avg": 204335,
-      "max_base_avg": 265188,
+      "count": 37,
+      "min_base_avg": 202153,
+      "max_base_avg": 262432,
       "min_base_median": 182400,
       "max_base_median": 270000,
       "range_low": 100000,
       "range_high": 450000
     },
     "VP": {
-      "count": 597,
-      "min_base_avg": 166082,
-      "max_base_avg": 251568,
-      "min_base_median": 155000,
-      "max_base_median": 220000,
+      "count": 630,
+      "min_base_avg": 167520,
+      "max_base_avg": 251768,
+      "min_base_median": 159200,
+      "max_base_median": 221500,
       "range_low": 200,
       "range_high": 1000000
     }
@@ -220,26 +220,26 @@
   },
   "by_tech": {
     "Tech": {
-      "count": 21,
-      "min_base_avg": 156263,
-      "max_base_avg": 208788
+      "count": 25,
+      "min_base_avg": 155661,
+      "max_base_avg": 205182
     },
     "Non-Tech": {
-      "count": 635,
-      "min_base_avg": 171725,
-      "max_base_avg": 256420
+      "count": 668,
+      "min_base_avg": 172881,
+      "max_base_avg": 256464
     }
   },
   "by_remote": {
     "Remote": {
-      "count": 291,
-      "min_base_avg": 175637,
-      "max_base_avg": 260190
+      "count": 308,
+      "min_base_avg": 176220,
+      "max_base_avg": 259441
     },
     "On-site": {
-      "count": 365,
-      "min_base_avg": 167716,
-      "max_base_avg": 250673
+      "count": 385,
+      "min_base_avg": 169091,
+      "max_base_avg": 250752
     }
   },
   "top_paying_roles": [
@@ -366,6 +366,12 @@
       "avg_min": 167426,
       "avg_max": 253500,
       "disclosure_rate": 65.9
+    },
+    "2026-W03": {
+      "count": 37,
+      "avg_min": 190515,
+      "avg_max": 249626,
+      "disclosure_rate": 23.3
     }
   }
 }
