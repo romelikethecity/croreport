@@ -131,23 +131,23 @@ html = f'''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">{TRACKING_CODE}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The CRO Report | Intelligence for Revenue Leaders</title>
-    <meta name="description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders. {stats['total_roles']} open roles tracked.">
+    <title>The CRO Report | How Sales Execs Stay Ahead</title>
+    <meta name="description" content="How sales execs stay ahead. Weekly market trends, compensation benchmarks, and what companies want now.">
     
     <link rel="canonical" href="https://thecroreport.com/">
     
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thecroreport.com/">
-    <meta property="og:title" content="The CRO Report | Intelligence for Revenue Leaders">
-    <meta property="og:description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders.">
+    <meta property="og:title" content="The CRO Report | How Sales Execs Stay Ahead">
+    <meta property="og:description" content="Weekly market trends, compensation benchmarks, and what companies want now.">
     <meta property="og:site_name" content="The CRO Report">
     <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The CRO Report | Intelligence for Revenue Leaders">
-    <meta name="twitter:description" content="Weekly market data, compensation benchmarks, and executive moves for VP Sales and CRO leaders.">
+    <meta name="twitter:title" content="The CRO Report | How Sales Execs Stay Ahead">
+    <meta name="twitter:description" content="Weekly market trends, compensation benchmarks, and what companies want now.">
     <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
     
    <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -476,8 +476,8 @@ html = f'''<!DOCTYPE html>
         <section class="hero">
             <div class="container">
                 <span class="eyebrow">For VPs, CROs & Sales Leaders</span>
-                <h1>Intelligence That<br>Moves Revenue</h1>
-                <p class="lead">Weekly market data, compensation benchmarks, and executive moves. The job market intelligence sales leaders actually need.</p>
+                <h1>How Sales Execs<br>Stay Ahead</h1>
+                <p class="lead">Weekly market trends, compensation benchmarks, and what companies want now.</p>
                 <div class="hero-actions">
                     <a href="#subscribe" class="btn btn--primary">Get the Weekly Report</a>
                     <a href="/jobs/" class="btn btn--secondary">Browse {stats['total_roles']} Jobs</a>
@@ -488,7 +488,7 @@ html = f'''<!DOCTYPE html>
         <section class="market-pulse">
             <div class="container">
                 <div class="pulse-header">
-                    <h2>📊 Market Pulse</h2>
+                    <h2>This Week's Market</h2>
                     <p>Week of {update_date}</p>
                 </div>
                 
@@ -516,7 +516,7 @@ html = f'''<!DOCTYPE html>
                 </div>
                 
                 <div class="pulse-cta">
-                    <a href="#subscribe">Get full market analysis every Thursday →</a>
+                    <a href="#subscribe">Get the full market analysis →</a>
                 </div>
             </div>
         </section>
@@ -526,7 +526,7 @@ html = f'''<!DOCTYPE html>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
                     <div>
                         <span class="eyebrow">Who's Moving</span>
-                        <h2 style="margin-bottom: 0;">Executive Moves This Week</h2>
+                        <h2 style="margin-bottom: 0;">Executive Moves and Why It Matters</h2>
                     </div>
                     <a href="https://croreport.substack.com/subscribe" class="btn btn--secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">See All Moves</a>
                 </div>
@@ -542,8 +542,20 @@ html = f'''<!DOCTYPE html>
                 <div class="pillars-grid">
                     <article class="pillar">
                         <div class="pillar-icon">📈</div>
+                        <h3>Market Trends</h3>
+                        <p>Hiring surges, slowdowns, and industry shifts. Know when the market moves.</p>
+                        <ul class="pillar-links">
+                            <li><a href="/insights/">90-Day Trend Analysis</a></li>
+                            <li><a href="/insights/">Industry Breakdown</a></li>
+                            <li><a href="/insights/">Remote vs. Hybrid</a></li>
+                        </ul>
+                        <a href="/insights/" class="btn btn--secondary">View Trends →</a>
+                    </article>
+
+                    <article class="pillar">
+                        <div class="pillar-icon">💼</div>
                         <h3>Executive Sales Jobs</h3>
-                        <p>VP Sales, CRO, and sales leadership positions. Salary data included. Updated weekly.</p>
+                        <p>VP Sales, CRO, and sales leadership roles. Salary data included.</p>
                         <ul class="pillar-links">
                             <li><a href="/jobs/">All Open Roles ({stats['total_roles']})</a></li>
                             <li><a href="/salaries/">Salary Benchmarks</a></li>
@@ -551,25 +563,13 @@ html = f'''<!DOCTYPE html>
                         </ul>
                         <a href="/jobs/" class="btn btn--secondary">Browse Jobs →</a>
                     </article>
-                    
+
                     <article class="pillar">
-                        <div class="pillar-icon">💰</div>
-                        <h3>Compensation Data</h3>
-                        <p>Salary benchmarks by market and seniority. Know your market value before you negotiate.</p>
+                        <div class="pillar-icon">🎯</div>
+                        <h3>Skills in Demand</h3>
+                        <p>What companies actually hire for. Tools, methodologies, and red flags.</p>
                         <ul class="pillar-links">
-                            <li><a href="/salaries/new-york/">NYC: $171k-$241k avg</a></li>
-                            <li><a href="/salaries/san-francisco/">SF: $239k-$337k avg</a></li>
-                            <li><a href="/salaries/cro/">CRO: $217k-$292k avg</a></li>
-                        </ul>
-                        <a href="/salaries/" class="btn btn--secondary">All Salary Data →</a>
-                    </article>
-                    
-                    <article class="pillar">
-                        <div class="pillar-icon">📊</div>
-                        <h3>Market Intelligence</h3>
-                        <p>What skills, tools, and methodologies are companies looking for right now?</p>
-                        <ul class="pillar-links">
-                            <li><a href="/insights/">Skills & Tools in Demand</a></li>
+                            <li><a href="/insights/">Skills & Tools</a></li>
                             <li><a href="/insights/">Methodology Requirements</a></li>
                             <li><a href="/insights/">Red Flags to Watch</a></li>
                         </ul>
@@ -585,12 +585,12 @@ html = f'''<!DOCTYPE html>
                     <div class="newsletter-copy">
                         <span class="eyebrow" style="color: var(--gold);">The CRO Report</span>
                         <h2>Weekly intelligence for sales executives</h2>
-                        <p>The job market data VPs and CROs actually need. Every Thursday.</p>
+                        <p>The job market data VPs and CROs actually need.</p>
                         <ul>
-                            <li>Market snapshot: roles, trends, what's changing</li>
-                            <li>Who's moving: executive appointments analyzed</li>
-                            <li>Company deep-dives: opportunities + red flags</li>
-                            <li>Roles to skip (and why)</li>
+                            <li>Market trends — what's up, what's down, and why</li>
+                            <li>Executive moves — who landed where, analyzed</li>
+                            <li>Skills in demand — what companies actually want</li>
+                            <li>Roles to skip — and roles worth your time</li>
                         </ul>
                     </div>
                     <div class="newsletter-embed">
