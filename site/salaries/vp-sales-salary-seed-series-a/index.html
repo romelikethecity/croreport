@@ -673,21 +673,23 @@
 
 <body>
     <header class="site-header">
-        <div class="header-container">
+        <div class="container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
+                <img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;">
                 The CRO Report
             </a>
-            <nav class="nav">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/" class="active">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/consulting/">GTM Consulting</a>
-                <a href="/about/">About</a>
-                <a href="/newsletter/" class="nav-cta">Subscribe</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jobs/">Jobs</a></li>
+                    <li><a href="/salaries/">Salaries</a></li>
+                    <li><a href="/tools/">Tools</a></li>
+                    <li><a href="/insights/">Market Intel</a></li>
+                    <li><a href="/consulting/">GTM Consulting</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/newsletter/" class="btn btn--nav">Subscribe</a></li>
+                </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </header>
 
@@ -696,7 +698,7 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-header">
             <span class="logo-text">The CRO Report</span>
-            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="/jobs/">Jobs</a></li>
@@ -716,64 +718,27 @@
             const overlay = document.querySelector('.mobile-nav-overlay');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
             function openMenu() {
                 mobileNav.classList.add('active');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+
             function closeMenu() {
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
 
-
-    <div class="header">
-        <div class="eyebrow">Salary by Company Stage</div>
-        <h1>VP Sales Salary at Seed/Series A Companies</h1>
-        <p>Current salary data based on 14 job postings with disclosed compensation.</p>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="label">Average Range</div>
-            <div class="value">$192K - $257K</div>
-            <div class="sublabel">Base salary</div>
-        </div>
-        <div class="stat-card">
-            <div class="label">Midpoint</div>
-            <div class="value">$225K</div>
-            <div class="sublabel">Average base</div>
-        </div>
-        <div class="stat-card">
-            <div class="label">Sample Size</div>
-            <div class="value">14</div>
-            <div class="sublabel">Job postings</div>
-        </div>
-    </div>
-
-    <div class="container" style="max-width: 900px; padding: 0 20px;">
-        <nav class="breadcrumb" style="padding: 16px 0; font-size: 0.85rem; color: var(--gray-500);">
-            <a href="/">Home</a> → <a href="/salaries/">Salaries</a> → Seed/Series A
-        </nav>
-
-        
-        <div class="context-box">
-            <h2>Compensation at Seed/Series A Companies</h2>
-            <p>Early-stage companies (Seed through Series A) typically offer lower base salaries but compensate with significant equity grants. Expect 0.5-2% equity for VP-level hires, with 4-year vesting and 1-year cliff standard.</p>
-            <p><strong>Key considerations:</strong> Evaluate equity value realistically—most startups don't reach IPO. Focus on the team, market opportunity, and your ability to influence outcomes. Cash runway matters: ensure the company can pay your salary for 18+ months.</p>
-        </div>
-    
-
-        
-        <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do VP Sales roles pay at Seed/Series A companies?", "acceptedAnswer": {"@type": "Answer", "text": "Seed/Series A companies pay VP Sales roles between $192K and $257K base salary, based on 14 job postings. Early-stage companies often compensate with larger equity grants (0.5-2%) to offset lower base."}}, {"@type": "Question", "name": "Why is the VP Sales salary range so wide ($192K to $257K)?", "acceptedAnswer": {"@type": "Answer", "text": "The 33% salary spread reflects real market variation. Key factors: (1) Company stage - Series A pays 20-30% less base but offers more equity; (2) Deal size responsibility - enterprise sales leaders ($500K+ ACV) command premiums; (3) Team size - managing 50+ reps vs 10 impacts compensation; (4) Industry - fintech and cybersecurity pay 15-20% above average. The 'right' salary depends on your specific situation."}}, {"@type": "Question", "name": "Should I negotiate base salary or OTE for a VP Sales role?", "acceptedAnswer": {"@type": "Answer", "text": "Focus on base salary for stability and comp benchmarking, but understand the full picture. At startups, negotiate equity vesting and acceleration clauses. At public companies, ask about RSU refresh grants. For OTE, clarify quota attainment rates (ask: 'What % of the team hit quota last year?') and whether targets are realistic. A high OTE with 20% attainment is worse than moderate OTE with 80% attainment."}}, {"@type": "Question", "name": "How accurate is this salary data?", "acceptedAnswer": {"@type": "Answer", "text": "Our data comes from 14 actual job postings with disclosed compensation ranges, not self-reported surveys (which typically skew 10-15% high). We track VP Sales, SVP Sales, and CRO roles weekly, filtering for executive-level positions. Limitations: not all companies disclose salary, and posted ranges may differ from final offers after negotiation."}}]}</script>
-        <section class="faq-section">
+    <section class="faq-section">
             <h2>Frequently Asked Questions</h2>
             
             <div class="faq-item">
@@ -847,17 +812,8 @@
 
 
     <footer class="site-footer">
-        <div class="footer-content">
-            <span>&copy; 2025 <a href="/">The CRO Report</a></span>
-            <div class="footer-links">
-                <a href="/jobs/">Jobs</a>
-                <a href="/salaries/">Salaries</a>
-                <a href="/tools/">Tools</a>
-                <a href="/insights/">Market Intel</a>
-                <a href="/consulting/">GTM Consulting</a>
-                <a href="/about/">About</a>
-                <a href="/newsletter/">Newsletter</a>
-            </div>
+        <div class="container" style="max-width: 1200px;">
+            <p>&copy; 2026 <a href="/">The CRO Report</a> &middot; <a href="/jobs/">Jobs</a> &middot; <a href="/salaries/">Salaries</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/insights/">Market Intel</a> &middot; <a href="/consulting/">GTM Consulting</a> &middot; <a href="/about/">About</a> &middot; <a href="https://croreport.substack.com">Newsletter</a></p>
         </div>
     </footer>
 </body>

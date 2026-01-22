@@ -109,6 +109,9 @@ jobs:
       - name: Generate sitemap
         run: python scripts/generate_sitemap.py
 
+      - name: Update nav and footer across all pages
+        run: python scripts/update_nav_footer.py
+
       - name: Commit updated data files
         run: |
           git config --local user.email "action@github.com"

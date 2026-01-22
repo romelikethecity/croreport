@@ -264,7 +264,10 @@
 <body>
     <header class="site-header">
         <div class="container">
-            <a href="/" class="logo"><img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;"> The CRO Report</a>
+            <a href="/" class="logo">
+                <img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;">
+                The CRO Report
+            </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="/jobs/">Jobs</a></li>
@@ -273,7 +276,7 @@
                     <li><a href="/insights/">Market Intel</a></li>
                     <li><a href="/consulting/">GTM Consulting</a></li>
                     <li><a href="/about/">About</a></li>
-                    <li><a href="/newsletter/" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.85rem; color: white;">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn btn--nav">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
@@ -318,9 +321,9 @@
                 document.body.style.overflow = '';
             }
 
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
             mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
@@ -468,7 +471,7 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container">
+        <div class="container" style="max-width: 1200px;">
             <p>&copy; 2026 <a href="/">The CRO Report</a> &middot; <a href="/jobs/">Jobs</a> &middot; <a href="/salaries/">Salaries</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/insights/">Market Intel</a> &middot; <a href="/consulting/">GTM Consulting</a> &middot; <a href="/about/">About</a> &middot; <a href="https://croreport.substack.com">Newsletter</a></p>
         </div>
     </footer>

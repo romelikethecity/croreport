@@ -1,0 +1,242 @@
+/* Shared Navigation Styles - Include in all pages */
+:root {
+    --navy: #1e3a5f;
+    --navy-light: #2d4a6f;
+    --navy-dark: #152d4a;
+    --gold: #d97706;
+    --gold-hover: #b45309;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-900: #0f172a;
+}
+
+/* Header */
+.site-header {
+    padding: 1rem 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.site-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo img {
+    height: 40px;
+    vertical-align: middle;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--navy);
+}
+
+.nav-links a.active {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.btn--nav {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+.btn--nav:hover {
+    background: var(--navy-light);
+}
+
+/* Mobile Navigation */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--navy);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    max-width: 85%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 1000;
+    padding: 1.5rem;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.mobile-nav-header .logo-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.mobile-nav-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-500);
+    padding: 0.25rem;
+}
+
+.mobile-nav-close:hover {
+    color: var(--navy);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    margin: 0 0 2rem 0;
+    padding: 0;
+}
+
+.mobile-nav-links li {
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.mobile-nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--navy);
+}
+
+.mobile-nav-subscribe {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--navy);
+    color: var(--white);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.mobile-nav-subscribe:hover {
+    background: var(--navy-light);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .mobile-nav-overlay {
+        display: block;
+        pointer-events: none;
+    }
+    .mobile-nav-overlay.active {
+        pointer-events: auto;
+    }
+}
+
+/* Footer */
+.site-footer {
+    background: var(--navy-dark);
+    color: var(--gray-400);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}

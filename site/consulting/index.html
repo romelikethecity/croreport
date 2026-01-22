@@ -211,7 +211,7 @@
     <header class="site-header">
         <div class="container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report">
+                <img src="/assets/logo.jpg" alt="The CRO Report" style="height: 40px; vertical-align: middle;">
                 The CRO Report
             </a>
             <nav>
@@ -220,9 +220,9 @@
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
-                    <li><a href="/consulting/" class="active">GTM Consulting</a></li>
+                    <li><a href="/consulting/">GTM Consulting</a></li>
                     <li><a href="/about/">About</a></li>
-                    <li><a href="/newsletter/" class="btn--nav">Subscribe</a></li>
+                    <li><a href="/newsletter/" class="btn btn--nav">Subscribe</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
@@ -267,9 +267,9 @@
                 document.body.style.overflow = '';
             }
 
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
             mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
