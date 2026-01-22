@@ -238,7 +238,7 @@
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
-                    <li><a href="/assessment/" class="active">AI Assessment</a></li>
+                    <li><a href="/consulting/">Consulting</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/" class="btn--nav">Subscribe</a></li>
                 </ul>
@@ -259,7 +259,7 @@
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
+            <li><a href="/consulting/">Consulting</a></li>
             <li><a href="/about/">About</a></li>
         </ul>
         <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
@@ -362,15 +362,16 @@
                 </div>
 
                 <div class="cta-section">
-                    <h3>Want to accelerate your AI journey?</h3>
-                    <p>Get a personalized teardown of your RevOps stack with specific AI opportunities.</p>
-                    <a href="#" class="btn btn--gold" id="ctaButton">Book a Teardown ($1,000)</a>
+                    <h3>Ready to accelerate your AI journey?</h3>
+                    <p>Get hands-on help implementing AI across your GTM stack from someone who's been in the seat.</p>
+                    <a href="/consulting/" class="btn btn--gold">Explore Consulting Services</a>
                     <div class="teardown-benefits">
-                        <div class="benefit-item">✓ 45-min strategy call to map your GTM stack and workflows</div>
-                        <div class="benefit-item">✓ 5-10 prioritized AI opportunities ranked by impact</div>
-                        <div class="benefit-item">✓ ROI estimates + one quick-win you can implement immediately</div>
+                        <div class="benefit-item">✓ AI GTM strategy and implementation</div>
+                        <div class="benefit-item">✓ AI SDR evaluation and deployment</div>
+                        <div class="benefit-item">✓ Pipeline intelligence and forecasting</div>
+                        <div class="benefit-item">✓ Fractional CRO advisory</div>
                     </div>
-                    <a href="/" class="btn btn--secondary" style="background: transparent; border-color: var(--gray-400); color: var(--white);">Back to Home</a>
+                    <a href="https://linkedin.com/in/romethorndike" target="_blank" rel="noopener" class="btn btn--secondary" style="background: transparent; border-color: var(--gray-400); color: var(--white);">Or Connect Directly</a>
                 </div>
             </section>
         </div>
@@ -378,7 +379,7 @@
 
     <footer class="site-footer">
         <div class="container" style="max-width: 1200px;">
-            <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/assessment/">AI Assessment</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
+            <p>© 2026 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/consulting/">Consulting</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
         </div>
     </footer>
 
@@ -760,11 +761,6 @@
             `).join('');
             document.getElementById('recommendationsList').innerHTML = recsHtml;
 
-            // Build enhanced mailto with full results
-            const ctaBtn = document.getElementById('ctaButton');
-            const emailBody = buildEmailBody(scores, tier, benchmark);
-            const mailto = `mailto:rome@thecroreport.com?subject=${encodeURIComponent('AI RevOps Teardown Request')}&body=${encodeURIComponent(emailBody)}`;
-            ctaBtn.setAttribute('href', mailto);
 
             // Track completion in analytics
             if (typeof gtag === 'function') {
