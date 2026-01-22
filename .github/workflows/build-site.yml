@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas matplotlib numpy
+          pip install pandas matplotlib numpy pyyaml
 
       - name: Create directories
         run: |
@@ -96,6 +96,9 @@ jobs:
 
       - name: Generate insights charts
         run: python scripts/generate_insights_charts.py
+
+      - name: Sync moves from newsletters
+        run: python scripts/sync_moves_from_newsletters.py
 
       - name: Generate homepage
         run: python scripts/generate_homepage.py
