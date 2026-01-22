@@ -128,16 +128,20 @@
         .btn--nav:hover { background: var(--navy-light); }
 
         /* Hero */
-        .hero { padding: 4rem 0 3rem; background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%); }
-        .hero h1 { margin-bottom: 1.25rem; }
+        .hero { padding: 60px 20px 80px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--white); text-align: center; }
+        .hero h1 { margin-bottom: 1rem; color: var(--white); }
         .hero h1 span { color: var(--gold); }
-        .hero .lead { font-size: 1.2rem; color: var(--gray-500); max-width: 600px; margin-bottom: 2rem; }
+        .hero .eyebrow { color: var(--gold); }
+        .hero .lead { font-size: 1.15rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 2rem; }
+        .hero .btn--primary { background: var(--gold); color: var(--white); }
+        .hero .btn--primary:hover { background: var(--gold-hover); }
 
         /* Stats Bar */
-        .stats-bar { display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--gray-200); flex-wrap: wrap; }
-        .stat-item { text-align: left; }
-        .stat-number { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 600; color: var(--gold); line-height: 1.2; }
-        .stat-label { font-size: 0.85rem; color: var(--gray-500); margin-top: 0.25rem; }
+        .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: -40px auto 0; position: relative; z-index: 10; max-width: 700px; }
+        .stat-item { background: var(--white); border-radius: 12px; padding: 24px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .stat-number { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; color: var(--navy); line-height: 1.2; }
+        .stat-label { font-size: 0.85rem; color: var(--gray-500); margin-top: 4px; }
+        @media (max-width: 600px) { .stats-bar { grid-template-columns: 1fr; max-width: 300px; } }
 
         /* Sections */
         .section { padding: 4rem 0; }
@@ -277,25 +281,27 @@
                 <h1>AI-First Revenue Strategy <span>for Sales Leaders</span></h1>
                 <p class="lead">I help VPs of Sales and CROs hit their number with fewer resources. AI strategy, tool selection, and hands-on implementation from someone who's been in the seat.</p>
                 <a href="https://linkedin.com/in/romethorndike" target="_blank" rel="noopener" class="btn btn--primary">Let's Talk</a>
-
-                <div class="stats-bar">
-                    <div class="stat-item">
-                        <div class="stat-number">7</div>
-                        <div class="stat-label">GTM tech stacks built</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">Series A-D</div>
-                        <div class="stat-label">Scaled Snapdocs revenue</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">10M+</div>
-                        <div class="stat-label">Records processed</div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <section class="section">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">GTM tech stacks built</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Series A-D</div>
+                    <div class="stat-label">Scaled Snapdocs revenue</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10M+</div>
+                    <div class="stat-label">Records processed</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" style="padding-top: 3rem;">
             <div class="container">
                 <span class="eyebrow">Services</span>
                 <h2>How I Can Help</h2>
