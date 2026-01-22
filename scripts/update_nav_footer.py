@@ -36,19 +36,35 @@ def read_include(filename):
 
 def update_nav_css(content):
     """Ensure the page has the required CSS classes for the nav to work."""
-    # Check if .header-container already exists
-    if '.header-container' in content and '.btn-subscribe' in content and '.logo-img' in content:
-        return content  # Already has the styles
 
-    # Build the CSS to add
+    # Build the CSS to add - all the styles needed for the standard nav
     css_to_add = ''
+
+    # Site header styles
+    if '.site-header' not in content or 'padding: 12px 20px' not in content:
+        css_to_add += '\n        .site-header { padding: 12px 20px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }'
+
     if '.header-container' not in content:
         css_to_add += '\n        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }'
+
+    # Logo styles - ensure no underline and correct color
+    if '.logo {' not in content or 'text-decoration: none' not in content:
+        css_to_add += "\n        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Fraunces', Georgia, serif; font-size: 1.1rem; font-weight: 600; color: #1e3a5f; }"
+
     if '.logo-img' not in content:
         css_to_add += '\n        .logo-img { height: 32px; width: auto; border-radius: 8px; }'
+
+    # Nav links - ensure list-style: none and proper layout
+    # Check if nav-links block has list-style: none (search for the pattern together)
+    nav_links_pattern = re.search(r'\.nav-links\s*\{[^}]*list-style:\s*none', content)
+    if not nav_links_pattern:
+        css_to_add += '\n        .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; margin: 0; padding: 0; }'
+        css_to_add += '\n        .nav-links a { text-decoration: none; color: #475569; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }'
+        css_to_add += '\n        .nav-links a:hover { color: #1e3a5f; }'
+
     if '.btn-subscribe' not in content:
-        css_to_add += '\n        .btn-subscribe { background: var(--navy, #1e3a5f); color: var(--white, #ffffff) !important; padding: 8px 16px; border-radius: 6px; font-weight: 600; }'
-        css_to_add += '\n        .btn-subscribe:hover { background: var(--navy-light, #2d4a6f); }'
+        css_to_add += '\n        .btn-subscribe { background: #1e3a5f; color: #fff !important; padding: 8px 16px; border-radius: 6px; font-weight: 600; }'
+        css_to_add += '\n        .btn-subscribe:hover { background: #2d4a6f; }'
 
     if not css_to_add:
         return content
