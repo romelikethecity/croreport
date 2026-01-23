@@ -552,6 +552,33 @@ html = f'''<!DOCTYPE html>
         <a href="{SUBSCRIBE_LINK}" class="mobile-nav-subscribe">{SUBSCRIBE_LABEL}</a>
     </nav>
 
+    <script>
+        (function() {{
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
+            function openMenu() {{
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }}
+
+            function closeMenu() {{
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }}
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+        }})();
+    </script>
+
     <div class="hero-header">
         <div class="eyebrow">Market Intelligence</div>
         <h1>What Companies Want in {datetime.now().year}</h1>
@@ -682,33 +709,6 @@ html = f'''<!DOCTYPE html>
     <footer class="footer">
         <p>{FOOTER_LINKS_HTML}</p>
     </footer>
-
-    <script>
-        (function() {{
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const closeBtn = document.querySelector('.mobile-nav-close');
-            const overlay = document.querySelector('.mobile-nav-overlay');
-            const mobileNav = document.querySelector('.mobile-nav');
-            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
-
-            function openMenu() {{
-                mobileNav.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }}
-
-            function closeMenu() {{
-                mobileNav.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }}
-
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => {{ link.addEventListener('click', closeMenu); }});
-        }})();
-    </script>
 </body>
 </html>'''
 
