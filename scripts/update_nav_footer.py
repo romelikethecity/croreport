@@ -89,21 +89,29 @@ def update_html_file(filepath, nav_html, footer_html):
 
     # Check if the file has the expected structure
     if '<header class="site-header">' in content:
-        # Pattern: Match from <header class="site-header"> through the mobile nav script
-        # The mobile nav script always ends with })(); </script>
-        # This pattern captures the entire nav section regardless of what follows
-        header_pattern_with_script = r'<header class="site-header">.*?\}\)\(\);\s*</script>'
+        # Find the nav section by looking for the mobile-nav-subscribe link
+        # The nav ends with the script that handles mobile menu clicks
+        # Pattern: Match from <header> through mobile-nav-subscribe, then to first })(); </script>
 
-        # Try pattern with script first (most common)
-        match = re.search(header_pattern_with_script, content, flags=re.DOTALL)
-        if match:
-            content = content[:match.start()] + nav_html.strip() + content[match.end():]
-        else:
-            # Pattern 2: Pages without inline script (nav ends with </nav>)
-            # Content markers that indicate where nav section ends
-            content_markers = r'<main|<section|<div class="container|<div class="page-|<article|<div class="hero|<header class="(?!site-header)'
-            header_pattern_no_script = rf'<header class="site-header">.*?</nav>\s*(?={content_markers})'
-            content = re.sub(header_pattern_no_script, nav_html.strip() + '\n\n    ', content, flags=re.DOTALL)
+        # First, find where the header starts
+        header_start = content.find('<header class="site-header">')
+        if header_start != -1:
+            # Find the mobile-nav-subscribe link after the header
+            mobile_nav_sub = content.find('class="mobile-nav-subscribe"', header_start)
+            if mobile_nav_sub != -1:
+                # Find the first })(); </script> after the mobile-nav-subscribe
+                script_end_pattern = r'\}\)\(\);\s*</script>'
+                match = re.search(script_end_pattern, content[mobile_nav_sub:])
+                if match:
+                    nav_end = mobile_nav_sub + match.end()
+                    content = content[:header_start] + nav_html.strip() + content[nav_end:]
+            else:
+                # Fallback: no mobile nav, try to match until first })(); </script> after header
+                script_end_pattern = r'\}\)\(\);\s*</script>'
+                match = re.search(script_end_pattern, content[header_start:])
+                if match:
+                    nav_end = header_start + match.end()
+                    content = content[:header_start] + nav_html.strip() + content[nav_end:]
 
     # Alternative structure: pages using <nav class="nav"> as top-level nav (not inside header)
     elif '<nav class="nav">' in content and '<header class="site-header">' not in content:
