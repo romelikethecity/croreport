@@ -85,6 +85,33 @@ site/
 │       └── ...
 ```
 
+## Newsletter Writing
+
+When creating newsletter markdown files in `/newsletters/`:
+
+**Image Paths:** Always use `../` prefix for image references since images live in the project root, not the newsletters folder:
+- `![90-Day Trend Chart](../trend_90_days.png)`
+- `![5-Year Trend Chart](../trend_all_time.png)`
+- `![Compensation by Seniority](../comp_by_seniority.png)`
+- `![Compensation by Stage](../comp_by_stage.png)`
+- `![Compensation by Location](../comp_by_location.png)`
+- `![Buzzwords & Trends](../insights_buzzwords.png)`
+- `![Industry Focus](../insights_industries.png)`
+- `![Sales Methodologies Required](../insights_methodologies.png)`
+- `![Tools & Platforms in Demand](../insights_tools.png)`
+
+**Required Emoji Section Headers:**
+- `## 📊 The Sales Executive Market`
+- `## 🚀 Who's Moving`
+- `## 💼 This Week's Board Update`
+- `## 🎯 Company Deep-Dive` (or `## 🎯 Three Roles Worth Watching`)
+- `## 🚫 Skip These Roles This Week`
+- `## 💰 Compensation Benchmarking`
+- `## 📋 What Employers Want`
+- `## 📊 Market Intelligence`
+
+**Front Matter:** Include YAML front matter with title, date, excerpt, substack_url, and moves array.
+
 ## Style Reminders
 
 - Use contractions (it's, don't, won't)
