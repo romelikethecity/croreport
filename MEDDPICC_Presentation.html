@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDDPICC Sales Mastery | The CRO Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1e3a5f;
+            --navy-light: #2d4a6f;
+            --navy-dark: #152d4a;
+            --gold: #d97706;
+            --gold-light: #f59e0b;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-900: #0f172a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+        }
+
+        /* Slide Container */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 40px auto;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+                page-break-after: always;
+            }
+        }
+
+        /* Title Slide */
+        .slide--title {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide--title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .slide--title::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(217,119,6,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .slide--title .eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .slide--title h1 {
+            font-size: 72px;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .slide--title .subtitle {
+            font-size: 24px;
+            color: var(--gray-300);
+            font-weight: 400;
+        }
+
+        .slide--title .branding {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gray-300);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .slide--title .branding::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .slide--title .branding::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* Section Slide */
+        .slide--section {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #0f1f33 100%);
+            display: flex;
+            align-items: center;
+            padding: 80px;
+        }
+
+        .slide--section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d97706' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .slide--section .section-number {
+            font-family: 'Fraunces', serif;
+            font-size: 180px;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slide--section .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide--section h2 {
+            font-size: 56px;
+            color: var(--white);
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+
+        .slide--section .accent-line {
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        /* Content Slide */
+        .slide--content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--content .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 32px 60px;
+            position: relative;
+        }
+
+        .slide--content .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+        }
+
+        .slide--content .header h2 {
+            color: var(--white);
+            font-size: 36px;
+        }
+
+        .slide--content .body {
+            flex: 1;
+            padding: 48px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .slide--content .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .slide--content .bullet-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .slide--content .bullet-text {
+            font-size: 22px;
+            color: var(--gray-600);
+            padding-top: 6px;
+        }
+
+        .slide--content .bullet-text strong {
+            color: var(--navy);
+        }
+
+        .slide--content .footer {
+            padding: 16px 60px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* MEDDPICC Overview Slide */
+        .slide--meddpicc-grid {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #0f1f33 100%);
+            padding: 48px;
+        }
+
+        .slide--meddpicc-grid h2 {
+            color: var(--white);
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .slide--meddpicc-grid .accent-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin-bottom: 32px;
+        }
+
+        .meddpicc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .meddpicc-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .meddpicc-item:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--gold);
+        }
+
+        .meddpicc-letter {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .meddpicc-content h3 {
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .meddpicc-content p {
+            color: var(--gray-300);
+            font-size: 14px;
+        }
+
+        /* Letter Focus Slide */
+        .slide--letter-focus {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--letter-focus .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 28px 60px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+        }
+
+        .slide--letter-focus .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+        }
+
+        .slide--letter-focus .letter-badge {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(217,119,6,0.3);
+        }
+
+        .slide--letter-focus .header h2 {
+            color: var(--white);
+            font-size: 36px;
+        }
+
+        .slide--letter-focus .letter-nav {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .slide--letter-focus .letter-nav span {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fraunces', serif;
+            font-size: 16px;
+            font-weight: 600;
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        .slide--letter-focus .letter-nav span.active {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .slide--letter-focus .body {
+            flex: 1;
+            padding: 48px 60px;
+            display: flex;
+            gap: 48px;
+        }
+
+        .slide--letter-focus .main-content {
+            flex: 1;
+        }
+
+        .slide--letter-focus .visual {
+            width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide--letter-focus .visual-icon {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--navy);
+            border: 4px solid var(--gray-200);
+        }
+
+        /* Quote Slide */
+        .slide--quote {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #0f1f33 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px;
+        }
+
+        .slide--quote .quote-mark {
+            font-family: 'Fraunces', serif;
+            font-size: 200px;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 0.5;
+            margin-bottom: -40px;
+        }
+
+        .slide--quote blockquote {
+            font-family: 'Fraunces', serif;
+            font-size: 40px;
+            color: var(--white);
+            max-width: 900px;
+            line-height: 1.4;
+            margin-bottom: 32px;
+        }
+
+        .slide--quote .attribution {
+            font-size: 18px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Two Column Slide */
+        .slide--two-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--two-column .columns {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding: 48px 60px;
+        }
+
+        .slide--two-column .column {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 32px;
+            border: 2px solid var(--gray-200);
+        }
+
+        .slide--two-column .column--highlight {
+            background: linear-gradient(135deg, rgba(30,58,95,0.05) 0%, rgba(30,58,95,0.1) 100%);
+            border-color: var(--navy);
+        }
+
+        .slide--two-column .column-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .slide--two-column .column-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--white);
+        }
+
+        .slide--two-column .column-icon--gold {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .slide--two-column .column-icon--navy {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .slide--two-column .column-title {
+            font-size: 24px;
+            color: var(--navy);
+        }
+
+        .slide--two-column .column-list {
+            list-style: none;
+        }
+
+        .slide--two-column .column-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 18px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slide--two-column .column-list li:last-child {
+            border-bottom: none;
+        }
+
+        .slide--two-column .column-list li i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        /* Stage Slide */
+        .slide--stage {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--stage .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 28px 60px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+        }
+
+        .slide--stage .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+        }
+
+        .slide--stage .stage-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide--stage .header h2 {
+            color: var(--white);
+            font-size: 32px;
+        }
+
+        .slide--stage .stage-progress {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .slide--stage .stage-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .slide--stage .stage-dot.active {
+            background: var(--gold);
+        }
+
+        .slide--stage .stage-dot.completed {
+            background: var(--white);
+        }
+
+        .slide--stage .body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding: 40px 60px;
+        }
+
+        .slide--stage .section-block {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .slide--stage .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slide--stage .section-title i {
+            font-size: 16px;
+        }
+
+        .slide--stage .section-list {
+            list-style: none;
+        }
+
+        .slide--stage .section-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 16px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .slide--stage .section-list li:last-child {
+            border-bottom: none;
+        }
+
+        .slide--stage .section-list li i {
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .slide--stage .section-list--activities li i {
+            color: var(--navy);
+        }
+
+        .slide--stage .section-list--outcomes li i {
+            color: #10b981;
+        }
+
+        /* Three Whys Slide */
+        .slide--three-whys {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--three-whys .body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 60px;
+            gap: 32px;
+        }
+
+        .why-card {
+            flex: 1;
+            height: 380px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .why-card .icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .why-card .icon--purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: white;
+        }
+
+        .why-card .icon--blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            color: white;
+        }
+
+        .why-card .icon--gold {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: white;
+        }
+
+        .why-card h3 {
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .why-card p {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* TOC Slide */
+        .slide--toc {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide--toc .body {
+            flex: 1;
+            padding: 48px 60px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+
+        .toc-number {
+            font-family: 'Fraunces', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            width: 60px;
+        }
+
+        .toc-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .toc-content p {
+            font-size: 16px;
+            color: var(--gray-500);
+        }
+
+        /* Closing Slide */
+        .slide--closing {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide--closing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .slide--closing .icon-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .slide--closing .icon-item {
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--gold);
+        }
+
+        .slide--closing h1 {
+            font-size: 56px;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .slide--closing .tagline {
+            font-size: 24px;
+            color: var(--gray-300);
+        }
+
+        .slide--closing .cta {
+            margin-top: 48px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide slide--title">
+    <div class="eyebrow">The CRO Report Presents</div>
+    <h1>MEDDPICC<br>Sales Mastery</h1>
+    <div class="subtitle">A Strategic Framework for Sales Excellence</div>
+    <div class="branding">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 2: Table of Contents -->
+<div class="slide slide--toc slide--content">
+    <div class="header">
+        <h2>What We'll Cover</h2>
+    </div>
+    <div class="body">
+        <div class="toc-item">
+            <div class="toc-number">01</div>
+            <div class="toc-content">
+                <h3>Understanding MEDDPICC</h3>
+                <p>The qualifying framework that drives forecast accuracy</p>
+            </div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-number">02</div>
+            <div class="toc-content">
+                <h3>The Three Whys</h3>
+                <p>Why do anything? Why us? Why now?</p>
+            </div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-number">03</div>
+            <div class="toc-content">
+                <h3>Deep Dive: Each Letter</h3>
+                <p>Pain, Metrics, Champion, Decision Criteria, and more</p>
+            </div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-number">04</div>
+            <div class="toc-content">
+                <h3>Mastering Champions</h3>
+                <p>Identifying, developing, and leveraging your champion</p>
+            </div>
+        </div>
+        <div class="toc-item">
+            <div class="toc-number">05</div>
+            <div class="toc-content">
+                <h3>Sales Stage Execution</h3>
+                <p>Mapping MEDDPICC to your sales process</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 3: Section - Understanding MEDDPICC -->
+<div class="slide slide--section">
+    <div class="content">
+        <h2>Understanding MEDDPICC</h2>
+        <div class="accent-line"></div>
+    </div>
+    <div class="section-number">01</div>
+</div>
+
+<!-- SLIDE 4: What is MEDDPICC -->
+<div class="slide slide--content">
+    <div class="header">
+        <h2>What is MEDDPICC?</h2>
+    </div>
+    <div class="body">
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-clipboard-check"></i></div>
+            <div class="bullet-text"><strong>A qualification framework</strong> to assess deal health and identify knowledge gaps</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-eye"></i></div>
+            <div class="bullet-text"><strong>Identifies blind spots</strong> in your opportunities before they derail your deal</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-comments"></i></div>
+            <div class="bullet-text"><strong>Creates a common language</strong> across your sales organization and leadership</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="bullet-text"><strong>Maintains forecast accuracy</strong> through systematic, data-driven qualification</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-road"></i></div>
+            <div class="bullet-text"><strong>Not a checklist</strong> — it's a journey throughout the entire sales process</div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 5: MEDDPICC Overview Grid -->
+<div class="slide slide--meddpicc-grid">
+    <h2>The MEDDPICC Framework</h2>
+    <div class="accent-line"></div>
+    <div class="meddpicc-grid">
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">M</div>
+            <div class="meddpicc-content">
+                <h3>Metrics</h3>
+                <p>What is the economic impact of our deal?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">E</div>
+            <div class="meddpicc-content">
+                <h3>Economic Buyer</h3>
+                <p>Who has P&L responsibility and budget authority?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">D</div>
+            <div class="meddpicc-content">
+                <h3>Decision Criteria</h3>
+                <p>What is their technical, vendor, and financial criteria?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">D</div>
+            <div class="meddpicc-content">
+                <h3>Decision Process</h3>
+                <p>Which steps are required in their buying process?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">P</div>
+            <div class="meddpicc-content">
+                <h3>Paper Process</h3>
+                <p>What is their legal and procurement process?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">I</div>
+            <div class="meddpicc-content">
+                <h3>Identify Pain</h3>
+                <p>What's motivating them to do anything?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">C</div>
+            <div class="meddpicc-content">
+                <h3>Champion</h3>
+                <p>Who has the power and conviction to sell on your behalf?</p>
+            </div>
+        </div>
+        <div class="meddpicc-item">
+            <div class="meddpicc-letter">C</div>
+            <div class="meddpicc-content">
+                <h3>Competition</h3>
+                <p>Who are we competing against?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6: Quote -->
+<div class="slide slide--quote">
+    <div class="quote-mark">"</div>
+    <blockquote>MEDDPICC is a journey, not an event or checklist. Use it throughout the entire sales process.</blockquote>
+</div>
+
+<!-- SLIDE 7: Section - The Three Whys -->
+<div class="slide slide--section">
+    <div class="content">
+        <h2>The Three Whys</h2>
+        <div class="accent-line"></div>
+    </div>
+    <div class="section-number">02</div>
+</div>
+
+<!-- SLIDE 8: Three Whys Visual -->
+<div class="slide slide--three-whys slide--content">
+    <div class="header">
+        <h2>Every Deal Must Answer Three Questions</h2>
+    </div>
+    <div class="body">
+        <div class="why-card">
+            <div class="icon icon--purple"><i class="fas fa-question"></i></div>
+            <h3>Why Do Anything?</h3>
+            <p>What's driving them to change from the status quo? Without compelling pain, there's no motivation to act.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon icon--blue"><i class="fas fa-trophy"></i></div>
+            <h3>Why Us?</h3>
+            <p>What makes your solution the right choice over competitors and alternatives? What's your differentiator?</p>
+        </div>
+        <div class="why-card">
+            <div class="icon icon--gold"><i class="fas fa-clock"></i></div>
+            <h3>Why Now?</h3>
+            <p>What creates urgency to act today rather than next quarter? What's the cost of delay?</p>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 9: Section - Deep Dive -->
+<div class="slide slide--section">
+    <div class="content">
+        <h2>MEDDPICC Deep Dive</h2>
+        <div class="accent-line"></div>
+    </div>
+    <div class="section-number">03</div>
+</div>
+
+<!-- SLIDE 10: Pain -->
+<div class="slide slide--letter-focus">
+    <div class="header">
+        <div class="letter-badge">P</div>
+        <h2>Identify Pain</h2>
+        <div class="letter-nav">
+            <span>M</span><span>E</span><span>D</span><span>D</span><span class="active">P</span><span>I</span><span>C</span><span>C</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="bullet-text"><strong>Current Situation:</strong> What is their current approach (or lack of one)?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-bolt"></i></div>
+                <div class="bullet-text"><strong>Uncovered Pain:</strong> What business and personal frustrations exist?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="bullet-text"><strong>Negative Consequences:</strong> What happens if they don't address this?</div>
+            </div>
+            <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, rgba(217,119,6,0.1) 0%, rgba(217,119,6,0.05) 100%); border-radius: 12px; border-left: 4px solid var(--gold);">
+                <p style="font-size: 20px; color: var(--navy); font-weight: 600; margin: 0;"><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 12px;"></i>No delta, no deal. Pain drives action.</p>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="visual-icon"><i class="fas fa-heartbeat"></i></div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 11: Metrics -->
+<div class="slide slide--letter-focus">
+    <div class="header">
+        <div class="letter-badge">M</div>
+        <h2>Metrics</h2>
+        <div class="letter-nav">
+            <span class="active">M</span><span>E</span><span>D</span><span>D</span><span>P</span><span>I</span><span>C</span><span>C</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <div class="bullet-text"><strong>How will they measure</strong> business impact from your solution?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="bullet-text"><strong>What economic outcomes</strong> matter most to them?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-calculator"></i></div>
+                <div class="bullet-text"><strong>Quantify the value</strong> — make it tangible and measurable</div>
+            </div>
+            <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, rgba(217,119,6,0.1) 0%, rgba(217,119,6,0.05) 100%); border-radius: 12px; border-left: 4px solid var(--gold);">
+                <p style="font-size: 20px; color: var(--navy); font-weight: 600; margin: 0;"><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 12px;"></i>Metrics create the business case for change.</p>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="visual-icon"><i class="fas fa-chart-bar"></i></div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 12: Champion -->
+<div class="slide slide--letter-focus">
+    <div class="header">
+        <div class="letter-badge">C</div>
+        <h2>Champion</h2>
+        <div class="letter-nav">
+            <span>M</span><span>E</span><span>D</span><span>D</span><span>P</span><span>I</span><span class="active">C</span><span>C</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-crown"></i></div>
+                <div class="bullet-text"><strong>Power & Influence:</strong> Someone who grants access to the Economic Buyer</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-trophy"></i></div>
+                <div class="bullet-text"><strong>Personal Win:</strong> They have a vested interest in your success</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="bullet-text"><strong>Sells for You:</strong> Articulates Why Do Anything, Why Now, Why Us</div>
+            </div>
+            <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, rgba(217,119,6,0.1) 0%, rgba(217,119,6,0.05) 100%); border-radius: 12px; border-left: 4px solid var(--gold);">
+                <p style="font-size: 20px; color: var(--navy); font-weight: 600; margin: 0;"><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 12px;"></i>A champion is not the same as a coach. Know the difference.</p>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="visual-icon"><i class="fas fa-user-tie"></i></div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 13: Champion vs Coach -->
+<div class="slide slide--two-column slide--content">
+    <div class="header">
+        <h2>Champion vs. Coach</h2>
+    </div>
+    <div class="columns">
+        <div class="column column--highlight">
+            <div class="column-header">
+                <div class="column-icon column-icon--gold"><i class="fas fa-star"></i></div>
+                <h3 class="column-title">Champion</h3>
+            </div>
+            <ul class="column-list">
+                <li><i class="fas fa-check"></i> Has power and influence</li>
+                <li><i class="fas fa-check"></i> Has a personal stake in your win</li>
+                <li><i class="fas fa-check"></i> Actively sells when you're not there</li>
+                <li><i class="fas fa-check"></i> Can articulate the 3 Whys</li>
+                <li><i class="fas fa-check"></i> Returns your calls proactively</li>
+            </ul>
+        </div>
+        <div class="column">
+            <div class="column-header">
+                <div class="column-icon column-icon--navy"><i class="fas fa-user"></i></div>
+                <h3 class="column-title">Coach</h3>
+            </div>
+            <ul class="column-list">
+                <li><i class="fas fa-info-circle"></i> Provides information</li>
+                <li><i class="fas fa-info-circle"></i> May not have decision power</li>
+                <li><i class="fas fa-info-circle"></i> Helps you navigate, not sell</li>
+                <li><i class="fas fa-info-circle"></i> May be friendly but passive</li>
+                <li><i class="fas fa-info-circle"></i> Limited influence with EB</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 14: Economic Buyer -->
+<div class="slide slide--letter-focus">
+    <div class="header">
+        <div class="letter-badge">E</div>
+        <h2>Economic Buyer</h2>
+        <div class="letter-nav">
+            <span>M</span><span class="active">E</span><span>D</span><span>D</span><span>P</span><span>I</span><span>C</span><span>C</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-wallet"></i></div>
+                <div class="bullet-text"><strong>Has discretionary use of funds</strong> and veto power</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-chart-pie"></i></div>
+                <div class="bullet-text"><strong>Owns the bottom-line impact</strong> of the decision</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-check-double"></i></div>
+                <div class="bullet-text"><strong>Can say YES</strong> when everyone else says NO</div>
+            </div>
+            <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, rgba(217,119,6,0.1) 0%, rgba(217,119,6,0.05) 100%); border-radius: 12px; border-left: 4px solid var(--gold);">
+                <p style="font-size: 20px; color: var(--navy); font-weight: 600; margin: 0;"><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 12px;"></i>Validate: Who is the final authorizer in the paper process?</p>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="visual-icon"><i class="fas fa-user-shield"></i></div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 15: Decision Criteria -->
+<div class="slide slide--letter-focus">
+    <div class="header">
+        <div class="letter-badge">D</div>
+        <h2>Decision Criteria</h2>
+        <div class="letter-nav">
+            <span>M</span><span>E</span><span class="active">D</span><span>D</span><span>P</span><span>I</span><span>C</span><span>C</span>
+        </div>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-cogs"></i></div>
+                <div class="bullet-text"><strong>Technical Criteria:</strong> What capabilities do they require?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-handshake"></i></div>
+                <div class="bullet-text"><strong>Vendor Criteria:</strong> What do they need from a partner?</div>
+            </div>
+            <div class="bullet-item" style="margin-bottom: 24px;">
+                <div class="bullet-icon"><i class="fas fa-coins"></i></div>
+                <div class="bullet-text"><strong>Financial Criteria:</strong> What's the budget and ROI expectation?</div>
+            </div>
+            <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, rgba(217,119,6,0.1) 0%, rgba(217,119,6,0.05) 100%); border-radius: 12px; border-left: 4px solid var(--gold);">
+                <p style="font-size: 20px; color: var(--navy); font-weight: 600; margin: 0;"><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 12px;"></i>Bake your differentiators into their criteria.</p>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="visual-icon"><i class="fas fa-clipboard-list"></i></div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 16: Competition -->
+<div class="slide slide--content">
+    <div class="header">
+        <h2>Competitive Strategies</h2>
+    </div>
+    <div class="body">
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-fist-raised"></i></div>
+            <div class="bullet-text"><strong>DIRECT</strong> — When you have overwhelming advantage (3:1). Default strategy.</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-cut"></i></div>
+            <div class="bullet-text"><strong>DIVIDE</strong> — Fragment the competition. "Beach Head" or "Trojan Horse" approach.</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-random"></i></div>
+            <div class="bullet-text"><strong>INDIRECT</strong> — When competition is too strong. Change the ground with new buying influences.</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-pause"></i></div>
+            <div class="bullet-text"><strong>DELAY</strong> — When losing. Slow the deal to change MEDDPICC dynamics.</div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 17: Section - Champions -->
+<div class="slide slide--section">
+    <div class="content">
+        <h2>Mastering Champions</h2>
+        <div class="accent-line"></div>
+    </div>
+    <div class="section-number">04</div>
+</div>
+
+<!-- SLIDE 18: Champion Definition -->
+<div class="slide slide--content">
+    <div class="header">
+        <h2>The Champion Definition</h2>
+    </div>
+    <div class="body" style="align-items: center;">
+        <div style="display: flex; gap: 48px; justify-content: center; margin-top: 24px;">
+            <div style="text-align: center; width: 280px;">
+                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 44px; color: white;"><i class="fas fa-crown"></i></div>
+                <h3 style="font-family: 'Fraunces', serif; font-size: 24px; color: var(--navy); margin-bottom: 8px;">Power & Influence</h3>
+                <p style="color: var(--gray-500); font-size: 16px;">They command the room and have access to decision makers</p>
+            </div>
+            <div style="text-align: center; width: 280px;">
+                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 44px; color: white;"><i class="fas fa-star"></i></div>
+                <h3 style="font-family: 'Fraunces', serif; font-size: 24px; color: var(--navy); margin-bottom: 8px;">Personal Win</h3>
+                <p style="color: var(--gray-500); font-size: 16px;">They have something to gain from your success</p>
+            </div>
+            <div style="text-align: center; width: 280px;">
+                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 44px; color: white;"><i class="fas fa-bullhorn"></i></div>
+                <h3 style="font-family: 'Fraunces', serif; font-size: 24px; color: var(--navy); margin-bottom: 8px;">Sells for You</h3>
+                <p style="color: var(--gray-500); font-size: 16px;">They advocate for you when you're not in the room</p>
+            </div>
+        </div>
+        <div style="margin-top: 40px; padding: 24px; background: var(--navy); border-radius: 12px; text-align: center;">
+            <p style="font-size: 22px; color: var(--white); font-weight: 600; margin: 0;">You need <span style="color: var(--gold);">evidence of all three</span> to have a true champion.</p>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 19: How to Spot a Champion -->
+<div class="slide slide--content">
+    <div class="header">
+        <h2>How to Spot a Champion</h2>
+    </div>
+    <div class="body">
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-microphone"></i></div>
+            <div class="bullet-text">They <strong>answer the tough questions</strong> with authority</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-hand-paper"></i></div>
+            <div class="bullet-text">They're <strong>not afraid to say "I don't know"</strong></div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-rocket"></i></div>
+            <div class="bullet-text">They've <strong>led transformational projects</strong> before</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-phone-slash"></i></div>
+            <div class="bullet-text">They're <strong>hard to reach</strong> (high demand)</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="bullet-text"><strong>New to the organization</strong> with something to prove</div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 20: Testing Your Champion -->
+<div class="slide slide--content">
+    <div class="header">
+        <h2>Testing Your Champion</h2>
+    </div>
+    <div class="body">
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-question-circle"></i></div>
+            <div class="bullet-text">Can they <strong>articulate the 3 Whys</strong> without your guidance?</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-door-open"></i></div>
+            <div class="bullet-text">Can they <strong>give you access to the EB</strong> and run meetings for you?</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-binoculars"></i></div>
+            <div class="bullet-text">Do they <strong>provide competitive intelligence</strong> proactively?</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-phone"></i></div>
+            <div class="bullet-text">Do they <strong>return your calls</strong>? Do they <strong>call YOU</strong>?</div>
+        </div>
+        <div class="bullet-item">
+            <div class="bullet-icon"><i class="fas fa-theater-masks"></i></div>
+            <div class="bullet-text"><strong>Play the negative:</strong> "I'm not sure we can get this done..." — see how they respond</div>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 21: Quote - No Champion -->
+<div class="slide slide--quote">
+    <div class="quote-mark">"</div>
+    <blockquote>No Champion, No Deal.<br>Develop Multiple Champions.</blockquote>
+</div>
+
+<!-- SLIDE 22: Section - Sales Stages -->
+<div class="slide slide--section">
+    <div class="content">
+        <h2>Sales Stage Execution</h2>
+        <div class="accent-line"></div>
+    </div>
+    <div class="section-number">05</div>
+</div>
+
+<!-- SLIDE 23: Stage 0 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 0</div>
+        <h2>Identify an Opportunity</h2>
+        <div class="stage-progress">
+            <div class="stage-dot active"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> BDR schedules intro call</li>
+                <li><i class="fas fa-arrow-right"></i> Create opportunity once scheduled</li>
+                <li><i class="fas fa-arrow-right"></i> Identify Pain, Economic Buyer, Timing</li>
+                <li><i class="fas fa-arrow-right"></i> Build alignment on case for change</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> Shares pain and why they want to learn more</li>
+                <li><i class="fas fa-check-circle"></i> Agrees to discovery meeting</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 24: Stage 1 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 1</div>
+        <h2>Determine Problem & Impact</h2>
+        <div class="stage-progress">
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot active"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> Conduct discovery call</li>
+                <li><i class="fas fa-arrow-right"></i> Identify metrics customer wants to improve</li>
+                <li><i class="fas fa-arrow-right"></i> Map decision process and paper process</li>
+                <li><i class="fas fa-arrow-right"></i> Identify potential champions & coaches</li>
+                <li><i class="fas fa-arrow-right"></i> Confirm pricing, timeline, competitors</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> Attends discovery meeting</li>
+                <li><i class="fas fa-check-circle"></i> Confirms evaluation & buying decision path</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 25: Stage 2 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 2</div>
+        <h2>Validate Benefits & Value</h2>
+        <div class="stage-progress">
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot active"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> Present demo to key stakeholders</li>
+                <li><i class="fas fa-arrow-right"></i> Introduce Mutual Action Plan (MAP)</li>
+                <li><i class="fas fa-arrow-right"></i> Influence business & technical criteria</li>
+                <li><i class="fas fa-arrow-right"></i> Demonstrate value vs. competitors</li>
+                <li><i class="fas fa-arrow-right"></i> Test and validate champion influence</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> Attends demo</li>
+                <li><i class="fas fa-check-circle"></i> Agrees to rollout discussion with EB</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 26: Stage 3 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 3</div>
+        <h2>Confirm Value with Power</h2>
+        <div class="stage-progress">
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot active"></div>
+            <div class="stage-dot"></div>
+            <div class="stage-dot"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> Discuss rollout and implementation</li>
+                <li><i class="fas fa-arrow-right"></i> Meet EB or person who influences EB</li>
+                <li><i class="fas fa-arrow-right"></i> Present business case to stakeholders</li>
+                <li><i class="fas fa-arrow-right"></i> Align on commercial structure</li>
+                <li><i class="fas fa-arrow-right"></i> Deliver references</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> Attends rollout meeting</li>
+                <li><i class="fas fa-check-circle"></i> Confirms vision lock & rollout strategy</li>
+                <li><i class="fas fa-check-circle"></i> Starts InfoSec & Legal review</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 27: Stage 4 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 4</div>
+        <h2>Negotiate & Execute</h2>
+        <div class="stage-progress">
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot active"></div>
+            <div class="stage-dot"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> Deliver final order form to EB/Champion</li>
+                <li><i class="fas fa-arrow-right"></i> Confirm vendor of choice</li>
+                <li><i class="fas fa-arrow-right"></i> Verify remaining concerns are met</li>
+                <li><i class="fas fa-arrow-right"></i> Approve InfoSec & Legal</li>
+                <li><i class="fas fa-arrow-right"></i> Execute contract</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> InfoSec & Legal approved</li>
+                <li><i class="fas fa-check-circle"></i> Contract is signed</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 28: Stage 5 -->
+<div class="slide slide--stage">
+    <div class="header">
+        <div class="stage-badge">Stage 5</div>
+        <h2>Closed Won</h2>
+        <div class="stage-progress">
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot completed"></div>
+            <div class="stage-dot active"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-tasks"></i> Activities</div>
+            <ul class="section-list section-list--activities">
+                <li><i class="fas fa-arrow-right"></i> Introduce Customer Success</li>
+                <li><i class="fas fa-arrow-right"></i> Joint AE & CS handoff call</li>
+                <li><i class="fas fa-arrow-right"></i> Ensure EB is satisfied with success metrics</li>
+            </ul>
+        </div>
+        <div class="section-block">
+            <div class="section-title"><i class="fas fa-flag-checkered"></i> Customer Outcomes</div>
+            <ul class="section-list section-list--outcomes">
+                <li><i class="fas fa-check-circle"></i> EB & stakeholders attend kickoff call</li>
+                <li><i class="fas fa-check-circle"></i> Partnership begins</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">THE CRO REPORT</div>
+</div>
+
+<!-- SLIDE 29: Closing -->
+<div class="slide slide--closing">
+    <div class="icon-row">
+        <div class="icon-item"><i class="fas fa-clipboard-check"></i></div>
+        <div class="icon-item"><i class="fas fa-chart-line"></i></div>
+        <div class="icon-item"><i class="fas fa-handshake"></i></div>
+    </div>
+    <h1>Execute with MEDDPICC</h1>
+    <div class="tagline">Qualify Better. Forecast Accurately. Close More Deals.</div>
+    <a href="#" class="cta">
+        <span>THE CRO REPORT</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+
+</body>
+</html>

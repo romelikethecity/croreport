@@ -157,18 +157,26 @@ def create_job_page(job, idx):
     location_escaped = escape_html(location)
     
     # === SEO-OPTIMIZED TITLE ===
-    # Format: "VP Sales at Acme Corp - $200K-$300K (Remote) | The CRO Report"
-    title_parts = [f"{title_escaped} at {company_escaped}"]
-    if salary_short:
+    # Format: "VP Sales at Acme Corp - $200K-$300K (Remote) | CRO"
+    # Target: Under 60 characters total
+    TITLE_SUFFIX = " | CRO"
+    MAX_TITLE_LENGTH = 60 - len(TITLE_SUFFIX)
+
+    # Truncate job title if needed (keep under 25 chars)
+    short_title = title_escaped[:25].rstrip() + "..." if len(title_escaped) > 28 else title_escaped
+    # Truncate company if needed (keep under 20 chars)
+    short_company = company_escaped[:17].rstrip() + "..." if len(company_escaped) > 20 else company_escaped
+
+    title_parts = [f"{short_title} at {short_company}"]
+    if salary_short and len(' '.join(title_parts) + f" - {salary_short}") < MAX_TITLE_LENGTH - 10:
         title_parts.append(f"- {salary_short}")
-    if is_remote:
+    if is_remote and len(' '.join(title_parts) + " (Remote)") < MAX_TITLE_LENGTH:
         title_parts.append("(Remote)")
     elif location:
-        # Extract city name for shorter title
         city = location.split(',')[0].strip() if ',' in location else location
-        if len(city) < 20:
-            title_parts.append(f"({escape_html(city)})")
-    page_title = ' '.join(title_parts) + " | The CRO Report"
+        if len(city) < 15 and len(' '.join(title_parts) + f" ({city})") < MAX_TITLE_LENGTH:
+            title_parts.append(f"({escape_html(city[:12])})")
+    page_title = ' '.join(title_parts) + TITLE_SUFFIX
     
     # === META DESCRIPTION ===
     meta_desc = f"{title_escaped} at {company_escaped}"
@@ -248,7 +256,34 @@ def create_job_page(job, idx):
     # Remove None values from schema
     schema_data = {k: v for k, v in schema_data.items() if v is not None}
     schema_json = json.dumps(schema_data, indent=2)
-    
+
+    # === BREADCRUMBLIST SCHEMA ===
+    breadcrumb_schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": BASE_URL
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Jobs",
+                "item": f"{BASE_URL}/jobs/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": f"{title} at {company}",
+                "item": canonical_url
+            }
+        ]
+    }
+    breadcrumb_json = json.dumps(breadcrumb_schema, indent=2)
+
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -279,7 +314,12 @@ def create_job_page(job, idx):
     <script type="application/ld+json">
 {schema_json}
     </script>
-    
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+{breadcrumb_json}
+    </script>
+
    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -588,6 +628,8 @@ def create_job_page(job, idx):
         }})();
     </script>
 
+    <main>
+
     <header class="header">
         <div class="container">
             <nav class="breadcrumb">
@@ -646,7 +688,9 @@ def create_job_page(job, idx):
             </div>
         </div>
     </div>
-    
+
+    </main>
+
     <footer class="footer">
         <p>{FOOTER_LINKS_HTML}</p>
         <p style="margin-top: 8px; font-size: 0.85rem;">Updated {update_date}</p>
@@ -766,6 +810,37 @@ def create_stale_job_page(stale_slug, similar_jobs):
         company_display = 'This Company'
         title_display = 'Sales Executive'
 
+    # === SEO-OPTIMIZED TITLE FOR STALE PAGES ===
+    # Target: Under 60 characters total
+    # Format: "VP Sales at Acme - Filled | CRO"
+    STALE_TITLE_SUFFIX = " - Filled | CRO"
+    MAX_STALE_TITLE = 60 - len(STALE_TITLE_SUFFIX)
+
+    # Truncate title if needed (keep under 20 chars)
+    short_title = title_display[:17].rstrip() + "..." if len(title_display) > 20 else title_display
+    # Truncate company if needed (keep under 15 chars)
+    short_company = company_display[:12].rstrip() + "..." if len(company_display) > 15 else company_display
+
+    # Build page title
+    base_title = f"{short_title} at {short_company}"
+    if len(base_title) > MAX_STALE_TITLE:
+        # Further truncate if still too long
+        base_title = base_title[:MAX_STALE_TITLE - 3].rstrip() + "..."
+    page_title = base_title + STALE_TITLE_SUFFIX
+
+    # Canonical URL
+    canonical_url = f"{BASE_URL}/jobs/{stale_slug}/"
+
+    # Meta description
+    meta_desc = f"This {title_display} position at {company_display} is no longer available. Browse similar VP Sales and CRO opportunities."
+    meta_desc = meta_desc[:155]
+
+    # OG/Twitter titles (can be slightly longer)
+    og_title = f"{title_display} at {company_display} - Position Filled"
+    if len(og_title) > 70:
+        og_title = f"{short_title} at {short_company} - Position Filled"
+    og_description = f"This role has been filled. View similar {title_display} opportunities at top companies."
+
     # Build similar jobs HTML
     similar_jobs_html = ""
     for job in similar_jobs:
@@ -808,10 +883,24 @@ def create_stale_job_page(stale_slug, similar_jobs):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>{title_display} at {company_display} - Position Filled | The CRO Report</title>
-    <meta name="description" content="This {title_display} position at {company_display} is no longer available. Browse similar VP Sales and CRO opportunities.">
-    <link rel="canonical" href="{BASE_URL}/jobs/{stale_slug}/">
+    <title>{page_title}</title>
+    <meta name="description" content="{meta_desc}">
+    <link rel="canonical" href="{canonical_url}">
     <meta name="robots" content="noindex, follow">
+
+    <!-- Open Graph Tags (LinkedIn, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{canonical_url}">
+    <meta property="og:title" content="{og_title}">
+    <meta property="og:description" content="{og_description}">
+    <meta property="og:site_name" content="The CRO Report">
+    <meta property="og:image" content="{BASE_URL}/assets/social-preview.png">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{og_title}">
+    <meta name="twitter:description" content="{og_description}">
+    <meta name="twitter:image" content="{BASE_URL}/assets/social-preview.png">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1154,6 +1243,8 @@ def create_stale_job_page(stale_slug, similar_jobs):
         }})();
     </script>
 
+    <main>
+
     <header class="expired-header">
         <div class="container">
             <span class="expired-badge">Position Filled</span>
@@ -1184,6 +1275,8 @@ def create_stale_job_page(stale_slug, similar_jobs):
             </div>
         </div>
     </div>
+
+    </main>
 
     <footer class="footer">
         <p>{FOOTER_LINKS_HTML}</p>

@@ -7,6 +7,7 @@ multiple page generators to eliminate duplication and centralize maintenance.
 """
 
 import re
+import json
 import pandas as pd
 import sys
 
@@ -77,6 +78,42 @@ def fmt_salary(amount):
     if not amount:
         return "N/A"
     return f"${int(amount/1000)}K"
+
+
+def get_breadcrumb_schema(breadcrumbs):
+    """Generate BreadcrumbList JSON-LD schema.
+
+    Args:
+        breadcrumbs: List of dicts with 'name' and 'url' keys.
+                    Example: [{"name": "Home", "url": "https://thecroreport.com"},
+                             {"name": "Jobs", "url": "https://thecroreport.com/jobs/"}]
+
+    Returns:
+        JSON-LD script tag as string, or empty string if no breadcrumbs.
+    """
+    if not breadcrumbs:
+        return ''
+
+    items = []
+    for i, crumb in enumerate(breadcrumbs, 1):
+        items.append({
+            "@type": "ListItem",
+            "position": i,
+            "name": crumb.get("name", ""),
+            "item": crumb.get("url", "")
+        })
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": items
+    }
+
+    return f'''
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+{json.dumps(schema, indent=2)}
+    </script>'''
 
 
 def load_json_data(filename):
@@ -641,6 +678,26 @@ CSS_CTA = '''
     .btn-gold:hover { background: var(--gold-muted); }
 '''
 
+CSS_RELATED_LINKS = '''
+    /* Related Links */
+    .related-links {
+        margin: 32px 0;
+        padding: 16px 0;
+        border-top: 1px solid var(--gray-200);
+        font-size: 0.9rem;
+        color: var(--gray-600);
+    }
+    .related-links a {
+        color: var(--navy);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .related-links a:hover {
+        color: var(--gold);
+        text-decoration: underline;
+    }
+'''
+
 CSS_FOOTER = '''
     /* Footer */
     .site-footer, .footer {
@@ -808,6 +865,7 @@ def get_base_styles():
         {CSS_LAYOUT}
         {CSS_CARDS}
         {CSS_CTA}
+        {CSS_RELATED_LINKS}
         {CSS_FOOTER}
     </style>
 '''
@@ -817,9 +875,20 @@ def get_base_styles():
 # HTML GENERATORS
 # =============================================================================
 
-def get_html_head(title, description, page_path, include_styles=True):
-    """Generate SEO-compliant head section"""
+def get_html_head(title, description, page_path, include_styles=True, breadcrumbs=None):
+    """Generate SEO-compliant head section.
+
+    Args:
+        title: Page title (without site name suffix)
+        description: Meta description
+        page_path: Path for canonical URL (e.g., "jobs/" or "salaries/vp-sales/")
+        include_styles: Whether to include base CSS styles
+        breadcrumbs: Optional list of breadcrumb dicts for BreadcrumbList schema
+                    e.g., [{"name": "Home", "url": "https://thecroreport.com"},
+                           {"name": "Jobs", "url": "https://thecroreport.com/jobs/"}]
+    """
     styles = get_base_styles() if include_styles else ''
+    breadcrumb_schema = get_breadcrumb_schema(breadcrumbs) if breadcrumbs else ''
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -843,7 +912,7 @@ def get_html_head(title, description, page_path, include_styles=True):
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content="{description}">
     <meta name="twitter:image" content="{BASE_URL}/assets/social-preview.png">
-
+{breadcrumb_schema}
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -931,6 +1000,8 @@ def get_nav_html(active_page=None):
             mobileLinks.forEach(link => {{ link.addEventListener('click', closeMenu); }});
         }})();
     </script>
+
+    <main>
 '''
 
 
@@ -946,6 +1017,8 @@ def get_footer_html():
     footer_html = '\n                '.join(footer_links)
 
     return f'''
+    </main>
+
     <footer class="site-footer">
         <div class="footer-content">
             <span>&copy; {COPYRIGHT_YEAR} <a href="/">{SITE_NAME}</a></span>
@@ -956,6 +1029,30 @@ def get_footer_html():
     </footer>
 </body>
 </html>
+'''
+
+
+def get_related_links_html(links, title="Related"):
+    """Generate a related links section for internal linking.
+
+    Args:
+        links: List of dicts with 'title' and 'url' keys, optionally 'context'
+        title: Section title (default "Related")
+
+    Returns:
+        HTML string for the related links section
+    """
+    if not links:
+        return ''
+
+    link_items = []
+    for link in links[:4]:  # Max 4 related links per best practices
+        link_items.append(f'<a href="{link["url"]}">{link["title"]}</a>')
+
+    links_html = ' | '.join(link_items)
+
+    return f'''
+    <p class="related-links">{title}: {links_html}</p>
 '''
 
 

@@ -424,11 +424,17 @@ in_depth_reviews = len([t for t in tools_list if t.get('custom_page')])
 total_analyses = in_depth_reviews + total_comparisons
 num_categories = len(categories)
 
+index_breadcrumbs = [
+    {"name": "Home", "url": f"{BASE_URL}"},
+    {"name": "Tools", "url": f"{BASE_URL}/tools/"}
+]
+
 index_html = get_html_head(
     "GTM Tools & Reviews",
     "Honest reviews of AI SDRs, sales engagement platforms, and GTM tools for revenue leaders. Real pricing, user complaints, and recommendations by company stage.",
     "tools/",
-    include_styles=False
+    include_styles=False,
+    breadcrumbs=index_breadcrumbs
 )
 index_html += get_tools_styles()
 index_html += get_nav_html('tools')
@@ -537,11 +543,18 @@ for tool in tools_list:
     if tool.get('logo'):
         logo_html = f'<img src="{tool["logo"]}" alt="{tool["name"]}" style="width: 64px; height: 64px; border-radius: 12px; margin-bottom: 16px;">'
 
+    tool_breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Tools", "url": f"{BASE_URL}/tools/"},
+        {"name": tool['name'], "url": f"{BASE_URL}/tools/{tool['slug']}/"}
+    ]
+
     html = get_html_head(
         f"{tool['name']} Review",
         f"{tool['description']} Pricing, pros, cons, and alternatives.",
         f"tools/{tool['slug']}/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=tool_breadcrumbs
     )
     html += get_tools_styles()
     html += get_nav_html('tools')
@@ -648,11 +661,18 @@ for alt in alternatives:
 
     points_html = ''.join([f'<li style="padding: 8px 0;">{p}</li>' for p in alt['comparison_points']])
 
+    alt_breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Tools", "url": f"{BASE_URL}/tools/"},
+        {"name": alt['title'], "url": f"{BASE_URL}/tools/{alt['slug']}/"}
+    ]
+
     html = get_html_head(
         alt['title'],
         f"{alt['description']} Compare pricing, features, and find the best fit.",
         f"tools/{alt['slug']}/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=alt_breadcrumbs
     )
     html += get_tools_styles()
     html += get_nav_html('tools')
@@ -729,11 +749,18 @@ for comp in comparisons:
                     </tr>
 '''
 
+    comp_breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Tools", "url": f"{BASE_URL}/tools/"},
+        {"name": comp['title'], "url": f"{BASE_URL}/tools/{comp['slug']}/"}
+    ]
+
     html = get_html_head(
         comp['title'],
         f"{comp['description']} Features, pricing, and which is better for your team.",
         f"tools/{comp['slug']}/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=comp_breadcrumbs
     )
     html += get_tools_styles()
     html += get_nav_html('tools')

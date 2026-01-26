@@ -362,11 +362,19 @@ def create_salary_page(title, slug, df_subset, description, show_top_companies=T
     max_salary = df_subset['max_amount'].max()
     count = len(df_subset)
 
+    # BreadcrumbList for SEO
+    breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Salaries", "url": f"{BASE_URL}/salaries/"},
+        {"name": f"{title} Salary", "url": f"{BASE_URL}/salaries/{slug}/"}
+    ]
+
     html = get_html_head(
         f"{title} Salary",
         f"{description} Based on {count} job postings. Updated {update_date}.",
         f"salaries/{slug}/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=breadcrumbs
     )
     html += get_salary_styles()
     html += get_nav_html('salaries')
@@ -408,6 +416,8 @@ def create_salary_page(title, slug, df_subset, description, show_top_companies=T
             <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe to The CRO Report →</a>
         </div>
     </div>
+
+    </main>
 
     <footer class="footer">
         <p>&copy; 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
@@ -557,11 +567,17 @@ else:
     '''
 
 # Generate index page
+index_breadcrumbs = [
+    {"name": "Home", "url": f"{BASE_URL}"},
+    {"name": "Salaries", "url": f"{BASE_URL}/salaries/"}
+]
+
 index_html = get_html_head(
     "Sales Executive Salary Benchmarks",
     f"2026 VP Sales and CRO salary benchmarks based on {len(df_salary)} actual job postings. See compensation by location (NYC, SF, Remote), seniority level, and company stage.",
     "salaries/",
-    include_styles=False
+    include_styles=False,
+    breadcrumbs=index_breadcrumbs
 )
 index_html += get_salary_styles()
 index_html += get_nav_html('salaries')
@@ -653,6 +669,8 @@ index_html += f'''
             <a href="https://croreport.substack.com/subscribe" class="cta-btn">Subscribe Free →</a>
         </div>
     </div>
+
+    </main>
 
     <footer class="footer">
         <p>&copy; 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/about/">About</a> · <a href="https://croreport.substack.com">Newsletter</a></p>
