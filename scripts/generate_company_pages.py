@@ -347,16 +347,25 @@ def generate_company_page(company_name, company_df):
 
     description = f"{company_name} has {job_count} open VP Sales and executive sales positions. {seniority_summary}."
 
+    # BreadcrumbList for SEO
+    breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Companies", "url": f"{BASE_URL}/companies/"},
+        {"name": company_name, "url": f"{BASE_URL}/companies/{slug}/"}
+    ]
+
     html = get_html_head(
         f"{company_name} VP Sales & CRO Jobs",
         f"{description} Updated {update_date}.",
         f"companies/{slug}/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=breadcrumbs
     )
     html += get_company_styles()
     html += get_nav_html()
 
     html += f'''
+    <main>
     <div class="hero-header">
         <div class="eyebrow">Company Profile</div>
         <h1>{company_name}</h1>
@@ -387,6 +396,7 @@ def generate_company_page(company_name, company_df):
 
         <p style="text-align: center; color: var(--gray-500); font-size: 0.85rem; margin-top: 32px;">Last updated: {update_date}</p>
     </div>
+    </main>
 
     <footer class="footer">
         <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>
@@ -418,16 +428,24 @@ def generate_companies_index(companies_data):
         </a>
         '''
 
+    # BreadcrumbList for SEO
+    index_breadcrumbs = [
+        {"name": "Home", "url": f"{BASE_URL}"},
+        {"name": "Companies", "url": f"{BASE_URL}/companies/"}
+    ]
+
     html = get_html_head(
         "Companies Hiring VP Sales & CROs",
         f"Browse {len(sorted_companies)} companies currently hiring VP Sales and CRO positions. Updated {update_date}.",
         "companies/",
-        include_styles=False
+        include_styles=False,
+        breadcrumbs=index_breadcrumbs
     )
     html += get_company_styles()
     html += get_nav_html()
 
     html += f'''
+    <main>
     <div class="hero-header">
         <div class="eyebrow">Browse by Company</div>
         <h1>Companies Hiring Sales Executives</h1>
@@ -439,6 +457,7 @@ def generate_companies_index(companies_data):
             {company_cards}
         </div>
     </div>
+    </main>
 
     <footer class="footer">
         <p>&copy; 2025 <a href="/">The CRO Report</a> | <a href="/jobs/">Jobs</a> | <a href="/salaries/">Salaries</a> | <a href="/tools/">Tools</a> | <a href="/insights/">Market Intel</a> | <a href="/about/">About</a> | <a href="https://croreport.substack.com">Newsletter</a></p>

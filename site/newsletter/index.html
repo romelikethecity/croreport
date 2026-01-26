@@ -338,6 +338,28 @@
         .site-header { padding: 12px 20px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
         .logo-img { height: 32px; width: auto; border-radius: 8px; }
     </style>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://thecroreport.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Newsletter",
+      "item": "https://thecroreport.com/newsletter/"
+    }
+  ]
+}
+    </script>
 </head>
 <body>
     <header class="site-header">
