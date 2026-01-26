@@ -2,80 +2,107 @@
 
 ## Progress Summary
 
-### Fixes Completed This Session
-
-| Issue | Before | After | Status |
-|-------|--------|-------|--------|
-| Missing `<main>` landmark | 101 | **0** | **COMPLETE** |
-| Stale job page titles over 60 chars | 1,010 | **0** | **COMPLETE** (generator fixed) |
-| Missing OG/Twitter tags (stale jobs) | ~1,055 | **0** | **COMPLETE** (generator fixed) |
-| BreadcrumbList schema (tools/salary) | ~70 | **0** | **COMPLETE** |
-| Missing related links | 1,356 | 1,356 | Not started |
-
-### Cumulative Progress (All Sessions)
+### All SEO Issues - RESOLVED
 
 | Issue | Original | Current | Status |
 |-------|----------|---------|--------|
-| Missing `<main>` landmark | 1,326 | **0** | **COMPLETE** |
+| Missing `<main>` landmark | 1,337 | **0** | **COMPLETE** |
 | Missing H1 tag | 21 | **0** | **COMPLETE** |
 | Missing canonical tags | 3 | **0** | **COMPLETE** |
-| Missing GA tracking | 3 | **0** | **COMPLETE** |
-| BreadcrumbList schema | 1,327 | ~1,096 | Partial (job + tool + salary pages done) |
-| Title tags over 60 chars | 1,191 | **0** | **COMPLETE** (all generators fixed) |
-| Missing OG tags | 1,060 | **~5** | Near complete |
-| Missing Twitter cards | 1,069 | **~5** | Near complete |
-| Missing related links | 1,356 | 1,356 | Not started |
+| Missing OG tags | 1,060 | **0** | **COMPLETE** |
+| Missing Twitter cards | 1,069 | **0** | **COMPLETE** |
+| Title tags over 60 chars | ~1,191 | **0** | **COMPLETE** |
+| BreadcrumbList schema | 1,327 | **0** | **COMPLETE** |
+| Missing related links | 1,356 | **10** | **COMPLETE** (root pages excluded) |
 
 ---
 
-## Changes Made This Session
+## Session 3 Changes (Final Session)
 
-### 1. `scripts/generate_job_pages.py`
-- **Stale page title truncation**: Added logic to keep stale job page titles under 60 chars
-  - Format: `{short_title} at {short_company} - Filled | CRO`
-  - Title truncated to 20 chars, company to 15 chars max
-- **OG/Twitter tags for stale pages**: Added full social meta tags to `create_stale_job_page()`
-  - `og:type`, `og:url`, `og:title`, `og:description`, `og:site_name`, `og:image`
-  - `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
+### 1. BreadcrumbList - All Pages Fixed
+- Created `scripts/fix_missing_breadcrumbs_v2.py` to add schema to all pages
+- Updated `scripts/generate_company_pages.py` with BreadcrumbList + `<main>` tags
+- Fixed 1,089 pages:
+  - 4 root pages (index, about, consulting, newsletter)
+  - 33 company pages
+  - 1,052 stale job pages
+  - 3 job category pages (index, vp-sales, cro-jobs)
 
-### 2. `scripts/generate_salary_pages.py`
-- **BreadcrumbList for individual pages**: Added breadcrumbs parameter to `create_salary_page()`
-- **BreadcrumbList for index page**: Added breadcrumbs to salary index page
-
-### 3. `scripts/generate_tools_pages.py`
-- **BreadcrumbList for index**: Added breadcrumbs to tools index page
-- **BreadcrumbList for tool pages**: Added breadcrumbs to individual tool page generator
-- **BreadcrumbList for alternatives pages**: Added breadcrumbs to alternatives page generator
-- **BreadcrumbList for comparison pages**: Added breadcrumbs to comparison page generator
-
-### 4. New Fix Scripts
-- **`scripts/fix_missing_main_tags.py`**: Injected `<main>` and `</main>` tags into 100 pages
-  - Handles multiple HTML structures (mobile nav script, simple header, etc.)
-- **`scripts/fix_missing_breadcrumbs.py`**: Added BreadcrumbList schema to 70 priority pages
-  - Auto-generates breadcrumbs based on URL path
-
-### 5. Manual Fixes
-- `site/newsletter/index.html` - Added `<main>` tags
-- `site/jobs/index.html` - Added opening `<main>` tag (was missing)
+### 2. Related Links - 1,346 Pages
+- Created `scripts/add_related_links.py` for internal linking
+- Added "Helpful Resources" section to:
+  - 43 salary pages
+  - 53 tool pages
+  - 36 company pages
+  - 1,214 job pages
 
 ---
 
-## Remaining Issues
+## Session 2 Changes
 
-### Medium Priority - ~1,096 Pages Missing BreadcrumbList
+### 1. Fixed H1 Tags (21 pages)
+- Created `scripts/fix_missing_h1_tags.py` to inject H1 into 20 old salary pages
+- Manually rebuilt `site/newsletter/index.html` with proper H1, content, and OG tags
 
-Company pages and some other pages still lack BreadcrumbList. These are lower priority as they're not core SEO pages.
+### 2. Ran All Page Generators
+- **`generate_job_pages.py`**: 161 live jobs + 1,055 stale pages updated
+  - Stale pages now have truncated titles (<60 chars)
+  - Stale pages have OG/Twitter tags
+  - All jobs have BreadcrumbList schema
+- **`generate_salary_pages.py`**: 19 salary pages regenerated with BreadcrumbList
+- **`generate_tools_pages.py`**: Tool pages regenerated with BreadcrumbList
 
-### Medium Priority - 1,356 Pages Missing Related Links
+### 3. Ran Fix Scripts
+- **`fix_missing_main_tags.py`**: Fixed 79 pages missing `<main>` landmark
+- **`fix_missing_breadcrumbs.py`**: Fixed 42 pages missing BreadcrumbList
 
-No pages have internal linking sections yet. The `get_related_links_html()` function exists in templates.py but hasn't been implemented in generators. This would require:
+### 4. Shortened Tool Page Titles
+- Created `scripts/fix_tool_titles.py`
+- Fixed 40 tool pages with titles over 60 characters
 
-1. Defining related links logic for each page type:
-   - Tool pages: Link to comparisons, alternatives, similar tools
-   - Salary pages: Link to other locations, seniority levels
-   - Job pages: Link to similar jobs, salary data, company pages
+### 5. Updated Company Page Generator
+- Added BreadcrumbList schema to `generate_company_pages.py`
+- Added `<main>` landmark tags to company pages
 
-2. Updating each generator to include related links before footer
+### 6. Fixed Manual Pages Missing OG Tags
+- Created `scripts/fix_og_tags_manual.py`
+- Fixed 4 pages: linkedin-sales-navigator, cognism, gong-vs-chorus, newsletter
+
+### 7. Fixed Jobs Index
+- Added opening `<main>` tag (had closing but no opening)
+
+---
+
+## Current State (1,356 pages)
+
+| Metric | Count | Status |
+|--------|-------|--------|
+| Pages missing `<main>` | 0 | ✅ |
+| Pages missing H1 | 0 | ✅ |
+| Pages missing OG tags | 0 | ✅ |
+| Pages missing BreadcrumbList | 0 | ✅ |
+| Pages with related links | 1,346 | ✅ |
+
+---
+
+## Scripts Created
+
+### New Scripts
+1. `scripts/fix_missing_h1_tags.py` - Fixes H1 in old salary pages
+2. `scripts/fix_tool_titles.py` - Shortens tool page titles to <60 chars
+3. `scripts/fix_og_tags_manual.py` - Adds OG tags to manual pages
+4. `scripts/fix_missing_breadcrumbs_v2.py` - Adds BreadcrumbList to all pages
+5. `scripts/add_related_links.py` - Adds internal linking sections
+
+### Updated Generators
+6. `scripts/generate_company_pages.py` - BreadcrumbList + `<main>` tags
+7. `scripts/generate_job_pages.py` - Stale page titles, OG/Twitter tags, BreadcrumbList
+8. `scripts/generate_salary_pages.py` - BreadcrumbList
+9. `scripts/generate_tools_pages.py` - BreadcrumbList
+
+### Existing Fix Scripts
+10. `scripts/fix_missing_main_tags.py` - Injects `<main>` tags
+11. `scripts/fix_missing_breadcrumbs.py` - Adds BreadcrumbList schema (original)
 
 ---
 
@@ -84,60 +111,29 @@ No pages have internal linking sections yet. The `get_related_links_html()` func
 Run from `/Users/rome/Documents/croreport/site`:
 
 ```bash
-# Pages missing <main> (should be 0)
-find . -name "index.html" -type f | xargs grep -L "<main>" | wc -l
+# All should return 0:
+find . -name "index.html" -type f | xargs grep -L "<main" | wc -l
+find . -name "index.html" -type f | xargs grep -L "<h1" | wc -l
+find . -name "index.html" -type f | xargs grep -L "og:title" | wc -l
+find . -name "index.html" -type f | xargs grep -L "BreadcrumbList" | wc -l
 
-# Pages missing BreadcrumbList
-find . -name "index.html" -type f | xargs grep -L 'BreadcrumbList' | wc -l
+# Pages with related links (should be 1,346)
+find . -name "index.html" -type f | xargs grep -l "related-links" | wc -l
 
-# Tool/salary pages missing BreadcrumbList (should be 0)
-find ./tools -name "index.html" -type f | xargs grep -L 'BreadcrumbList' | wc -l
-find ./salaries -name "index.html" -type f | xargs grep -L 'BreadcrumbList' | wc -l
-
-# Pages missing OG tags
-find . -name "index.html" -type f | xargs grep -L 'og:title' | wc -l
-
-# Pages with related links
-find . -name "index.html" -type f | xargs grep -l 'related-links' | wc -l
+# Total pages (should be 1,356)
+find . -name "index.html" -type f | wc -l
 ```
 
 ---
 
-## Files Modified
+## Future Improvements (Lower Priority)
 
-### Generators Updated
-1. `scripts/generate_job_pages.py` - Stale page titles, OG/Twitter tags
-2. `scripts/generate_salary_pages.py` - BreadcrumbList
-3. `scripts/generate_tools_pages.py` - BreadcrumbList
-
-### New Scripts Created
-4. `scripts/fix_missing_main_tags.py` - One-time fix for 100 pages
-5. `scripts/fix_missing_breadcrumbs.py` - One-time fix for 70 pages
-
-### Pages Manually Fixed
-6. `site/newsletter/index.html` - Main tags
-7. `site/jobs/index.html` - Main tag
-
----
-
-## Next Steps
-
-### To Apply Changes to Live Pages
-
-Regenerate pages by running:
-```bash
-cd /Users/rome/Documents/croreport
-python3 scripts/generate_job_pages.py    # Fixes stale job titles & OG tags
-python3 scripts/generate_salary_pages.py  # Adds BreadcrumbList
-python3 scripts/generate_tools_pages.py   # Adds BreadcrumbList
-```
-
-### Future Improvements
-
-1. **Related Links**: Implement internal linking using `get_related_links_html()`
-2. **Company Pages BreadcrumbList**: Add to company page generator
-3. **Structured Data Audit**: Review JobPosting, SoftwareApplication schemas
+1. **FAQ Schema**: Add FAQPage schema to pages with FAQ content
+2. **JobPosting Schema Audit**: Review and enhance job posting structured data
+3. **Image Optimization**: Add lazy loading, WebP format
+4. **Core Web Vitals**: Audit LCP, FID, CLS scores
 
 ---
 
 *Last updated: January 26, 2026*
+*SEO Audit Complete*
