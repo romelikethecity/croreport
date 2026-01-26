@@ -1,6 +1,13 @@
 {
   "moves": [
     {
+      "name": "Gregory Banning",
+      "new_role": "Chief Revenue Officer",
+      "new_company": "Rithum",
+      "previous": "VP of Sales and Channels at Service Express ($400M IT managed services); earlier at Adobe, Amazon, Capital One, SAP Concur",
+      "date": "2026-01-25"
+    },
+    {
       "name": "Bobby Condon",
       "new_role": "Chief Revenue Officer",
       "new_company": "Forward Networks",
@@ -36,5 +43,5 @@
       "date": "2025-12-11"
     }
   ],
-  "last_updated": "2026-01-24"
+  "last_updated": "2026-01-26"
 }
