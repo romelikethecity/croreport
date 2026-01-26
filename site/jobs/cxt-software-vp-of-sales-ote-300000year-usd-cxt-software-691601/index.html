@@ -345,13 +345,15 @@
             .mobile-nav-overlay.active { pointer-events: auto; }
             .header h1 { font-size: 1.5rem; }
         }
+    
+        .logo-img { height: 32px; width: auto; border-radius: 8px; }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">
-                <img src="/assets/logo.jpg" alt="The CRO Report" width="40" height="40">
+                <img src="/assets/logo.jpg" alt="The CRO Report" class="logo-img" width="40" height="40">
                 <span>The CRO Report</span>
             </a>
             <nav>
@@ -360,12 +362,12 @@
                     <li><a href="/salaries/">Salaries</a></li>
                     <li><a href="/tools/">Tools</a></li>
                     <li><a href="/insights/">Market Intel</a></li>
-                    <li><a href="/assessment/">AI Assessment</a></li>
+                    <li><a href="/consulting/">GTM Consulting</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/newsletter/" class="btn-subscribe">Subscribe</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" aria-label="Open menu">&#9776;</button>
         </div>
     </header>
 
@@ -374,14 +376,14 @@
     <nav class="mobile-nav">
         <div class="mobile-nav-header">
             <span class="logo-text">The CRO Report</span>
-            <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+            <button class="mobile-nav-close" aria-label="Close menu">&#10005;</button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="/jobs/">Jobs</a></li>
             <li><a href="/salaries/">Salaries</a></li>
             <li><a href="/tools/">Tools</a></li>
             <li><a href="/insights/">Market Intel</a></li>
-            <li><a href="/assessment/">AI Assessment</a></li>
+            <li><a href="/consulting/">GTM Consulting</a></li>
             <li><a href="/about/">About</a></li>
         </ul>
         <a href="/newsletter/" class="mobile-nav-subscribe">Subscribe</a>
@@ -394,20 +396,23 @@
             const overlay = document.querySelector('.mobile-nav-overlay');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-nav-subscribe');
+
             function openMenu() {
                 mobileNav.classList.add('active');
                 overlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
+
             function closeMenu() {
                 mobileNav.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            menuBtn.addEventListener('click', openMenu);
-            closeBtn.addEventListener('click', closeMenu);
-            overlay.addEventListener('click', closeMenu);
-            mobileLinks.forEach(link => { link.addEventListener('click', closeMenu); });
+
+            if (menuBtn) menuBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
 
@@ -474,9 +479,10 @@
 
     </main>
 
-    <footer class="footer">
-        <p>© 2025 <a href="/">The CRO Report</a> · <a href="/jobs/">Jobs</a> · <a href="/salaries/">Salaries</a> · <a href="/tools/">Tools</a> · <a href="/insights/">Market Intel</a> · <a href="/assessment/">AI Assessment</a> · <a href="/about/">About</a> · <a href="/newsletter/">Newsletter</a></p>
-        <p style="margin-top: 8px; font-size: 0.85rem;">Updated January 26, 2026</p>
+    <footer class="site-footer">
+        <div class="container" style="max-width: 1200px;">
+            <p>&copy; 2026 <a href="/">The CRO Report</a> &middot; <a href="/jobs/">Jobs</a> &middot; <a href="/salaries/">Salaries</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/insights/">Market Intel</a> &middot; <a href="/consulting/">GTM Consulting</a> &middot; <a href="/about/">About</a> &middot; <a href="https://croreport.substack.com">Newsletter</a></p>
+        </div>
     </footer>
 </body>
 </html>

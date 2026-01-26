@@ -26,20 +26,6 @@
     <meta name="keywords" content="CRO Report newsletter, VP Sales market intelligence, sales executive newsletter, CRO jobs newsletter">
     <link rel="canonical" href="https://thecroreport.com/newsletter/">
 
-    <!-- Open Graph Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://thecroreport.com/newsletter/">
-    <meta property="og:title" content="The CRO Report Newsletter">
-    <meta property="og:description" content="Weekly market trends, compensation data, and executive insights for VP Sales and CRO leaders.">
-    <meta property="og:site_name" content="The CRO Report">
-    <meta property="og:image" content="https://thecroreport.com/assets/social-preview.png">
-
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The CRO Report Newsletter">
-    <meta name="twitter:description" content="Weekly market trends, compensation data, and executive insights for VP Sales and CRO leaders.">
-    <meta name="twitter:image" content="https://thecroreport.com/assets/social-preview.png">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" media="print" onload="this.media='all'">
@@ -166,6 +152,60 @@
             background: #b45309;
         }
 
+        .post-card {
+            display: block;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        .post-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .post-header h3 {
+            color: #1e3a5f;
+            font-size: 1.15rem;
+            line-height: 1.4;
+        }
+        .badge-latest {
+            background: #d97706;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .post-date {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        .post-excerpt {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+        .read-more {
+            display: inline-block;
+            color: #d97706;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
         .no-posts {
             text-align: center;
             padding: 40px;
@@ -290,8 +330,11 @@
                 flex-direction: column;
                 gap: 16px;
             }
+            .post-header {
+                flex-direction: column;
+            }
         }
-
+    
         .site-header { padding: 12px 20px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
         .logo-img { height: 32px; width: auto; border-radius: 8px; }
     </style>
@@ -362,43 +405,5 @@
             mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
         })();
     </script>
-
-    <main>
-    <div class="hero-header">
-        <div class="eyebrow">Weekly Intelligence</div>
-        <h1>The CRO Report Newsletter</h1>
-        <p>Market trends, compensation data, and executive insights for VP Sales and CRO leaders. Every Thursday.</p>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value">3,500+</div>
-                <div class="stat-label">Subscribers</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">Weekly</div>
-                <div class="stat-label">Editions</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="subscribe-banner">
-            <h2>Get the Weekly Brief</h2>
-            <p>Join 3,500+ sales executives getting market intelligence every Thursday.</p>
-            <a href="https://croreport.substack.com/subscribe" class="subscribe-btn">Subscribe Free &rarr;</a>
-        </div>
-
-        <h2 style="font-family: 'Fraunces', serif; color: #1e3a5f; margin-bottom: 20px;">Recent Editions</h2>
-
-        <p class="no-posts">
-            Visit our <a href="https://croreport.substack.com">Substack</a> to browse past editions and subscribe.
-        </p>
-
-        <p class="update-date">Updated weekly on Thursdays</p>
-    </div>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2026 <a href="/">The CRO Report</a> &middot; <a href="/jobs/">Jobs</a> &middot; <a href="/salaries/">Salaries</a> &middot; <a href="/tools/">Tools</a> &middot; <a href="/insights/">Market Intel</a> &middot; <a href="/about/">About</a></p>
-    </footer>
 </body>
 </html>
